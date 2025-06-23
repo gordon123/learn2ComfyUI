@@ -100,9 +100,9 @@ Download จาก  <br>
 4. [rgthree-comfy](https://github.com/rgthree/rgthree-comfy)
 5. [ComfyUI-Easy-Use](https://github.com/yolain/ComfyUI-Easy-Use)
 6. [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)
-7.[ ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)
+7. [ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)
 8. [comfyui-portrait-master](https://github.com/florestefano1975/comfyui-portrait-master)
-9.  [cg-use-everywhere](https://github.com/chrisgoringe/cg-use-everywhere)
+9. [cg-use-everywhere](https://github.com/chrisgoringe/cg-use-everywhere)
 10. [Comfyui_TTP_Toolset](https://github.com/TTPlanetPig/Comfyui_TTP_Toolset)
 11. [comfyui-ollama](https://github.com/stavsap/comfyui-ollama)
 12. [Flux-Prompt-Generator](https://github.com/fairy-root/Flux-Prompt-Generator)
@@ -117,3 +117,39 @@ Download จาก  <br>
 1. [kaytool](https://github.com/kk8bit/kaytool) 
 2. [ComfyUI-Crystools](https://github.com/crystian/ComfyUI-Crystools)
 3. [ComfyUI_Custom_Nodes_AlekPet](https://github.com/AlekPet/ComfyUI_Custom_Nodes_AlekPet/tree/master/DeepTranslatorNode)
+4. [ComfyUI-EsesImageAdjustments](https://github.com/quasiblob/ComfyUI-EsesImageAdjustments/)
+5. [ComfyUI_LayerStyle](https://github.com/chflame163/ComfyUI_LayerStyle)
+6. [Muti-area conditioning](https://github.com/Davemane42/ComfyUI_Dave_CustomNode)
+7. [Grounded SAM2](https://github.com/neverbiasu/ComfyUI-SAM2), [Grounded-SAM-2 read paper](https://github.com/IDEA-Research/Grounded-SAM-2)
+8. [Segment anything Kijai](https://github.com/kijai/ComfyUI-segment-anything-2)
+9. [AdvancedReduxControl](https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl)
+10. [catvton-flux-lora-alpha](https://huggingface.co/xiaozaa/catvton-flux-lora-alpha)
+11. [vton-ic-v3-lora](https://huggingface.co/Patil/vton-ic-lora/tree/main)
+12. https://www.rapidtables.com/web/color/RGB_Color.html
+13. [ComfyUI-Photopea](https://github.com/coolzilj/ComfyUI-Photopea)
+14. [comfyui-upscale-by-model](https://github.com/TheBill2001/comfyui-upscale-by-model)
+15. [ComfyUI_Comfyroll_CustomNodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)
+
+## LLM, VLM
+1. [ComfyUI-Kolors-MZ](https://github.com/MinusZoneAI/ComfyUI-Kolors-MZ)
+2. [Florence 2](https://github.com/kijai/ComfyUI-Florence2), [ComfyUI-Florence-2](https://github.com/spacepxl/ComfyUI-Florence-2)
+3. [comfyui-ollama](https://github.com/stavsap/comfyui-ollama)
+4. [ComfyUI_SLK_joy_caption_two](https://github.com/EvilBT/ComfyUI_SLK_joy_caption_two)
+5. [ComfyUI-WD14-Tagger](https://github.com/pythongosssss/ComfyUI-WD14-Tagger)
+6. [ComfyUI-Blip](https://github.com/smthemex/ComfyUI_Pic2Story)
+7. [ComfyUI_Searge_LLM](https://github.com/SeargeDP/ComfyUI_Searge_LLM)
+
+
+## post-process / retouch
+1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
+
+## Character consistancy
+1. [ComfyUI_StableHair_ll](https://github.com/lldacing/ComfyUI_StableHair_ll)
+2. [comfyui-portrait-master](https://github.com/florestefano1975/comfyui-portrait-master)
+
+
+## Nunchaku
+1. [ComfyUI-nunchaku](https://github.com/mit-han-lab/ComfyUI-nunchaku)
+2. [svdq-in4-shuttle-jarguar](https://huggingface.co/mit-han-lab/svdq-fp4-shuttle-jaguar)
+3. [theunlikely/svdq-int4-jibMixFlux_v8Accentueight](https://huggingface.co/theunlikely/svdq-int4-jibMixFlux_v8Accentueight/tree/main)
+4. [ICedit ](https://github.com/River-Zhang/ICEdit/issues/1#issuecomment-2846568411)
