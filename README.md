@@ -129,6 +129,8 @@ Download จาก  <br>
 13. [ComfyUI-Photopea](https://github.com/coolzilj/ComfyUI-Photopea)
 14. [comfyui-upscale-by-model](https://github.com/TheBill2001/comfyui-upscale-by-model)
 15. [ComfyUI_Comfyroll_CustomNodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)
+16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes)
+
 
 ## LLM, VLM
 1. [ComfyUI-Kolors-MZ](https://github.com/MinusZoneAI/ComfyUI-Kolors-MZ)
