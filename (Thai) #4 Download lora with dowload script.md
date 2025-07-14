@@ -91,3 +91,26 @@ wget --header="Authorization: Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxx" \
 "https://huggingface.co/xxxxxxxxxxxxxxxxx.safetensors"
 ```
 
+## 10. การ install Git LFS บน RunPod เพื่อทำการ Clone Repo Hugginface
+
+1. update package manager บน Runpod
+```
+apt-get update
+```
+2. ติดตั้ง Git LFS
+```
+apt-get install git-lfs -y
+```
+3. เริ่มต้นใช้งาน Git LFS
+```
+git lfs install
+```
+4. เช็คสถานะการติดตั้ง:
+```
+git lfs env
+```
+5. clone Repo ของ Hugginface เช่น จะดาวโหลดโมเดล Nunchaku อันนี้ ต้องดาวโหลด ทั้งโฟล์เด้อ เข้าไปใน Unet ก่อน แล้วตามด้วยคำสั่งนี้
+```
+git clone https://huggingface.co/theunlikely/svdq-int4-jibMixFlux_v8Accentueight
+```
+
