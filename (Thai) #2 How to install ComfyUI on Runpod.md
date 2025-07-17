@@ -1,6 +1,10 @@
 ## บทนี้เราจะมาเริ่ม Install ComfyUI บน Runpod กัน  
 ผมได้เตรียมไฟล์ไว้แล้ว เพื่อนๆ สามารถไปโหลดได้ที่  
 
+### updat ใหม่
+  ```
+ComfyUI: The latest version, v0.3.44,  Python 3.12.10 and Torch 2.7.1+cu128, for NVIDIA RTX 5000 series compatibility
+  ```
 [![Watch on YouTube](https://img.youtube.com/vi/oDSnH_nAhvY/0.jpg)](https://www.youtube.com/watch?v=oDSnH_nAhvY)
 
 ### 1. ดาวน์โหลดไฟล์ Install ComfyUI  
