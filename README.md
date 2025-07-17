@@ -130,6 +130,7 @@ Download จาก  <br>
 14. [comfyui-upscale-by-model](https://github.com/TheBill2001/comfyui-upscale-by-model)
 15. [ComfyUI_Comfyroll_CustomNodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)
 16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes)
+17. [เครื่องมือ edit ภาพ](https://github.com/o-l-l-i)
 
 
 ## LLM, VLM
