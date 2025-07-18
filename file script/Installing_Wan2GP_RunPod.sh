@@ -196,6 +196,14 @@ print(f'🖥️  CUDA: {torch.cuda.is_available()}')
 try:
     import sageattention
     print('🧠 SageAttention 2: Available')
+    
+    # Test FFmpeg
+    import subprocess
+    result = subprocess.run(['ffmpeg', '-version'], capture_output=True, text=True)
+    if result.returncode == 0:
+        print('🎬 FFmpeg: Available')
+    else:
+        print('⚠️  FFmpeg: Not working properly')
 except:
     print('🧠 SageAttention 2: Not available')
 "
@@ -274,6 +282,7 @@ echo "✅ Wan2GP repository cloned"
 echo "✅ Python 3.10.9 environment (wan2gp)"
 echo "✅ PyTorch 2.6.0 with CUDA 12.4"
 echo "✅ Core dependencies installed"
+echo "✅ FFmpeg and media processing tools"
 echo "✅ SageAttention 2 (40% faster attention)"
 echo ""
 echo "📍 Project location: /workspace/Wan2GP"
