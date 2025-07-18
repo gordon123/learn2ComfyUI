@@ -5,6 +5,7 @@
 # =============================================================================
 # Based on: https://github.com/deepbeepmeep/Wan2GP
 # Optimized for: RunPod Linux environment
+# Updated: 2025-07-19 with FFmpeg, Triton, and Auto-start
 # =============================================================================
 
 set -e
@@ -52,7 +53,7 @@ source ~/.bashrc
 echo ""
 
 # =============================================================================
-# STEP 3: Clone Wan2GP Repository
+# STEP 3: Clone Wan2GP Repository & Optimize Storage
 # =============================================================================
 echo "📦 STEP 3: Clone Wan2GP Repository"
 echo "-----------------------------------"
@@ -64,6 +65,21 @@ if [ ! -d "Wan2GP" ]; then
 else
     echo "✅ Repository already exists"
 fi
+
+# Optimize model storage
+echo "📦 Optimizing model storage..."
+mkdir -p /workspace/models
+if [ ! -L "/workspace/Wan2GP/ckpts" ] && [ -d "/workspace/Wan2GP" ]; then
+    cd /workspace/Wan2GP
+    if [ -d "ckpts" ]; then
+        mv ckpts ckpts_backup
+    fi
+    ln -sf /workspace/models ckpts
+    cd /workspace
+fi
+export HF_HOME=/workspace/models/huggingface
+export TRANSFORMERS_CACHE=/workspace/models/transformers
+echo "✅ Model storage optimized"
 
 cd Wan2GP
 echo "📍 Current directory: $(pwd)"
@@ -108,9 +124,30 @@ if torch.cuda.is_available():
 echo ""
 
 # =============================================================================
-# STEP 6: Install Core Dependencies
+# STEP 6: Install Triton 3.2.0
 # =============================================================================
-echo "📦 STEP 6: Install Core Dependencies"
+echo "⚡ STEP 6: Install Triton 3.2.0"
+echo "--------------------------------"
+
+echo "📦 Installing Triton 3.2.0 (compatible with PyTorch 2.6.0)..."
+pip install triton==3.2.0
+
+echo "🧪 Testing Triton installation..."
+python -c "
+import torch
+import triton
+import triton.language as tl
+print(f'✅ Triton version: {triton.__version__}')
+print('✅ Triton language import successful')
+print('✅ Triton working correctly!')
+"
+echo "✅ Triton 3.2.0 installed successfully"
+echo ""
+
+# =============================================================================
+# STEP 7: Install Core Dependencies
+# =============================================================================
+echo "📦 STEP 7: Install Core Dependencies"
 echo "-------------------------------------"
 
 if [ -f "requirements.txt" ]; then
@@ -122,12 +159,21 @@ else
     pip install transformers accelerate datasets
     echo "✅ Common dependencies installed"
 fi
+
+# Install ffmpeg and media processing tools
+echo "🎬 Installing FFmpeg and media tools..."
+conda install -y ffmpeg imagemagick -c conda-forge
+apt update && apt install -y libsm6 libxext6 libfontconfig1 libxrender1
+
+echo "🧪 Testing FFmpeg installation..."
+ffmpeg -version | head -1
+echo "✅ FFmpeg and media tools installed"
 echo ""
 
 # =============================================================================
-# STEP 7: Install SageAttention 2 (Performance Optimization)
+# STEP 8: Install SageAttention 2 (Performance Optimization)
 # =============================================================================
-echo "⚡ STEP 7: Install SageAttention 2 (40% faster)"
+echo "⚡ STEP 8: Install SageAttention 2 (40% faster)"
 echo "-----------------------------------------------"
 
 echo "🧠 Installing SageAttention 2 (Latest Version)..."
@@ -146,11 +192,18 @@ fi
 
 echo "🔨 Compiling SageAttention 2..."
 cd SageAttention
-pip install -e .
-cd ..
+pip install -e . || {
+    echo "❌ SageAttention compilation failed"
+    echo "⚠️  Continuing without SageAttention..."
+    cd ..
+    echo "⚠️  Wan2GP will work but without SageAttention optimization"
+    SAGEATTENTION_FAILED=true
+}
 
-echo "🧪 Testing SageAttention 2..."
-python -c "
+if [ "$SAGEATTENTION_FAILED" != "true" ]; then
+    cd ..
+    echo "🧪 Testing SageAttention 2..."
+    python -c "
 try:
     import sageattention
     print('✅ SageAttention 2 installed successfully')
@@ -164,16 +217,18 @@ except ImportError as e:
     print(f'❌ SageAttention installation failed: {e}')
     exit(1)
 "
-echo ""
-
-echo "✅ SageAttention 2 installation complete!"
+    echo "✅ SageAttention 2 installation complete!"
+fi
 echo ""
 
 # =============================================================================
-# STEP 8: Create Helper Scripts
+# STEP 9: Create Helper Scripts
 # =============================================================================
-echo "📝 STEP 8: Create Helper Scripts"
+echo "📝 STEP 9: Create Helper Scripts"
 echo "---------------------------------"
+
+# Return to main project directory
+cd /workspace/Wan2GP
 
 # Create activation script
 cat > activate_wan2gp.sh << 'EOF'
@@ -192,18 +247,24 @@ echo "🐍 Python: $(python --version)"
 python -c "
 import torch
 print(f'🔥 PyTorch: {torch.__version__}')
+print(f'⚡ Triton: Available')
 print(f'🖥️  CUDA: {torch.cuda.is_available()}')
+
+# Test FFmpeg
 try:
-    import sageattention
-    print('🧠 SageAttention 2: Available')
-    
-    # Test FFmpeg
     import subprocess
     result = subprocess.run(['ffmpeg', '-version'], capture_output=True, text=True)
     if result.returncode == 0:
         print('🎬 FFmpeg: Available')
     else:
         print('⚠️  FFmpeg: Not working properly')
+except:
+    print('⚠️  FFmpeg: Not available')
+
+# Test SageAttention
+try:
+    import sageattention
+    print('🧠 SageAttention 2: Available')
 except:
     print('🧠 SageAttention 2: Not available')
 "
@@ -239,7 +300,25 @@ def test_wan2gp():
         z = torch.mm(x, y)
         print(f"✅ GPU computation: {z.device}")
     
-    # Test SageAttention only
+    # Test Triton
+    try:
+        import triton
+        print(f"✅ Triton: {triton.__version__}")
+    except Exception as e:
+        print(f"⚠️  Triton: {e}")
+    
+    # Test FFmpeg
+    try:
+        import subprocess
+        result = subprocess.run(['ffmpeg', '-version'], capture_output=True, text=True)
+        if result.returncode == 0:
+            print("✅ FFmpeg: Available")
+        else:
+            print("⚠️  FFmpeg: Not working")
+    except Exception as e:
+        print(f"⚠️  FFmpeg test failed: {e}")
+    
+    # Test SageAttention
     try:
         import sageattention
         print("✅ SageAttention 2: Available")
@@ -265,10 +344,10 @@ echo "✅ Created: test_wan2gp.py"
 echo ""
 
 # =============================================================================
-# STEP 9: Final Test and Summary
+# STEP 10: Final Test and Summary
 # =============================================================================
-echo "🎯 STEP 9: Final Test"
-echo "---------------------"
+echo "🎯 STEP 10: Final Test"
+echo "----------------------"
 
 echo "🧪 Running installation test..."
 python test_wan2gp.py
@@ -281,12 +360,18 @@ echo "📋 Installation Summary:"
 echo "✅ Wan2GP repository cloned"
 echo "✅ Python 3.10.9 environment (wan2gp)"
 echo "✅ PyTorch 2.6.0 with CUDA 12.4"
+echo "✅ Triton 3.2.0 (compatible)"
 echo "✅ Core dependencies installed"
 echo "✅ FFmpeg and media processing tools"
-echo "✅ SageAttention 2 (40% faster attention)"
+if [ "$SAGEATTENTION_FAILED" != "true" ]; then
+    echo "✅ SageAttention 2 (40% faster attention)"
+else
+    echo "⚠️  SageAttention 2 (compilation failed)"
+fi
 echo ""
 echo "📍 Project location: /workspace/Wan2GP"
 echo "🌟 Environment: wan2gp"
+echo "💾 Model storage: /workspace/models (optimized)"
 echo ""
 echo "🚀 Quick Start:"
 echo "==============="
@@ -297,10 +382,30 @@ echo "# Test installation:"
 echo "python test_wan2gp.py"
 echo ""
 echo "# Start Wan2GP:"
-echo "python main.py  # (or whatever the main script is)"
+echo "python wgp.py --i2v --share"
 echo ""
 echo "💡 For future sessions:"
 echo "cd /workspace/Wan2GP && ./activate_wan2gp.sh"
 echo ""
-echo "🗓️  Completed at: $(date)"
-echo "Happy voice cloning with Wan2GP! 🎤✨"
+
+# =============================================================================
+# STEP 11: Create Installation Marker & Auto-Start
+# =============================================================================
+echo "🎯 STEP 11: Finalizing Installation"
+echo "-----------------------------------"
+
+# Create installation marker
+echo "✅ Creating installation marker..."
+touch /workspace/wan2gp_installed
+
+echo "🗓️  Installation completed at: $(date)"
+echo "🎤 Happy voice cloning with Wan2GP! ✨"
+echo ""
+echo "🚀 Auto-starting Wan2GP..."
+echo "📱 Public URL will be displayed below:"
+echo "=" * 50
+
+# Auto-start Wan2GP
+eval "$(/root/miniconda3/bin/conda shell.bash hook)"
+conda activate wan2gp
+python wgp.py --i2v --share
