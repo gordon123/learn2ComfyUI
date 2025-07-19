@@ -142,6 +142,10 @@ Download จาก  <br>
 6. [ComfyUI-Blip](https://github.com/smthemex/ComfyUI_Pic2Story)
 7. [ComfyUI_Searge_LLM](https://github.com/SeargeDP/ComfyUI_Searge_LLM)
 
+## audio stuff
+1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
+2. [ComfyUI-Speaker-Isolation](https://github.com/pmarmotte2/ComfyUI-Speaker-Isolation)
+3. [ComfyUI_RyanOnTheInside](https://github.com/ryanontheinside/ComfyUI_RyanOnTheInside)
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
