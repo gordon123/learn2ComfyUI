@@ -146,6 +146,8 @@ Download จาก  <br>
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
 2. [ComfyUI-Speaker-Isolation](https://github.com/pmarmotte2/ComfyUI-Speaker-Isolation)
 3. [ComfyUI_RyanOnTheInside](https://github.com/ryanontheinside/ComfyUI_RyanOnTheInside)
+4. [ComfyUI-MMAudio](https://github.com/kijai/ComfyUI-MMAudio)
+5. [ComfyUI-ThinkSound](https://github.com/Yuan-ManX/ComfyUI-ThinkSound)
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
