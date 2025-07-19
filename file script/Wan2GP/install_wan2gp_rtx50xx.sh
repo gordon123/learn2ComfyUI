@@ -69,10 +69,14 @@ if [ -f "requirements.txt" ]; then
     pip install -r requirements.txt
 fi
 
-# Install FFmpeg
+# Install FFmpeg and Audio Libraries
 echo "🎬 Installing FFmpeg and media tools..."
-conda install -y ffmpeg imagemagick -c conda-forge
-apt update && apt install -y libsm6 libxext6 libfontconfig1 libxrender1
+conda install -y ffmpeg imagemagick libsndfile sox libflac libogg libvorbis -c conda-forge
+apt update && apt install -y libsm6 libxext6 libfontconfig1 libxrender1 libsndfile1 libsndfile1-dev
+
+# Install audio processing libraries
+echo "🔊 Installing audio processing libraries..."
+pip install soundfile librosa
 
 # Install SageAttention 2
 echo "🧠 Installing SageAttention 2..."
