@@ -1,4 +1,5 @@
 ## ห้องสมุดส่วนตัวเล็ก ๆ สำหรับเรียนรู้ ComfyUI 
+อ่านสรุปบทความเกี่ยวกับ Generative ได้ที่นี้ [หน้า Wiki](https://github.com/gordon123/learn2ComfyUI/wiki)
 My Youtube Channel: https://www.youtube.com/@iimate2485
 <br>
 
