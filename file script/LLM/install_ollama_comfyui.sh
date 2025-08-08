@@ -80,4 +80,14 @@ else
     echo -e "${YELLOW}⚠️ ไม่มี ComfyUI — ไม่สามารถติดตั้ง comfyui-ollama ได้${RESET}"
 fi
 
-echo -e "${GREEN}🎉 การติดตั้งเสร็จสิ้น พร้อมใช้งาน!${RESET}"
+# 🎯 สรุปการติดตั้งพร้อมคำแนะนำ
+echo -e "${GREEN}🎉 การติดตั้งเสร็จสิ้น พร้อมใช้งาน!${RESET}\n"
+echo -e "${CYAN}📌 เริ่มใช้งาน ComfyUI พิมพ์คำสั่งต่อไปนี้:${RESET}"
+echo -e "  ${YELLOW}source /workspace/venv/bin/activate${RESET}"
+echo -e "  ${YELLOW}cd ComfyUI${RESET}"
+echo -e "  ${YELLOW}python main.py --listen${RESET}\n"
+
+echo -e "${CYAN}📌 วิธีใช้ Ollama พิมพ์คำสั่งต่อไปนี้:${RESET}"
+echo -e "  ${YELLOW}ollama help${RESET}        # ดูคู่มือคำสั่ง"
+echo -e "  ${YELLOW}ollama list${RESET}        # ดูรายชื่อโมเดลที่ติดตั้ง"
+echo -e "  ${YELLOW}ollama run <model>${RESET} # รันโมเดล เช่น ollama run qwen2.5vl:7b"
