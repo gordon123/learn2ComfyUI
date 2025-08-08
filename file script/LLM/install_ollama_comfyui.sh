@@ -1,93 +1,100 @@
 #!/bin/bash
 set -e
 
-# 🎨 ฟังก์ชันสี
-RED="\033[31m"
-GREEN="\033[32m"
-YELLOW="\033[33m"
-CYAN="\033[36m"
-RESET="\033[0m"
+echo "=============================="
+echo "🚀 เริ่มติดตั้ง Ollama + ComfyUI + comfyui-ollama"
+echo "=============================="
 
-echo -e "${CYAN}⬇️ กำลังตรวจสอบ Virtual Environment...${RESET}"
+# ==============================
+# 1) เตรียม Python Virtual Environment
+# ==============================
 if [ ! -d "/workspace/venv" ]; then
-    echo -e "${YELLOW}⚠️ ไม่พบ venv — กำลังสร้าง...${RESET}"
+    echo "🛠️ ไม่มี virtual environment — สร้างใหม่..."
     python3 -m venv /workspace/venv
+else
+    echo "✅ พบ virtual environment แล้ว"
 fi
-echo -e "${GREEN}✅ พบ venv แล้ว — กำลัง activate...${RESET}"
 source /workspace/venv/bin/activate
 
-# ติดตั้ง Ollama
-echo -e "${CYAN}⬇️ กำลังติดตั้ง Ollama...${RESET}"
+# ==============================
+# 2) ติดตั้ง Ollama
+# ==============================
+echo "⬇️ ติดตั้ง Ollama..."
 curl -fsSL https://ollama.com/install.sh | sh
-ollama --version
 
-# ตั้งค่าตัวแปร Ollama
 export OLLAMA_MODELS=/workspace/ollama
 export OLLAMA_LLM_LIBRARY=cublas
 export OLLAMA_FLASH_ATTENTION=1
 
-# เริ่ม Ollama server
-echo -e "${CYAN}🚀 กำลังเริ่ม Ollama server...${RESET}"
-nohup ollama serve > /workspace/ollama.log 2>&1 &
-sleep 5
-
-# ดาวน์โหลดโมเดล
-echo -e "${CYAN}⬇️ กำลังดาวน์โหลดโมเดล Ollama...${RESET}"
+# ==============================
+# 3) ดาวน์โหลดโมเดล Ollama
+# ==============================
+echo "⬇️ ดาวน์โหลดโมเดล qwen2.5vl:7b และ mistral:latest..."
 ollama pull qwen2.5vl:7b
 ollama pull mistral:latest
 
-# ตรวจสอบ GPU
-GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1)
-echo -e "${CYAN}🖥️ ตรวจพบการ์ดจอ: ${YELLOW}${GPU_NAME}${RESET}"
+# ==============================
+# 4) ตรวจสอบ GPU
+# ==============================
+GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1 || echo "Unknown")
+echo "🖥️ ตรวจพบการ์ดจอ: $GPU_NAME"
 
-INSTALL_COMFYUI=false
+INSTALL_COMFYUI="no"
 
-if echo "$GPU_NAME" | grep -E "RTX 30|RTX 40"; then
-    echo -e "${GREEN}✅ ตรวจพบ RTX 30xx/40xx — ติดตั้ง ComfyUI เวอร์ชัน 30/40xx${RESET}"
-    INSTALL_COMFYUI=true
+if echo "$GPU_NAME" | grep -E "RTX 30|RTX 40" > /dev/null; then
+    echo "✅ เลือกติดตั้ง ComfyUI รุ่น RTX 30xx/40xx"
+    INSTALL_COMFYUI="yes"
     COMFY_SCRIPT="https://github.com/gordon123/learn2ComfyUI/raw/main/file%20script/install_rtx30_40.sh"
-
-elif echo "$GPU_NAME" | grep -E "RTX 50"; then
-    echo -e "${GREEN}✅ ตรวจพบ RTX 50xx — ติดตั้ง ComfyUI เวอร์ชัน 50xx${RESET}"
-    INSTALL_COMFYUI=true
+elif echo "$GPU_NAME" | grep -E "RTX 50" > /dev/null; then
+    echo "✅ เลือกติดตั้ง ComfyUI รุ่น RTX 50xx"
+    INSTALL_COMFYUI="yes"
     COMFY_SCRIPT="https://github.com/gordon123/learn2ComfyUI/raw/main/file%20script/install_rtx50.sh"
-
 else
-    echo -e "${YELLOW}⚠️ การ์ดจอไม่ใช่ RTX 30xx/40xx/50xx — อาจมี custom node บางตัวที่ใช้งานไม่ได้${RESET}"
-    read -p "คุณต้องการติดตั้ง ComfyUI แบบอัตโนมัติสำหรับ RTX 30/40 แทนหรือไม่? (y/n): " yn
-    if [[ "$yn" == "y" ]]; then
-        INSTALL_COMFYUI=true
+    echo "⚠️ การ์ดจอ '$GPU_NAME' ไม่ใช่ RTX Series — แนะนำใช้สคริปต์ RTX 30xx/40xx"
+    read -p "ติดตั้ง ComfyUI อัตโนมัติ? (y/N): " yn
+    if [[ "$yn" =~ ^[Yy]$ ]]; then
+        INSTALL_COMFYUI="yes"
         COMFY_SCRIPT="https://github.com/gordon123/learn2ComfyUI/raw/main/file%20script/install_rtx30_40.sh"
     else
-        echo -e "${RED}❌ ข้ามการติดตั้ง ComfyUI${RESET}"
+        echo "❌ ข้ามการติดตั้ง ComfyUI"
     fi
 fi
 
-# ติดตั้ง ComfyUI
-if $INSTALL_COMFYUI; then
-    echo -e "${CYAN}⬇️ กำลังติดตั้ง ComfyUI...${RESET}"
-    bash <(curl -fsSL "$COMFY_SCRIPT")
-fi
-
-# ติดตั้ง comfyui-ollama ถ้ามี ComfyUI อยู่
-if [ -d "/workspace/ComfyUI" ]; then
-    echo -e "${CYAN}⬇️ กำลังติดตั้ง comfyui-ollama...${RESET}"
-    cd /workspace/ComfyUI/custom_nodes
-    if [ ! -d "comfyui-ollama" ]; then
-        git clone https://github.com/stavsap/comfyui-ollama.git
-    fi
+# ==============================
+# 5) ติดตั้ง ComfyUI (ถ้าผู้ใช้ยอมรับ)
+# ==============================
+if [ "$INSTALL_COMFYUI" == "yes" ]; then
+    echo "⬇️ กำลังติดตั้ง ComfyUI..."
+    bash <(curl -sSL "$COMFY_SCRIPT")
 else
-    echo -e "${YELLOW}⚠️ ไม่มี ComfyUI — ไม่สามารถติดตั้ง comfyui-ollama ได้${RESET}"
+    echo "⚠️ ไม่มี ComfyUI — จะไม่ติดตั้ง comfyui-ollama"
 fi
 
-# 🎯 สรุปการติดตั้งพร้อมคำแนะนำ
-echo -e "${GREEN}🎉 การติดตั้งเสร็จสิ้น พร้อมใช้งาน!${RESET}\n"
-echo -e "${CYAN}📌 เริ่มใช้งาน ComfyUI พิมพ์คำสั่งต่อไปนี้:${RESET}"
-echo -e "  ${YELLOW}source /workspace/venv/bin/activate${RESET}"
-echo -e "  ${YELLOW}cd ComfyUI${RESET}"
-echo -e "  ${YELLOW}python main.py --listen${RESET}\n"
+# ==============================
+# 6) ติดตั้ง comfyui-ollama (ถ้ามี ComfyUI)
+# ==============================
+if [ -d "/workspace/ComfyUI" ]; then
+    echo "⬇️ กำลังติดตั้ง comfyui-ollama..."
+    git clone https://github.com/stavsap/comfyui-ollama /workspace/ComfyUI/custom_nodes/comfyui-ollama || true
+    echo "📦 ติดตั้ง dependencies ของ comfyui-ollama..."
+    pip install --upgrade pip
+    pip install -r /workspace/ComfyUI/custom_nodes/comfyui-ollama/requirements.txt
+else
+    echo "⚠️ ไม่มี ComfyUI — ข้ามการติดตั้ง comfyui-ollama"
+fi
 
-echo -e "${CYAN}📌 วิธีใช้ Ollama พิมพ์คำสั่งต่อไปนี้:${RESET}"
-echo -e "  ${YELLOW}ollama help${RESET}        # ดูคู่มือคำสั่ง"
-echo -e "  ${YELLOW}ollama list${RESET}        # ดูรายชื่อโมเดลที่ติดตั้ง"
-echo -e "  ${YELLOW}ollama run <model>${RESET} # รันโมเดล เช่น ollama run qwen2.5vl:7b"
+# ==============================
+# 7) คำแนะนำการใช้งาน
+# ==============================
+echo "🎉 การติดตั้งเสร็จสิ้น พร้อมใช้งาน!"
+echo
+echo "📌 เริ่มใช้งาน ComfyUI:"
+echo "source /workspace/venv/bin/activate"
+echo "cd /workspace/ComfyUI"
+echo "python main.py --listen"
+echo
+echo "📌 คำสั่งใช้งาน Ollama:"
+echo "ollama help"
+echo "ollama list"
+echo "ollama run qwen2.5vl:7b"
+echo "ollama run mistral:latest"
