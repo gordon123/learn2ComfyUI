@@ -1,50 +1,55 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ===============================================
-#  ติดตั้ง Ollama + ดึงโมเดล + ติดตั้ง ComfyUI (อัตโนมัติสำหรับ RTX30/40/50)
-#  และติดตั้ง custom node: comfyui-ollama
-#  เหมาะกับ RunPod / โฮสต์แบบไม่มี systemd (root)
-# ===============================================
+# ================================
+#  Install Ollama + models + (auto) ComfyUI + comfyui-ollama
+#  Quiet mode: เอาท์พุตยาวๆ เก็บใน /workspace/setup.log
+# ================================
 
-# ---------- helpers ----------
-msg(){ echo -e "\n\033[1;36m[ข้อมูล]\033[0m $*"; }
-ok(){  echo -e "\033[1;32m[สำเร็จ]\033[0m $*"; }
+LOG="/workspace/setup.log"
+touch "$LOG"
+
+msg(){  echo -e "\033[1;36m[ข้อมูล]\033[0m $*"; }
+ok(){   echo -e "\033[1;32m[สำเร็จ]\033[0m $*"; }
 warn(){ echo -e "\033[1;33m[เตือน]\033[0m $*"; }
-err(){ echo -e "\033[1;31m[ผิดพลาด]\033[0m $*" >&2; }
+err(){  echo -e "\033[1;31m[ผิดพลาด]\033[0m $*" >&2; }
 
 # ---------- 0) venv ----------
-VENV_PATH="/workspace/venv"
-msg "ตรวจสอบ virtual environment ที่ $VENV_PATH"
-if [[ ! -d "$VENV_PATH" ]]; then
-  msg "ไม่พบ venv → สร้างใหม่"
+VENV="/workspace/venv"
+msg "ตรวจสอบ virtual environment: $VENV"
+if [[ ! -d "$VENV" ]]; then
+  msg "ไม่พบ venv → สร้างใหม่ (อาจใช้เวลานิดหน่อย)"
   if ! command -v python3 >/dev/null 2>&1; then
     if command -v apt-get >/dev/null 2>&1; then
-      apt-get update -y && apt-get install -y python3 python3-venv
+      DEBIAN_FRONTEND=noninteractive apt-get update -qq >>"$LOG" 2>&1
+      DEBIAN_FRONTEND=noninteractive apt-get install -qq -y python3 python3-venv >>"$LOG" 2>&1
     else
-      err "ไม่มี python3 และไม่ใช่ระบบที่ใช้ apt-get"; exit 1
+      err "ไม่พบ python3 และไม่มี apt-get"; exit 1
     fi
   fi
-  python3 -m venv "$VENV_PATH"
+  python3 -m venv "$VENV" >>"$LOG" 2>&1
   ok "สร้าง venv สำเร็จ"
 fi
 # shellcheck disable=SC1090
-source "$VENV_PATH/bin/activate"
-ok "เปิดใช้งาน venv แล้ว → $VENV_PATH"
+source "$VENV/bin/activate"
+ok "เปิดใช้งาน venv แล้ว"
 
 # ---------- 1) tools ----------
-msg "ตรวจสอบ curl / git"
-if ! command -v curl >/dev/null 2>&1; then
-  apt-get update -y && apt-get install -y curl
+msg "ตรวจเครื่องมือพื้นฐาน (curl, git)"
+if ! command -v curl >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1; then
+  if command -v apt-get >/dev/null 2>&1; then
+    DEBIAN_FRONTEND=noninteractive apt-get update -qq >>"$LOG" 2>&1
+    command -v curl >/dev/null 2>&1 || DEBIAN_FRONTEND=noninteractive apt-get install -qq -y curl >>"$LOG" 2>&1
+    command -v git  >/dev/null 2>&1 || DEBIAN_FRONTEND=noninteractive apt-get install -qq -y git  >>"$LOG" 2>&1
+  else
+    err "ไม่มี apt-get เพื่อติดตั้ง curl/git"; exit 1
+  fi
 fi
-if ! command -v git >/dev/null 2>&1; then
-  apt-get install -y git
-fi
-ok "พร้อมใช้งาน: curl + git"
+ok "พร้อมใช้งาน curl + git"
 
 # ---------- 2) Ollama env ----------
 OLLAMA_DIR="/workspace/ollama"
-msg "ตั้งค่าโฟลเดอร์โมเดล: $OLLAMA_DIR"
+msg "ตั้งค่าโฟลเดอร์โมเดล Ollama: $OLLAMA_DIR"
 mkdir -p "$OLLAMA_DIR"
 export OLLAMA_MODELS="$OLLAMA_DIR"
 export OLLAMA_LLM_LIBRARY="cublas"
@@ -54,13 +59,13 @@ grep -q 'export OLLAMA_LLM_LIBRARY=' ~/.bashrc 2>/dev/null || echo "export OLLAM
 grep -q 'export OLLAMA_FLASH_ATTENTION=' ~/.bashrc 2>/dev/null || echo "export OLLAMA_FLASH_ATTENTION=1" >> ~/.bashrc
 
 # ---------- 3) Install Ollama ----------
-msg "ติดตั้ง Ollama (สคริปต์ทางการ)"
+msg "ติดตั้ง Ollama (โหมดเงียบ)"
 if command -v sudo >/dev/null 2>&1; then
-  curl -fsSL https://ollama.com/install.sh | sudo sh
+  curl -fsSL https://ollama.com/install.sh | sudo sh >>"$LOG" 2>&1
 else
-  curl -fsSL https://ollama.com/install.sh | sh
+  curl -fsSL https://ollama.com/install.sh | sh >>"$LOG" 2>&1
 fi
-ok "Ollama: $(ollama --version || echo unknown)"
+ok "Ollama: $(ollama --version 2>/dev/null || echo unknown)"
 
 # ---------- 4) Start Ollama ----------
 msg "สตาร์ท Ollama server (background) @11434"
@@ -77,118 +82,93 @@ done
 ok "พร้อมแล้ว: http://127.0.0.1:11434"
 
 # ---------- 5) Pull models ----------
-msg "ดึงโมเดลที่จำเป็น: qwen2.5vl:7b และ mistral:latest"
-ollama pull qwen2.5vl:7b || warn "ดึง qwen2.5vl:7b ไม่สำเร็จ (ลองใหม่ด้วยตนเอง: ollama pull qwen2.5vl:7b)"
-ollama pull mistral:latest || warn "ดึง mistral:latest ไม่สำเร็จ (ลองใหม่ด้วยตนเอง: ollama pull mistral:latest)"
+msg "ดึงโมเดล: qwen2.5vl:7b และ mistral:latest (ซ่อนเอาต์พุต)"
+ollama pull qwen2.5vl:7b >>"$LOG" 2>&1 || warn "pull qwen2.5vl:7b ไม่สำเร็จ (ดู $LOG)"
+ollama pull mistral:latest >>"$LOG" 2>&1 || warn "pull mistral:latest ไม่สำเร็จ (ดู $LOG)"
 ok "ขั้นตอนโมเดลเสร็จ"
 
 # ---------- 6) Install ComfyUI (auto for RTX30/40/50) ----------
 GPU_NAME="$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null || echo 'UNKNOWN')"
 msg "ตรวจพบ GPU: $GPU_NAME"
-
 AUTO_COMFY=0
 DL_DIR="/workspace"
-INSTALL_SCRIPT=""
+
 if [[ "$GPU_NAME" == *"RTX 30"* || "$GPU_NAME" == *"RTX 40"* ]]; then
-  INSTALL_SCRIPT="$DL_DIR/install_comfyui_rtx30_40.sh"
-  msg "ดาวน์โหลดและรันสคริปต์ ComfyUI สำหรับ RTX30/40"
-  curl -L -o "$INSTALL_SCRIPT" \
+  msg "ดาวน์โหลด + รันสคริปต์ ComfyUI (RTX30/40)"
+  curl -fsSL -o "$DL_DIR/install_comfyui_rtx30_40.sh" \
     "https://raw.githubusercontent.com/gordon123/learn2ComfyUI/refs/heads/main/file%20script/install_rtx30_40.sh"
-  chmod +x "$INSTALL_SCRIPT"
-  bash "$INSTALL_SCRIPT"
+  chmod +x "$DL_DIR/install_comfyui_rtx30_40.sh"
+  bash "$DL_DIR/install_comfyui_rtx30_40.sh" >>"$LOG" 2>&1
   AUTO_COMFY=1
 elif [[ "$GPU_NAME" == *"RTX 50"* ]]; then
-  INSTALL_SCRIPT="$DL_DIR/install_comfyui_rtx50.sh"
-  msg "ดาวน์โหลดและรันสคริปต์ ComfyUI สำหรับ RTX50"
-  curl -L -o "$INSTALL_SCRIPT" \
+  msg "ดาวน์โหลด + รันสคริปต์ ComfyUI (RTX50)"
+  curl -fsSL -o "$DL_DIR/install_comfyui_rtx50.sh" \
     "https://raw.githubusercontent.com/gordon123/learn2ComfyUI/refs/heads/main/file%20script/install_rtx50.sh"
-  chmod +x "$INSTALL_SCRIPT"
-  bash "$INSTALL_SCRIPT"
+  chmod +x "$DL_DIR/install_comfyui_rtx50.sh"
+  bash "$DL_DIR/install_comfyui_rtx50.sh" >>"$LOG" 2>&1
   AUTO_COMFY=1
 else
-  warn "ไม่ใช่ RTX30/40/50 → จะไม่ติดตั้ง ComfyUI อัตโนมัติ"
-  echo "แนะนำให้ติดตั้ง ComfyUI เองก่อน แล้วค่อยรันสคริปต์นี้อีกครั้งเพื่อเพิ่ม comfyui-ollama"
-  echo "ลิงก์สคริปต์ (ดาวน์โหลดไว้ให้):"
-  curl -L -o "$DL_DIR/install_comfyui_rtx30_40.sh" \
-    "https://raw.githubusercontent.com/gordon123/learn2ComfyUI/refs/heads/main/file%20script/install_rtx30_40.sh" || true
-  curl -L -o "$DL_DIR/install_comfyui_rtx50.sh" \
-    "https://raw.githubusercontent.com/gordon123/learn2ComfyUI/refs/heads/main/file%20script/install_rtx50.sh" || true
-  echo "ไฟล์อยู่ที่: $DL_DIR/install_comfyui_rtx30_40.sh และ $DL_DIR/install_comfyui_rtx50.sh"
+  warn "ไม่ใช่ RTX30/40/50 → ข้ามการติดตั้ง ComfyUI อัตโนมัติ"
+  curl -fsSL -o "$DL_DIR/install_comfyui_rtx30_40.sh" \
+    "https://raw.githubusercontent.com/gordon123/learn2ComfyUI/refs/heads/main/file%20script/install_rtx30_40.sh" >>"$LOG" 2>&1 || true
+  curl -fsSL -o "$DL_DIR/install_comfyui_rtx50.sh" \
+    "https://raw.githubusercontent.com/gordon123/learn2ComfyUI/refs/heads/main/file%20script/install_rtx50.sh" >>"$LOG" 2>&1 || true
+  echo "→ ถ้าจะติดตั้ง ComfyUI ทีหลัง: ดูไฟล์ที่ $DL_DIR/install_comfyui_rtx30_40.sh หรือ $DL_DIR/install_comfyui_rtx50.sh"
 fi
 
 # ---------- 7) comfyui-ollama custom node ----------
-# หา ComfyUI หลังติดตั้ง (หรือมีอยู่แล้ว)
 COMFY_DIR=""
 for d in "/workspace/ComfyUI" "$HOME/ComfyUI" "/opt/ComfyUI"; do
-  if [[ -d "$d" ]]; then COMFY_DIR="$d"; break; fi
+  [[ -d "$d" ]] && COMFY_DIR="$d" && break
 done
 
 if [[ -n "$COMFY_DIR" ]]; then
   ok "พบ ComfyUI ที่: $COMFY_DIR"
-  # ถ้ามี venv ของ ComfyUI เอง ให้ใช้ venv นั้น (บางสคริปต์ติดตั้งจะสร้างให้)
+  # ใช้ venv ของ ComfyUI ถ้ามี
   if [[ -f "$COMFY_DIR/venv/bin/activate" ]]; then
-    msg "พบ venv ของ ComfyUI → activate"
     # shellcheck disable=SC1090
     source "$COMFY_DIR/venv/bin/activate"
+  fi
+  CN="$COMFY_DIR/custom_nodes"
+  mkdir -p "$CN"
+  if [[ -d "$CN/comfyui-ollama" ]]; then
+    msg "อัปเดต comfyui-ollama (quiet)"
+    git -C "$CN/comfyui-ollama" pull --quiet >>"$LOG" 2>&1 || true
   else
-    msg "ไม่พบ venv ภายใน ComfyUI → ใช้ venv ปัจจุบัน: $VENV_PATH"
+    msg "ติดตั้ง comfyui-ollama (quiet)"
+    git clone --quiet https://github.com/stavsap/comfyui-ollama "$CN/comfyui-ollama" >>"$LOG" 2>&1
   fi
-
-  CN_DIR="$COMFY_DIR/custom_nodes"
-  mkdir -p "$CN_DIR"
-  if [[ -d "$CN_DIR/comfyui-ollama" ]]; then
-    msg "อัปเดต comfyui-ollama"
-    git -C "$CN_DIR/comfyui-ollama" pull || true
-  else
-    msg "ติดตั้ง comfyui-ollama"
-    git clone https://github.com/stavsap/comfyui-ollama "$CN_DIR/comfyui-ollama"
+  if [[ -f "$CN/comfyui-ollama/requirements.txt" ]]; then
+    pip install -q --progress-bar off -r "$CN/comfyui-ollama/requirements.txt" >>"$LOG" 2>&1 || true
   fi
-
-  if [[ -f "$CN_DIR/comfyui-ollama/requirements.txt" ]]; then
-    msg "ติดตั้ง dependencies ของ comfyui-ollama"
-    pip install -r "$CN_DIR/comfyui-ollama/requirements.txt"
-  fi
-
-  ok "ติดตั้ง custom node: comfyui-ollama เสร็จ ✅  (รีสตาร์ท ComfyUI เพื่อให้โหนดแสดงผล)"
+  ok "ติดตั้ง custom node เสร็จ ✅  (โปรดรีสตาร์ท ComfyUI)"
 else
-  warn "ยังไม่พบโฟลเดอร์ ComfyUI หลังขั้นตอนนี้"
-  if [[ "$AUTO_COMFY" -eq 1 ]]; then
-    warn "สคริปต์ติดตั้ง ComfyUI อาจใช้ path อื่น—โปรดตรวจด้วยตนเอง แล้วรันส่วน comfyui-ollama อีกครั้ง"
-  else
-    echo "เมื่อติดตั้ง ComfyUI เสร็จ ให้รันสคริปต์นี้ซ้ำเพื่อเพิ่ม comfyui-ollama"
-  fi
+  warn "ยังไม่พบโฟลเดอร์ ComfyUI หลังการติดตั้งอัตโนมัติ (ดู $LOG หากสงสัย)"
 fi
 
-# ---------- 8) Thai tips ----------
+# ---------- 8) Tips ----------
 cat <<'TIP'
 
-================= ตัวอย่างใช้งาน (ภาษาไทย) =================
-[ทดสอบคุยกับ Mistral]
+================ วิธีทดสอบแบบเงียบ (ไทย) ================
+[คุยกับ Mistral]
   echo "สรุปข่าว AI วันนี้ 5 บรรทัด" | ollama run mistral:latest
 
-[ทดสอบ Qwen2.5-VL-7B อธิบายรูปเป็นพรอมต์]
+[Qwen2.5-VL-7B อธิบายรูปเป็นพรอมต์]
   python - <<'PY'
-import base64, requests, os
-img = "/workspace/sample.jpg"  # เปลี่ยนเป็นรูปของคุณ
-if not os.path.exists(img):
-    print(">> โปรดเตรียมไฟล์รูปไว้ที่", img); raise SystemExit(0)
-b64 = base64.b64encode(open(img,'rb').read()).decode()
-payload = {"model":"qwen2.5vl:7b","prompt":"Describe this image as a cinematic prompt.","images":[b64],"stream":False}
-r = requests.post("http://127.0.0.1:11434/api/generate", json=payload, timeout=600)
-print("สถานะ:", r.status_code); print(r.text[:1200])
+import base64,requests,os
+img="/workspace/sample.jpg"   # เปลี่ยนเป็นรูปของคุณ
+if not os.path.exists(img): print(">> ใส่รูปไว้ที่",img); raise SystemExit
+b64=base64.b64encode(open(img,'rb').read()).decode()
+payload={"model":"qwen2.5vl:7b","prompt":"Describe this image as a cinematic prompt.","images":[b64],"stream":False}
+r=requests.post("http://127.0.0.1:11434/api/generate",json=payload,timeout=600)
+print("สถานะ:",r.status_code); print(r.text[:1000])
 PY
 
-[ดูโมเดลทั้งหมด]
+[ดูโมเดล / ดูบันทึก]
   ollama list
-
-[ดูบันทึก Ollama]
   tail -n 200 /workspace/ollama/ollama.log
-
-[ComfyUI]
-  - ถ้ารันอัตโนมัติแล้ว โฟลเดอร์มักอยู่ที่ ~/ComfyUI หรือ /workspace/ComfyUI
-  - รีสตาร์ท ComfyUI เพื่อให้โหนด comfyui-ollama โผล่ใน UI
+  tail -n 200 /workspace/setup.log
 ===========================================================
-
 TIP
 
-ok "เสร็จสิ้น 🎉  พร้อมใช้งาน Ollama + โมเดล + (ComfyUI อัตโนมัติสำหรับ RTX30/40/50) + comfyui-ollama"
+ok "เสร็จสิ้น 🎉  (log อยู่ที่ $LOG)"
