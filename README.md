@@ -130,7 +130,8 @@ Download จาก  <br>
 5. [ComfyUI-WD14-Tagger](https://github.com/pythongosssss/ComfyUI-WD14-Tagger)
 6. [ComfyUI-Blip](https://github.com/smthemex/ComfyUI_Pic2Story)
 7. [ComfyUI_Searge_LLM](https://github.com/SeargeDP/ComfyUI_Searge_LLM)
-8. [ComfyUI_molmo](https://github.com/CY-CHENYUE/ComfyUI-Molmo) 
+8. [ComfyUI_molmo](https://github.com/CY-CHENYUE/ComfyUI-Molmo)
+9. [ComfyUI-MiniCPM](https://github.com/1038lab/ComfyUI-MiniCPM)
 
 ## audio stuff
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
