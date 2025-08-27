@@ -41,30 +41,17 @@ Feel free to leave a comment if you find it useful!<br>
 ## 🎯Wan2.1 Advance technique
 https://huggingface.co/Kijai/WanVideo_comfy
 ### In Context 
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ### [VACE](https://github.com/ali-vilab/VACE)
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ### Wan Lip sync
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ### Framepack F1
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 https://github.com/lllyasviel/FramePack
 ### Wan Frame Interpolation + Upscale
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
-
-
-
 ## 🎯Wan2.1 Applied Project
 ### Create Video Lipsync + Padcast + GoogleKLM + สร้างช่อง youtube
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ### Create Music video + Suno Technique + สร้างช่อง youtube
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ### Create Music Short film - ฝึกแต่งนิทาน
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ### Create Music, Asses, etc and Selling to stock Photo, ecomerce
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
 ## Wan 2.1 FusionX
-
 ## Todo list อื่นๆ
 ### Fantasy talking
 https://github.com/Fantasy-AMAP/fantasy-talking <br>
@@ -132,6 +119,7 @@ Download จาก  <br>
 15. [ComfyUI_Comfyroll_CustomNodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)
 16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes)
 17. [เครื่องมือ edit ภาพ](https://github.com/o-l-l-i)
+18. [ComfyUI_Local_Lora_Gallery](https://github.com/Firetheft/ComfyUI_Local_Lora_Gallery)
 
 
 ## LLM, VLM
