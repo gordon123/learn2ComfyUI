@@ -139,6 +139,7 @@ Download จาก  <br>
 3. [ComfyUI_RyanOnTheInside](https://github.com/ryanontheinside/ComfyUI_RyanOnTheInside)
 4. [ComfyUI-MMAudio](https://github.com/kijai/ComfyUI-MMAudio)
 5. [ComfyUI-ThinkSound](https://github.com/Yuan-ManX/ComfyUI-ThinkSound)
+6. [แยก Audio - Vocal](https://github.com/kijai/ComfyUI-MelBandRoFormer)
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
