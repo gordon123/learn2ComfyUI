@@ -1,4 +1,7 @@
-download Flux VAE
+video tutorial 
+https://youtu.be/QYNVR-x51iM?si=IvvFMgAnuLKaqz0w
+
+### download Flux VAE
 ```
 wget --header="Authorization: Bearer hf_ไปสร้าง Token มาวางในนี้" \
 "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors"
