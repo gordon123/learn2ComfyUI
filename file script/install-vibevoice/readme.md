@@ -18,3 +18,7 @@ https://github.com/wildminder/AI-windows-whl
 https://github.com/woct0rdho/triton-windows/releases
 
 https://github.com/bitsandbytes-foundation/bitsandbytes
+
+วิธีการสร้าง เสียง เรา ให้ดูตัวอย่างจาก คลิปนี้ ประมาณนาที ที่ 11
+
+https://www.youtube.com/watch?v=QUNL8DbPdmo
