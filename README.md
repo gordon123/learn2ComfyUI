@@ -31,37 +31,16 @@ Feel free to leave a comment if you find it useful!<br>
 ### Control: Control net
 ✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
 ### Inpaint 
-❌ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว
+✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://youtu.be/w33wMZyt6xA)
 
 ### Control Camera
-✅ อัดคลิปแล้ว  ❌ ตัดต่อเสร็จแล้ว  <br>
-
-[workflow](https://github.com/amao2001/ganloss-latent-space/blob/main/workflow/2025-05-05%20wanvideo_Fun_control_camera.json)
+[workflow control Camera](https://github.com/amao2001/ganloss-latent-space/blob/main/workflow/2025-05-05%20wanvideo_Fun_control_camera.json)
 
 ## 🎯Wan2.1 Advance technique
 https://huggingface.co/Kijai/WanVideo_comfy
-### In Context 
-### [VACE](https://github.com/ali-vilab/VACE)
-### Wan Lip sync
-### Framepack F1
-https://github.com/lllyasviel/FramePack
-### Wan Frame Interpolation + Upscale
-## 🎯Wan2.1 Applied Project
-### Create Video Lipsync + Padcast + GoogleKLM + สร้างช่อง youtube
-### Create Music video + Suno Technique + สร้างช่อง youtube
-### Create Music Short film - ฝึกแต่งนิทาน
-### Create Music, Asses, etc and Selling to stock Photo, ecomerce
-## Wan 2.1 FusionX
-## Todo list อื่นๆ
-### Fantasy talking
-https://github.com/Fantasy-AMAP/fantasy-talking <br>
-[workflow](https://github.com/amao2001/ganloss-latent-space/blob/main/workflow/2025-05-03%20FantasyTalking.json)
-<br>
-Wan 2.1 ATI Trajectory based Motion Control  <br>
 
-### OmniHuman
-### Cosmos
-TBA <br>
+### [VACE](https://github.com/ali-vilab/VACE)
+
 อื่นๆ <br>
 [MoviiGen](https://github.com/ZulutionAI/MoviiGen1.1) <br>
 Float <br>
@@ -78,6 +57,7 @@ Download จาก  <br>
 แนะนำสำหรับ ram 8GB VGA [i2V 480p](https://huggingface.co/city96/Wan2.1-I2V-14B-480P-gguf/tree/main) หรือ [GGUF City96](https://huggingface.co/collections/city96/gguf-image-model-quants-67199ef97bf1d9ca49033234)   <br>
 แนะนำสำหรับ ram 12GB VGA [i2v 720p](https://huggingface.co/city96/Wan2.1-I2V-14B-720P-gguf/tree/main)  <br>
 12GB ram ก็แนะนำใช้พวก FP8 version ด้วยเหมือนกัน โหลดได้จาก Model manager
+
 ---
 
 
@@ -140,6 +120,7 @@ Download จาก  <br>
 4. [ComfyUI-MMAudio](https://github.com/kijai/ComfyUI-MMAudio)
 5. [ComfyUI-ThinkSound](https://github.com/Yuan-ManX/ComfyUI-ThinkSound)
 6. [แยก Audio - Vocal](https://github.com/kijai/ComfyUI-MelBandRoFormer)
+7. [Audiotools](https://github.com/billwuhao/ComfyUI_AudioTools)
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
