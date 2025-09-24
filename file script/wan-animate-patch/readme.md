@@ -25,7 +25,7 @@ ComfyUI อยู่ที่ /workspace/ComfyUI และ venv ที่ /works
 setup_wan22_kijai.sh
 Download
 
-บันทึกไฟล์ไว้ในเครื่อง/เซิร์ฟเวอร์ของคุณ (เช่น /workspace/setup_wan22_kijai.sh)
+บันทึกไฟล์ไว้ในเครื่อง/เซิร์ฟเวอร์ Runpod ของคุณ (เช่น /workspace/setup_wan22_kijai.sh)
 ```bash
 🚀 Usage
 ### 0) เข้า venv (หากยังไม่ได้ active)
