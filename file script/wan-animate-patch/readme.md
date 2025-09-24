@@ -1,9 +1,9 @@
 ### วิธีใช้
-1. โยน Kijai workflow same, install missing nodes ต่าง ๆ
+1. โยน wanvideo_WanAnimate_example_01.json, install missing nodes ต่าง ๆ
 2. restart จะมี error บาน
 3. ถ้าเปิด terminal ใหม่ ให้ activate VIRTUAL VENV ก่อน ถ้ามีแล้วไม่ต้อง
 
-Wan 2.2 (Kijai) One-shot Setup for ComfyUI
+## Wan 2.2 (Kijai) One-shot Setup for ComfyUI
 
 สคริปต์ไฟล์เดียวสำหรับ:
 
