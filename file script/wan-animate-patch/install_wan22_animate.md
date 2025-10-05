@@ -38,6 +38,8 @@ wget https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.
 ```
 === Install Sageattention <br>
 
+ACTIVATE VENV ก่อน เสมอ
+
 # 0) อัปเดตพื้นฐาน <br>
 ```
 pip install --upgrade pip setuptools wheel ninja
