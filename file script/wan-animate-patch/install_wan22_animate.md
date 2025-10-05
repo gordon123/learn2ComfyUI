@@ -1,5 +1,18 @@
 === Model list == <br>
-== Model <br>
+
+activate virtual venv ก่อนเสมอ เวลาจะ install อะไร
+```
+cd /workspace/
+source venv/bin/activate
+```
+
+เริ่ม run comfyui server
+```
+cd ComfyUI/
+python main.py --listen
+```
+
+== Download Model <br>
 
 ### Wan animate model
 ```
