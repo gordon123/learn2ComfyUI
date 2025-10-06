@@ -1,5 +1,11 @@
 ## คำสั่ง ต่าง ๆสำหรับ Install ComfyUI / WAN2.2 Animate บน RUNPOD
 วิธีการ install WAN2.2 ANIMATE บน Comfyui [RunPod](https://runpod.io?ref=c0v5p0ys)
+ทำตาม Clip บน Youtube ได้เลย
+
+👉 https://youtu.be/mzgxjGl2U7Y
+
+Workflow Kijai >> wanvideo_WanAnimate_example_01.json
+workflow อื่น ๆ ลองโหลดเล่นดู
 
 === Model list == <br>
 
