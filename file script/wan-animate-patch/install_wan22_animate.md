@@ -1,3 +1,5 @@
+วิธีการ install WAN2.2 ANIMATE บน Comfyui [RunPod](https://runpod.io?ref=c0v5p0ys)
+
 === Model list == <br>
 
 activate virtual venv ก่อนเสมอ เวลาจะ install อะไร
@@ -48,22 +50,21 @@ pip install --upgrade pip setuptools wheel ninja
 ```
 pip install "onnx>=1.16" "onnxruntime-gpu==1.22.0" opencv-python-headless
 ```
-# (จะใช้ 1.23.0 ก็ได้ หากยังเป็นแพ็กเกจ Linux CUDA12.x เสถียรในสภาพแวดล้อมของข้าน้อย) <br>
-```
-pip install "onnx>=1.16" "onnxruntime-gpu==1.23.0" opencv-python-headless <br>
-```
+
 # 3) คอมไพล์และติดตั้ง SageAttention 2.x/2++ จากซอร์ส <br>
 ```
 cd /workspace
 git clone https://github.com/thu-ml/SageAttention.git
 cd SageAttention
 ```
+
 # เพิ่มตัวเลือกเร่งคอมไพล์ (ปลอดภัยจะเว้นก็ได้) <br>
 ```
 export EXT_PARALLEL=4
 export NVCC_APPEND_FLAGS="--threads 8"
 export MAX_JOBS=32
 ```
+
 # ติดตั้ง (เลือกวิธีใดวิธีหนึ่ง) <br>
 ```
 python setup.py install
@@ -74,6 +75,7 @@ python setup.py install
 apt-get update
 apt-get install -y libsndfile1 ffmpeg
 ```
+
 ### check installed sageattention correct <br>
 ```
 /workspace/venv/bin/python -c "import platform, torch, sys; print('🐍 Python:', platform.python_version()); print('🔥 Torch:', torch.__version__); print('🎯 CUDA (Torch reports):', torch.version.cuda); print('✅ CUDA available:', torch.cuda.is_available()); print('🧠 GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'); \
