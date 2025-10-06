@@ -1,4 +1,5 @@
 ## คำสั่ง ต่าง ๆสำหรับ Install ComfyUI / WAN2.2 Animate บน RUNPOD
+วิธีการ install WAN2.2 ANIMATE บน Comfyui [RunPod](https://runpod.io?ref=c0v5p0ys)
 
 === Model list == <br>
 
