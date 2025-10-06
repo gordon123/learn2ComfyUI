@@ -121,6 +121,7 @@ Download จาก  <br>
 5. [ComfyUI-ThinkSound](https://github.com/Yuan-ManX/ComfyUI-ThinkSound)
 6. [แยก Audio - Vocal](https://github.com/kijai/ComfyUI-MelBandRoFormer)
 7. [Audiotools](https://github.com/billwuhao/ComfyUI_AudioTools)
+8. [SongBloom comfyui](https://github.com/fredconex/ComfyUI-SongBloom) https://github.com/tencent-ailab/SongBloom
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
