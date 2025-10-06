@@ -1,115 +1,92 @@
-### วิธีใช้
-1. โยน wanvideo_WanAnimate_example_01.json, install missing nodes ต่าง ๆ
-2. restart จะมี error บาน
-3. ถ้าเปิด terminal ใหม่ ให้ activate VIRTUAL VENV ก่อน ถ้ามีแล้วไม่ต้อง
+## คำสั่ง ต่าง ๆสำหรับ Install ComfyUI / WAN2.2 Animate บน RUNPOD
 
-## Wan 2.2 (Kijai) One-shot Setup for ComfyUI
+=== Model list == <br>
 
-สคริปต์ไฟล์เดียวสำหรับ:
-
-ติดตั้งไลบรารีที่จำเป็น (onnx, onnxruntime-gpu, opencv-python-headless, ฯลฯ)
-
-ตั้งค่า WAS Node Suite ให้รู้จัก ffmpeg
-
-ดาวน์โหลด Wan2.2 Animate 14B FP8 (เลือก e4m3fn สำหรับ 40xx / e5m2 สำหรับ 30xx ให้อัตโนมัติ)
-
-ดาวน์โหลด LoRA ที่เกี่ยวข้อง (Relight, Lightx2v, FastWan 480p, Lightning I2V 4-steps, PusaV1, FunReward)
-
-แสดงเวอร์ชัน Python/Torch/CUDA/ONNX และสตาร์ท ComfyUI
-
-โครงสร้างโฟลเดอร์อ้างอิง:
-ComfyUI อยู่ที่ /workspace/ComfyUI และ venv ที่ /workspace/venv
-
-⬇️ Download
-
-setup_wan22_kijai.sh
-Download
-
-บันทึกไฟล์ไว้ในเครื่อง/เซิร์ฟเวอร์ Runpod ของคุณ (เช่น /workspace/setup_wan22_kijai.sh)
-```bash
-🚀 Usage
-### 0) เข้า venv (หากยังไม่ได้ active)
-source /workspace/venv/bin/activate
-
-### 1) ให้สิทธิ์รัน
-
-chmod +x /workspace/setup_wan22_kijai.sh
-
-### 2) (ไม่บังคับ) ติดตั้ง SageAttention ด้วย ตั้งค่านี้เป็น 1
-
-export INSTALL_SAGEATTENTION=0
-
-### 3) รันสคริปต์
-
-/workspace/setup_wan22_kijai.sh
+activate virtual venv ก่อนเสมอ เวลาจะ install อะไร
 ```
-สคริปต์จะ:
+cd /workspace/
+source venv/bin/activate
+```
 
-ติดตั้งแพ็กเกจ Python จำเป็นบน venv
+เริ่ม run comfyui server
+```
+cd ComfyUI/
+python main.py --listen
+```
 
-ค้นหา ffmpeg (ถ้าไม่มีจะติดตั้งผ่าน apt) แล้วเขียนพาธลง
-/workspace/ComfyUI/custom_nodes/was-ns/was_suite_config.json
+== Download Model <br>
 
-ตรวจรุ่นการ์ดจอผ่าน nvidia-smi เพื่อเลือก FP8 e4m3fn (40xx/ADA) หรือ FP8 e5m2 (30xx/อื่น ๆ)
+### Wan animate model
+```
+cd /workspace/ComfyUI/models/diffusion_models/
+wget https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors
+```
+==Download Lora <br>
 
-ดาวน์โหลดโมเดล/LoRA ไปไว้ที่:
+```
+cd /workspace/ComfyUI/models/loras
+wget https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/LoRAs/Wan22_relight/WanAnimate_relight_lora_fp16.safetensors
 
-models/diffusion_models/
+wget https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/LoRAs/Wan22-Lightning/old/Wan2.2-Lightning_I2V-A14B-4steps-lora_LOW_fp16.safetensors
 
-models/loras/
+wget https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Pusa/Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors
 
-models/vae/ (ดึง VAE 2.1 ถ้าคุณยังไม่มี)
+wget https://huggingface.co/Kijai/WanVideo_comfy/resolve/ffc8175b07b79f430a1495d086e39e83d59729e0/Wan22_FunReward/Wan2.2-Fun-A14B-InP-LOW-MPS_resized_dynamic_avg_rank_22_bf16.safetensors
+```
+== Text encoder <br>
+```
+cd /workspace/ComfyUI/models/text_encoders
+wget https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/umt5-xxl-enc-bf16.safetensors
+```
+=== Install Sageattention <br>
 
-สรุปเวอร์ชันสำคัญ (Python, Torch, CUDA, ONNX/ORT, OpenCV)
+ACTIVATE VENV ก่อน เสมอ
 
-ปิด ComfyUI ตัวเก่า (ถ้ามี) แล้วรัน main.py --listen
+### 0) อัปเดตพื้นฐาน <br>
+```
+pip install --upgrade pip setuptools wheel ninja
+```
 
-📦 What it installs
+### 1) ติดตั้ง ONNX ชุดที่รองรับ CUDA 12.x และ Python 3.12 <br>
+```
+pip install "onnx>=1.16" "onnxruntime-gpu==1.22.0" opencv-python-headless
+```
 
-Python deps: onnx, onnxruntime-gpu, onnxruntime-tools, opencv-python-headless, numpy, scipy
+### (จะใช้ 1.23.0 ก็ได้ หากยังเป็นแพ็กเกจ Linux CUDA12.x เสถียรในสภาพแวดล้อมของข้าน้อย) <br>
+```
+pip install "onnx>=1.16" "onnxruntime-gpu==1.23.0" opencv-python-headless <br>
+```
 
-(ตัวเลือก) sageattention หากตั้ง INSTALL_SAGEATTENTION=1
+### 3) คอมไพล์และติดตั้ง SageAttention 2.x/2++ จากซอร์ส <br>
+```
+cd /workspace
+git clone https://github.com/thu-ml/SageAttention.git
+cd SageAttention
+```
+### เพิ่มตัวเลือกเร่งคอมไพล์ (ปลอดภัยจะเว้นก็ได้) <br>
+```
+export EXT_PARALLEL=4
+export NVCC_APPEND_FLAGS="--threads 8"
+export MAX_JOBS=32
+```
+### ติดตั้ง (เลือกวิธีใดวิธีหนึ่ง) <br>
+```
+python setup.py install
+```
 
-Diffusion (เลือกอัตโนมัติ):
+### install ffmpeg driver
+```
+apt-get update
+apt-get install -y libsndfile1 ffmpeg
+```
+### check installed sageattention correct <br>
+```
+/workspace/venv/bin/python -c "import platform, torch, sys; print('🐍 Python:', platform.python_version()); print('🔥 Torch:', torch.__version__); print('🎯 CUDA (Torch reports):', torch.version.cuda); print('✅ CUDA available:', torch.cuda.is_available()); print('🧠 GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'); \
+import importlib, pkgutil; m=importlib.util.find_spec('sageattention'); print('🌿 SageAttention:', 'installed' if m else 'NOT installed')"
+```
 
-40xx/ADA → Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors
-
-30xx/อื่น ๆ → Wan2_2-Animate-14B_fp8_e5m2_scaled_KJ.safetensors
-
-LoRA:
-
-WanAnimate_relight_lora_fp16.safetensors
-
-lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors
-
-FastWan_T2V_14B_480p_lora_rank_128_bf16.safetensors
-
-Wan2.2-Lightning_I2V-A14B-4steps-lora_LOW_fp16.safetensors
-
-Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors
-
-Wan2.2-Fun-A14B-InP-LOW-HPS2.1_resized_dynamic_avg_rank_15_bf16.safetensors
-
-🧩 Notes
-
-สคริปต์จะเขียนค่า ffmpeg_bin_path ให้อัตโนมัติ แก้คำเตือนของ WAS Node Suite
-
-ถ้าต้องการใช้ onnx nodes (DWPose/FantasyPortrait ฯลฯ) ให้แน่ใจว่า onnxruntime-gpu ถูกโหลดด้วย provider ที่รองรับ CUDA (สคริปต์จะแสดง provider ที่ใช้ไว้ให้ท้ายรัน)
-
-ถ้า sageattention คอมไพล์ไม่ผ่าน ให้ปล่อย INSTALL_SAGEATTENTION=0 ไปก่อน (ไม่บังคับ)
-
-🔍 Verify
-
-หลังรันเสร็จ คุณจะเห็นบล็อกนี้ในคอนโซล:
-
-🐍 Python: x.y.z
-🔥 Torch: 2.x.x
-🎯 CUDA (PyTorch reports): 12.x
-✅ CUDA available: True
-🧠 GPU: NVIDIA XXX
-🔷 onnx: ...
-🟦 onnxruntime: ... providers: ['CUDAExecutionProvider', 'CPUExecutionProvider']
-📦 opencv: ...
-
-
-และ ComfyUI จะเริ่มทำงานด้วย --listen.
+### Force restart kill process
+```
+pkill -f "python main.py" || true
+/workspace/venv/bin/python /workspace/ComfyUI/main.py --listen
+```
