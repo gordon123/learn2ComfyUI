@@ -59,11 +59,6 @@ pip install --upgrade pip setuptools wheel ninja
 pip install "onnx>=1.16" "onnxruntime-gpu==1.22.0" opencv-python-headless
 ```
 
-### (จะใช้ 1.23.0 ก็ได้ หากยังเป็นแพ็กเกจ Linux CUDA12.x เสถียรในสภาพแวดล้อมของข้าน้อย) <br>
-```
-pip install "onnx>=1.16" "onnxruntime-gpu==1.23.0" opencv-python-headless <br>
-```
-
 ### 3) คอมไพล์และติดตั้ง SageAttention 2.x/2++ จากซอร์ส <br>
 ```
 cd /workspace
