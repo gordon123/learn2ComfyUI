@@ -65,13 +65,15 @@ cd /workspace
 git clone https://github.com/thu-ml/SageAttention.git
 cd SageAttention
 ```
+
 ### เพิ่มตัวเลือกเร่งคอมไพล์ (ปลอดภัยจะเว้นก็ได้) <br>
 ```
 export EXT_PARALLEL=4
 export NVCC_APPEND_FLAGS="--threads 8"
 export MAX_JOBS=32
 ```
-### ติดตั้ง (เลือกวิธีใดวิธีหนึ่ง) <br>
+
+### ติดตั้ง 
 ```
 python setup.py install
 ```
@@ -81,6 +83,7 @@ python setup.py install
 apt-get update
 apt-get install -y libsndfile1 ffmpeg
 ```
+
 ### check installed sageattention correct <br>
 ```
 /workspace/venv/bin/python -c "import platform, torch, sys; print('🐍 Python:', platform.python_version()); print('🔥 Torch:', torch.__version__); print('🎯 CUDA (Torch reports):', torch.version.cuda); print('✅ CUDA available:', torch.cuda.is_available()); print('🧠 GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'); \
