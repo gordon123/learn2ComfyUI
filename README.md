@@ -113,6 +113,14 @@ Download จาก  <br>
 8. [ComfyUI_molmo](https://github.com/CY-CHENYUE/ComfyUI-Molmo)
 9. [ComfyUI-MiniCPM](https://github.com/1038lab/ComfyUI-MiniCPM)
 
+## video stuff
+1. [ComfyUI-Frame-Interpolation](https://github.com/Fannovel16/ComfyUI-Frame-Interpolation)
+2. [ComfyUI-GIMM-VFI](https://github.com/kijai/ComfyUI-GIMM-VFI)
+3. [Smooth Mix Wan 2.2](https://civitai.com/models/1995784/smooth-mix-wan-22-i2vt2v-14b)
+4. [ComfyUI-SeedVR2_VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler)
+5. [FlashSVR
+](https://github.com/kijai/ComfyUI-WanVideoWrapper/blob/d74cfc54e8ae065d7f32b36634be770bae525f5c/example_workflows/wanvideo_1_3B_FlashVSR_upscale_example.json#L835)
+
 ## audio stuff
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
 2. [ComfyUI-Speaker-Isolation](https://github.com/pmarmotte2/ComfyUI-Speaker-Isolation)
