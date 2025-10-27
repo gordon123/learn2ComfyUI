@@ -100,6 +100,7 @@ Download จาก  <br>
 16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes)
 17. [เครื่องมือ edit ภาพ](https://github.com/o-l-l-i)
 18. [ComfyUI_Local_Lora_Gallery](https://github.com/Firetheft/ComfyUI_Local_Lora_Gallery)
+19. [เครื่องมือโชว์ห่วยเยอะมาก](https://github.com/justUmen/Bjornulf_custom_nodes)
 
 
 ## LLM, VLM
