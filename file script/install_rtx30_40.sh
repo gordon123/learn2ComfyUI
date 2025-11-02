@@ -28,4 +28,7 @@ git clone https://github.com/Comfy-Org/ComfyUI-Manager.git
 # ออกมานอก custom_nodes
 cd ..
 
-echo "run comfyui with python main.py --listen"
+echo "cd /workspace/ComfyUI"
+echo "export PYTORCH_ALLOC_CONF=max_split_size_mb:128"
+echo "python main.py --listen 0.0.0.0 --port 8188"
+
