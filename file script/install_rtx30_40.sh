@@ -1,4 +1,8 @@
 #!/bin/bash
+cd ~
+mkdir /workspace
+cd /workspace
+
 
 # Clone ComfyUI
 git clone https://github.com/comfyanonymous/ComfyUI.git
