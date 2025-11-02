@@ -122,6 +122,7 @@ Download จาก  <br>
 5. [FlashSVR
 ](https://github.com/kijai/ComfyUI-WanVideoWrapper/blob/d74cfc54e8ae065d7f32b36634be770bae525f5c/example_workflows/wanvideo_1_3B_FlashVSR_upscale_example.json#L835)
 6. [เครื่องมือยิบย่อยไว้ใช้กับ video](https://github.com/PGCRT/CRT-Nodes)
+7. [StoryBoardDiffusion](https://github.com/smthemex/ComfyUI_StoryDiffusion)
 
 ## audio stuff
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
