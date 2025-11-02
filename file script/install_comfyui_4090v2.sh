@@ -1,42 +1,54 @@
-#  สร้าง workspace ก่อน
-mkdir -p /workspace
-cd /workspace
+#!/bin/bash
+set -euo pipefail
 
-# สร้าง virtual environment ก่อน clone
-python3 -m venv vnev
-source vnev/bin/activate
-
-# === 1️⃣ ติดตั้งระบบพื้นฐานและ ffmpeg ===
+echo "🌟 [1/7] พื้นฐานระบบ + ffmpeg"
 apt update && apt install -y git python3-venv python3-pip ffmpeg libgl1
 
-# === 2️⃣ สร้าง workspace และ clone ComfyUI ===
-git clone https://github.com/comfyanonymous/ComfyUI.git .
+echo "🌟 [2/7] สร้าง/เปิดใช้งาน venv"
+cd /workspace
+python3 -m venv vnev || true
+source /workspace/vnev/bin/activate
+pip install -U pip setuptools wheel packaging
 
-# === 4️⃣ ติดตั้ง PyTorch cu126 และ dependency หลัก ===
-pip install --upgrade pip
+echo "🌟 [3/7] ติดตั้ง PyTorch (CUDA 12.6 build for 4090)"
 pip install --index-url https://download.pytorch.org/whl/cu126 \
   torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0
-pip install torchsde==0.2.6
 
-# === 5️⃣ ติดตั้ง Triton และ SageAttention ===
-pip install "triton==3.3.0"
-pip install "sageattention==2.2.0" --no-build-isolation
+echo "🌟 [4/7] ติดตั้งโมดูลพื้นฐาน (มี torchsde ชัดเจน)"
+# pin dependency ที่ torchsde ใช้ เพื่อกัน build ล้ม
+pip install scipy==1.16.3 trampoline==0.1.2
+pip install torchsde==0.2.6 triton==3.3.0
 
-# === 6️⃣ ทดสอบ SageAttention ===
+echo "🌟 [5/7] ติดตั้ง SageAttention (ไม่ต้อง build แยก)"
+pip install sageattention==2.2.0 --no-build-isolation
+
+echo "🧪 เทสโมดูลสำคัญ"
 python - <<'PY'
-from sageattention import sageattn
-print("✅ SageAttention ready:", callable(sageattn))
+ok = True
+try:
+    import torch, torchsde
+    from sageattention import sageattn
+    print("✅ torch:", torch.__version__)
+    print("✅ torchsde:", torchsde.__version__)
+    print("✅ SageAttention callable:", callable(sageattn))
+except Exception as e:
+    ok = False
+    print("❌ Import test failed:", e)
+import sys; sys.exit(0 if ok else 1)
 PY
 
-# === 7️⃣ เพิ่ม ComfyUI Manager (ทางเลือกแต่แนะนำ) ===
+echo "🌟 [6/7] Clone ComfyUI (ถ้ามีอยู่แล้วจะข้าม)"
+cd /workspace
+if [ ! -d "ComfyUI/.git" ]; then
+  git clone https://github.com/comfyanonymous/ComfyUI.git
+fi
 
-cd /workspace/ComfyUI/custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+echo "🌟 [7/7] ติดตั้ง ComfyUI-Manager (ถ้ายังไม่มี)"
+mkdir -p /workspace/ComfyUI/custom_nodes
+if [ ! -d "/workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.git" ]; then
+  git clone https://github.com/ltdrdata/ComfyUI-Manager.git /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
+fi
 
-cd /workspace/ComfyUI
-
-# === 8️⃣ ตั้งค่า memory allocator ป้องกัน VRAM error ===
-export PYTORCH_ALLOC_CONF=max_split_size_mb:128
-
-# === 9️⃣ รัน ComfyUI (เปิดพอร์ต 8188 ให้ RunPod เห็นได้) ===
-python main.py --listen 0.0.0.0 --port 8188
+echo
+echo "🚀 เสร็จแล้ว! เริ่มรัน ComfyUI ด้วย:"
+echo "source /workspace/vnev/bin/activate && export PYTORCH_ALLOC_CONF=max_split_size_mb:128 && cd /workspace/ComfyUI && python main.py --listen 0.0.0.0 --port 8188"
