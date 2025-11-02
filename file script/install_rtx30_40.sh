@@ -9,10 +9,10 @@ git clone https://github.com/comfyanonymous/ComfyUI.git
 cd ComfyUI || exit
 
 # ลง PyTorch สำหรับ CUDA 12.6
-# pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu126
 
 # update 1/10/2025
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
+#pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
 
 # ติดตั้ง requirements ของ ComfyUI
 pip install -r requirements.txt
