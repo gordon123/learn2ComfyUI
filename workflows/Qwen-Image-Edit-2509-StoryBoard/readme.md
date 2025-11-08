@@ -62,7 +62,9 @@ https://huggingface.co/lovis93/next-scene-qwen-image-lora-2509
 https://huggingface.co/dx8152/Fusion_lora
 
 
-Nunchaku
+### Nunchaku
+
+wget https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509-lightningv2.0-8steps.safetensors
 
 https://huggingface.co/nunchaku-tech/nunchaku-qwen-image-edit-2509/resolve/main/svdq-int4_r128-qwen-image-edit-2509-lightningv2.0-8steps.safetensors
 
