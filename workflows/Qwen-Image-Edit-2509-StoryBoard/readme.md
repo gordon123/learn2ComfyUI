@@ -27,7 +27,11 @@ ComfyUI-Jjk-Nodes
 ComfyUI_SKBundle
 
 https://github.com/ussoewwin/ComfyUI-QwenImageLoraLoader
+
 https://huggingface.co/nunchaku-tech
+
+https://huggingface.co/mit-han-lab/nunchaku/resolve/main/nunchaku-0.3.1%2Btorch2.7-cp312-cp312-linux_x86_64.whl
+
 https://github.com/nunchaku-tech/nunchaku
 
 https://github.com/obisin/ComfyUI-FSampler
