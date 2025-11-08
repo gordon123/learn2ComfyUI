@@ -76,3 +76,43 @@ https://huggingface.co/QuantStack/Qwen-Image-Edit-2509-GGUF/resolve/main/Qwen-Im
 https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors
 
 https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
+
+
+
+# เข้า env เดิม (ถ้าใช้ venv)
+
+source /workspace/venv/bin/activate 2>/dev/null || true
+
+
+# ติดตั้งตัวเร่งดาวน์โหลด
+
+pip install -U huggingface_hub hf_transfer
+
+pip install -U "huggingface_hub>=0.34,<1.0" hf_transfer==0.1.9
+
+
+# (ไม่บังคับ) ทดสอบว่าพร้อมยัง
+
+python - << 'PY'
+
+from huggingface_hub.utils import is_hf_transfer_available
+
+print("hf_transfer available:", is_hf_transfer_available())
+
+PY
+
+# รีสตาร์ท ComfyUI
+
+pkill -f "main.py" 2>/dev/null || true
+
+python /workspace/ComfyUI/main.py --listen
+
+Positive prompt
+Dissolving the image, Correct perspective, lighting, shadows, and depth ensure your images blend seamlessly with the background, creating stunning visuals.
+
+
+Negative prompt
+色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走
+
+
+
