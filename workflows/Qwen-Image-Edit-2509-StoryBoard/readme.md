@@ -159,6 +159,13 @@ pkill -f "main.py" 2>/dev/null || true
 python /workspace/ComfyUI/main.py --listen
 ```
 
+### ตัวอย่าง prompt สร้าง Character consistency สำหรับ Gemini/Nano Banana
+```
+รวมตัวแบบจากภาพ 1 รูปผู้หญิง และภาพ 2 ผู้ชาย เข้าด้วยกัน คงใบหน้าและรูปร่างเดิม 100% ของหนุ่มหล่อและสาวสวยตามภาพอ้างอิง (หู ตา จมูก ปาก), ทั้งคู่ต้องสวมชุดนิสิตนักศึกษาไทย (ผู้หญิง: เสื้อเชิ้ตขาวแขนสั้น/กระโปรงดำฟิตเหนือเข่า/รองเท้าผ้าใบสีขาว, ผู้ชาย: เสื้อเชิ้ตสีขาวแขนยาว/เนคไท สีดำ/กางเกงดำ/รองเท้าผ้าใบสีขาว), การแสดงออกทางสายตาและอารมณ์ที่สื่อถึง อารมณ์แบบ Film Drama, ภาพฟุ้งอ่อนสไตล์ญี่ปุ่น, โทนสีแบบ film ญี่ปุ่น, ความชัด 4K, Color Grading Pastel Japanese Cinematic Style
+
+ความหวัง	ทั้งคู่มองออกไปทางเดียวกัน ที่ขอบฟ้าที่สวยงาม	เสื้อผ้าใส่สบาย นั่งอยู่บน ระเบียง ที่มองเห็นพระอาทิตย์ขึ้น
+```
+
 ### Positive prompt สำหรับ relight lora (ไม่ได้สอนในคลิปนี้)
 ```
 Dissolving the image, Correct perspective, lighting, shadows, and depth ensure your images blend seamlessly with the background, creating stunning visuals.
