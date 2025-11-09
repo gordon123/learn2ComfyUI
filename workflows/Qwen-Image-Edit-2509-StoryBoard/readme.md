@@ -52,7 +52,8 @@ https://github.com/obisin/ComfyUI-FSampler
 https://huggingface.co/lovis93/next-scene-qwen-image-lora-2509
 ```
 
-### Lightning Lora ตัวลด step สำหรับ Qwen Model หลัก 
+### Lightning Lora ตัวลด step สำหรับ Qwen Model  
+ใครแรมน้อย ใช้ 4 steps แรมมากหน่อย 8 steps
 ```
 https://huggingface.co/lightx2v/Qwen-Image-Lightning/tree/main/Qwen-Image-Edit-2509
 ```
