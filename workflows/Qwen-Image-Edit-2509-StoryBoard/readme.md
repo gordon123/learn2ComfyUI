@@ -45,10 +45,6 @@ https://nunchaku.tech/docs/nunchaku/installation/installation.html
 https://github.com/obisin/ComfyUI-FSampler
 ```
 
-https://huggingface.co/lightx2v/Qwen-Image-Lightning/tree/main/Qwen-Image-Edit-2509
-
-https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors
-
 # Download Lora
 
 ### Next scene lora
@@ -102,6 +98,8 @@ https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/tree/main/split_files/d
 
 แนะนำใช้ตัวนี้ สำหรับ คนมี GPU ram  16GB
 qwen_image_edit_2509_fp8_e4m3fn.safetensors
+
+https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors
 
 แนะนำใช้ตัวนี้ สำหรับ คนมี GPU ram  24GB ขึ้นไป
 qwen_image_edit_2509_bf16.safetensors
