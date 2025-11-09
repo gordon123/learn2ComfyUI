@@ -159,7 +159,7 @@ pkill -f "main.py" 2>/dev/null || true
 python /workspace/ComfyUI/main.py --listen
 ```
 
-### Positive prompt
+### Positive prompt สำหรับ relight lora (ไม่ได้สอนในคลิปนี้)
 ```
 Dissolving the image, Correct perspective, lighting, shadows, and depth ensure your images blend seamlessly with the background, creating stunning visuals.
 ```
