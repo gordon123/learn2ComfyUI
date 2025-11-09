@@ -40,7 +40,7 @@ https://github.com/nunchaku-tech/nunchaku
 https://nunchaku.tech/docs/nunchaku/installation/installation.html
 ```
 
-### เอาไว้ แทน Ksampler ปะติ ถ้าใช้ Model ตัวเต็มเพื่อเร่งความเร็ว
+### เอาไว้ แทน Ksampler ปกติ ถ้าใช้ Qwen Model ตัวเต็มเพื่อเร่งความเร็ว และเพิ่มคุณภาพ
 ```
 https://github.com/obisin/ComfyUI-FSampler
 ```
