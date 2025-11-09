@@ -59,6 +59,7 @@ https://huggingface.co/lightx2v/Qwen-Image-Lightning/tree/main/Qwen-Image-Edit-2
 ```
 
 ### Lora เสริมน่าใช้ เอาไว้ใช้ relight และ camera angle (ไว้แนะนำคราวหน้า เพราะคลิปจะยาวเกิน)
+หรือดาวโหลด workflow ไปลองเล่นกันเอง
 ```
 อันนี้เอาไว้ relight 
 https://huggingface.co/dx8152/Fusion_lora
