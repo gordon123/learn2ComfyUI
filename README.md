@@ -113,6 +113,7 @@ Download จาก  <br>
 7. [ComfyUI_Searge_LLM](https://github.com/SeargeDP/ComfyUI_Searge_LLM)
 8. [ComfyUI_molmo](https://github.com/CY-CHENYUE/ComfyUI-Molmo)
 9. [ComfyUI-MiniCPM](https://github.com/1038lab/ComfyUI-MiniCPM)
+10. [ComfyUI_Qwen3-VL-Instruct](https://github.com/IuvenisSapiens/ComfyUI_Qwen3-VL-Instruct) gen prompt จาก video, image, VQA ได้
 
 ## video stuff
 1. [ComfyUI-Frame-Interpolation](https://github.com/Fannovel16/ComfyUI-Frame-Interpolation)
