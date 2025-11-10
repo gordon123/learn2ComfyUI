@@ -120,10 +120,14 @@ Download จาก  <br>
 2. [ComfyUI-GIMM-VFI](https://github.com/kijai/ComfyUI-GIMM-VFI)
 3. [Smooth Mix Wan 2.2](https://civitai.com/models/1995784/smooth-mix-wan-22-i2vt2v-14b)
 4. [ComfyUI-SeedVR2_VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler)
-5. [FlashSVR
-](https://github.com/kijai/ComfyUI-WanVideoWrapper/blob/d74cfc54e8ae065d7f32b36634be770bae525f5c/example_workflows/wanvideo_1_3B_FlashVSR_upscale_example.json#L835)
+5. FlashSVR KJ
 6. [เครื่องมือยิบย่อยไว้ใช้กับ video](https://github.com/PGCRT/CRT-Nodes)
 7. [StoryBoardDiffusion](https://github.com/smthemex/ComfyUI_StoryDiffusion)
+8. [smthemex/ComfyUI_FlashVSR](https://github.com/smthemex/ComfyUI_FlashVSR)
+9. [1038lab/ComfyUI-FlashVSR](https://github.com/1038lab/ComfyUI-FlashVSR)
+10. [ComfyUI-FlashVSR_Ultra_Fast](https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast)
+11. [Wan22FMLF](https://github.com/wallen0322/ComfyUI-Wan22FMLF)
+12. [Bindweave-KJ](https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/tree/main/Bindweave)
 
 ## audio stuff
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
