@@ -1,4 +1,4 @@
-# 🎬 Cinematic Expansion Pack (เพิ่มเติมอีก ~80 มุมกล้อง)
+# 🎬 Cinematic Multi angle Prompts ( ~80 มุมกล้อง)
 
 https://huggingface.co/lovis93/next-scene-qwen-image-lora-2509 <br>
 "Next Scene:"<br>
