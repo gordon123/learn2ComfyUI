@@ -1,5 +1,16 @@
 # 🎬 Cinematic Expansion Pack (เพิ่มเติมอีก ~80 มุมกล้อง)
 
+https://huggingface.co/lovis93/next-scene-qwen-image-lora-2509 <br>
+"Next Scene:"<br>
+weight 1.0<br>
+
+https://huggingface.co/dx8152/Qwen-Edit-2509-Multiple-angles<br>
+weight 1.0<br>
+
+https://huggingface.co/tlennon-ie/qwen-edit-skin<br>
+"make the subjects skin details more prominent and natural"<br>
+weight 0.6-0.8<br>
+
 ### 1. Establishing & Transition Shots
 ```
 Next Scene: Start from a wide establishing shot of the landscape before zooming into the subject’s location. make the subjects skin details more prominent and natural
