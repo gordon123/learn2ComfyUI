@@ -123,10 +123,61 @@ Next Scene: Zoom out and tilt the camera upward to reveal the surrounding space 
 Next Scene: Orbit the camera 360 degrees around the subject while maintaining a centered focus. make the subjects skin details more prominent and natural
 ```
 
+### 🔹 มุมกล้องพื้นฐาน (Base Angles)
+```
+Next Scene: Capture the subject from eye level for a natural cinematic portrait. make the subjects skin details more prominent and natural
+Next Scene: Capture from a slightly high angle looking downward to convey vulnerability. make the subjects skin details more prominent and natural
+Next Scene: Capture from a low angle looking upward to emphasize power and presence. make the subjects skin details more prominent and natural
+Next Scene: Capture from a side profile with shallow depth of field and blurred background. make the subjects skin details more prominent and natural
+Next Scene: Capture from a 45-degree diagonal front angle for balanced cinematic composition. make the subjects skin details more prominent and natural
+Next Scene: Capture from the back with the subject looking over their shoulder. make the subjects skin details more prominent and natural
+Next Scene: Capture from a top-down (bird’s-eye view) angle focusing on symmetry and shape. make the subjects skin details more prominent and natural
+Next Scene: Capture from a bottom-up (worm’s-eye view) angle emphasizing scale. make the subjects skin details more prominent and natural
+Next Scene: Capture at waist level for a medium cinematic framing. make the subjects skin details more prominent and natural
+Next Scene: Capture from knee level for a dramatic fashion or stance shot. make the subjects skin details more prominent and natural
+```
 
+### 🔹 มุมเฉพาะทาง (Specialized Angles)
+```
+Next Scene: Capture a close-up of the subject’s face emphasizing texture and emotion. make the subjects skin details more prominent and natural
+Next Scene: Capture an extreme close-up of the subject’s eyes or lips for detail-focused cinematic tension. make the subjects skin details more prominent and natural
+Next Scene: Capture a medium close-up showing the shoulders and upper torso. make the subjects skin details more prominent and natural
+Next Scene: Capture a full-body shot centered in the frame with cinematic symmetry. make the subjects skin details more prominent and natural
+Next Scene: Capture from a 3/4 rear angle with soft background bokeh. make the subjects skin details more prominent and natural
+Next Scene: Capture from below with wide-angle distortion for stylized cinematic impact. make the subjects skin details more prominent and natural
+Next Scene: Capture from a corner angle with the subject partially obscured by foreground objects. make the subjects skin details more prominent and natural
+Next Scene: Capture from behind glass or window reflections for visual layering. make the subjects skin details more prominent and natural
+Next Scene: Capture from a shadowed area with rim lighting outlining the subject. make the subjects skin details more prominent and natural
+Next Scene: Capture with the subject centered between foreground and background objects for cinematic depth. make the subjects skin details more prominent and natural
+```
 
+### 🔹 มุมศิลป์ (Artistic / Cinematic Composition)
+```
+Next Scene: Capture using a Dutch angle (tilted frame) for dynamic visual tension. make the subjects skin details more prominent and natural
+Next Scene: Capture with rule-of-thirds composition, placing the subject slightly off-center. make the subjects skin details more prominent and natural
+Next Scene: Capture from a close low corner of the scene to accentuate light and shadow contrast. make the subjects skin details more prominent and natural
+Next Scene: Capture through a frame element such as a doorway or mirror to create context. make the subjects skin details more prominent and natural
+Next Scene: Capture using leading lines from architecture to guide focus toward the subject. make the subjects skin details more prominent and natural
+Next Scene: Capture with soft depth of field and cinematic film grain for timeless mood. make the subjects skin details more prominent and natural
+Next Scene: Capture with harsh side lighting to reveal texture and character. make the subjects skin details more prominent and natural
+Next Scene: Capture in silhouette form against strong backlight for dramatic tone. make the subjects skin details more prominent and natural
+Next Scene: Capture from an extreme top corner emphasizing geometry and negative space. make the subjects skin details more prominent and natural
+Next Scene: Capture from ground-level looking slightly up to show dominance and depth. make the subjects skin details more prominent and natural
+```
 
-
+### 🔹 มุมแนวแฟชั่น / โปรดักต์ (Style & Object Focus)
+```
+Next Scene: Capture a 45-degree top-front angle highlighting the subject’s contours and shadows. make the subjects skin details more prominent and natural
+Next Scene: Capture a side-top diagonal shot emphasizing the object’s 3D form. make the subjects skin details more prominent and natural
+Next Scene: Capture from above with shallow focus to create luxury-product emphasis. make the subjects skin details more prominent and natural
+Next Scene: Capture from macro distance showing fine texture and surface reflection. make the subjects skin details more prominent and natural
+Next Scene: Capture from low-front angle highlighting the silhouette under lighting. make the subjects skin details more prominent and natural
+Next Scene: Capture using mirror reflection or polished surface for artistic symmetry. make the subjects skin details more prominent and natural
+Next Scene: Capture from oblique angle showing both front and top planes for product clarity. make the subjects skin details more prominent and natural
+Next Scene: Capture using cross lighting to highlight the object’s shape and edge lines. make the subjects skin details more prominent and natural
+Next Scene: Capture using soft-box simulated lighting from above with cinematic shadows. make the subjects skin details more prominent and natural
+Next Scene: Capture with rim light from behind creating glowing outlines on the object. make the subjects skin details more prominent and natural
+```
 
 
 
