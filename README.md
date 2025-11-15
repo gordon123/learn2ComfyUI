@@ -128,6 +128,7 @@ Download จาก  <br>
 10. [ComfyUI-FlashVSR_Ultra_Fast](https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast)
 11. [Wan22FMLF](https://github.com/wallen0322/ComfyUI-Wan22FMLF)
 12. [Bindweave-KJ](https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/tree/main/Bindweave)
+13. 
 
 ## audio stuff
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
@@ -138,9 +139,12 @@ Download จาก  <br>
 6. [แยก Audio - Vocal](https://github.com/kijai/ComfyUI-MelBandRoFormer)
 7. [Audiotools](https://github.com/billwuhao/ComfyUI_AudioTools)
 8. [SongBloom comfyui](https://github.com/fredconex/ComfyUI-SongBloom) https://github.com/tencent-ailab/SongBloom
+9. [Maya1 รองรับแค่ภาษาอังกฤษ​เหมาะทำ หนังสือเสียง นิยาย](https://github.com/Saganaki22/ComfyUI-Maya1_TTS)
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
+2. [Qwen-Image-Edit-F2P ](https://huggingface.co/DiffSynth-Studio/Qwen-Image-Edit-F2P)
+3. [UniLumos In ComfyUI](https://www.youtube.com/watch?v=5ik6tPs6Yq8) การทำre-light วิดีโอ
 
 ## Character consistancy
 1. [ComfyUI_StableHair_ll](https://github.com/lldacing/ComfyUI_StableHair_ll)
