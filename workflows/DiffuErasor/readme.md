@@ -1,3 +1,5 @@
+https://youtu.be/BP0xjHE1uGs
+
 https://github.com/smthemex/ComfyUI_DiffuEraser
 
 mkdir -p /workspace/ComfyUI/models/DiffuEraser/brushnet
