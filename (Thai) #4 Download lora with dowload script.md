@@ -114,3 +114,42 @@ git lfs env
 git clone https://huggingface.co/theunlikely/svdq-int4-jibMixFlux_v8Accentueight
 ```
 
+
+## 11 การ ดาวโหลด ทั้งโฟเด้อ Hugginface
+✅ ขั้นที่ 1 — ติดตั้ง huggingface-hub ให้ถูกเวอร์ชัน
+เพราะ transformers ต้องการ >=0.34 และ <1.0
+```
+pip install "huggingface-hub>=0.34.0,<1.0.0"
+```
+(ไม่ต้อง fix version เอง ให้ pip เลือกสูงสุดในช่วงนั้นเอง)
+
+✅ ขั้นที่ 2 — Login HF Token (ครั้งแรกเท่านั้น) ไปสร้าง Hugginface มาก่อน
+```
+huggingface-cli login
+```
+ถ้า environment ใหม่ก็ค่อย login, ถ้าไดเร็กทอรีไม่ถูกล้างก็ไม่ต้อง login อีก/ ไปสร้าง Hugginface token เอามากรอก เวลา enter มันจะไม่มีอะไรเกิดขึ้น ให้ กด ต่อไป
+
+✅ ขั้นที่ 3 — โหลด repo ทั้งก้อนด้วย snapshot_download()
+
+ตัวอย่าง ดาวโหลด wen/Qwen3-VL-4B-Thinking ไปไว้ใน  /workspace/ComfyUI/models/LLM/Qwen3-VL-4B-Instruct
+```
+python3 - << 'EOF'
+from huggingface_hub import snapshot_download
+
+snapshot_download(
+    repo_id="Qwen/Qwen3-VL-4B-Thinking",
+    local_dir="/workspace/ComfyUI/models/LLM/Qwen3-VL-4B-Instruct"
+)
+EOF
+```
+## 12 การดาวโหลดไฟล์จาก Civitai
+
+กด คลิกขวาบนปุ่มดาวโหลด แล้ว กด copy download link
+ไปสร้าง Civitai Token key ใส่แทน xxxxxxxxxxxxxx
+และ สร้าง ชื่อไฟล์  ตัวอย่าง ```/workspace/ComfyUI/models/loras/Z_Image_cinematicshot.safetensors```
+```
+curl -L \
+  -H "Authorization: Bearer xxxxxxxxxxxxxPlace Civitai Token xxxxxx \
+  "https://civitai.com/api/download/models/2454927?type=Model&format=SafeTensor" \
+  -o /workspace/ComfyUI/models/loras/Z_Image_cinematicshot.safetensors
+```
