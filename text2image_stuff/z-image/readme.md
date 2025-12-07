@@ -1,6 +1,15 @@
  === YOUTUBE tutorial SOON! ==
  ไม่มีเวลา 5555
- 
+
+### Models
+
+T5B/Z-Image-Turbo-FP8
+https://huggingface.co/T5B/Z-Image-Turbo-FP8/tree/main
+
+https://huggingface.co/jayn7/Z-Image-Turbo-GGUF
+
+### Loras
+
 AI tool kit train Lora<br>
 Ostris สอนใช้ Ai-tool kit train z-image lora<br>
 https://youtu.be/Kmve1_jiDpQ?si=whcKLac9nb11zSpV
@@ -23,4 +32,17 @@ AIImageStudio/ReversalFilmGravure_z_Image_turbo<br>
 https://huggingface.co/AIImageStudio/ReversalFilmGravure_z_Image_turbo<br>
 <img aligen="left" width="300" height="525" alt="ReversalFilmGravure_z_Image_turbo" src="https://github.com/user-attachments/assets/c4ccf997-106d-4235-b5b2-824b29cebe9b" />
 
+
+เอิ่ม เขาว่าดี
+https://huggingface.co/ostris/Z-Image-De-Turbo <br>
+https://huggingface.co/GuangyuanSD/Z-Image-Re-Turbo-LoRA <br>
+
+ไว้ทำ สนุดวาดรูปขายได้ <br>
+https://huggingface.co/renderartist/Coloring-Book-Z-Image-Turbo-LoRA
+
+ComfyUI-EulerDiscreteScheduler <br>
+https://github.com/erosDiffusion/ComfyUI-EulerDiscreteScheduler
+
+alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union
+https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union
 
