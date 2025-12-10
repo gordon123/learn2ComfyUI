@@ -101,6 +101,9 @@ Download จาก  <br>
 17. [เครื่องมือ edit ภาพ](https://github.com/o-l-l-i)
 18. [ComfyUI_Local_Lora_Gallery](https://github.com/Firetheft/ComfyUI_Local_Lora_Gallery)
 19. [เครื่องมือโชว์ห่วยเยอะมาก](https://github.com/justUmen/Bjornulf_custom_nodes)
+20. [เอาไว้ทดสอบค่า sigma, sampler RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF)
+21. [UI สวยเรืองแสง ใช้ดีป่าวไม่รู้](https://github.com/PGCRT/CRT-Nodes)
+22. 
 
 
 ## LLM, VLM
