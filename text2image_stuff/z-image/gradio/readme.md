@@ -20,6 +20,8 @@ https://huggingface.co/nunchaku-tech/nunchaku-z-image-turbo
 
 ใช้ Nunchaku INT4 (rank 128) เท่านั้น
 
+ลง “wheel ทางการ” ที่มี Z-Image (อย่างน้อยระดับ v1.0.2+torch2.9 สำหรับ cp312) — มีสคริปต์ตัวอย่างระบุ wheel นี้ไว้ชัดเจน
+
 ### STEP 1️⃣ สร้าง virtualenv ใหม่ 
 ```
 cd /workspace
@@ -62,24 +64,7 @@ pip install \
 
 ### install nunchaku
 ```
-cd /workspace/zimage_nunchaku
-source /workspace/venv_zimage/bin/activate
-
-# 1) ลบ nunchaku ตัวที่ลงผิด/ไม่ตรง build ออกก่อน
-pip uninstall -y nunchaku
-
-# 2) (แนะนำ) downgrade torch ให้ตรงกับ wheel torch2.7 (เลือก cu128 ไม่จำเป็นสำหรับ 4090; เอา cu126 ก็ได้)
-pip uninstall -y torch torchvision torchaudio
-
-# ตัวเลือก A: ใช้ cu126 (เข้ากับของเดิมใน log ComfyUI บ่อยสุด)
-pip install torch==2.7.* torchvision==0.22.* torchaudio==2.7.* --index-url https://download.pytorch.org/whl/cu126
-
-# 3) ติดตั้ง nunchaku "จากไฟล์ wheel ของ nunchaku-tech" ให้ตรง torch2.7 + cp312 + linux
-pip install "https://huggingface.co/nunchaku-tech/nunchaku/resolve/main/nunchaku-0.2.0%2Btorch2.7-cp312-cp312-linux_x86_64.whl"
-
-# 4) เช็กว่า import ได้จริง
-python -c "from nunchaku import NunchakuZImageTransformer2DModel; print('✅ nunchaku class OK')"
-
+pip install "https://github.com/nunchaku-tech/nunchaku/releases/download/v1.0.2/nunchaku-1.0.2+torch2.9-cp312-cp312-linux_x86_64.whl"
 ```
 
 ### STEP 5️⃣ ตั้ง HuggingFace cache ให้อยู่ใน workspace (สำคัญมาก)
