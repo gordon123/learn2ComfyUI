@@ -86,7 +86,7 @@ cd /workspace/zimage_nunchaku
 ```
 
 ### copy file นี้
-```gradio_zimage.py```
+```gradio_zimage.py``` และ ```run_zimage.py```
 ไว้ใน ```/workspace/zimage_nunchaku```
 
 ### STEP 7️⃣ รัน Gradio
