@@ -17,6 +17,9 @@ https://huggingface.co/worstplayer/Z-Image_Qwen_3_4b_text_encoder_GGUF
 z-image<br>
 https://huggingface.co/jayn7/Z-Image-Turbo-GGUF
 
+### VAE
+https://huggingface.co/Owen777/UltraFlux-v1/tree/main/vae
+
 ### Loras Style
 Painting<br>
 https://huggingface.co/renderartist/Classic-Painting-Z-Image-Turbo-LoRA <br>
