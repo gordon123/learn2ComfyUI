@@ -1,41 +1,24 @@
-# Z-Image Turbo + Nunchaku (INT4) + Gradio on RunPod
+# Z-Image Turbo + Nunchaku (INT4) Installation Guide on RunPod
 
 WARNING: EXPERIMENTAL / UNSTABLE  
-This project is for R&D and internal testing only.  
-Upstream APIs and behaviors may change without notice.
+This setup is intended for R&D and internal testing only.  
+Upstream APIs, behaviors, and internal structures may change at any time.
 
----------------------------------------------------------------------
+=====================================================================
 
-REFERENCES
+REQUIREMENTS
 
-Z-Image Turbo (Base Model)  
-https://huggingface.co/Tongyi-MAI/Z-Image-Turbo
-
-Nunchaku Z-Image INT4 Weights  
-https://huggingface.co/nunchaku-tech/nunchaku-z-image-turbo
-
-Nunchaku Runtime (GitHub main branch required)  
-https://github.com/nunchaku-tech/nunchaku
-
----------------------------------------------------------------------
-
-ENVIRONMENT REQUIREMENTS
-
-GPU: RunPod RTX 4090 (24GB)  
+GPU: RunPod RTX 4090 (24GB recommended)  
+Pod Type: MUST have Network Volume enabled  
 Python: 3.12  
 CUDA Runtime: 12.8  
-PyTorch: 2.9.1+cu128  
-Quantization: INT4 (auto-selected by GPU)  
+Target Precision: INT4 (auto-selected by GPU)  
 Nunchaku Rank: 128  
 UI: Gradio (port 7860)
 
-IMPORTANT:
-You must use a RunPod Pod with Network Volume enabled.
-Otherwise, HuggingFace cache will be lost after restart.
+=====================================================================
 
----------------------------------------------------------------------
-
-STEP 1: CREATE VIRTUAL ENVIRONMENT
+STEP 1: CREATE PYTHON VIRTUAL ENVIRONMENT
 
 ```bash
 cd /workspace
@@ -44,7 +27,7 @@ source /workspace/venv_zimage/bin/activate
 pip install -U pip setuptools wheel
 ```
 
----------------------------------------------------------------------
+=====================================================================
 
 STEP 2: INSTALL PYTORCH (CUDA 12.8)
 
@@ -64,7 +47,7 @@ print("gpu:", torch.cuda.get_device_name(0))
 EOF
 ```
 
-EXPECTED OUTPUT:
+EXPECTED OUTPUT (example):
 
 ```
 torch: 2.9.1+cu128
@@ -72,13 +55,36 @@ cuda: True
 gpu: NVIDIA GeForce RTX 4090
 ```
 
----------------------------------------------------------------------
+=====================================================================
 
-STEP 3: INSTALL RUNTIME DEPENDENCIES
+STEP 3: INSTALL DIFFUSERS (GITHUB MAIN REQUIRED)
+
+IMPORTANT:
+Nunchaku Z-Image requires a newer Diffusers structure that is NOT available
+in current PyPI releases.
+
+```bash
+pip uninstall -y diffusers
+pip install git+https://github.com/huggingface/diffusers.git
+```
+
+VERIFY REQUIRED MODULE EXISTS:
+
+```bash
+python - <<'EOF'
+import diffusers
+print("diffusers:", diffusers.__version__)
+from diffusers.models.transformers.transformer_z_image import FeedForward
+print("OK: transformer_z_image exists")
+EOF
+```
+
+=====================================================================
+
+STEP 4: INSTALL RUNTIME DEPENDENCIES
 
 ```bash
 pip install \
-  diffusers==0.35.1 \
   transformers \
   accelerate \
   safetensors \
@@ -88,50 +94,63 @@ pip install \
   pillow
 ```
 
-NOTE:
-diffusers must be version 0.35 or newer.
-Older versions do NOT include the Z-Image pipeline.
+=====================================================================
 
----------------------------------------------------------------------
+STEP 5: INSTALL NUNCHAKU (GITHUB MAIN ONLY)
 
-STEP 4: INSTALL NUNCHAKU (REQUIRED)
+IMPORTANT:
+Nunchaku does NOT provide CUDA wheels.
+It is pure Python with PyTorch backend.
+Z-Image support exists ONLY in the GitHub main branch.
 
 ```bash
 pip install git+https://github.com/nunchaku-tech/nunchaku.git
 ```
 
-IMPORTANT NOTES ABOUT NUNCHAKU:
+VERIFY NUNCHAKU:
 
-- Nunchaku does NOT provide a CUDA wheel
-- It is pure Python with a PyTorch backend
-- Z-Image support exists ONLY in the GitHub main branch
-- Do NOT try to find or install a special .whl file (it does not exist)
+```bash
+python - <<'EOF'
+from nunchaku import NunchakuZImageTransformer2DModel
+from nunchaku.utils import get_precision
+print("precision:", get_precision())
+EOF
+```
 
----------------------------------------------------------------------
+EXPECTED:
+```
+precision: int4
+```
 
-STEP 5: PERSIST HUGGINGFACE CACHE (CRITICAL ON RUNPOD)
+=====================================================================
+
+STEP 6: CONFIGURE HUGGINGFACE CACHE (CRITICAL ON RUNPOD)
+
+Without Network Volume + cache redirect, models will be re-downloaded
+and may cause memory spikes.
 
 ```bash
 mkdir -p /workspace/.cache/huggingface
 
 echo 'export HF_HOME=/workspace/.cache/huggingface' >> ~/.bashrc
 echo 'export HF_HUB_CACHE=/workspace/.cache/huggingface/hub' >> ~/.bashrc
-echo 'export TRANSFORMERS_CACHE=/workspace/.cache/huggingface/hub' >> ~/.bashrc
-echo 'export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True' >> ~/.bashrc
+echo 'export HF_DATASETS_CACHE=/workspace/.cache/huggingface/datasets' >> ~/.bashrc
+echo 'export HF_HUB_ENABLE_HF_TRANSFER=1' >> ~/.bashrc
+echo 'export PYTORCH_ALLOC_CONF=expandable_segments:True' >> ~/.bashrc
 
 source ~/.bashrc
 ```
 
----------------------------------------------------------------------
+=====================================================================
 
-STEP 6: PREPARE PROJECT STRUCTURE
+STEP 7: PREPARE PROJECT STRUCTURE
 
 ```bash
 mkdir -p /workspace/zimage_nunchaku/output
 cd /workspace/zimage_nunchaku
 ```
 
-COPY THE FOLLOWING FILES INTO THIS DIRECTORY:
+COPY REQUIRED FILES INTO THIS DIRECTORY:
 
 - gradio_zimage.py
 - run_zimage.py
@@ -145,9 +164,9 @@ FINAL STRUCTURE:
 └── output/
 ```
 
----------------------------------------------------------------------
+=====================================================================
 
-STEP 7: RUN GRADIO UI
+STEP 8: RUN GRADIO UI
 
 ```bash
 source /workspace/venv_zimage/bin/activate
@@ -162,24 +181,23 @@ Running on local URL: http://0.0.0.0:7860
 
 THEN:
 
-- Open HTTP Service in RunPod
+- Open RunPod HTTP Services
 - Expose port 7860
 - Click the generated link to access the UI
 
----------------------------------------------------------------------
+=====================================================================
 
 NOTES
 
-- INT4 precision is selected automatically via get_precision() based on GPU
-- guidance_scale must be set to 0.0 for Z-Image Turbo
+- INT4 precision is selected automatically based on GPU
+- guidance_scale MUST be 0.0 for Z-Image Turbo
 - Recommended inference steps: 6–10
-- Most stable Nunchaku rank: 128
+- Recommended rank: 128
+- First run will download models and weights (disk cache)
 
----------------------------------------------------------------------
+=====================================================================
 
-NOT REQUIRED
-
-DO NOT INSTALL THE FOLLOWING PACKAGES:
+NOT REQUIRED / DO NOT INSTALL
 
 - triton
 - xformers
@@ -187,10 +205,10 @@ DO NOT INSTALL THE FOLLOWING PACKAGES:
 - bitsandbytes
 - custom CUDA toolkit
 
----------------------------------------------------------------------
+=====================================================================
 
 DISCLAIMER
 
-This project is experimental.
-Breaking changes may occur at any time due to upstream updates.
-Use only for research, testing, or internal experimentation.
+This setup is experimental.
+Upstream repositories may change internal APIs at any time.
+Use only for research, testing, or controlled internal environments.
