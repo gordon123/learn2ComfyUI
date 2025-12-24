@@ -17,6 +17,9 @@ https://huggingface.co/worstplayer/Z-Image_Qwen_3_4b_text_encoder_GGUF
 z-image<br>
 https://huggingface.co/jayn7/Z-Image-Turbo-GGUF
 
+Beyond Reality z image ปรับ ผิว แสง สี ระดับ cinematic
+https://civitai.com/models/1090420?modelVersionId=2521262
+
 ### VAE
 https://huggingface.co/Owen777/UltraFlux-v1/tree/main/vae
 
