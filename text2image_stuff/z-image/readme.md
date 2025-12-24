@@ -5,7 +5,7 @@ Ostris สอนใช้ Ai-tool kit train z-image lora<br>
 https://youtu.be/Kmve1_jiDpQ?si=whcKLac9nb11zSpV
 
 ### Models
-T5B/Z-Image-Turbo-FP8
+T5B/Z-Image-Turbo-FP8<br>
 https://huggingface.co/T5B/Z-Image-Turbo-FP8/tree/main
 
 NSFW😈<br>
@@ -17,7 +17,7 @@ https://huggingface.co/worstplayer/Z-Image_Qwen_3_4b_text_encoder_GGUF
 z-image<br>
 https://huggingface.co/jayn7/Z-Image-Turbo-GGUF
 
-Beyond Reality z image ปรับ ผิว แสง สี ระดับ cinematic
+Beyond Reality z image ปรับ ผิว แสง สี ระดับ cinematic<br>
 https://civitai.com/models/1090420?modelVersionId=2521262
 
 ### VAE
