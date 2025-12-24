@@ -44,6 +44,9 @@ https://huggingface.co/DK9/3D_MMORPG_style_z-image-turbo_lora
 
 ### Lora improve image quality
 
+สีแนว vintage <br>
+https://huggingface.co/renderartist/Technically-Color-Z-Image-Turbo<br>
+
 ภาพเบลอ ๆ สมจริง เหมือนถ่ายจาก มือถือ<br>
 https://civitai.com/models/1662740/lenovo-ultrareal<br>
 <img width="300" height="450" alt="image" src="https://github.com/user-attachments/assets/025d320f-075b-426a-940d-651629b307e7" />
