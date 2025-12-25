@@ -103,7 +103,7 @@ Download จาก  <br>
 19. [เครื่องมือโชว์ห่วยเยอะมาก](https://github.com/justUmen/Bjornulf_custom_nodes)
 20. [เอาไว้ทดสอบค่า sigma, sampler RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF)
 21. [UI สวยเรืองแสง ใช้ดีป่าวไม่รู้](https://github.com/PGCRT/CRT-Nodes)
-22. 
+22. [เอาไว้ทดลอง ค่า sigma ต่างๆ](https://github.com/lrzjason/Comfyui-LatentUtils)
 
 
 ## LLM, VLM
