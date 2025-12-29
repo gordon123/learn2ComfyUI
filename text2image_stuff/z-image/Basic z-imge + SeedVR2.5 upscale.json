@@ -1,0 +1,2567 @@
+{
+  "id": "e5aced42-ceb2-4670-a19b-e3678afca7a8",
+  "revision": 0,
+  "last_node_id": 54,
+  "last_link_id": 5834,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -386.152587890625,
+        901.7412719726562
+      ],
+      "size": [
+        326.6390380859375,
+        88
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 4
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.67",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "blurry ugly bad"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 7,
+      "type": "SetNode",
+      "pos": [
+        -104.58280944824219,
+        898.3158569335938
+      ],
+      "size": [
+        210,
+        34
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "type": "*"
+        }
+      ],
+      "title": "Set_CONDITIONING",
+      "properties": {
+        "previousName": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "NEG--"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 13,
+      "type": "GetNode",
+      "pos": [
+        1057.8892822265625,
+        415.0386657714844
+      ],
+      "size": [
+        210,
+        34
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "NEG--"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 8,
+      "type": "SetNode",
+      "pos": [
+        16.97935676574707,
+        549.666748046875
+      ],
+      "size": [
+        210,
+        34
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "type": "*"
+        }
+      ],
+      "title": "Set_CONDITIONING",
+      "properties": {
+        "previousName": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "POS++"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        -845.1950073242188,
+        749.8312377929688
+      ],
+      "size": [
+        337.8555908203125,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            4,
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "lumina2",
+        "default"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "Anything Everywhere",
+      "pos": [
+        -201.46478271484375,
+        1126.758544921875
+      ],
+      "size": [
+        172.18905639648438,
+        26
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#FF9CF9",
+          "label": "anything",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 12,
+      "type": "SetNode",
+      "pos": [
+        -205.300537109375,
+        1051.0125732421875
+      ],
+      "size": [
+        210,
+        34
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "type": "*"
+        }
+      ],
+      "title": "Set_LATENT",
+      "properties": {
+        "previousName": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "LATENT-empty"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 15,
+      "type": "SaveImage",
+      "pos": [
+        1756.9443359375,
+        399.68756103515625
+      ],
+      "size": [
+        469.98199462890625,
+        705.5525512695312
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 11
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "standard zimage more step"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "VAEDecode",
+      "pos": [
+        1597.519287109375,
+        268.30059814453125
+      ],
+      "size": [
+        150,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 18
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            11,
+            17,
+            1820,
+            1968,
+            2199
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 50,
+      "type": "LayerUtility: PurgeVRAM",
+      "pos": [
+        2653.239501953125,
+        -34.502532958984375
+      ],
+      "size": [
+        267.0185852050781,
+        82
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "anything",
+          "name": "anything",
+          "type": "*",
+          "link": 1875
+        },
+        {
+          "label": "purge_cache",
+          "name": "purge_cache",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "purge_cache"
+          }
+        },
+        {
+          "label": "purge_models",
+          "name": "purge_models",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "purge_models"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "LayerUtility: PurgeVRAM",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        true
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 48,
+      "type": "ImageResize+",
+      "pos": [
+        1945.236572265625,
+        214.05284118652344
+      ],
+      "size": [
+        270,
+        218
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1820
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "label": "interpolation",
+          "name": "interpolation",
+          "type": "COMBO",
+          "widget": {
+            "name": "interpolation"
+          }
+        },
+        {
+          "label": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          }
+        },
+        {
+          "label": "condition",
+          "name": "condition",
+          "type": "COMBO",
+          "widget": {
+            "name": "condition"
+          }
+        },
+        {
+          "label": "multiple_of",
+          "name": "multiple_of",
+          "type": "INT",
+          "widget": {
+            "name": "multiple_of"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT"
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResize+",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1356,
+        1356,
+        "lanczos",
+        "keep proportion",
+        "always",
+        0
+      ]
+    },
+    {
+      "id": 42,
+      "type": "DyPE_FLUX",
+      "pos": [
+        -180.34136962890625,
+        153.27496337890625
+      ],
+      "size": [
+        300.60382080078125,
+        323.763671875
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 5317
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "label": "model_type",
+          "name": "model_type",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_type"
+          }
+        },
+        {
+          "label": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          }
+        },
+        {
+          "label": "yarn_alt_scaling",
+          "name": "yarn_alt_scaling",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "yarn_alt_scaling"
+          }
+        },
+        {
+          "label": "enable_dype",
+          "name": "enable_dype",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enable_dype"
+          }
+        },
+        {
+          "label": "base_resolution",
+          "name": "base_resolution",
+          "type": "INT",
+          "widget": {
+            "name": "base_resolution"
+          }
+        },
+        {
+          "label": "dype_start_sigma",
+          "name": "dype_start_sigma",
+          "type": "FLOAT",
+          "widget": {
+            "name": "dype_start_sigma"
+          }
+        },
+        {
+          "label": "dype_scale",
+          "name": "dype_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "dype_scale"
+          }
+        },
+        {
+          "label": "dype_exponent",
+          "name": "dype_exponent",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "dype_exponent"
+          }
+        },
+        {
+          "label": "base_shift",
+          "name": "base_shift",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "base_shift"
+          }
+        },
+        {
+          "label": "max_shift",
+          "name": "max_shift",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "max_shift"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Patched Model",
+          "name": "Patched Model",
+          "type": "MODEL",
+          "links": [
+            1568
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DyPE_FLUX",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        4096,
+        4096,
+        "auto",
+        "vision_yarn",
+        true,
+        true,
+        1024,
+        1,
+        2,
+        2,
+        0.5,
+        1.15
+      ]
+    },
+    {
+      "id": 14,
+      "type": "GetNode",
+      "pos": [
+        1053.1280517578125,
+        374.7455749511719
+      ],
+      "size": [
+        210,
+        34
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "POS++"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 45,
+      "type": "SeedVR2VideoUpscaler",
+      "pos": [
+        2311.313232421875,
+        -213.61546325683594
+      ],
+      "size": [
+        317.5425720214844,
+        386
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1981
+        },
+        {
+          "label": "dit",
+          "name": "dit",
+          "type": "SEEDVR2_DIT",
+          "link": 1759
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "SEEDVR2_VAE",
+          "link": 1725
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "resolution",
+          "name": "resolution",
+          "type": "INT",
+          "widget": {
+            "name": "resolution"
+          }
+        },
+        {
+          "label": "max_resolution",
+          "name": "max_resolution",
+          "type": "INT",
+          "widget": {
+            "name": "max_resolution"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        },
+        {
+          "label": "uniform_batch_size",
+          "name": "uniform_batch_size",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "uniform_batch_size"
+          }
+        },
+        {
+          "label": "color_correction",
+          "name": "color_correction",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_correction"
+          }
+        },
+        {
+          "label": "temporal_overlap",
+          "name": "temporal_overlap",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "temporal_overlap"
+          }
+        },
+        {
+          "label": "prepend_frames",
+          "name": "prepend_frames",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "prepend_frames"
+          }
+        },
+        {
+          "label": "input_noise_scale",
+          "name": "input_noise_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "input_noise_scale"
+          }
+        },
+        {
+          "label": "latent_noise_scale",
+          "name": "latent_noise_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "latent_noise_scale"
+          }
+        },
+        {
+          "label": "offload_device",
+          "name": "offload_device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "offload_device"
+          }
+        },
+        {
+          "label": "enable_debug",
+          "name": "enable_debug",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enable_debug"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            1862,
+            1875,
+            2204
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeedVR2VideoUpscaler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        132791396,
+        "randomize",
+        4096,
+        4096,
+        1,
+        false,
+        "lab",
+        0,
+        0,
+        0,
+        0,
+        "cpu",
+        false
+      ]
+    },
+    {
+      "id": 19,
+      "type": "KSampler",
+      "pos": [
+        1272.73291015625,
+        271.4024353027344
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 921
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 15
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 16
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": null
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "denoise",
+          "name": "denoise",
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        402162632006387,
+        "randomize",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "type": "SetNode",
+      "pos": [
+        201.5203857421875,
+        150.7197723388672
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "link": 1568
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1512
+          ]
+        }
+      ],
+      "title": "Set_MODEL",
+      "properties": {
+        "previousName": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "MODEL"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 52,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        2318.3623046875,
+        514.4910888671875
+      ],
+      "size": [
+        580.7939453125,
+        1078.60205078125
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "label": "image_a",
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 2199
+        },
+        {
+          "dir": 3,
+          "label": "image_b",
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 2204
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "comparer_mode": "Slide",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_xrjcp_00001_xrhuk_1766997652.jpg&type=temp&subfolder=&rand=0.4489852251650347&Rh-Comfy-Auth=eyJ1c2VySWQiOiIxOTI3Yzk3NWM3ZGQ3ZmMzMDEzNjBjMzQ1MjE0N2NlMSIsInNpZ25FeHBpcmUiOjE3Njc2MDIxMTI5NjIsInRzIjoxNzY2OTk3MzEyOTYyLCJzaWduIjoiZmJkY2NkYTQ2NzdmZmZkMTIwYmQ1YzQ2M2M4ZjgzZTcifQ==&Rh-Identify=1927c975c7dd7fc301360c3452147ce1"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_xrjcp_00002_xkgdm_1766997655.jpg&type=temp&subfolder=&rand=0.9849065584331417&Rh-Comfy-Auth=eyJ1c2VySWQiOiIxOTI3Yzk3NWM3ZGQ3ZmMzMDEzNjBjMzQ1MjE0N2NlMSIsInNpZ25FeHBpcmUiOjE3Njc2MDIxMTI5NjIsInRzIjoxNzY2OTk3MzEyOTYyLCJzaWduIjoiZmJkY2NkYTQ2NzdmZmZkMTIwYmQ1YzQ2M2M4ZjgzZTcifQ==&Rh-Identify=1927c975c7dd7fc301360c3452147ce1"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "type": "PreviewImage",
+      "pos": [
+        1016.7312622070312,
+        712.1901245117188
+      ],
+      "size": [
+        355.0763854980469,
+        658.3292846679688
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 33,
+      "type": "UNETLoader",
+      "pos": [
+        -853.5277709960938,
+        298.6186218261719
+      ],
+      "size": [
+        325.56591796875,
+        84.41541290283203
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            5317,
+            5322
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "z_image_turbo_bf16.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 47,
+      "type": "SeedVR2LoadDiTModel",
+      "pos": [
+        1946.0836181640625,
+        -382.1720886230469
+      ],
+      "size": [
+        307.6646423339844,
+        198
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "cache_model",
+          "name": "cache_model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "label": "torch_compile_args",
+          "name": "torch_compile_args",
+          "shape": 7,
+          "type": "SEEDVR2_TORCH_COMPILE"
+        },
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "blocks_to_swap",
+          "name": "blocks_to_swap",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "blocks_to_swap"
+          }
+        },
+        {
+          "label": "swap_io_components",
+          "name": "swap_io_components",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "swap_io_components"
+          }
+        },
+        {
+          "label": "offload_device",
+          "name": "offload_device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "offload_device"
+          }
+        },
+        {
+          "label": "attention_mode",
+          "name": "attention_mode",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "attention_mode"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "dit",
+          "name": "dit",
+          "type": "SEEDVR2_DIT",
+          "links": [
+            1759
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeedVR2LoadDiTModel",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "seedvr2_ema_7b_sharp_fp16.safetensors",
+        "cuda:0",
+        16,
+        false,
+        "cpu",
+        "sdpa"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "SeedVR2LoadVAEModel",
+      "pos": [
+        1916.296875,
+        -139.10838317871094
+      ],
+      "size": [
+        312.8667907714844,
+        294
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "cache_model",
+          "name": "cache_model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "label": "torch_compile_args",
+          "name": "torch_compile_args",
+          "shape": 7,
+          "type": "SEEDVR2_TORCH_COMPILE"
+        },
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "encode_tiled",
+          "name": "encode_tiled",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "encode_tiled"
+          }
+        },
+        {
+          "label": "encode_tile_size",
+          "name": "encode_tile_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "encode_tile_size"
+          }
+        },
+        {
+          "label": "encode_tile_overlap",
+          "name": "encode_tile_overlap",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "encode_tile_overlap"
+          }
+        },
+        {
+          "label": "decode_tiled",
+          "name": "decode_tiled",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "decode_tiled"
+          }
+        },
+        {
+          "label": "decode_tile_size",
+          "name": "decode_tile_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "decode_tile_size"
+          }
+        },
+        {
+          "label": "decode_tile_overlap",
+          "name": "decode_tile_overlap",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "decode_tile_overlap"
+          }
+        },
+        {
+          "label": "tile_debug",
+          "name": "tile_debug",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "tile_debug"
+          }
+        },
+        {
+          "label": "offload_device",
+          "name": "offload_device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "offload_device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "SEEDVR2_VAE",
+          "links": [
+            1725
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SeedVR2LoadVAEModel",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ema_vae_fp16.safetensors",
+        "cuda:0",
+        true,
+        1024,
+        128,
+        true,
+        1024,
+        128,
+        "false",
+        "cpu"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        1300.3162841796875,
+        103.78152465820312
+      ],
+      "size": [
+        265.4932861328125,
+        58
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 5408
+        },
+        {
+          "label": "shift",
+          "name": "shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            921
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingAuraFlow",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 27,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        794.9581909179688,
+        190.50172424316406
+      ],
+      "size": [
+        388.9517517089844,
+        82.97639465332031
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 5399
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            5408
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "dejpeg_v3.safetensors",
+        0.8000000000000002
+      ]
+    },
+    {
+      "id": 43,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        781.7237548828125,
+        36.04108428955078
+      ],
+      "size": [
+        388.9517517089844,
+        82.97639465332031
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 1512
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          }
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            5399
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "stock_photo_realistic.safetensors",
+        1.0000000000000002
+      ]
+    },
+    {
+      "id": 10,
+      "type": "EmptySD3LatentImage",
+      "pos": [
+        -490.40240478515625,
+        1082.867431640625
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            9,
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptySD3LatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1504,
+        2000,
+        1
+      ]
+    },
+    {
+      "id": 16,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -424.7579345703125,
+        571.4049682617188
+      ],
+      "size": [
+        271.9600524902344,
+        263.7972412109375
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 12
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "(Hyper-Realistic Fashion Close-Up – Extreme Detail)\nUltra-hyper realistic extreme close-up fashion beauty portrait, macro facial photography, camera distance extremely close, filling the entire frame with the face.\nVisible natural skin texture with individual pores, micro-wrinkles, faint peach fuzz, tiny skin imperfections, subtle redness around the nose and cheeks, realistic oil sheen on the T-zone.\nHigh-end fashion makeup applied flawlessly yet realistically:\n– finely milled foundation sitting naturally on the skin, slightly settling into pores\n– soft gradient blush diffused into cheekbones\n– eyeshadow with visible powder grain and smooth pigment blending\n– sharp eyeliner edges with micro feathering\n– mascara showing individual separated eyelashes, slight clumping for realism\n– lips with detailed lip lines, natural creases, soft satin lipstick texture, no plastic smoothness\n\nStudio macro lighting: soft diffused key light revealing skin texture, gentle side light emphasizing pores and micro-contrast, subtle shadow falloff for depth, no beauty retouch smoothing.\nTrue-to-life color science, cinematic contrast, high dynamic range, physically accurate skin subsurface scattering.\n\nShot on a macro cinema lens, ultra-shallow depth of field, razor-sharp focus on eyes and skin surface, background completely melted into creamy bokeh.\nPhotorealistic, 8K resolution, extreme clarity, editorial fashion photography, raw realism, zero airbrushing, zero CGI skin.\n\nNegative Prompt:\nplastic skin, waxy face, beauty filter, over-smoothed skin, airbrushed, doll face, unreal pores, fake texture, painterly, CGI look, anime, illustration, low detail, blurry, soft focus, excessive glow, flat lighting"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 17,
+      "type": "UNETLoader",
+      "pos": [
+        -850.608154296875,
+        165.0541534423828
+      ],
+      "size": [
+        331.2801208496094,
+        82.51496124267578
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "beyondREALITY_beyondREALITYZIMAGE.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "NunchakuZImageDiTLoader",
+      "pos": [
+        -842.5263671875,
+        430.3548583984375
+      ],
+      "size": [
+        322.9358215332031,
+        58
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model_name",
+          "name": "model_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NunchakuZImageDiTLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "svdq-int4_r256-z-image-turbo.safetensors"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "Anything Everywhere",
+      "pos": [
+        -439.8724365234375,
+        349.1909484863281
+      ],
+      "size": [
+        172.18905639648438,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#B39DDB",
+          "label": "anything",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 5322
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "SetNode",
+      "pos": [
+        -504.8262634277344,
+        978.5550537109375
+      ],
+      "size": [
+        210,
+        34
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "type": "*"
+        }
+      ],
+      "title": "Set_VAE",
+      "properties": {
+        "previousName": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "VAE"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 4,
+      "type": "Anything Everywhere",
+      "pos": [
+        -517.842041015625,
+        1029.95849609375
+      ],
+      "size": [
+        172.18905639648438,
+        26
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#FF6E6E",
+          "label": "anything",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "VAELoader",
+      "pos": [
+        -838.205078125,
+        965.7750244140625
+      ],
+      "size": [
+        314.1544189453125,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            2,
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "UltraFlux-v1_model.safetensors"
+      ]
+    },
+    {
+      "id": 53,
+      "type": "PreviewImage",
+      "pos": [
+        1233.5133056640625,
+        717.9293212890625
+      ],
+      "size": [
+        348.5771179199219,
+        653.028076171875
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3249
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 49,
+      "type": "SaveImage",
+      "pos": [
+        1445.6309814453125,
+        706.9623413085938
+      ],
+      "size": [
+        342.9839782714844,
+        671.5911865234375
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1862
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "seedVR2.5"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        1949.1646728515625,
+        477.7133483886719
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1968
+        },
+        {
+          "label": "upscale_method",
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          }
+        },
+        {
+          "label": "megapixels",
+          "name": "megapixels",
+          "type": "FLOAT",
+          "widget": {
+            "name": "megapixels"
+          }
+        },
+        {
+          "label": "resolution_steps",
+          "name": "resolution_steps",
+          "type": "INT",
+          "widget": {
+            "name": "resolution_steps"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1981,
+            3249
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScaleToTotalPixels",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "lanczos",
+        0.20000000000000004,
+        1
+      ]
+    },
+    {
+      "id": 31,
+      "type": "ResolutionMaster",
+      "pos": [
+        -846.4766235351562,
+        1089.30517578125
+      ],
+      "size": [
+        330,
+        645
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "input_image",
+          "name": "input_image",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "mode",
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          }
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "label": "auto_detect",
+          "name": "auto_detect",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_detect"
+          }
+        },
+        {
+          "label": "rescale_mode",
+          "name": "rescale_mode",
+          "type": "STRING",
+          "widget": {
+            "name": "rescale_mode"
+          }
+        },
+        {
+          "label": "rescale_value",
+          "name": "rescale_value",
+          "type": "FLOAT",
+          "widget": {
+            "name": "rescale_value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "",
+          "name": "",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "label": "",
+          "name": "",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "label": "",
+          "name": "",
+          "type": "FLOAT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionMaster",
+        "mode": "Manual",
+        "valueX": 1500,
+        "valueY": 2000,
+        "canvas_min_x": 0,
+        "canvas_max_x": 2048,
+        "canvas_step_x": 64,
+        "canvas_min_y": 0,
+        "canvas_max_y": 2048,
+        "canvas_step_y": 64,
+        "canvas_decimals_x": 0,
+        "canvas_decimals_y": 0,
+        "canvas_snap": true,
+        "canvas_dots": true,
+        "canvas_frame": true,
+        "action_slider_snap_min": 16,
+        "action_slider_snap_max": 256,
+        "action_slider_snap_step": 16,
+        "scaling_slider_min": 0.1,
+        "scaling_slider_max": 4,
+        "scaling_slider_step": 0.1,
+        "megapixels_slider_min": 0.5,
+        "megapixels_slider_max": 6,
+        "megapixels_slider_step": 0.1,
+        "snapValue": 16,
+        "upscaleValue": 1,
+        "targetResolution": 1080,
+        "targetMegapixels": 3,
+        "rescaleMode": "megapixels",
+        "rescaleValue": 1,
+        "autoDetect": true,
+        "autoFitOnChange": false,
+        "selectedCategory": "Standard",
+        "selectedPreset": "3:4 Portrait",
+        "useCustomCalc": false,
+        "manual_slider_min_w": 64,
+        "manual_slider_max_w": 2048,
+        "manual_slider_step_w": 64,
+        "manual_slider_min_h": 64,
+        "manual_slider_max_h": 2048,
+        "manual_slider_step_h": 64,
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Manual",
+        1500,
+        2000,
+        true,
+        "megapixels",
+        1
+      ]
+    }
+  ],
+  "links": [
+    [
+      2,
+      3,
+      0,
+      4,
+      0,
+      "VAE"
+    ],
+    [
+      3,
+      3,
+      0,
+      5,
+      0,
+      "*"
+    ],
+    [
+      4,
+      2,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      6,
+      0,
+      7,
+      0,
+      "*"
+    ],
+    [
+      6,
+      16,
+      0,
+      8,
+      0,
+      "*"
+    ],
+    [
+      9,
+      10,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      10,
+      10,
+      0,
+      12,
+      0,
+      "*"
+    ],
+    [
+      11,
+      21,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      2,
+      0,
+      16,
+      0,
+      "CLIP"
+    ],
+    [
+      15,
+      14,
+      0,
+      19,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      13,
+      0,
+      19,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      17,
+      21,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      19,
+      0,
+      21,
+      0,
+      "LATENT"
+    ],
+    [
+      921,
+      23,
+      0,
+      19,
+      0,
+      "MODEL"
+    ],
+    [
+      1512,
+      1,
+      0,
+      43,
+      0,
+      "MODEL"
+    ],
+    [
+      1568,
+      42,
+      0,
+      1,
+      0,
+      "MODEL"
+    ],
+    [
+      1725,
+      46,
+      0,
+      45,
+      2,
+      "SEEDVR2_VAE"
+    ],
+    [
+      1759,
+      47,
+      0,
+      45,
+      1,
+      "SEEDVR2_DIT"
+    ],
+    [
+      1820,
+      21,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      1862,
+      45,
+      0,
+      49,
+      0,
+      "IMAGE"
+    ],
+    [
+      1875,
+      45,
+      0,
+      50,
+      0,
+      "*"
+    ],
+    [
+      1968,
+      21,
+      0,
+      51,
+      0,
+      "IMAGE"
+    ],
+    [
+      1981,
+      51,
+      0,
+      45,
+      0,
+      "IMAGE"
+    ],
+    [
+      2199,
+      21,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      2204,
+      45,
+      0,
+      52,
+      1,
+      "IMAGE"
+    ],
+    [
+      3249,
+      51,
+      0,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      5317,
+      33,
+      0,
+      42,
+      0,
+      "MODEL"
+    ],
+    [
+      5322,
+      33,
+      0,
+      18,
+      0,
+      "MODEL"
+    ],
+    [
+      5399,
+      43,
+      0,
+      27,
+      0,
+      "MODEL"
+    ],
+    [
+      5408,
+      27,
+      0,
+      23,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Model",
+      "bounding": [
+        -855.4896850585938,
+        253.96597290039062,
+        988.0806884765625,
+        1573.85986328125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [
+      5831,
+      5832,
+      5833,
+      5834
+    ],
+    "ue_links": [
+      {
+        "downstream": 21,
+        "downstream_slot": 1,
+        "upstream": "3",
+        "upstream_slot": 0,
+        "controller": 4,
+        "type": "VAE"
+      },
+      {
+        "downstream": 19,
+        "downstream_slot": 3,
+        "upstream": "10",
+        "upstream_slot": 0,
+        "controller": 11,
+        "type": "LATENT"
+      },
+      {
+        "downstream": 47,
+        "downstream_slot": 0,
+        "upstream": "33",
+        "upstream_slot": 0,
+        "controller": 18,
+        "type": "MODEL"
+      },
+      {
+        "downstream": 46,
+        "downstream_slot": 0,
+        "upstream": "33",
+        "upstream_slot": 0,
+        "controller": 18,
+        "type": "MODEL"
+      }
+    ],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "ds": {
+      "scale": 0.5209868481924367,
+      "offset": [
+        87.37169569044255,
+        141.13893961528703
+      ]
+    },
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
