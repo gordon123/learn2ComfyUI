@@ -1,0 +1,2783 @@
+{
+  "id": "8b7a9a57-2303-4ef5-9fc2-bf41713bd1fc",
+  "revision": 0,
+  "last_node_id": 317,
+  "last_link_id": 560,
+  "nodes": [
+    {
+      "id": 130,
+      "type": "WanVideoDecode",
+      "pos": [
+        2548.994384765625,
+        -2330.836669921875
+      ],
+      "size": [
+        315,
+        198
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 554
+        },
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 530
+        },
+        {
+          "label": "enable_vae_tiling",
+          "name": "enable_vae_tiling",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enable_vae_tiling"
+          }
+        },
+        {
+          "label": "tile_x",
+          "name": "tile_x",
+          "type": "INT",
+          "widget": {
+            "name": "tile_x"
+          }
+        },
+        {
+          "label": "tile_y",
+          "name": "tile_y",
+          "type": "INT",
+          "widget": {
+            "name": "tile_y"
+          }
+        },
+        {
+          "label": "tile_stride_x",
+          "name": "tile_stride_x",
+          "type": "INT",
+          "widget": {
+            "name": "tile_stride_x"
+          }
+        },
+        {
+          "label": "tile_stride_y",
+          "name": "tile_stride_y",
+          "type": "INT",
+          "widget": {
+            "name": "tile_stride_y"
+          }
+        },
+        {
+          "label": "normalization",
+          "name": "normalization",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "normalization"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            493
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoDecode",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "c3ee35f3ece76e38099dc516182d69b406e16772",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        false,
+        272,
+        272,
+        144,
+        128,
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 305,
+      "type": "WanVideoTextEncode",
+      "pos": [
+        1488.4127197265625,
+        -2309.875732421875
+      ],
+      "size": [
+        446.814453125,
+        294.2735900878906
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "t5",
+          "name": "t5",
+          "shape": 7,
+          "type": "WANTEXTENCODER",
+          "link": 547
+        },
+        {
+          "label": "model_to_offload",
+          "name": "model_to_offload",
+          "shape": 7,
+          "type": "WANVIDEOMODEL"
+        },
+        {
+          "label": "positive_prompt",
+          "name": "positive_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "positive_prompt"
+          },
+          "link": 559
+        },
+        {
+          "label": "negative_prompt",
+          "name": "negative_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "negative_prompt"
+          }
+        },
+        {
+          "label": "force_offload",
+          "name": "force_offload",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "force_offload"
+          }
+        },
+        {
+          "label": "use_disk_cache",
+          "name": "use_disk_cache",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_disk_cache"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text_embeds",
+          "name": "text_embeds",
+          "type": "WANVIDEOTEXTEMBEDS",
+          "links": [
+            548
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoTextEncode",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "bd0a634ec0bdf9d55ff80871053bde05ac1b6d90",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "她边唱歌边向观众招手打招呼。|  她边唱歌边做了一个比心手势。|  她边唱歌边跳舞。 |  她边唱歌边做出飞吻的动作。 | 她边唱歌边用手指划出一道光斑，显示酷炫的闪光文字：\"I Love You\"| 她边唱歌边挥手。",
+        "明亮的色调、曝光过度、静止、模糊的细节、字幕、风格、作品、画作、图像、静止的物体、整体呈灰色、质量最差、质量低下、JPEG 压缩残留、难看、不完整、多出的手指、画得糟糕的手部、画得糟糕的面部、变形、畸形、形状不规则的肢体、融合的手指、静态图片、杂乱的背景、三只腿、背景中有许多人",
+        true,
+        false,
+        "gpu"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 306,
+      "type": "LoadWanVideoT5TextEncoder",
+      "pos": [
+        1026.697265625,
+        -2305.60791015625
+      ],
+      "size": [
+        370.9598693847656,
+        130
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model_name",
+          "name": "model_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          }
+        },
+        {
+          "label": "precision",
+          "name": "precision",
+          "type": "COMBO",
+          "widget": {
+            "name": "precision"
+          }
+        },
+        {
+          "label": "load_device",
+          "name": "load_device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "load_device"
+          }
+        },
+        {
+          "label": "quantization",
+          "name": "quantization",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "quantization"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "wan_t5_model",
+          "name": "wan_t5_model",
+          "type": "WANTEXTENCODER",
+          "links": [
+            547
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadWanVideoT5TextEncoder",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "058286fc0f3b0651a2f6b68309df3f06e8332cc0",
+        "widget_ue_connectable": {},
+        "aux_id": "MeiGen-AI/InfiniteTalk"
+      },
+      "widgets_values": [
+        "umt5-xxl-enc-bf16.safetensors",
+        "bf16",
+        "offload_device",
+        "disabled"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 128,
+      "type": "WanVideoSampler",
+      "pos": [
+        2151.673583984375,
+        -2297.76318359375
+      ],
+      "size": [
+        296.1477966308594,
+        690
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "link": 553
+        },
+        {
+          "label": "image_embeds",
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "link": 413
+        },
+        {
+          "label": "text_embeds",
+          "name": "text_embeds",
+          "shape": 7,
+          "type": "WANVIDEOTEXTEMBEDS",
+          "link": 548
+        },
+        {
+          "label": "samples",
+          "name": "samples",
+          "shape": 7,
+          "type": "LATENT"
+        },
+        {
+          "label": "feta_args",
+          "name": "feta_args",
+          "shape": 7,
+          "type": "FETAARGS"
+        },
+        {
+          "label": "context_options",
+          "name": "context_options",
+          "shape": 7,
+          "type": "WANVIDCONTEXT"
+        },
+        {
+          "label": "cache_args",
+          "name": "cache_args",
+          "shape": 7,
+          "type": "CACHEARGS"
+        },
+        {
+          "label": "flowedit_args",
+          "name": "flowedit_args",
+          "shape": 7,
+          "type": "FLOWEDITARGS"
+        },
+        {
+          "label": "slg_args",
+          "name": "slg_args",
+          "shape": 7,
+          "type": "SLGARGS"
+        },
+        {
+          "label": "loop_args",
+          "name": "loop_args",
+          "shape": 7,
+          "type": "LOOPARGS"
+        },
+        {
+          "label": "experimental_args",
+          "name": "experimental_args",
+          "shape": 7,
+          "type": "EXPERIMENTALARGS"
+        },
+        {
+          "label": "sigmas",
+          "name": "sigmas",
+          "shape": 7,
+          "type": "SIGMAS"
+        },
+        {
+          "label": "unianimate_poses",
+          "name": "unianimate_poses",
+          "shape": 7,
+          "type": "UNIANIMATE_POSE"
+        },
+        {
+          "label": "fantasytalking_embeds",
+          "name": "fantasytalking_embeds",
+          "shape": 7,
+          "type": "FANTASYTALKING_EMBEDS"
+        },
+        {
+          "label": "uni3c_embeds",
+          "name": "uni3c_embeds",
+          "shape": 7,
+          "type": "UNI3C_EMBEDS"
+        },
+        {
+          "label": "multitalk_embeds",
+          "name": "multitalk_embeds",
+          "shape": 7,
+          "type": "MULTITALK_EMBEDS",
+          "link": 357
+        },
+        {
+          "label": "freeinit_args",
+          "name": "freeinit_args",
+          "shape": 7,
+          "type": "FREEINITARGS"
+        },
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        },
+        {
+          "label": "shift",
+          "name": "shift",
+          "type": "FLOAT",
+          "widget": {
+            "name": "shift"
+          }
+        },
+        {
+          "label": "seed",
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "label": "force_offload",
+          "name": "force_offload",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "force_offload"
+          }
+        },
+        {
+          "label": "scheduler",
+          "name": "scheduler",
+          "type": "COMBO",
+          "widget": {
+            "name": "scheduler"
+          }
+        },
+        {
+          "label": "riflex_freq_index",
+          "name": "riflex_freq_index",
+          "type": "INT",
+          "widget": {
+            "name": "riflex_freq_index"
+          }
+        },
+        {
+          "label": "denoise_strength",
+          "name": "denoise_strength",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "denoise_strength"
+          }
+        },
+        {
+          "label": "batched_cfg",
+          "name": "batched_cfg",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "batched_cfg"
+          }
+        },
+        {
+          "label": "rope_function",
+          "name": "rope_function",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "rope_function"
+          }
+        },
+        {
+          "label": "start_step",
+          "name": "start_step",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "start_step"
+          }
+        },
+        {
+          "label": "end_step",
+          "name": "end_step",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "end_step"
+          }
+        },
+        {
+          "label": "add_noise_to_samples",
+          "name": "add_noise_to_samples",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "add_noise_to_samples"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            530
+          ]
+        },
+        {
+          "label": "denoised_samples",
+          "name": "denoised_samples",
+          "type": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoSampler",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "c3ee35f3ece76e38099dc516182d69b406e16772",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        4,
+        1.0000000000000002,
+        11.000000000000002,
+        151027828039182,
+        "randomize",
+        true,
+        "dpm++_sde",
+        0,
+        1,
+        false,
+        "comfy",
+        0,
+        -1,
+        true
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 291,
+      "type": "GetImageSizeAndCount",
+      "pos": [
+        874.4291381835938,
+        -1804.3778076171875
+      ],
+      "size": [
+        190.86483764648438,
+        86
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 550
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            539,
+            540
+          ]
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            516
+          ]
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            517
+          ]
+        },
+        {
+          "label": "count",
+          "name": "count",
+          "type": "INT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetImageSizeAndCount",
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "6dfd2c2420260dbb321a3412b9f1dff439a0f2e3",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 238,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        839.7489624023438,
+        -1930.3531494140625
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP_VISION",
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            555
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "clip_vision_h.safetensors"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 237,
+      "type": "WanVideoClipVisionEncode",
+      "pos": [
+        1154.8165283203125,
+        -1882.345458984375
+      ],
+      "size": [
+        280.9771423339844,
+        262
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_vision",
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 555
+        },
+        {
+          "label": "image_1",
+          "name": "image_1",
+          "type": "IMAGE",
+          "link": 539
+        },
+        {
+          "label": "image_2",
+          "name": "image_2",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "negative_image",
+          "name": "negative_image",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "strength_1",
+          "name": "strength_1",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_1"
+          }
+        },
+        {
+          "label": "strength_2",
+          "name": "strength_2",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_2"
+          }
+        },
+        {
+          "label": "crop",
+          "name": "crop",
+          "type": "COMBO",
+          "widget": {
+            "name": "crop"
+          }
+        },
+        {
+          "label": "combine_embeds",
+          "name": "combine_embeds",
+          "type": "COMBO",
+          "widget": {
+            "name": "combine_embeds"
+          }
+        },
+        {
+          "label": "force_offload",
+          "name": "force_offload",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "force_offload"
+          }
+        },
+        {
+          "label": "tiles",
+          "name": "tiles",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "tiles"
+          }
+        },
+        {
+          "label": "ratio",
+          "name": "ratio",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "ratio"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_embeds",
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_CLIPEMBEDS",
+          "links": [
+            433
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoClipVisionEncode",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "ff779c91714d8ee3484cd4119b082c72a1734b72",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1,
+        1,
+        "center",
+        "average",
+        true,
+        0,
+        0.5
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 192,
+      "type": "WanVideoImageToVideoMultiTalk",
+      "pos": [
+        1612.849609375,
+        -1848.1641845703125
+      ],
+      "size": [
+        349.6015625,
+        290
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "WANVAE",
+          "link": 557
+        },
+        {
+          "label": "start_image",
+          "name": "start_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 540
+        },
+        {
+          "label": "clip_embeds",
+          "name": "clip_embeds",
+          "shape": 7,
+          "type": "WANVIDIMAGE_CLIPEMBEDS",
+          "link": 433
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 516
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 517
+        },
+        {
+          "label": "frame_window_size",
+          "name": "frame_window_size",
+          "type": "INT",
+          "widget": {
+            "name": "frame_window_size"
+          }
+        },
+        {
+          "label": "motion_frame",
+          "name": "motion_frame",
+          "type": "INT",
+          "widget": {
+            "name": "motion_frame"
+          }
+        },
+        {
+          "label": "force_offload",
+          "name": "force_offload",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "force_offload"
+          }
+        },
+        {
+          "label": "colormatch",
+          "name": "colormatch",
+          "type": "COMBO",
+          "widget": {
+            "name": "colormatch"
+          }
+        },
+        {
+          "label": "tiled_vae",
+          "name": "tiled_vae",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "tiled_vae"
+          }
+        },
+        {
+          "label": "mode",
+          "name": "mode",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          }
+        },
+        {
+          "label": "output_path",
+          "name": "output_path",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "output_path"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_embeds",
+          "name": "image_embeds",
+          "type": "WANVIDIMAGE_EMBEDS",
+          "links": [
+            413
+          ]
+        },
+        {
+          "label": "output_path",
+          "name": "output_path",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoImageToVideoMultiTalk",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "49430f900bf812a1e281560bafafd04c43dfdf13",
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        }
+      },
+      "widgets_values": [
+        832,
+        480,
+        81,
+        9,
+        false,
+        "disabled",
+        false,
+        "infinitetalk",
+        ""
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 131,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        2911.83154296875,
+        -2317.70703125
+      ],
+      "size": [
+        219.3603515625,
+        487.18597412109375
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 493
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 552
+        },
+        {
+          "label": "meta_batch",
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager"
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE"
+        },
+        {
+          "label": "frame_rate",
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          }
+        },
+        {
+          "label": "loop_count",
+          "name": "loop_count",
+          "type": "INT",
+          "widget": {
+            "name": "loop_count"
+          }
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "label": "format",
+          "name": "format",
+          "type": "COMBO",
+          "widget": {
+            "name": "format"
+          }
+        },
+        {
+          "label": "pingpong",
+          "name": "pingpong",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "pingpong"
+          }
+        },
+        {
+          "label": "save_output",
+          "name": "save_output",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "save_output"
+          }
+        },
+        {
+          "label": "no_preview",
+          "name": "no_preview",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "no_preview"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Filenames",
+          "name": "Filenames",
+          "type": "VHS_FILENAMES"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine",
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "0a75c7958fe320efcb052f1d9f8451fd20c730a8",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": {
+        "frame_rate": 25,
+        "loop_count": 0,
+        "filename_prefix": "WanVideo2_1_InfiniteTalk",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "no_preview": false,
+        "videopreview": {
+          "paused": false,
+          "hidden": false,
+          "params": {
+            "score": "0",
+            "filename": "WanVideo2_1_InfiniteTalk_00007_p87-audio_yqnbj_1767301966.mp4",
+            "workflow": "WanVideo2_1_InfiniteTalk_00007_p87.png",
+            "fullpath": "/data/ComfyUI/personal/1927c975c7dd7fc301360c3452147ce1/output/WanVideo2_1_InfiniteTalk_00007_p87-audio.mp4",
+            "format": "video/h264-mp4",
+            "subfolder": "",
+            "label": "Normal",
+            "type": "output",
+            "frame_rate": 25
+          }
+        }
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 122,
+      "type": "WanVideoModelLoader",
+      "pos": [
+        331.50506591796875,
+        -2304.697021484375
+      ],
+      "size": [
+        436.3512268066406,
+        338
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "compile_args",
+          "name": "compile_args",
+          "shape": 7,
+          "type": "WANCOMPILEARGS"
+        },
+        {
+          "label": "block_swap_args",
+          "name": "block_swap_args",
+          "shape": 7,
+          "type": "BLOCKSWAPARGS",
+          "link": 560
+        },
+        {
+          "label": "lora",
+          "name": "lora",
+          "shape": 7,
+          "type": "WANVIDLORA",
+          "link": 349
+        },
+        {
+          "label": "vram_management_args",
+          "name": "vram_management_args",
+          "shape": 7,
+          "type": "VRAM_MANAGEMENTARGS"
+        },
+        {
+          "label": "extra_model",
+          "name": "extra_model",
+          "shape": 7,
+          "type": "VACEPATH"
+        },
+        {
+          "label": "fantasytalking_model",
+          "name": "fantasytalking_model",
+          "shape": 7,
+          "type": "FANTASYTALKINGMODEL"
+        },
+        {
+          "label": "multitalk_model",
+          "name": "multitalk_model",
+          "shape": 7,
+          "type": "MULTITALKMODEL",
+          "link": 355
+        },
+        {
+          "label": "fantasyportrait_model",
+          "name": "fantasyportrait_model",
+          "shape": 7,
+          "type": "FANTASYPORTRAITMODEL"
+        },
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "base_precision",
+          "name": "base_precision",
+          "type": "COMBO",
+          "widget": {
+            "name": "base_precision"
+          }
+        },
+        {
+          "label": "quantization",
+          "name": "quantization",
+          "type": "COMBO",
+          "widget": {
+            "name": "quantization"
+          }
+        },
+        {
+          "label": "load_device",
+          "name": "load_device",
+          "type": "COMBO",
+          "widget": {
+            "name": "load_device"
+          }
+        },
+        {
+          "label": "attention_mode",
+          "name": "attention_mode",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "attention_mode"
+          }
+        },
+        {
+          "label": "rms_norm_function",
+          "name": "rms_norm_function",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "rms_norm_function"
+          }
+        },
+        {
+          "label": "vace_model",
+          "name": "vace_model",
+          "shape": 7,
+          "type": "VACEPATH"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "WANVIDEOMODEL",
+          "links": [
+            553
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoModelLoader",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "058286fc0f3b0651a2f6b68309df3f06e8332cc0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "aniWan2114BFp8E4m3fn_i2v480pNew.safetensors",
+        "fp16_fast",
+        "disabled",
+        "offload_device",
+        "sageattn",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 125,
+      "type": "LoadAudio",
+      "pos": [
+        -1103.1475830078125,
+        -1686.577880859375
+      ],
+      "size": [
+        404.9698791503906,
+        136
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          }
+        },
+        {
+          "label": "audioUI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            257
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "099723d33e957f72890bacb2c06fd640de5cda49ce6bbbe8b56dd23d9f81e59e.MP3",
+        null,
+        null
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 284,
+      "type": "LoadImage",
+      "pos": [
+        -1088.1705322265625,
+        -2069.05859375
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            549
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "50824b8e801ce965c3afa8e4e28305dc26099de1d6522921a2e05ccfb1f255c6.png",
+        "image"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 138,
+      "type": "WanVideoLoraSelect",
+      "pos": [
+        -297.7256164550781,
+        -2262.529052734375
+      ],
+      "size": [
+        503.4073486328125,
+        150
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prev_lora",
+          "name": "prev_lora",
+          "shape": 7,
+          "type": "WANVIDLORA"
+        },
+        {
+          "label": "blocks",
+          "name": "blocks",
+          "shape": 7,
+          "type": "SELECTEDBLOCKS"
+        },
+        {
+          "label": "lora",
+          "name": "lora",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora"
+          }
+        },
+        {
+          "label": "strength",
+          "name": "strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength"
+          }
+        },
+        {
+          "label": "low_mem_load",
+          "name": "low_mem_load",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "low_mem_load"
+          }
+        },
+        {
+          "label": "merge_loras",
+          "name": "merge_loras",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "merge_loras"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "lora",
+          "name": "lora",
+          "type": "WANVIDLORA",
+          "links": [
+            349
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoLoraSelect",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "058286fc0f3b0651a2f6b68309df3f06e8332cc0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+        1,
+        false,
+        false
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 120,
+      "type": "MultiTalkModelLoader",
+      "pos": [
+        -282.091796875,
+        -2059.014404296875
+      ],
+      "size": [
+        511.7737121582031,
+        66.51400756835938
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MULTITALKMODEL",
+          "links": [
+            355
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MultiTalkModelLoader",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "058286fc0f3b0651a2f6b68309df3f06e8332cc0",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "InfiniteTalk/Wan2_1-InfiniTetalk-Single_fp16.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 307,
+      "type": "LayerUtility: ImageScaleByAspectRatio V2",
+      "pos": [
+        -262.8602294921875,
+        -1903.9615478515625
+      ],
+      "size": [
+        363.6851501464844,
+        330
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 549
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "proportional_width",
+          "name": "proportional_width",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_width"
+          }
+        },
+        {
+          "label": "proportional_height",
+          "name": "proportional_height",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_height"
+          }
+        },
+        {
+          "label": "fit",
+          "name": "fit",
+          "type": "COMBO",
+          "widget": {
+            "name": "fit"
+          }
+        },
+        {
+          "label": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          }
+        },
+        {
+          "label": "round_to_multiple",
+          "name": "round_to_multiple",
+          "type": "COMBO",
+          "widget": {
+            "name": "round_to_multiple"
+          }
+        },
+        {
+          "label": "scale_to_side",
+          "name": "scale_to_side",
+          "type": "COMBO",
+          "widget": {
+            "name": "scale_to_side"
+          }
+        },
+        {
+          "label": "scale_to_length",
+          "name": "scale_to_length",
+          "type": "INT",
+          "widget": {
+            "name": "scale_to_length"
+          },
+          "link": 558
+        },
+        {
+          "label": "background_color",
+          "name": "background_color",
+          "type": "STRING",
+          "widget": {
+            "name": "background_color"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            550
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK"
+        },
+        {
+          "label": "original_size",
+          "name": "original_size",
+          "type": "BOX"
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT"
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "original",
+        1,
+        1,
+        "crop",
+        "lanczos",
+        "16",
+        "longest",
+        832,
+        "#000000"
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 159,
+      "type": "AudioCrop",
+      "pos": [
+        -668.8970947265625,
+        -1672.2008056640625
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 257
+        },
+        {
+          "label": "start_time",
+          "name": "start_time",
+          "type": "STRING",
+          "widget": {
+            "name": "start_time"
+          }
+        },
+        {
+          "label": "end_time",
+          "name": "end_time",
+          "type": "STRING",
+          "widget": {
+            "name": "end_time"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "AUDIO",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            301,
+            552
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioCrop",
+        "cnr_id": "audio-separation-nodes-comfyui",
+        "ver": "31a4567726e035097cc2d1f767767908a6fda2ea",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "5:00",
+        "6:00"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 314,
+      "type": "CR Prompt Text",
+      "pos": [
+        -1115.6793212890625,
+        -1509.503662109375
+      ],
+      "size": [
+        350.114013671875,
+        108
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            559
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Prompt Text",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "a man is singing."
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 317,
+      "type": "Note",
+      "pos": [
+        -1847.02392578125,
+        -1654.410400390625
+      ],
+      "size": [
+        509.4296875,
+        637.6074829101562
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "She gently pressed the microphone to her lips, its body shimmering with a pale pink glow. A thin white mist rose beneath her feet, containing tiny, warm yellow particles that rose and fell gently with her breath. | She turned, microphone in hand, and a pale purple halo spread across the curtain behind her, concealing translucent stars of light. Particles beside these stars drifted slowly as if blown by the wind. | She swayed gently, the microphone cable causing it to sway slightly. The light reflected from the microphone fell onto the mist, creating shimmering specks of light. | She raised the microphone diagonally upwards, and a thin silver line shot from its tip, surrounded by tiny particles of light, like diamonds strung on a beam of light. | She stepped forward, microphone in hand, each step illuminating a pale blue ring of light. The particles on these rings slowly floated upwards, merging into the surrounding mist. | She sang softly into the microphone, pale gray smoke drifting in from either side, containing fluorescent particles that glowed softly when near the microphone, as if awakened by the song. She raises the microphone, her fingertips tracing a pale golden trail where they touch, particles at the edge of the trail slowly dispersing, gently sliding off her shoulder. | She raises the microphone to sing a soft voice, a thin mist of light gathering around it, particles colliding and splashing out even finer fragments of warm light. | She tilts her head, holding the microphone, a wisp of mist carrying luminous particles drifting past her ear, landing on the microphone's mesh, like a layer of shimmering light. | She bends over, microphone in one hand, a ring of light illuminating the ground in front of her, particles within the ring slowly sinking and then gently rising again with the bending motion. | She stands up, microphone in her arms, the starlight behind her slowly converging towards the center, drawing surrounding particles to form a small ball of light. | She raises the microphone towards the audience, the light effect on the microphone top flickering, causing surrounding particles to shimmer, as if greeting the audience. | She shakes her shoulder, microphone in hand, her other hand lightly tracing a path through the air, leaving a pale silver trail, particles beside it drifting left and right with the shoulder movement. She turned, her skirt billowing the mist, particles clinging to her hem, trailing a trail of shimmering light as she moved. | She stepped forward, microphone in hand, particles dancing beneath her feet, like gentle twilight, disappearing as they touched the ground. | She raised the microphone, singing softly, light reflecting off it refracting in the mist, forming faint patterns of light, particles flowing slowly across them. | She lowered her head, microphone in hand, her hair brushing against it, the light from the microphone carrying surrounding particles, casting shimmering spots of light on the ground. | She walked sideways, microphone in hand, the mist of light moving beside her, particles casting tiny specks of light on the ground, moving with her steps. | She swayed the microphone gently, it against her chest, particles clinging to it in the mist of light, swaying gently with her breath. | She raised the microphone, light emanating from its top carrying particles that drifted down like raindrops of light. | She held the microphone forward, ripples of light forming in the air before her, particles rising and falling with the song. She sang a long note into the microphone, and the particles in the smoke on either side slowly increased, as if drawn by the song, drawing closer to the microphone. | ​​She raised her arm, holding the microphone, and the light trail at her fingertips slowly widened, the particles within it becoming denser, like a thin layer of light woven in. | She turned, lifting the microphone, and the light band behind her slowly lengthened, the particles at the end of the band swaying gently, like the tail of light waving. | She bent over, gripping the microphone, and the particles in front of her floated downwards, landing on the ground and forming faint light imprints, which slowly dispersed as she stood up. | She stood up, holding the microphone in one hand, and the light band behind her extended upwards, the particles beside it also floating upwards, as if trying to ascend to the heavens. | She took a step, holding the microphone, and with each step, the microphone lightly touched the light mist, the particles scattering to the sides and slowly merging into the mist. | She raised the microphone to the side, the light effect on the microphone top turning light blue, the emitted light illuminating flowing particles in the mist, like a blue river of light floating. | She swayed, gripping the microphone, and the light patterns beneath her feet deformed with her movements, the particles within them changing direction, as if moving with her body. She leans down, her head close to the microphone, the light mist in front of her slowly lowers, particles within the mist gathering into small clusters of light on the ground, then dispersing as she looks up. | She raises her arm, holding the microphone, the light trails at her fingertips exploding into small clusters of light, like gentle little fireworks in the air. | She raises the microphone and sings softly, the light mist around the microphone slowly thins, particles within it drifting away, as if slowly leaving. | She walks sideways, holding the microphone, the color of the light band beside her slowly lightens, the brightness of the particles within the band also decreasing, as if slowly dimming. | She turns, holding the microphone in one hand, a starlight suddenly flashes behind her, the flashing light causing the surrounding particles to brighten as well, like stars twinkling. | She gently shakes the microphone, the microphone string swaying gently, the swaying string causing particles to trace thin lines in the air, the lines slowly disappearing. | She raises the microphone downwards, the light effect from the top of the microphone shining on the ground, particles on the ground forming flowing bands of light as the microphone sways, as if the ground is glowing. | She holds the microphone forward, particles in front of her suddenly gather into small clusters, dispersing and gathering again with the singing, as if changing with the melody. She turns around with the microphone, the light bands behind her crossing and separating, the particles flung out as they separate drifting to the sides before slowly falling back down. | She steps with the microphone, the light patterns beneath her feet brightening with each step, the particles within them also brightening, as if the heavier the steps, the brighter they become. | She raises the microphone to sing the chorus, the light mist around the microphone suddenly thickens, more light threads emerging from the mist, each thread wrapped with tiny particles. | She shakes her shoulders while holding the microphone, the light patterns beneath her feet rising and falling with her shoulder movements, the particles within them moving in sync, as if echoing her shoulders. | She raises her arm while holding the microphone with one hand, the particles in the light trail at her fingertips slowly falling, like raindrops of light gently descending, unhurried and gentle. | She turns around with the microphone in her arms, the light stars on the backdrop behind her slowly moving, leaving faint light trails, the trails containing particles. | She raises the microphone towards the audience, the light effects on the microphone top flashing faster, causing the surrounding particles to flash rapidly, as if enlivening the atmosphere. | She bends over while holding the microphone, the particles in front of her gather into small light shapes, slowly deforming with her bending motion, as if changing with her posture. She stood up, her microphone close to her face, and the band of light behind her slowly widened, the particles within it increasing as if the band were gradually thickening. | She shook the microphone, and with each shake, particles sprang from the microphone, drifting outwards and slowly disappearing into the air. | She raised the microphone and sang softly, the light reflected from it forming faint shadows in the mist, the shadows containing dancing particles. | She walked sideways, the particles in the mist beside her casting moving patches of light on the ground, the patches moving with her steps, neither too fast nor too slow. | She held the microphone in one hand and lowered her head, the particles in the mist in front of her slowly gathering into small clusters, moving downwards with her head movement, then gently rising again. | She carried the microphone and took steps, each step causing the microphone to touch the misty light, the particles floating in the air for a moment before disappearing, as if reluctant to leave. | She raised the microphone upwards, the light effect at the top turning golden, the emitted light illuminating golden particles in the mist, like a sprinkle of gold dust. | She held the microphone forward, the particles in the mist in front of her colliding with each other, emitting faint, shimmering light, as if whispering. She turned around, her microphone close to her ear. As the light trails behind her crossed and separated, more particles were flung out, drifting further as if trying to reach the audience. | She raised her arm, holding the microphone. The light trails at her fingertips slowly disappeared, leaving behind particles that gradually dimmed, like she was slowly falling asleep. | She gently shook the microphone. The halo around her widened, the particles within it becoming denser, as if the halo itself were growing larger. | She swayed her body, holding the microphone, and with her other hand, she lightly stroked the light mist. The particles stirred up by the stroke formed small vortices of light, which slowly swirled. | She tilted her head, holding the microphone with one hand. The particles floating beside her ear slowly approached the microphone, as if drawn to it, unwilling to leave. | She turned around, hugging the microphone. The light trails left by the moving stars on the backdrop behind her gradually became clearer, their paths becoming visible, containing particles. | She held the microphone to the side. The light effect from the microphone top shone on the mist, making the direction of particle movement within the mist clearer, as if following the light. | She bent over, holding the microphone. The particles drifting downwards in front of her formed spots of light on the ground, increasing with each bend, as if more and more particles appeared with each bend. She stood up, her microphone close to her face, and the starlight gathering behind her accelerated, drawing more particles towards the center, as if quickening her pace. | She stepped forward, microphone in hand, and as the light patterns beneath her feet brightened, more particles within them dispersed outward, as if moving away. | She raised the microphone and sang softly, and in the thinning mist around it, particles drifted faster into the distance, as if eager to leave. | She walked sideways, microphone in hand, and the color of the light band beside her gradually faded, the brightness of the particles within it decreasing, as if slowly fading. | She raised her arm, microphone in one hand, and the particles falling from her fingertips became denser, like a gentle rain of light. | She gently shook the microphone, and the swaying microphone wires caused the particles to draw increasingly longer lines, as if the lines were slowly lengthening. | She raised the microphone upward, and the particles illuminated by the golden light effect at the top of the microphone slowly floated upward, as if flying higher and higher into the sky. | She held the microphone forward, and the frequency of particle collisions in the mist in front of her increased, flashing more intensely, as if growing increasingly excited. She turned around, her microphone close to her ear. As the light trails behind her crossed and separated, more particles were flung out, drifting further as if trying to go farther. | She took a step, microphone in hand. The light patterns beneath her feet brightened, and more particles within them dispersed outwards, spreading wider. | She raised the microphone and sang softly. In the thinning mist around the microphone, particles drifted faster into the distance, as if floating even faster. | She swayed her body, the light vortex created by the light mist slowly widening, the particles within spinning faster, as if spinning more rapidly. | She held the microphone with one hand, tilting her head. Particles floating beside her ear slowly approached the microphone, as if drawn closer, unwilling to separate. | She turned, microphone in her arms. The light trails left by the moving stars on the backdrop behind her gradually became clearer, their paths becoming more distinct. | She raised the microphone to the side. The light from the top of the microphone shone on the mist, making the direction of particle movement within the mist clearer, as if seeing more clearly. | She bent over, microphone in hand. Particles drifting downwards in front of her formed spots of light on the ground, increasing with each bend. She stood up, her microphone close to her body, and the starlight gathering behind her accelerated, drawing more particles towards the center. | She shook the microphone, and with each shake, particles were ejected from the microphone and scattered in all directions. | She raised the microphone to sing the chorus, and the light mist around it suddenly thickened, with more and denser light threads emerging from it. | She gripped the microphone and moved forward, and the particles in front of her suddenly clustered together, spreading and gathering again with her singing, becoming tighter and more dispersed. | She turned around, her microphone close to her body, and the light bands behind her crossed and separated, the particles flung out as they separated drifting to the sides, drifting faster. | She stepped forward, microphone in hand, and the light patterns beneath her feet brightened with each step, the particles within them also brightening, becoming more pronounced. | She raised the microphone and sang softly, the light reflected from the microphone forming faint shadows in the mist, the shadows becoming clearer, the particles brighter. | She gripped the microphone and swayed her shoulders, the light patterns beneath her feet rising and falling with her shoulder movements, the particles within them moving, becoming more noticeable. She raises her arm, microphone in hand, and particles in the light trail at her fingertips slowly fall, as if reluctant to drop. | She turns, microphone in hand, and the starlight on the backdrop behind her moves slowly, leaving faint streaks of light that grow brighter with each movement. | She raises the microphone towards the audience, and the light effect on top of the microphone flashes faster, causing the surrounding particles to flash even faster. | She bends over, microphone in hand, and particles in front of her gather into small shapes of light, slowly deforming and becoming clearer with each bend. | She stands up, microphone close to her, and the band of light behind her widens, containing more and more particles, almost overflowing. | She walks sideways, microphone in hand, and particles in the mist beside her cast moving spots of light on the ground, brighter and more noticeable. | She raises the microphone and sings softly, and the mist around the microphone thins, the particles in the mist drifting further away, more evenly. | She holds the microphone forward, and particles in the mist in front of her collide, emitting faint, rhythmic flashes of light. | She bends down, microphone in hand, and particles in the mist in front of her slowly gather into small clusters, moving downwards with each bend, more steadily. She took steps, the microphone in her arms, each step causing it to touch the misty light. The particles released from the touch lingered in the air for a while before disappearing, their lingering presence seemingly endless. | She raised the microphone upwards, the light at its tip turning golden, the emitted light illuminating the golden particles within the mist, making the gold even brighter. | She swayed the microphone, her other hand lightly tracing the misty light, the particles stirred up by the stroke forming tiny, increasingly rounded vortices of light. | She turned, close to the microphone, the band of light behind her slowly lengthening, the particles at its ends swaying gently, their movement becoming even more graceful. | She raised her arm, holding the microphone, the light trails at her fingertips exploding into small clusters of light particles, the explosions becoming even softer, the particles dispersing even more slowly. | She raised the microphone and sang softly, a thin mist of light gathering around it, the particles within colliding and splashing out even finer, warmer fragments of light, their warmth becoming even more pronounced."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 137,
+      "type": "DownloadAndLoadWav2VecModel",
+      "pos": [
+        -301.9208984375,
+        -1460.2259521484375
+      ],
+      "size": [
+        330.96728515625,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          }
+        },
+        {
+          "label": "base_precision",
+          "name": "base_precision",
+          "type": "COMBO",
+          "widget": {
+            "name": "base_precision"
+          }
+        },
+        {
+          "label": "load_device",
+          "name": "load_device",
+          "type": "COMBO",
+          "widget": {
+            "name": "load_device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "wav2vec_model",
+          "name": "wav2vec_model",
+          "type": "WAV2VECMODEL",
+          "links": [
+            334
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadWav2VecModel",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "058286fc0f3b0651a2f6b68309df3f06e8332cc0",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "TencentGameMate/chinese-wav2vec2-base",
+        "fp16",
+        "main_device"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 170,
+      "type": "AudioSeparation",
+      "pos": [
+        -240.85227966308594,
+        -1286.201171875
+      ],
+      "size": [
+        270,
+        166
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 301
+        },
+        {
+          "label": "chunk_fade_shape",
+          "name": "chunk_fade_shape",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "chunk_fade_shape"
+          }
+        },
+        {
+          "label": "chunk_length",
+          "name": "chunk_length",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "chunk_length"
+          }
+        },
+        {
+          "label": "chunk_overlap",
+          "name": "chunk_overlap",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "chunk_overlap"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Bass",
+          "name": "Bass",
+          "type": "AUDIO"
+        },
+        {
+          "label": "Drums",
+          "name": "Drums",
+          "type": "AUDIO"
+        },
+        {
+          "label": "Other",
+          "name": "Other",
+          "type": "AUDIO"
+        },
+        {
+          "label": "Vocals",
+          "name": "Vocals",
+          "type": "AUDIO",
+          "links": [
+            335
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioSeparation",
+        "cnr_id": "audio-separation-nodes-comfyui",
+        "ver": "31a4567726e035097cc2d1f767767908a6fda2ea",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        "linear",
+        10,
+        0.1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 194,
+      "type": "MultiTalkWav2VecEmbeds",
+      "pos": [
+        99.2183837890625,
+        -1463.115478515625
+      ],
+      "size": [
+        291.08203125,
+        326
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "wav2vec_model",
+          "name": "wav2vec_model",
+          "type": "WAV2VECMODEL",
+          "link": 334
+        },
+        {
+          "label": "audio_1",
+          "name": "audio_1",
+          "type": "AUDIO",
+          "link": 335
+        },
+        {
+          "label": "audio_2",
+          "name": "audio_2",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "audio_3",
+          "name": "audio_3",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "audio_4",
+          "name": "audio_4",
+          "shape": 7,
+          "type": "AUDIO"
+        },
+        {
+          "label": "ref_target_masks",
+          "name": "ref_target_masks",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "normalize_loudness",
+          "name": "normalize_loudness",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "normalize_loudness"
+          }
+        },
+        {
+          "label": "num_frames",
+          "name": "num_frames",
+          "type": "INT",
+          "widget": {
+            "name": "num_frames"
+          },
+          "link": 551
+        },
+        {
+          "label": "fps",
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          }
+        },
+        {
+          "label": "audio_scale",
+          "name": "audio_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "audio_scale"
+          }
+        },
+        {
+          "label": "audio_cfg_scale",
+          "name": "audio_cfg_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "audio_cfg_scale"
+          }
+        },
+        {
+          "label": "multi_audio_type",
+          "name": "multi_audio_type",
+          "type": "COMBO",
+          "widget": {
+            "name": "multi_audio_type"
+          }
+        },
+        {
+          "label": "add_noise_floor",
+          "name": "add_noise_floor",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "add_noise_floor"
+          }
+        },
+        {
+          "label": "smooth_transients",
+          "name": "smooth_transients",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "smooth_transients"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "multitalk_embeds",
+          "name": "multitalk_embeds",
+          "type": "MULTITALK_EMBEDS",
+          "links": [
+            357
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO"
+        },
+        {
+          "label": "num_frames",
+          "name": "num_frames",
+          "type": "INT",
+          "links": [
+            556
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MultiTalkWav2VecEmbeds",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "3d7801cee4c8e3106078dd9b9f146caee95069ba",
+        "widget_ue_connectable": {
+          "num_frames": true
+        }
+      },
+      "widgets_values": [
+        true,
+        400,
+        25,
+        1,
+        1,
+        "para",
+        false,
+        false
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 129,
+      "type": "WanVideoVAELoader",
+      "pos": [
+        937.2056274414062,
+        -2207.46826171875
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "compile_args",
+          "name": "compile_args",
+          "shape": 7,
+          "type": "WANCOMPILEARGS"
+        },
+        {
+          "label": "model_name",
+          "name": "model_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "model_name"
+          }
+        },
+        {
+          "label": "precision",
+          "name": "precision",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "precision"
+          }
+        },
+        {
+          "label": "use_cpu_cache",
+          "name": "use_cpu_cache",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_cpu_cache"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "WANVAE",
+          "slot_index": 0,
+          "links": [
+            554,
+            557
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoVAELoader",
+        "cnr_id": "ComfyUI-WanVideoWrapper",
+        "ver": "c3ee35f3ece76e38099dc516182d69b406e16772",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Wan2_1_VAE_bf16.safetensors",
+        "bf16",
+        false
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 316,
+      "type": "WanVideoBlockSwap",
+      "pos": [
+        137.14385986328125,
+        -1912.714111328125
+      ],
+      "size": [
+        281.404296875,
+        202
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "blocks_to_swap",
+          "name": "blocks_to_swap",
+          "type": "INT",
+          "widget": {
+            "name": "blocks_to_swap"
+          }
+        },
+        {
+          "label": "offload_img_emb",
+          "name": "offload_img_emb",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "offload_img_emb"
+          }
+        },
+        {
+          "label": "offload_txt_emb",
+          "name": "offload_txt_emb",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "offload_txt_emb"
+          }
+        },
+        {
+          "label": "use_non_blocking",
+          "name": "use_non_blocking",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_non_blocking"
+          }
+        },
+        {
+          "label": "vace_blocks_to_swap",
+          "name": "vace_blocks_to_swap",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "vace_blocks_to_swap"
+          }
+        },
+        {
+          "label": "prefetch_blocks",
+          "name": "prefetch_blocks",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "prefetch_blocks"
+          }
+        },
+        {
+          "label": "block_swap_debug",
+          "name": "block_swap_debug",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "block_swap_debug"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "block_swap_args",
+          "name": "block_swap_args",
+          "type": "BLOCKSWAPARGS",
+          "links": [
+            560
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanVideoBlockSwap",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        20,
+        false,
+        false,
+        false,
+        0,
+        0,
+        false
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 293,
+      "type": "PreviewAny",
+      "pos": [
+        407.5265808105469,
+        -1465.8975830078125
+      ],
+      "size": [
+        339.83807373046875,
+        330.400146484375
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "source",
+          "name": "source",
+          "type": "*",
+          "link": 556
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.50",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 312,
+      "type": "JWInteger",
+      "pos": [
+        -746.1422119140625,
+        -1858.6341552734375
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            558
+          ]
+        }
+      ],
+      "title": "longest resoplution",
+      "properties": {
+        "Node name for S&R": "JWInteger",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        720
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 308,
+      "type": "JWInteger",
+      "pos": [
+        -714.2611694335938,
+        -2026.2156982421875
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value",
+          "name": "value",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            551
+          ]
+        }
+      ],
+      "title": "frame",
+      "properties": {
+        "Node name for S&R": "JWInteger",
+        "widget_ue_connectable": {},
+        "ttNbgOverride": {
+          "bgcolor": "#533",
+          "groupcolor": "#A88",
+          "color": "#322"
+        }
+      },
+      "widgets_values": [
+        3425
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    }
+  ],
+  "links": [
+    [
+      257,
+      125,
+      0,
+      159,
+      0,
+      "AUDIO"
+    ],
+    [
+      301,
+      159,
+      0,
+      170,
+      0,
+      "AUDIO"
+    ],
+    [
+      334,
+      137,
+      0,
+      194,
+      0,
+      "WAV2VECMODEL"
+    ],
+    [
+      335,
+      170,
+      3,
+      194,
+      1,
+      "AUDIO"
+    ],
+    [
+      349,
+      138,
+      0,
+      122,
+      2,
+      "WANVIDLORA"
+    ],
+    [
+      355,
+      120,
+      0,
+      122,
+      6,
+      "MULTITALKMODEL"
+    ],
+    [
+      357,
+      194,
+      0,
+      128,
+      15,
+      "MULTITALK_EMBEDS"
+    ],
+    [
+      413,
+      192,
+      0,
+      128,
+      1,
+      "WANVIDIMAGE_EMBEDS"
+    ],
+    [
+      433,
+      237,
+      0,
+      192,
+      2,
+      "WANVIDIMAGE_CLIPEMBEDS"
+    ],
+    [
+      493,
+      130,
+      0,
+      131,
+      0,
+      "IMAGE"
+    ],
+    [
+      516,
+      291,
+      1,
+      192,
+      3,
+      "INT"
+    ],
+    [
+      517,
+      291,
+      2,
+      192,
+      4,
+      "INT"
+    ],
+    [
+      530,
+      128,
+      0,
+      130,
+      1,
+      "LATENT"
+    ],
+    [
+      539,
+      291,
+      0,
+      237,
+      1,
+      "IMAGE"
+    ],
+    [
+      540,
+      291,
+      0,
+      192,
+      1,
+      "IMAGE"
+    ],
+    [
+      547,
+      306,
+      0,
+      305,
+      0,
+      "WANTEXTENCODER"
+    ],
+    [
+      548,
+      305,
+      0,
+      128,
+      2,
+      "WANVIDEOTEXTEMBEDS"
+    ],
+    [
+      549,
+      284,
+      0,
+      307,
+      0,
+      "IMAGE"
+    ],
+    [
+      550,
+      307,
+      0,
+      291,
+      0,
+      "IMAGE"
+    ],
+    [
+      551,
+      308,
+      0,
+      194,
+      7,
+      "INT"
+    ],
+    [
+      552,
+      159,
+      0,
+      131,
+      1,
+      "AUDIO"
+    ],
+    [
+      553,
+      122,
+      0,
+      128,
+      0,
+      "WANVIDEOMODEL"
+    ],
+    [
+      554,
+      129,
+      0,
+      130,
+      0,
+      "WANVAE"
+    ],
+    [
+      555,
+      238,
+      0,
+      237,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      556,
+      194,
+      2,
+      293,
+      0,
+      "*"
+    ],
+    [
+      557,
+      129,
+      0,
+      192,
+      0,
+      "WANVAE"
+    ],
+    [
+      558,
+      312,
+      0,
+      307,
+      9,
+      "INT"
+    ],
+    [
+      559,
+      314,
+      0,
+      305,
+      2,
+      "STRING"
+    ],
+    [
+      560,
+      316,
+      0,
+      122,
+      1,
+      "BLOCKSWAPARGS"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Models",
+      "bounding": [
+        -307.7256164550781,
+        -2378.297119140625,
+        1085.5819091796875,
+        814.3345947265625
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Audio",
+      "bounding": [
+        -311.9208984375,
+        -1539.49755859375,
+        1069.28564453125,
+        429.2964172363281
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "Group",
+      "bounding": [
+        829.7489624023438,
+        -2404.436767578125,
+        2311.443603515625,
+        856.2725830078125
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "input",
+      "bounding": [
+        -1125.6793212890625,
+        -2142.65869140625,
+        736.7822265625,
+        751.1549072265625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "VHS_KeepIntermediate": true,
+    "links_added_by_ue": [],
+    "VHS_MetadataImage": true,
+    "ue_links": [],
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "node_versions": {
+      "ComfyUI-WanVideoWrapper": "0a11c67a0c0062b534178920a0d6dcaa75e7b5fe",
+      "audio-separation-nodes-comfyui": "31a4567726e035097cc2d1f767767908a6fda2ea",
+      "comfyui-videohelpersuite": "a7ce59e381934733bfae03b1be029756d6ce936d",
+      "ComfyUI-KJNodes": "f7eb33abc80a2aded1b46dff0dd14d07856a7d50",
+      "comfy-core": "0.3.43"
+    },
+    "ds": {
+      "scale": 0.658845000000004,
+      "offset": [
+        766.5969354259129,
+        2572.130882666983
+      ]
+    }
+  },
+  "version": 0.4
+}
