@@ -56,7 +56,8 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 21. [UI สวยเรืองแสง ใช้ดีป่าวไม่รู้](https://github.com/PGCRT/CRT-Nodes)
 22. [เอาไว้ทดลอง ค่า sigma ต่างๆ](https://github.com/lrzjason/Comfyui-LatentUtils)
 23. [Image compression Jpeg](https://github.com/KookYn9404/KOOK_ImageCompression) ไว้ย่อ ขนาดไฟล์ เวลา upscale
-24.  
+24. [Kiko tools ](https://github.com/ComfyAssets/ComfyUI-KikoTools) XYZ test z-image
+25. [LatentUtils](https://github.com/lrzjason/Comfyui-LatentUtils) HFEPostProcessor ปรับรายละเอียด เหมาะสำหรับ highres fix
 
 
 
