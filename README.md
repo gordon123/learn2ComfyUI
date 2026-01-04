@@ -41,20 +41,22 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 7. [Grounded SAM2](https://github.com/neverbiasu/ComfyUI-SAM2), [Grounded-SAM-2 read paper](https://github.com/IDEA-Research/Grounded-SAM-2)
 8. [Segment anything Kijai](https://github.com/kijai/ComfyUI-segment-anything-2)
 9. [AdvancedReduxControl](https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl)
-10. [catvton-flux-lora-alpha](https://huggingface.co/xiaozaa/catvton-flux-lora-alpha)
-11. [vton-ic-v3-lora](https://huggingface.co/Patil/vton-ic-lora/tree/main)
+10. [catvton-flux-lora-alpha](https://huggingface.co/xiaozaa/catvton-flux-lora-alpha) เปลี่ยนเสื้อผ้า
+11. [vton-ic-v3-lora](https://huggingface.co/Patil/vton-ic-lora/tree/main) เปลี่ยนเสื้อผ้ส
 12. https://www.rapidtables.com/web/color/RGB_Color.html
-13. [ComfyUI-Photopea](https://github.com/coolzilj/ComfyUI-Photopea)
-14. [comfyui-upscale-by-model](https://github.com/TheBill2001/comfyui-upscale-by-model)
+13. [ComfyUI-Photopea](https://github.com/coolzilj/ComfyUI-Photopea) เปิดเว๊ป photopea ใน load image
+14. [comfyui-upscale-by-model](https://github.com/TheBill2001/comfyui-upscale-by-model) 
 15. [ComfyUI_Comfyroll_CustomNodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)
 16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes)
 17. [เครื่องมือ edit ภาพ](https://github.com/o-l-l-i)
 18. [ComfyUI_Local_Lora_Gallery](https://github.com/Firetheft/ComfyUI_Local_Lora_Gallery)
-19. [เครื่องมือโชว์ห่วยเยอะมาก](https://github.com/justUmen/Bjornulf_custom_nodes)
+19. [เครื่องมือโชว์ห่วยเยอะมาก](https://github.com/justUmen/Bjornulf_custom_nodes)มีเครื่องมือให้ใช้เป็นร้อย ลองเล่นกันดู
 20. [เอาไว้ทดสอบค่า sigma, sampler RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF)
 21. [UI สวยเรืองแสง ใช้ดีป่าวไม่รู้](https://github.com/PGCRT/CRT-Nodes)
 22. [เอาไว้ทดลอง ค่า sigma ต่างๆ](https://github.com/lrzjason/Comfyui-LatentUtils)
-23. [Image compression Jpeg](https://github.com/KookYn9404/KOOK_ImageCompression)
+23. [Image compression Jpeg](https://github.com/KookYn9404/KOOK_ImageCompression) ไว้ย่อ ขนาดไฟล์ เวลา upscale
+24.  
+
 
 
 ## LLM, VLM
