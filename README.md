@@ -107,10 +107,19 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 ## Character consistancy
 1. [ComfyUI_StableHair_ll](https://github.com/lldacing/ComfyUI_StableHair_ll)
 2. [comfyui-portrait-master](https://github.com/florestefano1975/comfyui-portrait-master)
-
+3. 
 
 ## Nunchaku
 1. [ComfyUI-nunchaku](https://github.com/mit-han-lab/ComfyUI-nunchaku)
 2. [svdq-in4-shuttle-jarguar](https://huggingface.co/mit-han-lab/svdq-fp4-shuttle-jaguar)
 3. [theunlikely/svdq-int4-jibMixFlux_v8Accentueight](https://huggingface.co/theunlikely/svdq-int4-jibMixFlux_v8Accentueight/tree/main)
 4. [ICedit ](https://github.com/River-Zhang/ICEdit/issues/1#issuecomment-2846568411)
+
+## คลัง prompt nanobannaa
+1. [snapmingle หนับหนุนของคนไทย](https://snapmingle.online/ai-prompt-gallery/search)
+2. [1000+ ของคนจีน ใช้ chromeแปล openana](https://opennana.com/awesome-prompt-gallery)
+3. [https://www.localbanana.io/](https://www.localbanana.io/)
+4. [https://tihubb.com/ai-prompt](https://tihubb.com/ai-prompt)
+5. [https://youmind.com/nano-banana-pro-prompts 3000+](https://youmind.com/nano-banana-pro-prompts)
+6. [https://nanobananaprompt.org/prompts](https://nanobananaprompt.org/prompts)
+7. [github รวม 1000+](https://github.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts)
