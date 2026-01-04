@@ -4,7 +4,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 <br>
 [การใช้ ComfyUI ทั่วไป 2025](https://www.youtube.com/playlist?list=PLSPWSpkmItyKRoaAHRMbXVf70yb_2utLi)<br>
 
-[หัำทำ animation ด้วย WAN series](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
+[หัดทำ animation ด้วย WAN series](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
 
 [การใช้ ComfyUI ทั่วไป 2026](https://www.youtube.com/playlist?list=PLSPWSpkmItyIdj0d0IKJf7As3SqikPjry)
 
