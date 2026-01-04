@@ -1,65 +1,15 @@
-## ห้องสมุดส่วนตัวเล็ก ๆ สำหรับเรียนรู้ ComfyUI 
-อ่านสรุปบทความเกี่ยวกับ Generative ได้ที่นี้ [หน้า Wiki](https://github.com/gordon123/learn2ComfyUI/wiki)
-My Youtube Channel: https://www.youtube.com/@iimate2485
+## ห้องสมุดส่วนตัวเล็ก ๆ สำหรับเรียนรู้ ComfyUI <br>
+อ่านสรุปบทความเกี่ยวกับ Generative ได้ที่นี้ [หน้า Wiki](https://github.com/gordon123/learn2ComfyUI/wiki)<br>
+My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 <br>
+[การใช้ ComfyUI ทั่วไป 2025](https://www.youtube.com/playlist?list=PLSPWSpkmItyKRoaAHRMbXVf70yb_2utLi)<br>
 
-[![Watch the Playlist](https://img.youtube.com/vi/KvZRuwcZ3Is/0.jpg)](https://www.youtube.com/playlist?list=PLSPWSpkmItyKRoaAHRMbXVf70yb_2utLi)
+[หัำทำ animation ด้วย WAN series](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
 
-<br>
-### This repo is the collecttion of Jupyter script, and workflow.json files for ComfyUI<br>
+[การใช้ ComfyUI ทั่วไป 2026](https://www.youtube.com/playlist?list=PLSPWSpkmItyIdj0d0IKJf7As3SqikPjry)
 
-Hello,<br>
-Here is my personal vlog to play around with ComfyUI! <br>
-Feel free to leave a comment if you find it useful!<br>
-
-
-# Wan2.1 Theseries ; In PROGRESS!!
-
-## Todo-List ราย การที่จะสอน ใน Wan The series (To be continue)
-
-## 🎯Wan2.1 Basic
-### T2V = Text to video
-✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว  <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
-
-
-### i2V = Image to video
-✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
-
-## 🎯Wan2.1 Fun
-### FLF2V First & Last Frame to Video
-✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
-### Control: Control net
-✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
-### Inpaint 
-✅ อัดคลิปแล้ว  ✅ ตัดต่อเสร็จแล้ว <img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/Youtube-logo%20(1).png?raw=true" alt="YouTube Logo" width="20"/> [**ON-AIR**](https://youtu.be/w33wMZyt6xA)
-
-### Control Camera
-[workflow control Camera](https://github.com/amao2001/ganloss-latent-space/blob/main/workflow/2025-05-05%20wanvideo_Fun_control_camera.json)
-
-## 🎯Wan2.1 Advance technique
-https://huggingface.co/Kijai/WanVideo_comfy
-
-### [VACE](https://github.com/ali-vilab/VACE)
-
-อื่นๆ <br>
-[MoviiGen](https://github.com/ZulutionAI/MoviiGen1.1) <br>
-Float <br>
-[CausVid](https://huggingface.co/lightx2v/Wan2.1-T2V-14B-CausVid) <br>
-Phanton 14B <br>
-
-### Audio TTS, voice
-[ComfyUI_NTCosyVoice](https://github.com/muxueChen/ComfyUI_NTCosyVoice/tree/main)
-
-### สำหรับใครที่ vram < 8GB-12GB ลองใช้ โมเดล GGUF น่าจะเร็วขึ้น
-
-Download จาก  <br>
-8, 12 GB [T2V](https://huggingface.co/city96/Wan2.1-T2V-14B-gguf/tree/main)    <br>
-แนะนำสำหรับ ram 8GB VGA [i2V 480p](https://huggingface.co/city96/Wan2.1-I2V-14B-480P-gguf/tree/main) หรือ [GGUF City96](https://huggingface.co/collections/city96/gguf-image-model-quants-67199ef97bf1d9ca49033234)   <br>
-แนะนำสำหรับ ram 12GB VGA [i2v 720p](https://huggingface.co/city96/Wan2.1-I2V-14B-720P-gguf/tree/main)  <br>
-12GB ram ก็แนะนำใช้พวก FP8 version ด้วยเหมือนกัน โหลดได้จาก Model manager
-
+ใครอยากให้ทำ คลิป สอนการใช้ อะไรทิ้งข้อความได้ที่ [หน้าเฟสบุค iimate24 ](https://www.facebook.com/iimate24/)เด้อ DM มาบางทีไม่เห็นไม่ได้เป็นเพื่อน
 ---
-
 
 ## Custom node list ! recommended 
 1. ComfyUI-Manager
@@ -104,6 +54,7 @@ Download จาก  <br>
 20. [เอาไว้ทดสอบค่า sigma, sampler RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF)
 21. [UI สวยเรืองแสง ใช้ดีป่าวไม่รู้](https://github.com/PGCRT/CRT-Nodes)
 22. [เอาไว้ทดลอง ค่า sigma ต่างๆ](https://github.com/lrzjason/Comfyui-LatentUtils)
+23. [Image compression Jpeg](https://github.com/KookYn9404/KOOK_ImageCompression)
 
 
 ## LLM, VLM
