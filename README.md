@@ -3,6 +3,10 @@
 My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 <br>
 ## Playlist แนะนำการใช้ ComfyUI (ผมไม่มีสอน ไม่มีเปิดคอส ใครเอาคลิปไปแอบอ้างไม่ใช่ผมเด้อ มีแค่ Youtube)
+สามารถ support ค่ากาแฟได้ที่ <a href="https://ko-fi.com/iimate24">
+  <img src="https://raw.githubusercontent.com/gordon123/learn2ComfyUI/main/image/img/kofi_symbol.png" alt="Donate" width="70">
+</a>
+
 [การใช้ ComfyUI ทั่วไป 2025](https://www.youtube.com/playlist?list=PLSPWSpkmItyKRoaAHRMbXVf70yb_2utLi)<br>
 
 [หัดทำ animation ด้วย WAN series](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
