@@ -2,6 +2,7 @@
 อ่านสรุปบทความเกี่ยวกับ Generative ได้ที่นี้ [หน้า Wiki](https://github.com/gordon123/learn2ComfyUI/wiki)<br>
 My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 <br>
+## Playlist แนะนำการใช้ ComfyUI (ผมไม่มีสอน ไม่มีเปิดคอส ใครเอาคลิปไปแอบอ้างไม่ใช่ผมเด้อ มีแค่ Youtube)
 [การใช้ ComfyUI ทั่วไป 2025](https://www.youtube.com/playlist?list=PLSPWSpkmItyKRoaAHRMbXVf70yb_2utLi)<br>
 
 [หัดทำ animation ด้วย WAN series](https://www.youtube.com/playlist?list=PLSPWSpkmItyLFCZBAXi4YSLHC9xBx5h6t)
