@@ -127,3 +127,4 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 5. [https://youmind.com/nano-banana-pro-prompts 3000+](https://youmind.com/nano-banana-pro-prompts)
 6. [https://nanobananaprompt.org/prompts](https://nanobananaprompt.org/prompts)
 7. [github รวม 1000+](https://github.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts)
+8. [เว๊ปนี้ แจก Prompt สำหรับ Cinematic โค๊ดดดดี](https://iimate24.com/prompt-cinematic-support/)
