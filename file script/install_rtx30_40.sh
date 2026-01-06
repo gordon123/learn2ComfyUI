@@ -1,6 +1,4 @@
 #!/bin/bash
-cd ~
-mkdir /workspace
 cd /workspace
 
 
