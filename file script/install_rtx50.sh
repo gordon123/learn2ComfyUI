@@ -5,7 +5,8 @@ git clone https://github.com/comfyanonymous/ComfyUI.git
 cd ComfyUI || exit
 
 # ลง PyTorch nightly version (CUDA 12.8)
-pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+#pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
 
 # ติดตั้ง requirements ของ ComfyUI
 pip install -r requirements.txt
