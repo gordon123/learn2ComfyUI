@@ -2,6 +2,8 @@
 
 ### Qwen image edit
 
+https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/tree/main
+
 object remover <br>
 https://huggingface.co/prithivMLmods/Qwen-Image-Edit-2511-Object-Remover
 
