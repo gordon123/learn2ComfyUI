@@ -5,6 +5,7 @@ echo "🛑------------------------------------------------🛑"
 echo "   ⚠️  WAIT A MINUTE! (เดี๋ยวก่อนวัยรุ่น!)"
 echo "   Have you activated your Virtual Environment?"
 echo "   (คุณได้ activate venv แล้วหรือยัง?)"
+echo "   (คุณได้ activate venv แล้วหรือยัง?)"
 echo "🛑------------------------------------------------🛑"
 read -p "👉 Type 'y' to continue or 'n' to stop (y/n): " choice
 
@@ -13,7 +14,7 @@ case "$choice" in
     echo "✅ Awesome! Systems go. Initiating launch sequence..." 
     ;;
   n|N|no|No ) 
-    echo "🚫 Script Aborted! (ยกเลิกภารกิจ)"
+    echo "🚫 Script Aborted! (ยกเลิกภารกิจ พิมพ์คำสั่งนี้ก่อนนะจ๊ะ-> source venv/bin/activate)"
     echo "💡 Please run: source /path/to/venv/bin/activate"
     exit 1 
     ;;
