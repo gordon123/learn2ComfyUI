@@ -5,7 +5,6 @@ echo "🛑------------------------------------------------🛑"
 echo "   ⚠️  WAIT A MINUTE! (เดี๋ยวก่อนวัยรุ่น!)"
 echo "   Have you activated your Virtual Environment?"
 echo "   (คุณได้ activate venv แล้วหรือยัง?)"
-echo "   (คุณได้ activate venv แล้วหรือยัง?)"
 echo "🛑------------------------------------------------🛑"
 read -p "👉 Type 'y' to continue or 'n' to stop (y/n): " choice
 
@@ -14,8 +13,9 @@ case "$choice" in
     echo "✅ Awesome! Systems go. Initiating launch sequence..." 
     ;;
   n|N|no|No ) 
-    echo "🚫 Script Aborted! (ยกเลิกภารกิจ พิมพ์คำสั่งนี้ก่อนนะจ๊ะ-> source venv/bin/activate)"
-    echo "💡 Please run: source venv/bin/activate"
+    echo "🚫 Script Aborted! (ยกเลิกภารกิจ)"
+    echo "💡 Please run: สร้าง vertual venv ใหม่ คำสั่ง python -m venv venv"
+    echo "💡 Please run: คำสั่งใช้งาน source venv/bin/activate"
     exit 1 
     ;;
   * ) 
@@ -86,5 +86,4 @@ echo "✅ Installation Complete! (ติดตั้งเสร็จสิ้�
 echo "------------------------------------------------"
 echo "To launch, copy & run this:"
 echo "cd /workspace/ComfyUI"
-echo "export PYTORCH_ALLOC_CONF=max_split_size_mb:128"
 echo "python main.py --listen"
