@@ -15,7 +15,7 @@ case "$choice" in
     ;;
   n|N|no|No ) 
     echo "🚫 Script Aborted! (ยกเลิกภารกิจ พิมพ์คำสั่งนี้ก่อนนะจ๊ะ-> source venv/bin/activate)"
-    echo "💡 Please run: source /path/to/venv/bin/activate"
+    echo "💡 Please run: source venv/bin/activate"
     exit 1 
     ;;
   * ) 
