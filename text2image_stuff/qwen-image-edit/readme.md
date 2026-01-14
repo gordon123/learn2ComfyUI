@@ -27,6 +27,10 @@ https://huggingface.co/WarmBloodAban/Anything_to_Real_Characters_2511
 
 https://huggingface.co/lilylilith/AnyPose
 
+https://huggingface.co/prithivMLmods/Qwen-Image-Edit-2511-Unblur-Upscale
+
+https://civitai.com/models/1939453/qwenedit-consistence-lora
+
 ### Qwen Image 2512
 
 แตกภาพเป็นหลายเลเยอร์  <br>
