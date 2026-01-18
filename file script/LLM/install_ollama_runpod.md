@@ -32,3 +32,7 @@ gemini-3-flash-preview:latest
 
 ollama help เพื่อดูคำสั่งอื่นๆ
 
+เชค server run
+
+curl http://127.0.0.1:11434
+
