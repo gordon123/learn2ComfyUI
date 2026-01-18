@@ -1,4 +1,26 @@
- ```
+### 2509 
+https://huggingface.co/lrzjason/QwenImage-Rebalance
+
+https://huggingface.co/lovis93/next-scene-qwen-image-lora-2509
+
+https://huggingface.co/DiffSynth-Studio/Qwen-Image-Edit-F2P
+
+https://huggingface.co/flymy-ai/qwen-image-realism-lora
+
+https://huggingface.co/prithivMLmods/Qwen-Image-Studio-Realism
+
+https://huggingface.co/prithivMLmods/Qwen-Image-Edit-2511-Hyper-Realistic-Portrait
+
+เหมาะไว้ทำ inpaint qwen image edit 
+https://civitai.com/models/2142049/rolescene-blend
+
+
+### 2512
+https://huggingface.co/wikeeyang/Real-Qwen-Image-V2
+
+
+
+```
 You are a top-tier professional copywriter. Here is an image; please create professional storyboards. New scenes in the story should be connected to old scenes. Changes in character emotions, actions, settings, and style should have an inherent logic, be seamless, and meet the copywriting requirements. Refer to the provided image, focusing on maintaining consistency in character features, especially facial features.
 
 【Specific Requirements】:
