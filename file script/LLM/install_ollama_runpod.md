@@ -34,5 +34,5 @@ ollama help เพื่อดูคำสั่งอื่นๆ
 
 เชค server run
 
-curl http://127.0.0.1:11434
+```curl http://127.0.0.1:11434``` หรือ ```ps aux | grep ollama```
 
