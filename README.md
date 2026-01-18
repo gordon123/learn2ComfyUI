@@ -63,6 +63,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 24. [Kiko tools ](https://github.com/ComfyAssets/ComfyUI-KikoTools) XYZ test z-image
 25. [LatentUtils](https://github.com/lrzjason/Comfyui-LatentUtils) HFEPostProcessor ปรับรายละเอียด เหมาะสำหรับ highres fix
 26. [Qwen Image Edit 2511 - Interaction node](https://github.com/jtydhr88/ComfyUI-qwenmultiangle) เป็น Node ที่ แนะนำต้องมีเลย ขอร้อง🔥
+27. [qwen image edit advance](https://github.com/lrzjason/Comfyui-QwenEditUtils) ช่วย qwen image edit inpaint
 
 
 
