@@ -1,5 +1,7 @@
 # Step-by-step Install Ollama บน Runpod
 
+## ACTIVATE VENV ก่อน
+
 ### 1. Update & Install Tools
 ```
 apt-get update && apt-get install -y pciutils lshw curl
