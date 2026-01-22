@@ -52,7 +52,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 13. [ComfyUI-Photopea](https://github.com/coolzilj/ComfyUI-Photopea) เปิดเว๊ป photopea ใน load image
 14. [comfyui-upscale-by-model](https://github.com/TheBill2001/comfyui-upscale-by-model) 
 15. [ComfyUI_Comfyroll_CustomNodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)
-16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes)
+16. [ComfyUI-enricos-nodes](https://github.com/erosDiffusion/ComfyUI-enricos-nodes) มีโหนดช่วยเรื่อง วาง composition ตำแหน่ง object แบบ realtime
 17. [เครื่องมือ edit ภาพ](https://github.com/o-l-l-i)
 18. [ComfyUI_Local_Lora_Gallery](https://github.com/Firetheft/ComfyUI_Local_Lora_Gallery)
 19. [เครื่องมือโชว์ห่วยเยอะมาก](https://github.com/justUmen/Bjornulf_custom_nodes)มีเครื่องมือให้ใช้เป็นร้อย ลองเล่นกันดู
