@@ -120,3 +120,22 @@ python -c "import flash_attn; print('flash-attn OK:', flash_attn.__version__)"
 ```
 flash-attn OK: 2.8.3
 ```
+
+
+# อีกวิธีใช้ script
+
+ดาวโหลด install_flash_attn_comfyui_runpod.sh
+
+วิธีใช้ (สั้น ๆ): <br>
+1) เข้า venv ของ ComfyUI ก่อน<br>
+   source /workspace/venv/bin/activate<br>
+
+2) สร้างไฟล์ install.sh แล้วให้สิทธิ์รัน<br>
+```
+   chmod +x install_flash_attn_comfyui_runpod.sh
+```
+
+3) รัน
+```
+   ./install_flash_attn_comfyui_runpod.sh
+```
