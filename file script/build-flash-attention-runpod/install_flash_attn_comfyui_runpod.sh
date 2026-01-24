@@ -226,8 +226,23 @@ find_wheel_url() {
   fi
 
   local json
-  json="$(curl -fsSL "$api_url" || true)"
-  [[ -n "$json" ]] || return 1
+ tmp_json="$(mktemp)"
+http_code="$(curl -sS -L -w "%{http_code}" -o "$tmp_json" "$api_url" || true)"
+json="$(cat "$tmp_json" 2>/dev/null || true)"
+rm -f "$tmp_json"
+
+# ต้องเป็น 200 และต้องไม่ว่าง
+if [[ "$http_code" != "200" || -z "$json" ]]; then
+  warn "GitHub API request failed (HTTP $http_code). Falling back."
+  return 1
+fi
+
+# กันกรณีได้ HTML แทน JSON
+if echo "$json" | head -c 1 | grep -vq '[{[]'; then
+  warn "GitHub API returned non-JSON content. Falling back."
+  return 1
+fi
+
 
   local url=""
   if [[ "$want_ver" == "latest" ]]; then
