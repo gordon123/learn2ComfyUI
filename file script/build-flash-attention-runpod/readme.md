@@ -8,6 +8,9 @@
 > ✅ **PyTorch 2.7.0 + CUDA 12.6 (cu126)**  
 > ✅ **CUDA Toolkit / nvcc 12.8**
 
+Prebuilt สำหรับ linux
+https://github.com/Dao-AILab/flash-attention/releases
+
 ---
 
 ## 📌 Required Versions (IMPORTANT)
