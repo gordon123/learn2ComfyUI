@@ -130,7 +130,7 @@ flash-attn OK: 2.8.3
 1) เข้า venv ของ ComfyUI ก่อน<br>
    source /workspace/venv/bin/activate<br>
 
-2) สร้างไฟล์ install.sh แล้วให้สิทธิ์รัน<br>
+2) download install_flash_attn_comfyui_runpod.sh แล้วให้สิทธิ์รัน<br>
 ```
    chmod +x install_flash_attn_comfyui_runpod.sh
 ```
