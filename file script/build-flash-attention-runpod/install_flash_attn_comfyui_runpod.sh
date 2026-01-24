@@ -310,7 +310,7 @@ build_from_source() {
 
   # MAX_JOBS can be tuned to reduce RAM usage
   local jobs
-  jobs="$(ask "MAX_JOBS for build (lower if RAM is limited)" "8")"
+  jobs="$(ask "MAX_JOBS for build (lower if RAM is limited)" "4")"
   python -m pip uninstall -y flash-attn >/dev/null 2>&1 || true
   MAX_JOBS="$jobs" python -m pip install --no-build-isolation --no-cache-dir -v .
 
