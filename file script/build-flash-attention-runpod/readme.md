@@ -139,3 +139,26 @@ flash-attn OK: 2.8.3
 ```
    ./install_flash_attn_comfyui_runpod.sh
 ```
+
+---
+### ถ้าเกิด error ลงไม่ผ่าน ติด rate limit download file ใน github แบบในรูปนี้
+
+<img src="https://github.com/gordon123/learn2ComfyUI/blob/main/file%20script/build-flash-attention-runpod/Screenshot%202026-01-25%20at%2022.13.23.png" alt="Flash Attention Error" width="600">
+
+ให้ เช็คด้วยคำสั่ง
+```
+python -c "import flash_attn, torch; print('flash_attn', flash_attn.__version__); print('torch', torch.__version__); print('cuda', torch.version.cuda); print('cuda_available', torch.cuda.is_available())"
+```
+
+ถ้า flash attention ไม่ขึ้น เวอชั่น
+ให้ ใช้คำสั่ง
+
+```
+echo 'export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx' >> ~/.bashrc
+source ~/.bashrc
+```
+
+โดยต้องไปสร้าง Github API key จาก https://github.com/settings/tokens มาแทน ```ghp_xxxxxxxxxxxxxxxxxxxx``` ใน script ข้างบน แล้ว bash install อีกรอบ
+
+
+
