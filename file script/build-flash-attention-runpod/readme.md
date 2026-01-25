@@ -140,6 +140,12 @@ flash-attn OK: 2.8.3
    ./install_flash_attn_comfyui_runpod.sh
 ```
 
+หรือ ทำตาม video ด้วย คำสั่งนี้
+```
+bash install_flash_attn_comfyui_runpod.sh
+```
+
+
 ---
 ### ถ้าเกิด error ลงไม่ผ่าน ติด rate limit download file ใน github แบบในรูปนี้
 
