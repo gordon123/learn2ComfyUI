@@ -31,3 +31,13 @@ huggingface-cli download Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice \
   --local-dir /workspace/ComfyUI/models/TTS/Qwen3-TTS/Qwen3-TTS-12Hz-0.6B-CustomVoice
 
 ```
+
+## ตัวอย่าง จาก ChatGPT ที่มันให้ แก้ไข เรื่อง version torch ไม่ตรง
+```
+pip uninstall -y torch torchvision torchaudio
+
+# ติดตั้งให้เป็นชุดเดียวกัน (cu126)
+pip install --index-url https://download.pytorch.org/whl/cu126 \
+  torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0
+```
+
