@@ -65,6 +65,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 26. [Qwen Image Edit 2511 - Interaction node](https://github.com/jtydhr88/ComfyUI-qwenmultiangle) เป็น Node ที่ แนะนำต้องมีเลย ขอร้อง🔥
 27. [qwen image edit advance](https://github.com/lrzjason/Comfyui-QwenEditUtils) ช่วย qwen image edit inpaint
 28. [ตัวช่วยเขียน prompt](https://github.com/NidAll/ComfyUI_PromptStyler) PromptStyler
+29. [Z-image lora fuse](https://github.com/destinyfaux/Z-Fuse) เอาไว้ check lora block, Merge หรือ ปั่นรวม Lora
 
 
 
