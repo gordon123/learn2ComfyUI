@@ -97,4 +97,4 @@ echo "✅ Installation Complete! (ติดตั้งเสร็จสิ้�
 echo "------------------------------------------------"
 echo "To launch, copy & run this:"
 echo "cd /workspace/ComfyUI"
-echo "python main.py --listen --highvram"
+echo "python main.py --listen"
