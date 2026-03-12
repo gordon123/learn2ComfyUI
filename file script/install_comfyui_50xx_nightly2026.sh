@@ -78,7 +78,7 @@ install_node() {
 install_node "https://github.com/Comfy-Org/ComfyUI-Manager.git"
 
 # [2] ComfyUI-RunpodDirect (RunPod Tool)
-install_node "https://github.com/MadiatorLabs/ComfyUI-RunpodDirect.git"
+# install_node "https://github.com/MadiatorLabs/ComfyUI-RunpodDirect.git"
 
 # [3] Civicomfy (Civitai Integration)
 install_node "https://github.com/MoonGoblinDev/Civicomfy.git"
