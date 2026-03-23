@@ -70,6 +70,13 @@ wget https://github.com/madebyollin/taesd/raw/main/taesd_decoder.pth
 wget https://github.com/madebyollin/taesd/raw/main/taesd_encoder.pth
 ```
 
+### Custom node ที่ ต้อง install เอง ไม่มีใน Custom manager
+
+https://github.com/gordon123/ComfyUI-SoundFlow
+```
+cd /workspace/ComfyUI/custom_manager/
+git clone https://github.com/gordon123/ComfyUI-SoundFlow.git
+```
 
 
 
