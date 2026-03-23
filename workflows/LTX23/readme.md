@@ -75,6 +75,10 @@ https://github.com/gordon123/ComfyUI-SoundFlow
 ```
 cd /workspace/ComfyUI/custom_manager/
 git clone https://github.com/gordon123/ComfyUI-SoundFlow.git
+
+apt update && apt install -y ffmpeg
+
+pip install torchcodec
 ```
 
 
