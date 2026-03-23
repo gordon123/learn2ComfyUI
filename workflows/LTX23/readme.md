@@ -1,4 +1,8 @@
-==== WOrkflow ====
+## ==== Workflow และ download โมเดล ต่าง ๆ สำหรับ LTX2.3====
+
+Runpod template สำหรับ Cuda13 เพื่อใช้ การ์ดจอ RTX50xx
+
+https://console.runpod.io/deploy?template=3morvvn62r&ref=c0v5p0ys
 
 https://blog.comfy.org/p/ltx-23-day-0-supporte-in-comfyui
 
