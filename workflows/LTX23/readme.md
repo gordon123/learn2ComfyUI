@@ -5,3 +5,68 @@ https://blog.comfy.org/p/ltx-23-day-0-supporte-in-comfyui
 https://huggingface.co/RuneXX/LTX-2.3-Workflows/tree/main
 
 https://github.com/Lightricks/ComfyUI-LTXVideo/tree/master/example_workflows/2.3
+
+https://huggingface.co/Kijai/MelBandRoFormer_comfy
+
+https://huggingface.co/QuantStack/LTX-2.3-GGUF/tree/main/LTX-2.3-distilled
+
+https://huggingface.co/mradermacher/gemma-3-12b-it-qat-q4_0-unquantized-GGUF/tree/main
+
+### checkpoints
+```
+cd ComfyUI/models/checkpoints/
+
+wget https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors
+
+# หรือตัวเต็ม
+# wget https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-dev.safetensors
+```
+
+### loras
+```
+cd /workspace/ComfyUI/models/loras/
+wget https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384.safetensors
+
+wget https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors
+```
+
+### latent_upscale_models
+```
+cd /workspace/ComfyUI/models/latent_upscale_models/
+wget https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.0.safetensors
+```
+
+### text encoder
+```
+cd /workspace/ComfyUI/models/text_encoders/
+wget https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors
+
+wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/text_encoders/ltx-2.3_text_projection_bf16.safetensors
+```
+
+### VAE
+```
+cd /workspace/ComfyUI/models/vae
+
+wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_video_vae_bf16.safetensors
+
+wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_audio_vae_bf16.safetensors
+
+wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/taeltx2_3.safetensors
+```
+
+### Extra
+
+cd /workspace/ComfyUI/models/vae_approx/
+```
+# โหลดตัว Decoder
+wget https://github.com/madebyollin/taesd/raw/main/taesd_decoder.pth
+
+# โหลดตัว Encoder
+wget https://github.com/madebyollin/taesd/raw/main/taesd_encoder.pth
+```
+
+
+
+
+
