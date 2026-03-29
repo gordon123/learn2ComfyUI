@@ -18,44 +18,65 @@ https://huggingface.co/mradermacher/gemma-3-12b-it-qat-q4_0-unquantized-GGUF/tre
 ### checkpoints
 ```
 cd ComfyUI/models/checkpoints/
-
-wget https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors
+wget -O ltx-2.3-22b-dev-fp8.safetensors \
+https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors
 
 # หรือตัวเต็ม
-# wget https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-dev.safetensors
+# wget -O ltx-2.3-22b-dev.safetensors \
+# https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-dev.safetensors
+```
+
+### Kijai diffusion model
+```
+cd ComfyUI/models/diffusion_models/
+wget -O ltx-2.3-22b-distilled_transformer_only_fp8_input_scaled_v3.safetensors \
+https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/diffusion_models/ltx-2.3-22b-distilled_transformer_only_fp8_input_scaled_v3.safetensors
 ```
 
 ### loras
 ```
 cd /workspace/ComfyUI/models/loras/
-wget https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384.safetensors
-
-wget https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors
+# 1) LTX distilled LoRA
+wget -c -O ltx-2.3-22b-distilled-lora-384.safetensors \
+https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384.safetensors
+# 2) Gemma LoRA
+wget -c -O gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors \
+https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors
 ```
 
 ### latent_upscale_models
 ```
 cd /workspace/ComfyUI/models/latent_upscale_models/
-wget https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.0.safetensors
+wget -c -O ltx-2.3-spatial-upscaler-x2-1.0.safetensors \
+https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.0.safetensors
 ```
 
 ### text encoder
 ```
 cd /workspace/ComfyUI/models/text_encoders/
-wget https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors
-
-wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/text_encoders/ltx-2.3_text_projection_bf16.safetensors
+# 1) gemma text encoder (fp4)
+wget -c -O gemma_3_12B_it_fp4_mixed.safetensors \
+https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors
+# 2) ltx text projection
+wget -c -O ltx-2.3_text_projection_bf16.safetensors \
+https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/text_encoders/ltx-2.3_text_projection_bf16.safetensors
 ```
 
 ### VAE
 ```
-cd /workspace/ComfyUI/models/vae
+cd /workspace/ComfyUI/models/vae/
 
-wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_video_vae_bf16.safetensors
+# 1) Video VAE
+wget -c --tries=10 --timeout=60 -O LTX23_video_vae_bf16.safetensors \
+https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_video_vae_bf16.safetensors
 
-wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_audio_vae_bf16.safetensors
+# 2) Audio VAE
+wget -c --tries=10 --timeout=60 -O LTX23_audio_vae_bf16.safetensors \
+https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/LTX23_audio_vae_bf16.safetensors
 
-wget https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/taeltx2_3.safetensors
+# 3) TAELTX VAE
+wget -c --tries=10 --timeout=60 -O taeltx2_3.safetensors \
+https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/taeltx2_3.safetensors
 ```
 
 ### Extra
