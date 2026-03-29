@@ -94,9 +94,11 @@ wget https://github.com/madebyollin/taesd/raw/main/taesd_encoder.pth
 
 https://github.com/gordon123/ComfyUI-SoundFlow
 ```
-cd /workspace/ComfyUI/custom_manager/
+cd /workspace/ComfyUI/custom_nodes/
 
 git clone https://github.com/gordon123/ComfyUI-SoundFlow.git
+
+ComfyUI-SoundFlow
 
 pip install -r requirements.txt
 
