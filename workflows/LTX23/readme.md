@@ -95,7 +95,10 @@ wget https://github.com/madebyollin/taesd/raw/main/taesd_encoder.pth
 https://github.com/gordon123/ComfyUI-SoundFlow
 ```
 cd /workspace/ComfyUI/custom_manager/
+
 git clone https://github.com/gordon123/ComfyUI-SoundFlow.git
+
+pip install -r requirements.txt
 
 apt update && apt install -y ffmpeg
 
