@@ -28,7 +28,7 @@ https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.s
 
 ### Kijai diffusion model
 ```
-cd ComfyUI/models/diffusion_models/
+cd /workspace/ComfyUI/models/diffusion_models/
 wget -O ltx-2.3-22b-distilled_transformer_only_fp8_input_scaled_v3.safetensors \
 https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/diffusion_models/ltx-2.3-22b-distilled_transformer_only_fp8_input_scaled_v3.safetensors
 ```
