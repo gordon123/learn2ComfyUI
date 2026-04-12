@@ -44,11 +44,26 @@ wget -c -O gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors \
 https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors
 ```
 
+```
+https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K
+https://huggingface.co/lynaNSFW/LTX2.3_NSFW_motion
+https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K
+https://huggingface.co/vrgamedevgirl84/LTX2.3_enhancer2
+https://huggingface.co/siraxe/TTM_IC-lora_ltx2.3
+https://huggingface.co/elix3r/LTX-2.3-22b-AV-LoRA-talking-head
+https://huggingface.co/LiconStudio/Ltx2.3-VBVR-lora-I2V
+https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Motion-Track-Control
+https://huggingface.co/qqceqqq/LTX-2.3-22b-IC-LoRA-Union-Control
+
+```
+
 ### latent_upscale_models
 ```
 cd /workspace/ComfyUI/models/latent_upscale_models/
 wget -c -O ltx-2.3-spatial-upscaler-x2-1.0.safetensors \
 https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.0.safetensors
+
+https://huggingface.co/lightweight/LTX-2.3_Gemma/tree/main
 ```
 
 ### text encoder
