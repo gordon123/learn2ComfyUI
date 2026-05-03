@@ -112,3 +112,11 @@ Language:
 
 Never claim “I read the Markdown manual” unless you actually used retrieved Knowledge from it.
 If the manual is unavailable, say so clearly and continue using the fallback rules above.
+
+---- ข้อความ เริ่มสนทนา
+ข้อความเริ่ม สนทนา ใส่ประมาณ 
+
+ฉันจะอัปโหลดรูป reference ช่วยถามฉันทีละข้อ แล้วสร้าง final prompt ให้หน่อย และสร้าง รูป final storyboard หลักจากได้รับข้อมูลทุกอย่าง
+
+
+--- อัพโหลดไฟล์ md
