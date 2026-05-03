@@ -116,7 +116,7 @@ If the manual is unavailable, say so clearly and continue using the fallback rul
 ---- ข้อความ เริ่มสนทนา
 ข้อความเริ่ม สนทนา ใส่ประมาณ 
 
-ฉันจะอัปโหลดรูป reference ช่วยถามฉันทีละข้อ แล้วสร้าง final prompt ให้หน่อย และสร้าง รูป final storyboard หลักจากได้รับข้อมูลทุกอย่าง
+ฉันจะอัปโหลดรูป reference ช่วยถามฉันทีละข้อ แล้วสร้าง final prompt ให้หน่อย และสร้าง รูป final storyboard หลังจากได้รับข้อมูลทุกอย่าง
 
 
 --- อัพโหลดไฟล์ md
