@@ -6,10 +6,11 @@ set -euo pipefail
 # Target image example:
 #   runpod/pytorch:1.0.3-cu1300-torch291-ubuntu2404
 #
-# Key rule:
-#   Keep the RunPod-provided torch 2.9.1+cu130.
-#   Do NOT install torch nightly.
-#   Force torchvision to the matching CUDA 13 wheel before installing ComfyUI.
+# Key rules:
+#   1) Keep the RunPod-provided torch 2.9.1+cu130.
+#   2) Do NOT install torch nightly.
+#   3) Force torchvision to the matching CUDA 13 wheel before installing ComfyUI.
+#   4) Install ComfyUI-Manager explicitly and keep it in custom_nodes/comfyui-manager.
 # -----------------------------------------------------------------------------
 
 PYTORCH_CUDA_INDEX="https://download.pytorch.org/whl/cu130"
@@ -55,6 +56,93 @@ print("device:", torch.cuda.get_device_name(0))
 PY
 }
 
+create_constraints() {
+    echo "🔒 Creating torch/vision/audio constraints..."
+    TORCH_VERSION=$(python - <<'PY'
+import torch
+print(torch.__version__)
+PY
+)
+
+    TORCHVISION_VERSION=$(python - <<'PY'
+import torchvision
+print(torchvision.__version__)
+PY
+)
+
+    TORCHAUDIO_VERSION=$(python - <<'PY'
+try:
+    import torchaudio
+    print(torchaudio.__version__)
+except Exception:
+    print("")
+PY
+)
+
+    cat > "${CONSTRAINT_FILE}" <<EOF_CONSTRAINTS
+torch==${TORCH_VERSION}
+torchvision==${TORCHVISION_VERSION}
+EOF_CONSTRAINTS
+
+    if [ -n "${TORCHAUDIO_VERSION}" ]; then
+      echo "torchaudio==${TORCHAUDIO_VERSION}" >> "${CONSTRAINT_FILE}"
+    fi
+
+    echo "🔒 Torch constraints:"
+    cat "${CONSTRAINT_FILE}"
+}
+
+safe_pip_install_requirements() {
+    local req_file="$1"
+    if [ -f "${req_file}" ]; then
+        echo "💊 Installing requirements: ${req_file} without changing torch stack..."
+        pip install -r "${req_file}" \
+          --constraint "${CONSTRAINT_FILE}" \
+          --no-cache-dir
+    else
+        echo "ℹ️  No requirements file found at: ${req_file}"
+    fi
+}
+
+install_node() {
+    local repo_url="$1"
+    local folder_name="$2"
+
+    mkdir -p "${COMFY_DIR}/custom_nodes"
+    cd "${COMFY_DIR}/custom_nodes"
+
+    if [ -d "${folder_name}" ]; then
+        echo "⏭️  ${folder_name} exists. Pulling latest..."
+        cd "${folder_name}"
+        git pull || true
+        cd ..
+    else
+        echo "⬇️  Cloning ${folder_name}"
+        git clone "${repo_url}" "${folder_name}"
+    fi
+
+    if [ -f "${folder_name}/requirements.txt" ]; then
+        safe_pip_install_requirements "${folder_name}/requirements.txt"
+    fi
+
+    echo "🧪 CUDA check after ${folder_name}..."
+    check_cuda
+}
+
+install_comfyui_manager() {
+    echo "🧩 Installing ComfyUI-Manager explicitly..."
+
+    # Current ComfyUI official path uses manager_requirements.txt + --enable-manager.
+    # We install it when present, then also clone the Manager repo into custom_nodes/comfyui-manager
+    # because this path is required by the Manager legacy/custom-node installation method.
+    cd "${COMFY_DIR}"
+    if [ -f "manager_requirements.txt" ]; then
+        safe_pip_install_requirements "manager_requirements.txt"
+    fi
+
+    install_node "https://github.com/Comfy-Org/ComfyUI-Manager.git" "comfyui-manager"
+}
+
 echo "🧪 Checking virtual environment..."
 run_python_check
 
@@ -87,86 +175,22 @@ pip install torchvision==0.24.1 \
   --no-cache-dir
 
 check_torchvision_nms
-
-echo "🔒 Creating torch/vision/audio constraints..."
-TORCH_VERSION=$(python - <<'PY'
-import torch
-print(torch.__version__)
-PY
-)
-
-TORCHVISION_VERSION=$(python - <<'PY'
-import torchvision
-print(torchvision.__version__)
-PY
-)
-
-TORCHAUDIO_VERSION=$(python - <<'PY'
-try:
-    import torchaudio
-    print(torchaudio.__version__)
-except Exception:
-    print("")
-PY
-)
-
-cat > "${CONSTRAINT_FILE}" <<EOF_CONSTRAINTS
-torch==${TORCH_VERSION}
-torchvision==${TORCHVISION_VERSION}
-EOF_CONSTRAINTS
-
-if [ -n "${TORCHAUDIO_VERSION}" ]; then
-  echo "torchaudio==${TORCHAUDIO_VERSION}" >> "${CONSTRAINT_FILE}"
-fi
-
-echo "🔒 Torch constraints:"
-cat "${CONSTRAINT_FILE}"
+create_constraints
 
 echo "📦 Installing official ComfyUI requirements without changing torch stack..."
-pip install -r requirements.txt \
-  --constraint "${CONSTRAINT_FILE}" \
-  --no-cache-dir
+safe_pip_install_requirements "requirements.txt"
 
 echo "🧪 Re-checking CUDA and torchvision after ComfyUI requirements..."
 check_cuda
 check_torchvision_nms
 
+# Important: install Manager before other custom nodes, so you have node management available.
+install_comfyui_manager
+
 echo "✨ Installing selected custom nodes..."
-mkdir -p custom_nodes
-cd custom_nodes
-
-install_node() {
-    local repo_url="$1"
-    local folder_name
-    folder_name=$(basename "${repo_url}" .git)
-
-    if [ -d "${folder_name}" ]; then
-        echo "⏭️  ${folder_name} exists. Pulling latest..."
-        cd "${folder_name}"
-        git pull || true
-        cd ..
-    else
-        echo "⬇️  Cloning ${folder_name}"
-        git clone "${repo_url}"
-    fi
-
-    if [ -f "${folder_name}/requirements.txt" ]; then
-        echo "💊 Installing dependencies for ${folder_name} without changing torch stack..."
-        pip install -r "${folder_name}/requirements.txt" \
-          --constraint "${CONSTRAINT_FILE}" \
-          --no-cache-dir
-    fi
-
-    echo "🧪 CUDA check after ${folder_name}..."
-    check_cuda
-}
-
-# Do not clone ComfyUI-Manager into custom_nodes for Manager v4.
-# Launch ComfyUI with --enable-manager instead.
-
-install_node "https://github.com/MoonGoblinDev/Civicomfy.git"
-install_node "https://github.com/kijai/ComfyUI-KJNodes.git"
-install_node "https://github.com/rgthree/rgthree-comfy.git"
+install_node "https://github.com/MoonGoblinDev/Civicomfy.git" "Civicomfy"
+install_node "https://github.com/kijai/ComfyUI-KJNodes.git" "ComfyUI-KJNodes"
+install_node "https://github.com/rgthree/rgthree-comfy.git" "rgthree-comfy"
 
 cd "${COMFY_DIR}"
 
