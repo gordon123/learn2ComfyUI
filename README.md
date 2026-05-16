@@ -134,3 +134,4 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 8. [เว๊ปนี้ แจก Prompt สำหรับ Cinematic โค๊ดดดดี](https://iimate24.com/prompt-cinematic-support/)
 9. [tihubb.com](https://tihubb.com/ai-prompt)
 10. [ComfyUI Prompt Styler](https://github.com/NidAll/ComfyUI_PromptStyler)
+11. [LTX, Nanobanana, ChatGPT prompt ](https://promptsref.com/library/nano-banana-pro)
