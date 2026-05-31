@@ -138,3 +138,4 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 9. [tihubb.com](https://tihubb.com/ai-prompt)
 10. [ComfyUI Prompt Styler](https://github.com/NidAll/ComfyUI_PromptStyler)
 11. [LTX, Nanobanana, ChatGPT prompt ](https://promptsref.com/library/nano-banana-pro)
+12. [https://youmind.com/th-TH/prompts](https://youmind.com/th-TH/prompts/luxury-karaoke-lounge-lineup-22942)
