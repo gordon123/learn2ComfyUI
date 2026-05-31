@@ -97,6 +97,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 12. [Bindweave-KJ](https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/tree/main/Bindweave)
 13. [สร้าง MV ด้วย LTX2.3 อัตโนมัติ ](https://huggingface.co/vrgamedevgirl84/LTX_2.3_Music_Video_Creator_ComfyUI)
 14. [เครื่องมือสร้าง Video](https://github.com/WhatDreamsCost/WhatDreamsCost-ComfyUI)
+15. [รวมมิตร LTX2.3](https://github.com/wildminder/awesome-ltx2)
 
 ## audio stuff
 1. [ComfyUI_pyannote](https://github.com/ramesh-x90/ComfyUI_pyannote)
