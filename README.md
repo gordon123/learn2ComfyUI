@@ -66,6 +66,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 27. [qwen image edit advance](https://github.com/lrzjason/Comfyui-QwenEditUtils) ช่วย qwen image edit inpaint
 28. [ตัวช่วยเขียน prompt](https://github.com/NidAll/ComfyUI_PromptStyler) PromptStyler
 29. [Z-image lora fuse](https://github.com/destinyfaux/Z-Fuse) เอาไว้ check lora block, Merge หรือ ปั่นรวม Lora
+30. [Display Status by RealRebelAI](https://github.com/RealRebelAI/Rebels_Matrix_Monitor_Node)
 
 
 
@@ -107,6 +108,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 7. [Audiotools](https://github.com/billwuhao/ComfyUI_AudioTools)
 8. [SongBloom comfyui](https://github.com/fredconex/ComfyUI-SongBloom) https://github.com/tencent-ailab/SongBloom
 9. [Maya1 รองรับแค่ภาษาอังกฤษ​เหมาะทำ หนังสือเสียง นิยาย](https://github.com/Saganaki22/ComfyUI-Maya1_TTS)
+10. [Audio editor by RealRebelAI](https://github.com/RealRebelAI/Rebels_Audio_Nodes) [📺 Youtube](https://www.youtube.com/watch?v=Yi8pbWyr4zA)
 
 ## post-process / retouch
 1. [ComfyUI-DDColor](https://github.com/kijai/ComfyUI-DDColor)
