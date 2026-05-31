@@ -67,6 +67,7 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 28. [ตัวช่วยเขียน prompt](https://github.com/NidAll/ComfyUI_PromptStyler) PromptStyler
 29. [Z-image lora fuse](https://github.com/destinyfaux/Z-Fuse) เอาไว้ check lora block, Merge หรือ ปั่นรวม Lora
 30. [Display Status by RealRebelAI](https://github.com/RealRebelAI/Rebels_Matrix_Monitor_Node)
+31. [PIXORAMA TOols image composor หรูหราหมาเห่า](https://github.com/pixaroma/ComfyUI-Pixaroma)
 
 
 
