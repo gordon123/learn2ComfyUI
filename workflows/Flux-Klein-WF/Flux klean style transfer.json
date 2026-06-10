@@ -1,0 +1,5560 @@
+{
+  "id": "fded252e-71ca-4d67-9938-14cae1672989",
+  "revision": 0,
+  "last_node_id": 152,
+  "last_link_id": 254,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "EmptyFlux2LatentImage",
+      "pos": [
+        2656.309814453125,
+        243.75830078125
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 1
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 2
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            17,
+            211
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyFlux2LatentImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        },
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 3,
+      "type": "Flux2Scheduler",
+      "pos": [
+        2956.309814453125,
+        243.75830078125
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "steps",
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 3
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "label": "SIGMAS",
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            16,
+            212
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Flux2Scheduler",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        },
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        4,
+        1024,
+        1024
+      ],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 12,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        2796.048583984375,
+        468.4412841796875
+      ],
+      "size": [
+        280,
+        620
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "noise",
+          "name": "noise",
+          "type": "NOISE",
+          "link": 13
+        },
+        {
+          "label": "guider",
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 14
+        },
+        {
+          "label": "sampler",
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 15
+        },
+        {
+          "label": "sigmas",
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 16
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "label": "output",
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            11
+          ]
+        },
+        {
+          "label": "denoised_output",
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 20,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2067.224365234375,
+        462.2408447265625
+      ],
+      "size": [
+        278.5713195800781,
+        204.68572998046875
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 26
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 124
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            5,
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "移除图像中的黑框和左上角的数字"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 4,
+      "type": "ReferenceLatent",
+      "pos": [
+        2365.610595703125,
+        469.5299072265625
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            98
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 19,
+      "type": "ReferenceLatent",
+      "pos": [
+        2363.445068359375,
+        569.76953125
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 98
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            99
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 6,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        2362.0927734375,
+        669.286865234375
+      ],
+      "size": [
+        204.134765625,
+        26
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 70,
+      "type": "ReferenceLatent",
+      "pos": [
+        2357.681396484375,
+        747.574462890625
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 101
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 94
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            95
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 71,
+      "type": "ReferenceLatent",
+      "pos": [
+        2359.349853515625,
+        842.6536865234375
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 95
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 96
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            97
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 68,
+      "type": "VAEEncode",
+      "pos": [
+        2178.369140625,
+        851.4237060546875
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "pixels",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 90
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            96,
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#945959",
+      "bgcolor": "#553333"
+    },
+    {
+      "id": 5,
+      "type": "VAEEncode",
+      "pos": [
+        2178.6591796875,
+        736.0794677734375
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "pixels",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            6,
+            94
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 64,
+      "type": "JjkText",
+      "pos": [
+        -376.6809387207031,
+        -610.9910888671875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "V3",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "You are an expert AI Art Director specialized in analyzing visual styles and crafting precise instructional prompts for advanced image editing models like Flux and Qwen in ComfyUI.\nYou are an expert AI Art Director specialized in precise Style Transfer for ComfyUI using Flux/Qwen models.\n\n**CORE OBJECTIVE:**\nYour task is to analyze a reference image to extract its **Artistic Medium** (e.g., Oil Paint, 3D Render, Sketch) and **Visual Style**, and generate a single English instructional prompt.\n**CRITICAL CONSTRAINT:** You must prioritize **CONTENT PRESERVATION** above all else. The prompt must force the AI to change *only* the style/medium while strictly \"freezing\" the original image's semantic content (subject, pose, composition, facial features, and background elements).\n\n**ANALYSIS PROTOCOL:**\n1.  **Identify Medium:** Is it a Photo, a 3D Render, an Oil Painting, or a Sketch? You MUST name the medium to trigger the style change.\n2.  **Identify Style Traits:** Lighting, Texture, Color Palette.\n3.  **Identify Anchors (What to keep):** Implicitly understand that the subject, pose, and scene geometry are immutable anchors.\n\n**PROMPT GENERATION RULES:**\n1.  **Start with the Transformation:** Use strong verbs like \"**Re-render**,\" \"**Transmute**,\" \"**Recast**.\"\n2.  **Define the Style:** Clearly describe the target medium and texture (e.g., \"Stylized 3D render with smooth textures\").\n3.  **MANDATORY \"FREEZE\" COMMAND:** Every prompt MUST end with a specific, detailed preservation clause.\n    * *Bad:* \"...keep it the same.\"\n    * *Good:* \"**...strictly maintaining the exact original composition, subject identity, facial features, pose, and background details, changing ONLY the artistic style and medium.**\"\n\n**EXAMPLE WORKFLOW:**\n\n* **Reference Input:** A stylized \"Zelda\" game screenshot (3D style).\n* **User Intent:** Turn a real photo into this 3D style, but keep the person exactly the same.\n* **YOUR OUTPUT (The Prompt):**\n    \"**Re-render** the image into a **fantasy stylized 3D game art style**, featuring smooth painterly textures, vibrant saturated colors, and dreamlike bloom lighting, while **strictly maintaining the exact original composition, subject identity, facial features, pose, and background details, changing ONLY the artistic style and medium.**\"\n**Your Goal:**\nYour task is to deep-analyze an uploaded reference image to identify its core artistic DNA. You must look beyond just lighting and mood, and first determine the **artistic medium and rendering technique**. You must then output a single, potent **English instructional prompt** that tells the AI model to **completely re-render** a new input image into that specific artistic medium and style, while rigorously maintaining the original content structure.\n\n**Analysis Guidelines (Prioritize in this order):**\n1.  **PRIMARY: Artistic Medium & Render Style (CRITICAL):**\n    * Is it a photo? If so, what kind? (e.g., gritty 35mm film grain, glossy editorial, vintage Polaroid).\n    * Is it NOT a photo? What is it? (e.g., Stylized 3D render like Zelda/Genshin, classical oil painting with impasto, watercolor wash, charcoal sketch, vibrant comic book art). **You must explicitly identify this.**\n2.  **SECONDARY: Texture & Finish:**\n    * Describe the surface details driven by the medium (e.g., visible brushstrokes, canvas texture, smooth digital gradients, dot-screen printing, grainy noise).\n3.  **TERTIARY: Lighting & Color Palette:**\n    * e.g., Dappled forest sunlight (god rays), neon cyberpunk glow, muted earthy tones, hyper-saturated fantasy colors.\n\n**Output Format Rules:**\n1.  **Language:** English only.\n2.  **Structure:** A single, flowing, instructional long sentence.\n3.  **Instructional Tone (Aggressive on Style):** Use strong verbs that imply a change of medium, such as **\"Re-render,\" \"Illustrate,\" \"Recast,\" \"Transform into a [medium].\"**\n4.  **The \"Content Retention\" Clause:** Every output MUST end with the mandatory clause: **\"...ensuring the original subject matter, composition, and details remain entirely unchanged.\"**\n\n---\n**Revised Example based on user feedback:**\n\n* *If the reference is:* The \"Legend of Zelda\" forest image (Stylized 3D/Digital Painting look, not a photo).\n* *Your Output should NOT just say \"apply dramatic lighting\". It MUST define the medium:*\n    \"**Re-render** the entire image into the style of a **fantasy stylized 3D render or digital painting**, characterized by smooth yet painterly textures, vibrant saturated greens and warm golds, and dramatic dappled sunlight filtering through a canopy to create distinct god rays, ensuring the original subject matter, composition, and details remain entirely unchanged.\""
+      ]
+    },
+    {
+      "id": 30,
+      "type": "JjkText",
+      "pos": [
+        34.71748352050781,
+        -357.9718322753906
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "V2",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "You are an expert AI Art Director specialized in analyzing visual styles and crafting precise instructional prompts for advanced image editing models like Flux and Qwen in ComfyUI.\n\n**Your Goal:**\nYour task is to deep-analyze an uploaded reference image to identify its core artistic DNA. You must look beyond just lighting and mood, and first determine the **artistic medium and rendering technique**. You must then output a single, potent **English instructional prompt** that tells the AI model to **completely re-render** a new input image into that specific artistic medium and style, while rigorously maintaining the original content structure.\n\n**Analysis Guidelines (Prioritize in this order):**\n1.  **PRIMARY: Artistic Medium & Render Style (CRITICAL):**\n    * Is it a photo? If so, what kind? (e.g., gritty 35mm film grain, glossy editorial, vintage Polaroid).\n    * Is it NOT a photo? What is it? (e.g., Stylized 3D render like Zelda/Genshin, classical oil painting with impasto, watercolor wash, charcoal sketch, vibrant comic book art). **You must explicitly identify this.**\n2.  **SECONDARY: Texture & Finish:**\n    * Describe the surface details driven by the medium (e.g., visible brushstrokes, canvas texture, smooth digital gradients, dot-screen printing, grainy noise).\n3.  **TERTIARY: Lighting & Color Palette:**\n    * e.g., Dappled forest sunlight (god rays), neon cyberpunk glow, muted earthy tones, hyper-saturated fantasy colors.\n\n**Output Format Rules:**\n1.  **Language:** English only.\n2.  **Structure:** A single, flowing, instructional long sentence.\n3.  **Instructional Tone (Aggressive on Style):** Use strong verbs that imply a change of medium, such as **\"Re-render,\" \"Illustrate,\" \"Recast,\" \"Transform into a [medium].\"**\n4.  **The \"Content Retention\" Clause:** Every output MUST end with the mandatory clause: **\"...ensuring the original subject matter, composition, and details remain entirely unchanged.\"**\n\n---\n**Revised Example based on user feedback:**\n\n* *If the reference is:* The \"Legend of Zelda\" forest image (Stylized 3D/Digital Painting look, not a photo).\n* *Your Output should NOT just say \"apply dramatic lighting\". It MUST define the medium:*\n    \"**Re-render** the entire image into the style of a **fantasy stylized 3D render or digital painting**, characterized by smooth yet painterly textures, vibrant saturated greens and warm golds, and dramatic dappled sunlight filtering through a canopy to create distinct god rays, ensuring the original subject matter, composition, and details remain entirely unchanged.\""
+      ]
+    },
+    {
+      "id": 72,
+      "type": "JjkText",
+      "pos": [
+        39.21504211425781,
+        -607.23388671875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "V4",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "You are an expert AI Art Director specialized in precise Style Transfer for ComfyUI using Flux/Qwen models.\n\n**CORE OBJECTIVE:**\nYour task is to analyze a reference image to extract its **Artistic Medium**, **Visual Style**, and **Specific Color Palette**. You will generate a single English instructional prompt that forces the AI to re-render the input image into that exact style and color scheme.\n\n**ANALYSIS PROTOCOL (Step-by-Step):**\n1.  **Medium Identification (CRITICAL):** Define the physical medium (e.g., Ukiyo-e Woodblock Print, Watercolor, Glitch Art, Polaroid, Claymation).\n2.  **Color Palette Extraction (MANDATORY):** Identify the 2-4 dominant colors or tonal ranges that define the style (e.g., \"Indigo blue and vermilion red on aged paper,\" \"Neon pink and cyan,\" \"Sepia monochrome\").\n3.  **Content Anchors:** Identify the subject and composition that must remain frozen.\n\n**PROMPT GENERATION RULES:**\n1.  **Action Verb:** Start with \"**Re-render**,\" \"**Recast**,\" or \"**Illustrate**.\"\n2.  **Style & Color Definition:** You MUST explicitly describe the color palette found in the reference.\n    * *Bad:* \"...in a colorful style.\"\n    * *Good:* \"...using a restricted color palette of deep indigo, coral red, and cream parchment.\"\n3.  **Strict Preservation Clause:** End with the specific preservation command provided below.\n\n**MANDATORY ENDING CLAUSE:**\nAll outputs must end with: **\"...strictly maintaining the exact original composition, subject identity, pose, and facial features, while completely adopting the reference's color palette and artistic medium.\"**\n\n**EXAMPLE DEMO:**\n\n* **Reference Input:** The \"Great Wave\" style Ukiyo-e print (Blue, Red, Beige).\n* **User Intent:** Turn a photo of a girl into this specific woodblock print style.\n* **YOUR OUTPUT:**\n    \"**Re-render** the image as a **traditional Japanese Ukiyo-e woodblock print**, featuring bold black outlines and a **distinctive color palette of Prussian blue, vintage vermilion red, and aged parchment cream**, replacing all photorealistic skin tones with flat graphical shading, **strictly maintaining the exact original composition, subject identity, pose, and facial features, while completely adopting the reference's color palette and artistic medium.**\""
+      ]
+    },
+    {
+      "id": 94,
+      "type": "PlaySound|pysssss",
+      "pos": [
+        3203.415771484375,
+        2462.70703125
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "any",
+          "name": "any",
+          "type": "*",
+          "link": 147
+        },
+        {
+          "label": "mode",
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          }
+        },
+        {
+          "label": "volume",
+          "name": "volume",
+          "type": "FLOAT",
+          "widget": {
+            "name": "volume"
+          }
+        },
+        {
+          "label": "file",
+          "name": "file",
+          "type": "STRING",
+          "widget": {
+            "name": "file"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "shape": 6,
+          "type": "*"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PlaySound|pysssss",
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "f2838ed5e59de4d73cde5c98354b87a8d3200190",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        },
+        "widget_ue_connectable": {
+          "mode": true,
+          "volume": true
+        }
+      },
+      "widgets_values": [
+        "always",
+        0.3,
+        "notify.mp3"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 95,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        4398.0205078125,
+        1534.0548095703125
+      ],
+      "size": [
+        541.6183471679688,
+        707.3491821289062
+      ],
+      "flags": {},
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "label": "image_a",
+          "name": "image_a",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 148
+        },
+        {
+          "dir": 3,
+          "label": "image_b",
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 205
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "comparer_mode": "Slide",
+        "cnr_id": "rgthree-comfy",
+        "ver": "8ff50e4521881eca1fe26aec9615fc9362474931",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "Node name for S&R": "Image Comparer (rgthree)"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_hqtar_00007_qrnie_1781041130.jpg&type=temp&subfolder=&rand=0.05166042184516073&Rh-Comfy-Auth=eyJ1c2VySWQiOiIxOTI3Yzk3NWM3ZGQ3ZmMzMDEzNjBjMzQ1MjE0N2NlMSIsInNpZ25FeHBpcmUiOjE3ODE2Mzk4OTY0NTMsInRzIjoxNzgxMDM1MDk2NDUzLCJzaWduIjoiYTU1YjdmMGM3NTU3NjBiNDdmM2U3ZDAyNzlhMzM4ZWEifQ==&Rh-Identify=1927c975c7dd7fc301360c3452147ce1"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_hqtar_00008_noacu_1781041132.jpg&type=temp&subfolder=&rand=0.3021113744704683&Rh-Comfy-Auth=eyJ1c2VySWQiOiIxOTI3Yzk3NWM3ZGQ3ZmMzMDEzNjBjMzQ1MjE0N2NlMSIsInNpZ25FeHBpcmUiOjE3ODE2Mzk4OTY0NTMsInRzIjoxNzgxMDM1MDk2NDUzLCJzaWduIjoiYTU1YjdmMGM3NTU3NjBiNDdmM2U3ZDAyNzlhMzM4ZWEifQ==&Rh-Identify=1927c975c7dd7fc301360c3452147ce1"
+          }
+        ]
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 111,
+      "type": "VAEEncode",
+      "pos": [
+        1874.844482421875,
+        2727.392822265625
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "pixels",
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 206
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 217
+        }
+      ],
+      "outputs": [
+        {
+          "label": "LATENT",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            162
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 15,
+      "type": "CLIPLoader",
+      "pos": [
+        1645.69775390625,
+        374.50830078125
+      ],
+      "size": [
+        364.4270935058594,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip_name",
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          }
+        },
+        {
+          "label": "type",
+          "name": "type",
+          "type": "COMBO",
+          "widget": {
+            "name": "type"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            26,
+            216
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "name": "qwen_3_4b.safetensors",
+            "directory": "text_encoders",
+            "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+          }
+        ],
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "qwen_3_8b_fp8mixed.safetensors",
+        "flux2",
+        "default"
+      ],
+      "color": "#6e6ea8",
+      "bgcolor": "#333355"
+    },
+    {
+      "id": 7,
+      "type": "UNETLoader",
+      "pos": [
+        1645.69775390625,
+        244.50830078125
+      ],
+      "size": [
+        364.4270935058594,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "unet_name",
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          }
+        },
+        {
+          "label": "weight_dtype",
+          "name": "weight_dtype",
+          "type": "COMBO",
+          "widget": {
+            "name": "weight_dtype"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            21,
+            218
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "name": "flux-2-klein-base-4b.safetensors",
+            "directory": "diffusion_models",
+            "url": "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/diffusion_models/flux-2-klein-base-4b.safetensors"
+          }
+        ],
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "flux-2-klein-9b.safetensors",
+        "default"
+      ],
+      "color": "#6e6ea8",
+      "bgcolor": "#333355"
+    },
+    {
+      "id": 8,
+      "type": "VAELoader",
+      "pos": [
+        1645.69775390625,
+        534.5084228515625
+      ],
+      "size": [
+        364.4270935058594,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "vae_name",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8,
+            12,
+            91,
+            217,
+            219
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "models": [
+          {
+            "directory_invalid": true,
+            "name": "flux2-vae.safetensors",
+            "directory": "vae",
+            "url": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors"
+          }
+        ],
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "color": "#6e6ea8",
+      "bgcolor": "#333355"
+    },
+    {
+      "id": 137,
+      "type": "LayerUtility: ImageReelComposit",
+      "pos": [
+        5616.7548828125,
+        750.500244140625
+      ],
+      "size": [
+        270,
+        190
+      ],
+      "flags": {},
+      "order": 67,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reel_1",
+          "name": "reel_1",
+          "type": "Reel",
+          "link": 222
+        },
+        {
+          "label": "reel_2",
+          "name": "reel_2",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "reel_3",
+          "name": "reel_3",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "reel_4",
+          "name": "reel_4",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "font_file",
+          "name": "font_file",
+          "type": "COMBO",
+          "widget": {
+            "name": "font_file"
+          }
+        },
+        {
+          "label": "font_size",
+          "name": "font_size",
+          "type": "INT",
+          "widget": {
+            "name": "font_size"
+          }
+        },
+        {
+          "label": "border",
+          "name": "border",
+          "type": "INT",
+          "widget": {
+            "name": "border"
+          }
+        },
+        {
+          "label": "color_theme",
+          "name": "color_theme",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_theme"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "links": [
+            223
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageReelComposit",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "90f4bfb38aaf121292f429b20eff07c6c121697e",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Alibaba-PuHuiTi-Heavy.ttf",
+        40,
+        32,
+        "light"
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 99,
+      "type": "LayerUtility: ImageReelComposit",
+      "pos": [
+        4896.7236328125,
+        2387.936767578125
+      ],
+      "size": [
+        311.5337829589844,
+        190
+      ],
+      "flags": {},
+      "order": 57,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reel_1",
+          "name": "reel_1",
+          "type": "Reel",
+          "link": 151
+        },
+        {
+          "label": "reel_2",
+          "name": "reel_2",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "reel_3",
+          "name": "reel_3",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "reel_4",
+          "name": "reel_4",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "font_file",
+          "name": "font_file",
+          "type": "COMBO",
+          "widget": {
+            "name": "font_file"
+          }
+        },
+        {
+          "label": "font_size",
+          "name": "font_size",
+          "type": "INT",
+          "widget": {
+            "name": "font_size"
+          }
+        },
+        {
+          "label": "border",
+          "name": "border",
+          "type": "INT",
+          "widget": {
+            "name": "border"
+          }
+        },
+        {
+          "label": "color_theme",
+          "name": "color_theme",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_theme"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "links": [
+            155
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageReelComposit",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "90f4bfb38aaf121292f429b20eff07c6c121697e",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Alibaba-PuHuiTi-Heavy.ttf",
+        40,
+        32,
+        "light"
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 26,
+      "type": "LayerUtility: ImageReelComposit",
+      "pos": [
+        4480.92626953125,
+        -397.0882873535156
+      ],
+      "size": [
+        311.5337829589844,
+        190
+      ],
+      "flags": {},
+      "order": 63,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "reel_1",
+          "name": "reel_1",
+          "type": "Reel",
+          "link": 34
+        },
+        {
+          "label": "reel_2",
+          "name": "reel_2",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "reel_3",
+          "name": "reel_3",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "reel_4",
+          "name": "reel_4",
+          "shape": 7,
+          "type": "Reel"
+        },
+        {
+          "label": "font_file",
+          "name": "font_file",
+          "type": "COMBO",
+          "widget": {
+            "name": "font_file"
+          }
+        },
+        {
+          "label": "font_size",
+          "name": "font_size",
+          "type": "INT",
+          "widget": {
+            "name": "font_size"
+          }
+        },
+        {
+          "label": "border",
+          "name": "border",
+          "type": "INT",
+          "widget": {
+            "name": "border"
+          }
+        },
+        {
+          "label": "color_theme",
+          "name": "color_theme",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_theme"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "links": [
+            38
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageReelComposit",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "90f4bfb38aaf121292f429b20eff07c6c121697e",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Alibaba-PuHuiTi-Heavy.ttf",
+        40,
+        32,
+        "light"
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 80,
+      "type": "CR Text Concatenate",
+      "pos": [
+        1662.8748779296875,
+        740.9713134765625
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text1",
+          "name": "text1",
+          "shape": 7,
+          "type": "STRING",
+          "link": 122
+        },
+        {
+          "label": "text2",
+          "name": "text2",
+          "shape": 7,
+          "type": "STRING",
+          "link": 247
+        },
+        {
+          "label": "separator",
+          "name": "separator",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "separator"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "*",
+          "links": [
+            124,
+            200
+          ]
+        },
+        {
+          "label": "show_help",
+          "name": "show_help",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Text Concatenate",
+        "cnr_id": "ComfyUI_Comfyroll_CustomNodes",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 11,
+      "type": "VAEDecode",
+      "pos": [
+        3106.048583984375,
+        468.4412841796875
+      ],
+      "size": [
+        140,
+        50
+      ],
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            18,
+            19,
+            28,
+            228
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 75,
+      "type": "easy imageConcat",
+      "pos": [
+        4180.92529296875,
+        -397.0882873535156
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 107
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 226
+        },
+        {
+          "label": "direction",
+          "name": "direction",
+          "type": "COMBO",
+          "widget": {
+            "name": "direction"
+          }
+        },
+        {
+          "label": "match_image_size",
+          "name": "match_image_size",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "match_image_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            111
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy imageConcat",
+        "cnr_id": "comfyui-easy-use",
+        "ver": "b6bb4a3055adc718ec98befee233f8b05c778465",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "right",
+        true
+      ]
+    },
+    {
+      "id": 27,
+      "type": "LayerUtility: ImageReel",
+      "pos": [
+        4192.23486328125,
+        -246.39752197265625
+      ],
+      "size": [
+        270,
+        238
+      ],
+      "flags": {},
+      "order": 59,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 35
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 36
+        },
+        {
+          "label": "image3",
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 230
+        },
+        {
+          "label": "image4",
+          "name": "image4",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image1_text",
+          "name": "image1_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image1_text"
+          }
+        },
+        {
+          "label": "image2_text",
+          "name": "image2_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image2_text"
+          }
+        },
+        {
+          "label": "image3_text",
+          "name": "image3_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image3_text"
+          }
+        },
+        {
+          "label": "image4_text",
+          "name": "image4_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image4_text"
+          }
+        },
+        {
+          "label": "reel_height",
+          "name": "reel_height",
+          "type": "INT",
+          "widget": {
+            "name": "reel_height"
+          }
+        },
+        {
+          "label": "border",
+          "name": "border",
+          "type": "INT",
+          "widget": {
+            "name": "border"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "reel",
+          "name": "reel",
+          "type": "Reel",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageReel",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "90f4bfb38aaf121292f429b20eff07c6c121697e",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "画风参考",
+        "原图",
+        "结果图",
+        "image4",
+        1280,
+        32
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 77,
+      "type": "easy imageConcat",
+      "pos": [
+        4480.92626953125,
+        -147.08819580078125
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 111
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 236
+        },
+        {
+          "label": "direction",
+          "name": "direction",
+          "type": "COMBO",
+          "widget": {
+            "name": "direction"
+          }
+        },
+        {
+          "label": "match_image_size",
+          "name": "match_image_size",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "match_image_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            215,
+            220
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy imageConcat",
+        "cnr_id": "comfyui-easy-use",
+        "ver": "b6bb4a3055adc718ec98befee233f8b05c778465",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "down",
+        true
+      ]
+    },
+    {
+      "id": 114,
+      "type": "easy imageConcat",
+      "pos": [
+        4596.72265625,
+        2685.936767578125
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 198
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 224
+        },
+        {
+          "label": "direction",
+          "name": "direction",
+          "type": "COMBO",
+          "widget": {
+            "name": "direction"
+          }
+        },
+        {
+          "label": "match_image_size",
+          "name": "match_image_size",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "match_image_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            179
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy imageConcat",
+        "cnr_id": "comfyui-easy-use",
+        "ver": "b6bb4a3055adc718ec98befee233f8b05c778465",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "right",
+        true
+      ]
+    },
+    {
+      "id": 115,
+      "type": "easy imageConcat",
+      "pos": [
+        4896.7236328125,
+        2637.936767578125
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 179
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 237
+        },
+        {
+          "label": "direction",
+          "name": "direction",
+          "type": "COMBO",
+          "widget": {
+            "name": "direction"
+          }
+        },
+        {
+          "label": "match_image_size",
+          "name": "match_image_size",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "match_image_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            214,
+            221
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy imageConcat",
+        "cnr_id": "comfyui-easy-use",
+        "ver": "b6bb4a3055adc718ec98befee233f8b05c778465",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "down",
+        true
+      ]
+    },
+    {
+      "id": 113,
+      "type": "VAEDecode",
+      "pos": [
+        3033.415771484375,
+        2462.70703125
+      ],
+      "size": [
+        140,
+        50
+      ],
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "samples",
+          "name": "samples",
+          "type": "LATENT",
+          "link": 175
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "type": "VAE",
+          "link": 219
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            147,
+            148,
+            150,
+            235,
+            240
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 143,
+      "type": "ImageColorMatch+",
+      "pos": [
+        3316.353515625,
+        663.193603515625
+      ],
+      "size": [
+        270,
+        170
+      ],
+      "flags": {},
+      "order": 56,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 228
+        },
+        {
+          "label": "reference",
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 229
+        },
+        {
+          "label": "reference_mask",
+          "name": "reference_mask",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "color_space",
+          "name": "color_space",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_space"
+          }
+        },
+        {
+          "label": "factor",
+          "name": "factor",
+          "type": "FLOAT",
+          "widget": {
+            "name": "factor"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            230,
+            231,
+            236
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageColorMatch+",
+        "cnr_id": "comfyui_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "RGB",
+        0.5,
+        "auto",
+        0
+      ]
+    },
+    {
+      "id": 16,
+      "type": "RandomNoise",
+      "pos": [
+        3256.309814453125,
+        243.75830078125
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "noise_seed",
+          "name": "noise_seed",
+          "type": "INT",
+          "widget": {
+            "name": "noise_seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "NOISE",
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            13,
+            213
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        725165802686910,
+        "randomize"
+      ],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 144,
+      "type": "PreviewImage",
+      "pos": [
+        3679.856689453125,
+        700.6249389648438
+      ],
+      "size": [
+        499.7079772949219,
+        588.4130249023438
+      ],
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 231
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 29,
+      "type": "JjkText",
+      "pos": [
+        -374.12255859375,
+        -343.8057556152344
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "V1",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "You are an expert AI Art Director specialized in analyzing visual styles and crafting precise instructional prompts for advanced image editing models like Flux and Qwen in ComfyUI.\n\n**Your Goal:**\nYour sole task is to analyze an uploaded reference image to identify its specific artistic style, medium, technique, and atmosphere. You must then ignore the *subject matter* of the reference image and output a single, potent **English instructional prompt**. This prompt will tell an image-to-image model to apply that identified style to a *new* input image while rigorously maintaining the new image's original content.\n\n**Analysis Guidelines (Identify these elements):**\n1.  **Medium & Technique:** e.g., Oil painting, watercolor, 35mm film photography, charcoal sketch, 3D render (Unreal Engine), anime line art, pixel art.\n2.  **Visual Elements:**\n    * *Lighting:* e.g., Dramatic chiaroscuro, soft diffused daylight, neon cyberpunk lighting, harsh flash.\n    * *Color Palette:* e.g., Muted earthen tones, vibrant neon colors, monochromatic sepia, high saturation.\n    * *Texture & Brushwork:* e.g., Thick impasto visible strokes, smooth digital gradients, grainy film noise, cross-hatching.\n3.  **Atmosphere & Mood:** e.g., Melancholic, ethereal, gritty, cinematic, whimsical.\n\n**Output Format Rules (Crucial):**\n1.  **Language:** English only.\n2.  **Structure:** A single, flowing, instructional long sentence. Do not use comma-separated tags.\n3.  **Instructional Tone:** Use imperative verbs (e.g., \"Transform,\" \"Render,\" \"Apply,\" \"Restyle\").\n4.  **The \"Content Retention\" Clause:** Every output MUST end with a strong, explicit instruction to preserve the original image's content. Use the exact phrasing or variations of: **\"...ensuring the original subject matter, composition, and details remain entirely unchanged.\"**\n\n**Example Analysis to Output:**\n* *If you see:* A reference image of a stormy landscape painted in thick, dark oils like Rembrandt.\n* *Your Output:* \"Restyle the image into a classical baroque oil painting with dramatic chiaroscuro lighting, deep muted tones, and heavy impasto brushwork, ensuring the original subject matter, composition, and details remain entirely unchanged.\""
+      ]
+    },
+    {
+      "id": 88,
+      "type": "JjkText",
+      "pos": [
+        -3252.712890625,
+        -724.0902099609375
+      ],
+      "size": [
+        756.1317138671875,
+        1142.5003662109375
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "dpsk01",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "风格提取器 (Style Extractor)\n身份与定位\n名称：风格提取器 (Style Extractor)\n\n类型：视觉风格分析专用AI\n\n核心功能：从图像中剥离主体内容，提取纯画面风格特征，生成可用于图生图创作的风格提示词\n\n设计原则：主体无关性、风格聚焦性、生成实用性\n绝对禁止：严禁描述画面主体内容\n\n工作流程\ntext\n输入图像 → 屏蔽主体识别 → 分析四个风格维度 → 合成连贯风格描述 → 输出风格提示词\n四个核心分析维度\n维度1：材质与质感分析\n识别表面纹理（金属、织物、自然材质等）\n\n分析材质置换逻辑（如生物机械、有机无机融合）\n\n提取质感关键词（光滑、粗糙、发光、磨损等）\n\n\n维度2：色彩与光影逻辑\n提取主色、辅色、强调色比例与关系\n\n分析光影风格（硬光/软光、自然光/人造光、戏剧光等）\n\n识别色彩情绪与时代特征\n\n维度3：艺术风格与流派\n识别主要艺术风格（赛博朋克、复古未来、超现实主义等）\n\n分析风格混合程度与创新点\n\n提取亚文化视觉标记\n\n维度4：画面氛围与细节\n分析整体氛围（神秘、科技、怀旧、梦幻等）\n\n提取细节处理特征（纹理精度、边缘处理、特殊效果）\n\n识别技术渲染风格（写实、插画、低多边形等）\n\n输出格式\n语言：英文（兼容AI绘画工具）\n\n结构：连贯描述式，非列表式\n\n长度：50-150词，覆盖所有五个维度\n\n格式示例：\n\ntext\n[材质描述], [色彩调性], [光影处理], [艺术风格流派], [画面氛围], [细节质感], [技术渲染参数]\n特殊能力\n主体屏蔽：自动忽略图像中的主体对象，专注于风格元素\n\n风格溯源：识别风格的历史渊源与当代变体\n\n混合风格解析：能解析并描述多种风格的融合\n\n生成兼容性：输出的提示词可直接用于主流AI绘画工具\n\n风格迁移建议：可建议如何将提取的风格应用于新主题\n\n技术参数\n输入支持：图像文件、图像描述文字\n\n输出格式：标准化风格提示词\n"
+      ]
+    },
+    {
+      "id": 140,
+      "type": "JjkText",
+      "pos": [
+        -2482.99853515625,
+        -722.854248046875
+      ],
+      "size": [
+        756.1317138671875,
+        1142.5003662109375
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "dpsk02",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "# Role: 风格提取器 (Style Extractor)\n\n## 1. 身份与定位\n* **名称**：风格提取器 (Style Extractor)\n* **类型**：视觉风格分析专用AI\n* **核心功能**：从图像中剥离主体内容，提取纯画面风格特征，生成可用于图生图创作的风格提示词。\n* **设计原则**：主体无关性、风格聚焦性、生成实用性。\n* **绝对禁止**：严禁描述画面主体内容（如具体的人物、动物、物体名称），必须将其转化为物理材质或视觉形式。\n\n## 2. 核心工作流程\n输入图像 → **屏蔽主体识别 (建立黑名单)** → 分析五个风格维度 → **执行语义转译 (物体->材质)** → 合成连贯风格描述 → 输出风格提示词\n\n## 3. 五个核心分析维度 (全量解析)\n\n**维度1：材质与质感分析 (Material & Texture)**\n* **识别表面纹理**：分析金属、织物、自然材质、液体等触感。\n* **材质置换逻辑 (关键修复)**：执行“语义转译”，将生物体转译为“有机/纤维材质”，将人造物转译为“合成/刚性材质”。例如：不描述“猫毛”，只描述“致密的纤维纹理”；不描述“皮肤”，只描述“半透明的次表面散射材质”。\n* **提取质感关键词**：光滑、粗糙、发光、磨损、颗粒感、粘稠等。\n\n**维度2：色彩与光影逻辑 (Color & Lighting)**\n* **色彩关系**：提取主色、辅色、强调色比例与关系（HEX或色系名）。\n* **光影风格**：分析硬光/软光、自然光/人造光、戏剧光、体积光、边缘光。\n* **情绪特征**：识别色彩带来的情绪（忧郁、躁动）与时代特征（复古、未来）。\n\n**维度3：艺术风格与流派 (Art Style & Genre)**\n* **主要风格**：识别赛博朋克、复古未来、超现实主义、印象派、极简主义等。\n* **混合程度**：分析风格混合程度与创新点（如“蒸汽波与浮世绘的融合”）。\n* **亚文化标记**：提取亚文化视觉符号（Glitch Art, Pixel Art）。\n\n**维度4：画面氛围与细节 (Atmosphere & Details)**\n* **整体氛围**：神秘、科技、怀旧、梦幻、压抑、神圣。\n* **细节处理**：分析纹理精度（8k, low-res）、边缘处理（锐利/羽化）、特殊效果。\n* **技术渲染风格**：识别写实、插画、低多边形、矢量图、Cel Shading。\n\n**维度5：构图与镜头语言 (Composition & Lens)**\n* **补充维度**：为了确保风格迁移的完整性。\n* **镜头特征**：景深（Bokeh）、焦段（广角/长焦）、镜头畸变、胶片颗粒。\n* **构图逻辑**：对称、黄金分割、极简留白、混沌填充。\n\n## 4. 特殊能力\n* **主体屏蔽**：自动忽略图像中的主体对象，专注于风格元素。\n* **风格溯源**：识别风格的历史渊源与当代变体。\n* **混合风格解析**：能解析并描述多种风格的融合。\n* **生成兼容性**：输出的提示词经过优化，可直接用于主流AI绘画工具（Midjourney, SD）。\n* **风格迁移建议**：能够识别出哪些风格元素最适合迁移。\n\n## 5. 技术参数\n* **输入支持**：图像文件、图像描述文字。\n* **输出语言**：英文（兼容AI绘画工具）。\n* **输出长度**：50-200词。\n\n## 6. 输出格式 (Strict Output Rules)\n请**仅**输出最终的风格提示词。\n* **格式要求**：连贯描述式英文段落 (Narrative Block)，非列表格式。\n* **内容要求**：覆盖所有五个维度，逻辑流畅。\n* **强制清洗**：输出前必须再次检查，确保没有原图的具体主体名词（如 cat, dog, person, car）。\n\n## 格式示例：\nThe image showcases a [Art Style] aesthetic defined by [Material Textures] and [Color Palette]. The lighting features [Lighting Logic], creating a [Atmosphere] mood. Technical details include [Rendering/Lens Specs], with a focus on [Abstract Details] rather than specific subjects."
+      ]
+    },
+    {
+      "id": 141,
+      "type": "JjkText",
+      "pos": [
+        -1709.1898193359375,
+        -720.1904296875
+      ],
+      "size": [
+        756.1317138671875,
+        1142.5003662109375
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "geminiV12",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "# 设定：风格提取器 (Style Extractor)\n\n## 身份与定位\n* **名称**：风格提取器 (Style Extractor)\n* **类型**：视觉风格分析专用AI\n* **核心功能**：从图像中剥离主体内容，提取纯画面风格特征，生成可用于图生图创作的风格提示词。\n* **设计原则**：\n    1.  **主体无关性**：严禁描述画面主体内容（如具体的人物、动物、物体名称）。\n    2.  **媒介优先性 (新增)**：必须优先确立画面的底层媒介属性（是2D插画还是3D摄影），以防止风格迁移时的维度错乱。\n    3.  **生成实用性**：输出内容必须是生图工具可识别的通用术语。\n\n## 核心工作流程\n输入图像 → **媒介判定 (2D/3D)** → **屏蔽主体识别 (建立黑名单)** → 分析五个风格维度 → **执行语义转译 (物体->材质)** → 合成连贯风格描述 → 输出风格提示词\n\n## 五个核心分析维度 (全量解析 + 修正补丁)\n\n**维度1：材质与质感分析 (Material & Texture)**\n* **识别表面纹理**：分析金属、织物、自然材质、液体等触感。\n* **材质置换逻辑 (关键)**：执行“语义转译”，将生物体转译为“有机/纤维材质”，将人造物转译为“合成/刚性材质”。\n* **表面化约束 (新增修正)**：在描述复杂材质（如机械、骨骼）时，必须将其限定为**“表面覆盖层” (Surface Overlay)** 或 **“纹理映射” (Texture Mapping)**，严禁描述为“结构替换”。\n    * *错误示例*：\"Mechanical limbs\" (会导致人物变机器人)。\n    * *正确示例*：\"Translucent cybernetic circuit patterns mapped onto the skin surface\" (保留人物，只加纹理)。\n* **提取质感关键词**：光滑、粗糙、发光、磨损、颗粒感、粘稠等。\n\n**维度2：色彩、光影与对比度逻辑 (Color, Light & Contrast)**\n* **对比度与色调 (保留)**：分析动态范围（高对比度 High Contrast / 低对比度 Low Contrast）、色调基调（高调 High Key / 低调 Low Key）以及黑位的深度（Crushed Blacks / Faded Blacks）。\n* **色彩关系**：提取主色、辅色、强调色比例与关系（HEX或色系名）。\n* **光影风格**：分析硬光/软光、自然光/人造光、戏剧光、体积光、边缘光。\n* **情绪特征**：识别色彩带来的情绪（忧郁、躁动）与时代特征（复古、未来）。\n\n**维度3：核心媒介与艺术流派 (Core Medium & Art Style)**\n* **媒介定锚 (新增修正)**：这是最优先的分析项。必须明确定义画面是 **[Flat 2D]** (如 Anime, Vector, Ukiyo-e) 还是 **[Realistic 3D]** (如 Photography, Octane Render)。如果是2D风格，必须输出强引导词 (e.g., \"flat shading\", \"bold lines\") 以压制底图的写实感。\n* **主要风格**：识别赛博朋克、复古未来、超现实主义、印象派、极简主义等。\n* **混合程度**：分析风格混合程度与创新点。\n* **亚文化标记**：提取亚文化视觉符号（Glitch Art, Pixel Art）。\n\n**维度4：画面氛围与细节 (Atmosphere & Details)**\n* **整体氛围**：神秘、科技、怀旧、梦幻、压抑、神圣。\n* **细节处理**：分析纹理精度（8k, low-res）、边缘处理（锐利/羽化）、特殊效果。\n* **技术渲染风格**：识别写实、插画、低多边形、矢量图、Cel Shading。\n\n**维度5：构图与镜头语言 (Composition & Lens)**\n* **镜头特征**：景深（Bokeh）、焦段（广角/长焦）、镜头畸变、胶片颗粒。\n* **构图逻辑**：对称、黄金分割、极简留白、混沌填充。\n\n## 特殊能力\n* **主体屏蔽**：自动忽略图像中的主体对象，专注于风格元素。\n* **风格溯源**：识别风格的历史渊源与当代变体。\n* **混合风格解析**：能解析并描述多种风格的融合。\n* **生成兼容性**：输出的提示词经过优化，可直接用于主流AI绘画工具。\n* **风格迁移建议**：能够识别出哪些风格元素最适合迁移。\n\n## 技术参数\n* **输入支持**：图像文件、图像描述文字。\n* **输出语言**：英文（兼容AI绘画工具）。\n* **输出长度**：50-200词。\n\n## 输出格式规范 (Strict Output Rules)\n1.  **直接输出**：开头禁止使用任何引导语（如 \"The image shows...\", \"This style is...\"）。\n2.  **首句定锚 (新增)**：段落的第一句话必须是 **[核心媒介] + [艺术流派]** (例如: \"A flat 2D cel-shaded anime illustration...\" 或 \"A hyper-realistic 3D cyberpunk render...\")。\n3.  **格式结构**：连贯描述式英文段落 (Narrative Block)，非列表格式。\n4.  **内容清洗**：输出前必须再次检查，确保没有原图的具体主体名词（如 cat, dog, person, car）。\n\n## 格式示例：\nA flat 2D anime illustration style featuring bold contour lines and cel-shaded coloring. The palette is dominated by high-saturation neon pinks and electric blues, creating a vibrant pop-art aesthetic. Lighting is stylized and flat, lacking photorealistic shadows. Surface textures are smooth and simplified, with digital precision. The composition includes decorative background elements typical of retro 80s animation, emphasizing a lively and energetic atmosphere without realistic depth of field."
+      ]
+    },
+    {
+      "id": 83,
+      "type": "JjkText",
+      "pos": [
+        454.48626708984375,
+        -366.2569885253906
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "V7",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "# Role\nYou are an expert AI Art Director and Prompt Engineer specialized in \"Style Transfer\". Your sole purpose is to analyze a reference image (Image 2) and extract its visual style into a precise text description, strictly separating \"style\" from \"content\".\n\n# Core Objective\nTo generate a style description that applies the *aesthetic* of Image 2 to Image 1 without transferring the *objects* or *subjects* of Image 2.\n\n# Critical Rules (The \"Anti-Bleed\" Protocol)\n1.  **IGNORE SUBJECT MATTER**: Do not describe the objects, people, or specific shapes seen in the image.\n    * *Bad*: \"A mandala pattern\", \"A golden robot\", \"A crying woman\".\n    * *Good*: \"Intricate geometric linework\", \"Metallic texture with reflections\", \"Oil painting with emotional brushstrokes\".\n2.  **TRANSLATE PATTERNS TO TECHNIQUE**:\n    * If you see a Mandala/Geometric shape -> Write: \"Complex engraving style, precise fine lines, symmetrical composition logic, cross-hatching shading.\" (Do NOT use the word 'Mandala').\n    * If you see a specific character -> Write: \"Character design style characterized by [specific proportions/shading].\"\n3.  **FOCUS ON MEDIUM & RENDER**:\n    * Keywords to look for: Medium (Ink, Oil, Digital 3D, Polaroid), Lighting (Volumetric, Flat, Chiaroscuro), Texture (Grainy, Smooth, Impasto), Color Palette.\n\n# Workflow\n1.  Analyze the input image (Image 2).\n2.  Extract style keywords based on the Critical Rules.\n3.  Construct the description string.\n4.  Output **ONLY** the final prompt template below.\n\n# Output Format\nStrictly preserving the composition, subject matter, and all elements of the original image (Image 1) unchanged, reference the art style of Image 2 and transform the style of Image 1 into: [Insert your generated Style Description here]\n\n# Few-Shot Examples\n\n**Input:** Image of a complex golden Mandala.\n**Output:** Strictly preserving the composition, subject matter, and all elements of the original image (Image 1) unchanged, reference the art style of Image 2 and transform the style of Image 1 into: vintage copperplate engraving style featuring intricate fine linework and cross-hatching details, rendered in monochromatic sepia ink on textured old parchment paper.\n\n**Input:** Image of a Cyberpunk City.\n**Output:** Strictly preserving the composition, subject matter, and all elements of the original image (Image 1) unchanged, reference the art style of Image 2 and transform the style of Image 1 into: high-contrast cyberpunk aesthetic, featuring neon lighting, wet surface reflections, deep blacks, and a cinematic digital art finish with chromatic aberration."
+      ]
+    },
+    {
+      "id": 84,
+      "type": "JjkText",
+      "pos": [
+        454.1849670410156,
+        -615.23193359375
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "X1",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "# Role\nYou are an expert AI Art Director specialized in \"Style Extraction\". Your ONLY task is to analyze a reference image (Image 2) and output a high-fidelity description of its visual style, strictly separating \"style\" from \"content\".\n\n# Core Objective\nOutput a detailed, raw style description string that captures the texture, lighting, medium, and rendering technique of the image. **DO NOT include any prefix, suffix, or instructional text.**\n\n# Critical Rules (The \"Anti-Bleed\" Protocol)\n1.  **IGNORE SUBJECT MATTER**: Do not describe the objects, people, or specific shapes seen in the image.\n    * *Bad*: \"A mandala pattern\", \"A golden robot\", \"A crying woman\".\n    * *Good*: \"Intricate geometric linework\", \"Metallic texture with reflections\", \"Oil painting with emotional brushstrokes\".\n2.  **TRANSLATE PATTERNS TO TECHNIQUE**:\n    * If you see a specific pattern (e.g., Mandala, Plaid), describe the *method* of creation (e.g., \"Engraving style, radial symmetry logic, cross-hatching shading\") rather than the *noun*.\n3.  **MAXIMIZE DETAIL ON**:\n    * **Medium**: (e.g., Ink, Watercolor, 3D Octane Render, Polaroid, VHS Glitch).\n    * **Lighting**: (e.g., Volumetric, Rim light, Soft studio, Hard shadows).\n    * **Texture**: (e.g., Grainy, Matte, Glossy, Impasto, Halftone dots).\n    * **Color Palette**: (e.g., Monochromatic sepia, Neon cyan and magenta, Desaturated earth tones).\n\n# Output Format\n[Output ONLY the detailed style description paragraph. Do not wrap in quotes. Do not add \"Here is the description\".]\n\n# Few-Shot Examples\n\n**Input:** Image of a complex golden Mandala.\n**Output:**\nvintage copperplate engraving style featuring intricate fine linework and precise cross-hatching details, rendered in monochromatic sepia ink on textured old parchment paper, with a focus on mathematical precision and classical scientific illustration aesthetics.\n\n**Input:** Image of a Cyberpunk City with rain.\n**Output:**\nhigh-fidelity 3D rendering style reminiscent of Unreal Engine 5, featuring a dark and moody cyberpunk atmosphere, neon lighting reflecting on wet surfaces, chromatic aberration, deep contrast between shadows and vibrant highlights, and a cinematic anamorphic lens look.\n\n**Input:** Image of a flat vector illustration of a workspace.\n**Output:**\nminimalist flat vector art style, characterized by clean solid shapes without outlines, soft gradient shading, a pastel color palette, isometric perspective, and a modern corporate Memphis design aesthetic."
+      ]
+    },
+    {
+      "id": 79,
+      "type": "JjkText",
+      "pos": [
+        870.33251953125,
+        -374.4898376464844
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "V10",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "# Role\nYou are an expert AI Art Director specialized in \"Style Extraction\". Your ONLY task is to analyze a reference image (Image 2) and output a high-fidelity description of its visual style, strictly separating \"style\" from \"content\".\n\n# Core Objective\nOutput a detailed, raw style description string that captures the texture, lighting, medium, and rendering technique of the image. **DO NOT include any prefix, suffix, or instructional text.**\n\n# Critical Rules (The \"Anti-Bleed\" Protocol)\n1.  **IGNORE SUBJECT MATTER**: Do not describe the objects, people, or specific shapes seen in the image.\n    * *Bad*: \"A mandala pattern\", \"A golden robot\", \"A red fish\".\n    * *Good*: \"Intricate geometric linework\", \"Metallic texture\", \"Ukiyo-e woodblock style\".\n2.  **TRANSLATE PATTERNS TO TECHNIQUE**:\n    * If you see a specific pattern, describe the *method* of creation (e.g., \"Engraving style, radial symmetry logic\") rather than the *noun*.\n3.  **PRECISION COLOR GRADING (Strict Limit)**:\n    * Identify ONLY the top 2-3 dominant colors and the background tone.\n    * Describe the **specific shade and saturation** (e.g., \"Vibrant Prussian blue and muted coral red\" instead of just \"Blue and red\").\n    * *Constraint*: Keep color description under 15 words to prevent overwhelming the composition.\n\n# Maximize Detail On:\n* **Medium**: (e.g., Ink, Watercolor, 3D Octane Render, Vector Art).\n* **Line Quality**: (e.g., Thick bold outlines, delicate variable-width strokes, no outlines).\n* **Texture**: (e.g., Rice paper texture, Canvas grain, Smooth digital finish).\n* **Lighting/Shading**: (e.g., Flat shading, Halftone dots, Volumetric lighting).\n\n# Output Format\n[Output ONLY the detailed style description paragraph. No quotes.]\n\n# Few-Shot Examples\n\n**Input:** (Ukiyo-e Wave & Fish Image)\n**Output:**\ntraditional Ukiyo-e woodblock print style, featuring bold variable-width black outlines, flat shading without gradients, a specific color palette of vibrant Prussian blue and vermilion orange set against a cream rice-paper textured background, with a classic Japanese aesthetic.\n\n**Input:** (Golden Mandala Image)\n**Output:**\nvintage copperplate engraving style featuring intricate fine linework and precise cross-hatching details, rendered in monochromatic sepia ink on textured old parchment paper, with a focus on mathematical precision and classical scientific illustration aesthetics.\n\n**Input:** (Cyberpunk City)\n**Output:**\nhigh-fidelity 3D rendering style, featuring a dark cyberpunk atmosphere with neon cyan and magenta lighting reflecting on wet surfaces, deep contrast, chromatic aberration, and a cinematic anamorphic lens look."
+      ]
+    },
+    {
+      "id": 10,
+      "type": "LayerUtility: ImageScaleByAspectRatio V2",
+      "pos": [
+        599.1664428710938,
+        747.3863525390625
+      ],
+      "size": [
+        303.6851501464844,
+        330
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "proportional_width",
+          "name": "proportional_width",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_width"
+          }
+        },
+        {
+          "label": "proportional_height",
+          "name": "proportional_height",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_height"
+          }
+        },
+        {
+          "label": "fit",
+          "name": "fit",
+          "type": "COMBO",
+          "widget": {
+            "name": "fit"
+          }
+        },
+        {
+          "label": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          }
+        },
+        {
+          "label": "round_to_multiple",
+          "name": "round_to_multiple",
+          "type": "COMBO",
+          "widget": {
+            "name": "round_to_multiple"
+          }
+        },
+        {
+          "label": "scale_to_side",
+          "name": "scale_to_side",
+          "type": "COMBO",
+          "widget": {
+            "name": "scale_to_side"
+          }
+        },
+        {
+          "label": "scale_to_length",
+          "name": "scale_to_length",
+          "type": "INT",
+          "widget": {
+            "name": "scale_to_length"
+          }
+        },
+        {
+          "label": "background_color",
+          "name": "background_color",
+          "type": "STRING",
+          "widget": {
+            "name": "background_color"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            7,
+            20,
+            205,
+            206
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK"
+        },
+        {
+          "label": "original_size",
+          "name": "original_size",
+          "type": "BOX"
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": [
+            1,
+            3
+          ]
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": [
+            2,
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "3d53de09d8c1fb904d5cb0a137b9bc75e9d77108",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "original",
+        1,
+        1,
+        "crop",
+        "lanczos",
+        "16",
+        "longest",
+        1920,
+        "#000000"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 13,
+      "type": "PlaySound|pysssss",
+      "pos": [
+        3345.825439453125,
+        514.63623046875
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 53,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "any",
+          "name": "any",
+          "type": "*",
+          "link": 18
+        },
+        {
+          "label": "mode",
+          "name": "mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "mode"
+          }
+        },
+        {
+          "label": "volume",
+          "name": "volume",
+          "type": "FLOAT",
+          "widget": {
+            "name": "volume"
+          }
+        },
+        {
+          "label": "file",
+          "name": "file",
+          "type": "STRING",
+          "widget": {
+            "name": "file"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "shape": 6,
+          "type": "*"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PlaySound|pysssss",
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "f2838ed5e59de4d73cde5c98354b87a8d3200190",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        },
+        "widget_ue_connectable": {
+          "mode": true,
+          "volume": true
+        }
+      },
+      "widgets_values": [
+        "always",
+        0.3,
+        "notify.mp3"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 138,
+      "type": "SaveImage",
+      "pos": [
+        6090.36376953125,
+        696.4992065429688
+      ],
+      "size": [
+        1715.581787109375,
+        1396.8228759765625
+      ],
+      "flags": {},
+      "order": 68,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 223
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "KSamplerSelect",
+      "pos": [
+        1656.2132568359375,
+        62.60911560058594
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "sampler_name",
+          "name": "sampler_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "sampler_name"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "SAMPLER",
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            15,
+            204
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "euler"
+      ],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 17,
+      "type": "CFGGuider",
+      "pos": [
+        2162.2490234375,
+        31.584861755371094
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 21
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 99
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 97
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "GUIDER",
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CFGGuider",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 82,
+      "type": "JjkText",
+      "pos": [
+        1151.3798828125,
+        702.4248046875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            122
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Strictly preserving the composition, subject matter, and all elements of the original image (Image 1) unchanged, reference the art style of Image 2 and transform the style of Image 1 into:"
+      ]
+    },
+    {
+      "id": 136,
+      "type": "LayerUtility: ImageReel",
+      "pos": [
+        5303.65234375,
+        747.8125
+      ],
+      "size": [
+        270,
+        238
+      ],
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 220
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 221
+        },
+        {
+          "label": "image3",
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image4",
+          "name": "image4",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image1_text",
+          "name": "image1_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image1_text"
+          }
+        },
+        {
+          "label": "image2_text",
+          "name": "image2_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image2_text"
+          }
+        },
+        {
+          "label": "image3_text",
+          "name": "image3_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image3_text"
+          }
+        },
+        {
+          "label": "image4_text",
+          "name": "image4_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image4_text"
+          }
+        },
+        {
+          "label": "reel_height",
+          "name": "reel_height",
+          "type": "INT",
+          "widget": {
+            "name": "reel_height"
+          }
+        },
+        {
+          "label": "border",
+          "name": "border",
+          "type": "INT",
+          "widget": {
+            "name": "border"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "reel",
+          "name": "reel",
+          "type": "Reel",
+          "links": [
+            222
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageReel",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "90f4bfb38aaf121292f429b20eff07c6c121697e",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "copy image",
+        "copy style",
+        "结果图",
+        "image4",
+        1280,
+        32
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 100,
+      "type": "LayerUtility: ImageReel",
+      "pos": [
+        4596.72265625,
+        2387.936767578125
+      ],
+      "size": [
+        270,
+        238
+      ],
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image1",
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 197
+        },
+        {
+          "label": "image2",
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 194
+        },
+        {
+          "label": "image3",
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 234
+        },
+        {
+          "label": "image4",
+          "name": "image4",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "image1_text",
+          "name": "image1_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image1_text"
+          }
+        },
+        {
+          "label": "image2_text",
+          "name": "image2_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image2_text"
+          }
+        },
+        {
+          "label": "image3_text",
+          "name": "image3_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image3_text"
+          }
+        },
+        {
+          "label": "image4_text",
+          "name": "image4_text",
+          "type": "STRING",
+          "widget": {
+            "name": "image4_text"
+          }
+        },
+        {
+          "label": "reel_height",
+          "name": "reel_height",
+          "type": "INT",
+          "widget": {
+            "name": "reel_height"
+          }
+        },
+        {
+          "label": "border",
+          "name": "border",
+          "type": "INT",
+          "widget": {
+            "name": "border"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "reel",
+          "name": "reel",
+          "type": "Reel",
+          "links": [
+            151
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageReel",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "90f4bfb38aaf121292f429b20eff07c6c121697e",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "original style",
+        "input image",
+        "result merged",
+        "image4",
+        1280,
+        32
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 21,
+      "type": "LoadImage",
+      "pos": [
+        -1082.344970703125,
+        -1692.5638427734375
+      ],
+      "size": [
+        541.6183471679688,
+        707.3491821289062
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            10,
+            36,
+            194,
+            224,
+            226
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "pasted/55d98b92c5667d5e2bf6c536b1a475da019680f5390447aff3eb3aedccd58dce.png",
+        "image"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "SaveImage",
+      "pos": [
+        4177.28857421875,
+        -1611.8287353515625
+      ],
+      "size": [
+        541.6183471679688,
+        707.3491821289062
+      ],
+      "flags": {},
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 28
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "StarTed-fix"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 14,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        5362.56640625,
+        -1629.4931640625
+      ],
+      "size": [
+        541.6183471679688,
+        707.3491821289062
+      ],
+      "flags": {},
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "label": "image_a",
+          "name": "image_a",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 19
+        },
+        {
+          "dir": 3,
+          "label": "image_b",
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "comparer_mode": "Slide",
+        "cnr_id": "rgthree-comfy",
+        "ver": "8ff50e4521881eca1fe26aec9615fc9362474931",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "Node name for S&R": "Image Comparer (rgthree)"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_gvuvr_00007_dfpri_1781041167.jpg&type=temp&subfolder=&rand=0.07086369290657213&Rh-Comfy-Auth=eyJ1c2VySWQiOiIxOTI3Yzk3NWM3ZGQ3ZmMzMDEzNjBjMzQ1MjE0N2NlMSIsInNpZ25FeHBpcmUiOjE3ODE2Mzk4OTY0NTMsInRzIjoxNzgxMDM1MDk2NDUzLCJzaWduIjoiYTU1YjdmMGM3NTU3NjBiNDdmM2U3ZDAyNzlhMzM4ZWEifQ==&Rh-Identify=1927c975c7dd7fc301360c3452147ce1"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_gvuvr_00008_lxlel_1781041169.jpg&type=temp&subfolder=&rand=0.3573357667440372&Rh-Comfy-Auth=eyJ1c2VySWQiOiIxOTI3Yzk3NWM3ZGQ3ZmMzMDEzNjBjMzQ1MjE0N2NlMSIsInNpZ25FeHBpcmUiOjE3ODE2Mzk4OTY0NTMsInRzIjoxNzgxMDM1MDk2NDUzLCJzaWduIjoiYTU1YjdmMGM3NTU3NjBiNDdmM2U3ZDAyNzlhMzM4ZWEifQ==&Rh-Identify=1927c975c7dd7fc301360c3452147ce1"
+          }
+        ]
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 28,
+      "type": "SaveImage",
+      "pos": [
+        5326.5830078125,
+        -478.1913146972656
+      ],
+      "size": [
+        1740.5460205078125,
+        742.8292846679688
+      ],
+      "flags": {},
+      "order": 66,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 38
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 135,
+      "type": "SaveImage",
+      "pos": [
+        4195.6689453125,
+        52.21270751953125
+      ],
+      "size": [
+        592.1378784179688,
+        799.6160888671875
+      ],
+      "flags": {},
+      "order": 64,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 215
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "双图编辑"
+      ]
+    },
+    {
+      "id": 101,
+      "type": "SaveImage",
+      "pos": [
+        4716.64697265625,
+        3025.08935546875
+      ],
+      "size": [
+        1508.8126220703125,
+        723.2737426757812
+      ],
+      "flags": {},
+      "order": 62,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 155
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 134,
+      "type": "SaveImage",
+      "pos": [
+        5396.400390625,
+        2142.801025390625
+      ],
+      "size": [
+        553.8300170898438,
+        800.2079467773438
+      ],
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 214
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "单图编辑"
+      ]
+    },
+    {
+      "id": 98,
+      "type": "SaveImage",
+      "pos": [
+        3579.898681640625,
+        2603.3515625
+      ],
+      "size": [
+        541.6183471679688,
+        707.3491821289062
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 150
+        },
+        {
+          "label": "filename_prefix",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "StarTed-fix"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 146,
+      "type": "PreviewImage",
+      "pos": [
+        3299.268798828125,
+        2959.839111328125
+      ],
+      "size": [
+        265.34442138671875,
+        308.73175048828125
+      ],
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 235
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image_urls",
+          "name": "image_urls",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 145,
+      "type": "ImageColorMatch+",
+      "pos": [
+        3586.48291015625,
+        2728.246337890625
+      ],
+      "size": [
+        270,
+        170
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 240
+        },
+        {
+          "label": "reference",
+          "name": "reference",
+          "type": "IMAGE",
+          "link": 239
+        },
+        {
+          "label": "reference_mask",
+          "name": "reference_mask",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "color_space",
+          "name": "color_space",
+          "type": "COMBO",
+          "widget": {
+            "name": "color_space"
+          }
+        },
+        {
+          "label": "factor",
+          "name": "factor",
+          "type": "FLOAT",
+          "widget": {
+            "name": "factor"
+          }
+        },
+        {
+          "label": "device",
+          "name": "device",
+          "type": "COMBO",
+          "widget": {
+            "name": "device"
+          }
+        },
+        {
+          "label": "batch_size",
+          "name": "batch_size",
+          "type": "INT",
+          "widget": {
+            "name": "batch_size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            234,
+            237
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageColorMatch+",
+        "cnr_id": "comfyui_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "LUV",
+        0.5,
+        "auto",
+        0
+      ]
+    },
+    {
+      "id": 107,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        2177.354248046875,
+        2819.912109375
+      ],
+      "size": [
+        204.134765625,
+        26
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 165
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            192
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 105,
+      "type": "ReferenceLatent",
+      "pos": [
+        2133.308837890625,
+        2715.7998046875
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 161
+        },
+        {
+          "label": "latent",
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 162
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            193
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceLatent",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 93,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        2723.415771484375,
+        2462.70703125
+      ],
+      "size": [
+        202.53378295898438,
+        106
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "noise",
+          "name": "noise",
+          "type": "NOISE",
+          "link": 213
+        },
+        {
+          "label": "guider",
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 143
+        },
+        {
+          "label": "sampler",
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 204
+        },
+        {
+          "label": "sigmas",
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 212
+        },
+        {
+          "label": "latent_image",
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 211
+        }
+      ],
+      "outputs": [
+        {
+          "label": "output",
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            175
+          ]
+        },
+        {
+          "label": "denoised_output",
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 103,
+      "type": "CFGGuider",
+      "pos": [
+        2330.235595703125,
+        2473.375732421875
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 218
+        },
+        {
+          "label": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 193
+        },
+        {
+          "label": "negative",
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 192
+        },
+        {
+          "label": "cfg",
+          "name": "cfg",
+          "type": "FLOAT",
+          "widget": {
+            "name": "cfg"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "GUIDER",
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            143
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CFGGuider",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#8f7747",
+      "bgcolor": "#665533"
+    },
+    {
+      "id": 104,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1866.837646484375,
+        2467.755615234375
+      ],
+      "size": [
+        278.5713195800781,
+        204.68572998046875
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 216
+        },
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 200
+        }
+      ],
+      "outputs": [
+        {
+          "label": "CONDITIONING",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            161,
+            165
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "hasSecondTab": false,
+        "ver": "0.8.2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {},
+        "secondTabText": "Send Back",
+        "enableTabs": false,
+        "secondTabOffset": 80,
+        "tabWidth": 65,
+        "secondTabWidth": 65,
+        "tabXOffset": 10
+      },
+      "widgets_values": [
+        "移除图像中的黑框和左上角的数字"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 24,
+      "type": "LoadImage",
+      "pos": [
+        -1399.1802978515625,
+        2023.441162109375
+      ],
+      "size": [
+        541.6183471679688,
+        707.3491821289062
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          }
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            35,
+            106,
+            107,
+            197,
+            198,
+            229,
+            239
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "c8aa691960cda3454996bc78c4fe8fcd75008dd63056344e6ef9e0517576bad7.webp",
+        "image"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "LayerUtility: ImageScaleByAspectRatio V2",
+      "pos": [
+        -882.1451416015625,
+        1577.96240234375
+      ],
+      "size": [
+        303.6851501464844,
+        330
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 106
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK"
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "aspect_ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "aspect_ratio"
+          }
+        },
+        {
+          "label": "proportional_width",
+          "name": "proportional_width",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_width"
+          }
+        },
+        {
+          "label": "proportional_height",
+          "name": "proportional_height",
+          "type": "INT",
+          "widget": {
+            "name": "proportional_height"
+          }
+        },
+        {
+          "label": "fit",
+          "name": "fit",
+          "type": "COMBO",
+          "widget": {
+            "name": "fit"
+          }
+        },
+        {
+          "label": "method",
+          "name": "method",
+          "type": "COMBO",
+          "widget": {
+            "name": "method"
+          }
+        },
+        {
+          "label": "round_to_multiple",
+          "name": "round_to_multiple",
+          "type": "COMBO",
+          "widget": {
+            "name": "round_to_multiple"
+          }
+        },
+        {
+          "label": "scale_to_side",
+          "name": "scale_to_side",
+          "type": "COMBO",
+          "widget": {
+            "name": "scale_to_side"
+          }
+        },
+        {
+          "label": "scale_to_length",
+          "name": "scale_to_length",
+          "type": "INT",
+          "widget": {
+            "name": "scale_to_length"
+          }
+        },
+        {
+          "label": "background_color",
+          "name": "background_color",
+          "type": "STRING",
+          "widget": {
+            "name": "background_color"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            90,
+            250
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK"
+        },
+        {
+          "label": "original_size",
+          "name": "original_size",
+          "type": "BOX"
+        },
+        {
+          "label": "width",
+          "name": "width",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "label": "height",
+          "name": "height",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "3d53de09d8c1fb904d5cb0a137b9bc75e9d77108",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.5.2"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "original",
+        1,
+        1,
+        "crop",
+        "lanczos",
+        "16",
+        "longest",
+        1536,
+        "#000000"
+      ],
+      "color": "#698895",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 149,
+      "type": "Qwen3VL_Chat",
+      "pos": [
+        -809.1133422851562,
+        477.98089599609375
+      ],
+      "size": [
+        400,
+        510
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "🖼️ 图像1",
+          "name": "🖼️ 图像1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 250
+        },
+        {
+          "label": "🖼️ 图像2",
+          "name": "🖼️ 图像2",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "🖼️ 图像3",
+          "name": "🖼️ 图像3",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "🖼️ 图像4",
+          "name": "🖼️ 图像4",
+          "shape": 7,
+          "type": "IMAGE"
+        },
+        {
+          "label": "🎯 Qwen3VL额外选项",
+          "name": "🎯 Qwen3VL额外选项",
+          "shape": 7,
+          "type": "QWEN3VL_EXTRA_OPTIONS"
+        },
+        {
+          "label": "🤖 模型选择",
+          "name": "🤖 模型选择",
+          "type": "COMBO",
+          "widget": {
+            "name": "🤖 模型选择"
+          }
+        },
+        {
+          "label": "⚙️ 量化级别",
+          "name": "⚙️ 量化级别",
+          "type": "COMBO",
+          "widget": {
+            "name": "⚙️ 量化级别"
+          }
+        },
+        {
+          "label": "🧠 注意力模式",
+          "name": "🧠 注意力模式",
+          "type": "COMBO",
+          "widget": {
+            "name": "🧠 注意力模式"
+          }
+        },
+        {
+          "label": "🖼️ 最大长边",
+          "name": "🖼️ 最大长边",
+          "type": "INT",
+          "widget": {
+            "name": "🖼️ 最大长边"
+          }
+        },
+        {
+          "label": "💬 用户输入",
+          "name": "💬 用户输入",
+          "type": "STRING",
+          "widget": {
+            "name": "💬 用户输入"
+          }
+        },
+        {
+          "label": "🎭 系统角色定义",
+          "name": "🎭 系统角色定义",
+          "type": "STRING",
+          "widget": {
+            "name": "🎭 系统角色定义"
+          },
+          "link": 248
+        },
+        {
+          "label": "🌡️ 温度",
+          "name": "🌡️ 温度",
+          "type": "FLOAT",
+          "widget": {
+            "name": "🌡️ 温度"
+          }
+        },
+        {
+          "label": "🎯 Top-P",
+          "name": "🎯 Top-P",
+          "type": "FLOAT",
+          "widget": {
+            "name": "🎯 Top-P"
+          }
+        },
+        {
+          "label": "📏 最大长度",
+          "name": "📏 最大长度",
+          "type": "INT",
+          "widget": {
+            "name": "📏 最大长度"
+          }
+        },
+        {
+          "label": "🎲 随机种子",
+          "name": "🎲 随机种子",
+          "type": "INT",
+          "widget": {
+            "name": "🎲 随机种子"
+          }
+        },
+        {
+          "label": "🎯 种子控制",
+          "name": "🎯 种子控制",
+          "type": "COMBO",
+          "widget": {
+            "name": "🎯 种子控制"
+          }
+        },
+        {
+          "label": "🚀 开启TF32加速",
+          "name": "🚀 开启TF32加速",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "🚀 开启TF32加速"
+          }
+        },
+        {
+          "label": "🔄 保持模型加载",
+          "name": "🔄 保持模型加载",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "🔄 保持模型加载"
+          }
+        },
+        {
+          "label": "🧪 性能诊断",
+          "name": "🧪 性能诊断",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "🧪 性能诊断"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "AI回复",
+          "name": "AI回复",
+          "type": "STRING",
+          "links": [
+            246,
+            247
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Qwen3VL_Chat",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Qwen3-VL-4B-Instruct",
+        "None (FP16)",
+        "SDPA",
+        768,
+        "",
+        "你是一个专业、友好且乐于助人的AI助手。",
+        0.7,
+        0.9,
+        1024,
+        42,
+        "固定",
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 25,
+      "type": "PreviewAny",
+      "pos": [
+        -277.1664123535156,
+        222.9124298095703
+      ],
+      "size": [
+        429.4669189453125,
+        359.5859375
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "source",
+          "name": "source",
+          "type": "*",
+          "link": 246
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "STRING",
+          "type": "STRING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 148,
+      "type": "JjkText",
+      "pos": [
+        -1474.1597900390625,
+        744.0855712890625
+      ],
+      "size": [
+        534.5723266601562,
+        823.9246215820312
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "label": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            248
+          ]
+        }
+      ],
+      "title": "N1",
+      "properties": {
+        "Node name for S&R": "JjkText",
+        "cnr_id": "ComfyUI-Jjk-Nodes",
+        "ver": "b3c99bb78a99551776b5eab1a820e1cd58f84f31",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "🤖 Agent 设定：Visual Essence Extractor (视觉本质提取专家)\n1. 角色定义\n你是一名顶级的视觉艺术分析师和 Prompt 工程专家。你的任务是深度解构输入图像的**“视觉基因”**，并将其转化为一段高纯度的英文提示词（Style Prompt），用于在 Stable Diffusion、Midjourney 或 ComfyUI 工作流中进行风格迁移。\n\n2. 分析框架 (解构维度)\n当你接收到参考图时，请严格按照以下五个维度进行内部扫描，但不要输出分析过程：\n\nArtistic Medium & Technique: (媒介与技法) 如：Oil painting, digital 3D render, Ukiyo-e, cyberpunk photography, charcoal sketch.\n\nColor Palette & Harmony: (色彩与和谐度) 如：Monochromatic, complementary teal and orange, muted earth tones, neon-saturated.\n\nLighting & Atmosphere: (光影与氛围) 如：Volumetric fog, cinematic rim lighting, high-key, soft bokeh, moody chiaroscuro.\n\nTexture & Grain: (纹理与颗粒) 如：Grainy film texture, thick impasto brushstrokes, glossy plastic, hyper-detailed skin pores.\n\nArtistic Influence/Era: (艺术流派或年代) 如：Studio Ghibli style, 1970s vintage aesthetic, brutalist architecture style.\n\n3. 输出准则 (Strict Constraints)\n直接输出： 严禁任何开场白（如 \"Based on the image...\"）、结束语或解释说明。\n\n语言： 必须使用纯正、地道的英文提示词。\n\n格式： 采用逗号分隔的短语形式（Tag-based style），确保权重的均衡。\n\n精炼： 剔除所有关于“内容”的描述（如“一个女人”、“一棵树”），仅保留描述“风格”的词汇。\n\n4. 系统指令\nInput: [Image] Task: Extract the stylistic DNA. Output Logic: ONLY the English descriptive keywords for the style. No preamble. No meta-talk.\n\n🧪 实际输出示例 (供你参考)\n如果你输入一张赛博朋克风格的雨夜摄影图，该 Agent 的输出应当如下：\n\nCinematic photography, cyberpunk aesthetic, rain-slicked surfaces, neon reflections, high contrast, moody teal and magenta color palette, anamorphic lens flare, sharp focus, volumetric night fog, grainy 35mm film texture, hyper-realistic, intricate urban detail."
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      10,
+      3,
+      2,
+      0,
+      "INT"
+    ],
+    [
+      2,
+      10,
+      4,
+      2,
+      1,
+      "INT"
+    ],
+    [
+      3,
+      10,
+      3,
+      3,
+      1,
+      "INT"
+    ],
+    [
+      4,
+      10,
+      4,
+      3,
+      2,
+      "INT"
+    ],
+    [
+      5,
+      20,
+      0,
+      4,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      6,
+      5,
+      0,
+      4,
+      1,
+      "LATENT"
+    ],
+    [
+      7,
+      10,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      8,
+      0,
+      5,
+      1,
+      "VAE"
+    ],
+    [
+      9,
+      20,
+      0,
+      6,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      21,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      12,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      12,
+      8,
+      0,
+      11,
+      1,
+      "VAE"
+    ],
+    [
+      13,
+      16,
+      0,
+      12,
+      0,
+      "NOISE"
+    ],
+    [
+      14,
+      17,
+      0,
+      12,
+      1,
+      "GUIDER"
+    ],
+    [
+      15,
+      9,
+      0,
+      12,
+      2,
+      "SAMPLER"
+    ],
+    [
+      16,
+      3,
+      0,
+      12,
+      3,
+      "SIGMAS"
+    ],
+    [
+      17,
+      2,
+      0,
+      12,
+      4,
+      "LATENT"
+    ],
+    [
+      18,
+      11,
+      0,
+      13,
+      0,
+      "*"
+    ],
+    [
+      19,
+      11,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      10,
+      0,
+      14,
+      1,
+      "IMAGE"
+    ],
+    [
+      21,
+      7,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      26,
+      15,
+      0,
+      20,
+      0,
+      "CLIP"
+    ],
+    [
+      28,
+      11,
+      0,
+      22,
+      0,
+      "IMAGE"
+    ],
+    [
+      34,
+      27,
+      0,
+      26,
+      0,
+      "Reel"
+    ],
+    [
+      35,
+      24,
+      0,
+      27,
+      0,
+      "IMAGE"
+    ],
+    [
+      36,
+      21,
+      0,
+      27,
+      1,
+      "IMAGE"
+    ],
+    [
+      38,
+      26,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      90,
+      65,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      8,
+      0,
+      68,
+      1,
+      "VAE"
+    ],
+    [
+      94,
+      5,
+      0,
+      70,
+      1,
+      "LATENT"
+    ],
+    [
+      95,
+      70,
+      0,
+      71,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      96,
+      68,
+      0,
+      71,
+      1,
+      "LATENT"
+    ],
+    [
+      97,
+      71,
+      0,
+      17,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      98,
+      4,
+      0,
+      19,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      99,
+      19,
+      0,
+      17,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      100,
+      68,
+      0,
+      19,
+      1,
+      "LATENT"
+    ],
+    [
+      101,
+      6,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      106,
+      24,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ],
+    [
+      107,
+      24,
+      0,
+      75,
+      0,
+      "IMAGE"
+    ],
+    [
+      111,
+      75,
+      0,
+      77,
+      0,
+      "IMAGE"
+    ],
+    [
+      122,
+      82,
+      0,
+      80,
+      0,
+      "STRING"
+    ],
+    [
+      124,
+      80,
+      0,
+      20,
+      1,
+      "STRING"
+    ],
+    [
+      143,
+      103,
+      0,
+      93,
+      1,
+      "GUIDER"
+    ],
+    [
+      147,
+      113,
+      0,
+      94,
+      0,
+      "IMAGE"
+    ],
+    [
+      148,
+      113,
+      0,
+      95,
+      0,
+      "IMAGE"
+    ],
+    [
+      150,
+      113,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      151,
+      100,
+      0,
+      99,
+      0,
+      "Reel"
+    ],
+    [
+      155,
+      99,
+      0,
+      101,
+      0,
+      "IMAGE"
+    ],
+    [
+      161,
+      104,
+      0,
+      105,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      162,
+      111,
+      0,
+      105,
+      1,
+      "LATENT"
+    ],
+    [
+      165,
+      104,
+      0,
+      107,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      175,
+      93,
+      0,
+      113,
+      0,
+      "LATENT"
+    ],
+    [
+      179,
+      114,
+      0,
+      115,
+      0,
+      "IMAGE"
+    ],
+    [
+      192,
+      107,
+      0,
+      103,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      193,
+      105,
+      0,
+      103,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      194,
+      21,
+      0,
+      100,
+      1,
+      "IMAGE"
+    ],
+    [
+      197,
+      24,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      198,
+      24,
+      0,
+      114,
+      0,
+      "IMAGE"
+    ],
+    [
+      200,
+      80,
+      0,
+      104,
+      1,
+      "STRING"
+    ],
+    [
+      204,
+      9,
+      0,
+      93,
+      2,
+      "SAMPLER"
+    ],
+    [
+      205,
+      10,
+      0,
+      95,
+      1,
+      "IMAGE"
+    ],
+    [
+      206,
+      10,
+      0,
+      111,
+      0,
+      "IMAGE"
+    ],
+    [
+      211,
+      2,
+      0,
+      93,
+      4,
+      "LATENT"
+    ],
+    [
+      212,
+      3,
+      0,
+      93,
+      3,
+      "SIGMAS"
+    ],
+    [
+      213,
+      16,
+      0,
+      93,
+      0,
+      "NOISE"
+    ],
+    [
+      214,
+      115,
+      0,
+      134,
+      0,
+      "IMAGE"
+    ],
+    [
+      215,
+      77,
+      0,
+      135,
+      0,
+      "IMAGE"
+    ],
+    [
+      216,
+      15,
+      0,
+      104,
+      0,
+      "CLIP"
+    ],
+    [
+      217,
+      8,
+      0,
+      111,
+      1,
+      "VAE"
+    ],
+    [
+      218,
+      7,
+      0,
+      103,
+      0,
+      "MODEL"
+    ],
+    [
+      219,
+      8,
+      0,
+      113,
+      1,
+      "VAE"
+    ],
+    [
+      220,
+      77,
+      0,
+      136,
+      0,
+      "IMAGE"
+    ],
+    [
+      221,
+      115,
+      0,
+      136,
+      1,
+      "IMAGE"
+    ],
+    [
+      222,
+      136,
+      0,
+      137,
+      0,
+      "Reel"
+    ],
+    [
+      223,
+      137,
+      0,
+      138,
+      0,
+      "IMAGE"
+    ],
+    [
+      224,
+      21,
+      0,
+      114,
+      1,
+      "IMAGE"
+    ],
+    [
+      226,
+      21,
+      0,
+      75,
+      1,
+      "IMAGE"
+    ],
+    [
+      228,
+      11,
+      0,
+      143,
+      0,
+      "IMAGE"
+    ],
+    [
+      229,
+      24,
+      0,
+      143,
+      1,
+      "IMAGE"
+    ],
+    [
+      230,
+      143,
+      0,
+      27,
+      2,
+      "IMAGE"
+    ],
+    [
+      231,
+      143,
+      0,
+      144,
+      0,
+      "IMAGE"
+    ],
+    [
+      234,
+      145,
+      0,
+      100,
+      2,
+      "IMAGE"
+    ],
+    [
+      235,
+      113,
+      0,
+      146,
+      0,
+      "IMAGE"
+    ],
+    [
+      236,
+      143,
+      0,
+      77,
+      1,
+      "IMAGE"
+    ],
+    [
+      237,
+      145,
+      0,
+      115,
+      1,
+      "IMAGE"
+    ],
+    [
+      239,
+      24,
+      0,
+      145,
+      1,
+      "IMAGE"
+    ],
+    [
+      240,
+      113,
+      0,
+      145,
+      0,
+      "IMAGE"
+    ],
+    [
+      246,
+      149,
+      0,
+      25,
+      0,
+      "*"
+    ],
+    [
+      247,
+      149,
+      0,
+      80,
+      1,
+      "STRING"
+    ],
+    [
+      248,
+      148,
+      0,
+      149,
+      10,
+      "STRING"
+    ],
+    [
+      250,
+      65,
+      0,
+      149,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 16,
+      "title": "Group",
+      "bounding": [
+        4170.92529296875,
+        -470.6882629394531,
+        631.5338134765625,
+        483.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "links_added_by_ue": [],
+    "VHS_KeepIntermediate": true,
+    "ue_links": [],
+    "VHS_MetadataImage": true,
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
+    "workflowRendererVersion": "LG",
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.23.0",
+    "VHS_latentpreview": false,
+    "ds": {
+      "scale": 0.3234918430760678,
+      "offset": [
+        1414.6030162559632,
+        4.843422993510012
+      ]
+    }
+  },
+  "version": 0.4
+}
