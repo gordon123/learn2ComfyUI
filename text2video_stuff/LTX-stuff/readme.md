@@ -18,10 +18,13 @@ https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-
 text uncoder <br>
 https://huggingface.co/Comfy-Org/ltx-2/tree/main/split_files/text_encoders <br>
 
-
 https://huggingface.co/Kijai/LTX2.3_comfy/tree/main/vae
 
 https://huggingface.co/Kijai/LTX2.3_comfy/resolve/main/vae/taeltx2_3.safetensors
 
-
 https://huggingface.co/Lightricks/LTX-2.3/tree/main
+
+
+== LORA
+ทำภาพให้ชัดด้วย <br>
+https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Deblur
