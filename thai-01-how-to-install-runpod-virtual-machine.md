@@ -4,7 +4,7 @@
 พื้นที่นี้ใช้เก็บรวบรวมความรู้ที่ผมได้เรียนรู้และนำมารวมกัน  
 เนื่องจากผมไม่มีคอมพิวเตอร์สเปคแรง จึงใช้บริการ **Cloud Service** เป็นหลัก เช่น [runpod.io](https://runpod.io?ref=c0v5p0ys)  
 
-[![Watch the video](https://img.youtube.com/vi/KvZRuwcZ3Is/0.jpg)](https://www.youtube.com/watch?v=KvZRuwcZ3Is)
+[![Watch the video](https://img.youtube.com/vi/KvZRuwcZ3Is/maxresdefault.jpg)](https://www.youtube.com/watch?v=KvZRuwcZ3Is)
 
 ## การสมัครใช้งาน Runpod.io  
 การใช้ Runpod จะคิดค่าบริการตามทรัพยากรที่ใช้งานต่อชั่วโมง  
@@ -39,7 +39,7 @@
 ให้มองหาเครื่องที่มีสเปค:  
 ✅ **VRAM:** 20GB ขึ้นไป  
 ✅ **RAM:** 60GB ขึ้นไป  
-✅ **ราคา:** $0.5 - $0.2 USD ต่อชั่วโมง  
+✅ **ราคา:** $0.2 - $0.5 USD ต่อชั่วโมง  
 
 **ระดับความเร็ว (Speed Categories):**  
 - **Low, Medium, High** → ความเร็วในการดาวน์โหลดไฟล์  
