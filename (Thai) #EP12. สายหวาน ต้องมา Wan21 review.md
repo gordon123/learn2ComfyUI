@@ -15,7 +15,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-3. ดาวโหลด Script จาก [learn2comfyUI](https://github.com/gordon123/lean2ComfyUI/tree/main/file%20script)
+3. ดาวโหลด Script จาก [learn2comfyUI](https://github.com/gordon123/learn2ComfyUI/tree/main/file%20script)
 ```
 สำหรับ การ์ดจอ RTX30xx 40xx
 install_rtx30_40.sh
