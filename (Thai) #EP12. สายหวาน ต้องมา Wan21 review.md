@@ -1,4 +1,4 @@
-1. สำหรับ ใครจะ install ComfyUI บน [Runpod](https://tinyurl.com/register2runpod) สามารถดูวิธีกาลใช้แบบละเอียดได้ใน [youtube ep.1](https://youtu.be/KvZRuwcZ3Is?si=_zS3CbwGiDEoAhId) ผ่าน Script ด้วย Jupyter, หรือ ทำตาม ep.12 ใช้ script แบบ command line ตามอ่านได้ในบทนี้
+1. สำหรับ ใครจะ install ComfyUI บน [Runpod](https://tinyurl.com/register2runpod) สามารถดูวิธีกาลใช้แบบละเอียดได้ใน [youtube ep.1](https://youtu.be/Rs0LaYKLcL0?t=340s) ผ่าน Script ด้วย Jupyter, หรือ ทำตาม ep.12 ใช้ script แบบ command line ตามอ่านได้ในบทนี้
 
 ### สำหรับใครที่ vram < 8GB-12GB ลองใช้ GGUF น่าจะเร็วขึ้น
 Download จาก  <br>
