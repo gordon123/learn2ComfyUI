@@ -129,7 +129,7 @@ Diffusion Process คือกระบวนการลบ Noise ออกจ�
 ต้องทำซ้ำหลายรอบ (50-1000 Steps) เพื่อให้ได้ภาพที่สมจริง <br>
 เป็นกระบวนการหลักของ Stable Diffusion, DALL·E 2 และ Generative AI ทั่วไป <br>
 ✅ Diffusion Process เป็นหัวใจของ AI Generative Models! 🚀 <br>
-✅ สุดท้ายใช้ VAE Decoder แปลง Latent Space กลับเป็นภาพจริง (Pixel Space) ตามอ่าน ตอนต่อไปจ้า [ข้อ 5.3 Basic VAE](https://github.com/gordon123/lean2ComfyUI/blob/main/(Thai)%20%235.3%20Basic%20VAE.md)<br>
+✅ สุดท้ายใช้ VAE Decoder แปลง Latent Space กลับเป็นภาพจริง (Pixel Space) ตามอ่าน ตอนต่อไปจ้า [ข้อ 5.3 Basic VAE](https://github.com/gordon123/learn2ComfyUI/blob/main/(Thai)%20%235.3%20Basic%20VAE.md)<br>
 
 # 📜 1. Sampler คืออะไร?
 📌 Sampler คืออัลกอริธึมที่ควบคุมวิธีที่ U-Net จะลบ Noise ออกจากภาพ <br>

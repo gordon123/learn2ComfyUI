@@ -3,7 +3,7 @@
 [![Watch the Playlist](https://img.youtube.com/vi/KzARTPebgT4/0.jpg)](https://youtu.be/KzARTPebgT4?si=aSVkrCmzXYSwDLUp) <br>
 
 Download my script to install Comfyui on [Runpod](https://tinyurl.com/register2runpod) or Dowloader
-https://github.com/gordon123/lean2ComfyUI/tree/main/file%20script
+https://github.com/gordon123/learn2ComfyUI/tree/main/file%20script
 
 แปะลิ้ง <br>
 4xFaceUpSharpDAT <br>

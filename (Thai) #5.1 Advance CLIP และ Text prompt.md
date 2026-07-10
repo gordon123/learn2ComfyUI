@@ -29,7 +29,7 @@ Self-Attention Mechanism เป็นเทคนิคที่ใช้ใน 
 Query (Q) → ข้อมูลที่ใช้ค้นหาสิ่งที่สำคัญ <br>
 Key (K) → ตัวบ่งชี้ความสำคัญของข้อมูล <br>
 Value (V) → ข้อมูลจริงที่ถูกใช้ <br>
-<img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/self-attention-formula.png?raw=true" alt="Attention block LORA" width="400"/> <br>
+<img src="https://github.com/gordon123/learn2ComfyUI/blob/main/image/img/self-attention-formula.png?raw=true" alt="Attention block LORA" width="400"/> <br>
 ตามอ่านเรื่องนี้ได้จาก https://arxiv.org/abs/1706.03762 <br>
 
 ถ้าอธิบายภาษาบ้าน ๆ คือ เหมือนเป็นตัวกรอง และหาเป้าหมายจากข้อมูลใหญ่ ๆ ให้เจอสิ่งที่ต้องการ  <br>
@@ -102,7 +102,7 @@ t5xxl_8 = 1.6
 - Prompt Split (CLIP+T5) ใน Flux.1
 - https://platform.openai.com/tokenizer <br>
 
-<img src="https://github.com/gordon123/lean2ComfyUI/blob/main/image/img/flux-attention-block.png?raw=true" alt="Attention block LORA" width="150"/>
+<img src="https://github.com/gordon123/learn2ComfyUI/blob/main/image/img/flux-attention-block.png?raw=true" alt="Attention block LORA" width="150"/>
 
 ## ✅ 7. สรุปแนวทางใช้งาน
 
