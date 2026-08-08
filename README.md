@@ -68,6 +68,11 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 29. [Z-image lora fuse](https://github.com/destinyfaux/Z-Fuse) เอาไว้ check lora block, Merge หรือ ปั่นรวม Lora
 30. [Display Status by RealRebelAI](https://github.com/RealRebelAI/Rebels_Matrix_Monitor_Node)
 31. [PIXORAMA TOols image composor หรูหราหมาเห่า](https://github.com/pixaroma/ComfyUI-Pixaroma)
+32. [OPEN POSE Studio](https://github.com/andreszs/ComfyUI-OpenPose-Studio) หรูหรา หมาเห่า
+33. [ช่วย เชื่อมหลาย ๆ คลิป สำหรับ Minimax H3](https://github.com/NikoDemon80/ComfyUI-H3-Motion-Context)
+34. [Node ช่วยต่อ minimax H3 ให้ ง่าย และ prompt ง่ายขึ้น](https://github.com/nkxx188/ComfyUI-MiniMaxH3-Easy)
+
+
 
 
 
@@ -140,4 +145,4 @@ My Youtube Channel: https://www.youtube.com/@iimate2485<br>
 9. [tihubb.com](https://tihubb.com/ai-prompt)
 10. [ComfyUI Prompt Styler](https://github.com/NidAll/ComfyUI_PromptStyler)
 11. [LTX, Nanobanana, ChatGPT prompt ](https://promptsref.com/library/nano-banana-pro)
-12. [https://youmind.com/th-TH/prompts](https://youmind.com/th-TH/prompts/luxury-karaoke-lounge-lineup-22942)
+12. [Yesand IA](https://yesand.ai/portrait) รวมprompt ตัวอย่าง etc
