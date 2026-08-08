@@ -6,7 +6,7 @@ https://github.com/wildminder/awesome-minimax-H3 <br>
 ตัวเล็กของพี่ Kijai <br>
 https://huggingface.co/Kijai/MiniMax-H3-experimental/tree/main
 
-Ligh2x turbo lora from Kijao <br>
+Ligh2x turbo lora from Kijai <br>
 https://huggingface.co/Kijai/MiniMax-H3_comfy/tree/main/loras <br>
 
 prompt guide  <br>
