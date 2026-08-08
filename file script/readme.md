@@ -18,21 +18,6 @@ print("executable:", sys.executable)
 PY
 ```
 
-```
-python - <<'PY'
-import torch
-print("torch:", torch.__version__)
-print("cuda build:", torch.version.cuda)
-print("cuda available:", torch.cuda.is_available())
-print("device count:", torch.cuda.device_count())
-
-x = torch.zeros(1, device="cuda")
-print("cuda tensor:", x)
-print("device:", torch.cuda.get_device_name(0))
-print("capability:", torch.cuda.get_device_capability(0))
-PY
-```
-
 หลังสร้าง VENV เช็ดอีกรอบ แบบ เพิ่ม site packages
 
 ```
