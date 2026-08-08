@@ -1,3 +1,5 @@
+ดาวโหลดไฟล์ minimax-h3-prompt-writing.skill สำหรับ claude skill
+
 รวมดาวโหลดทุกโฒเดล <br>
 https://github.com/wildminder/awesome-minimax-H3 <br>
 
