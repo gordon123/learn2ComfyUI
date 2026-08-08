@@ -43,13 +43,28 @@ source /workspace/venv/bin/activate
 
 
 ```
-python - <<'PY'
-import torch
-print("torch:", torch.__version__)
-print("cuda:", torch.version.cuda)
-print("available:", torch.cuda.is_available())
-x = torch.zeros(1, device="cuda")
-print(x)
-print(torch.cuda.get_device_name(0))
-PY
+# 1. เช็ค Python version
+python3 --version
+which python3
+
+# 2. เช็ค CUDA (driver-level, จาก nvidia-smi)
+nvidia-smi
+# ดูมุมขวาบนของ output จะมีบรรทัด "CUDA Version: xx.x" 
+# นี่คือ CUDA driver รองรับสูงสุด ไม่ใช่ CUDA toolkit ที่ลงจริง
+
+# 3. เช็ค CUDA toolkit ที่ compile ไว้ (nvcc, ถ้ามี)
+nvcc --version
+
+# 4. เช็ค PyTorch + CUDA build ที่ python เห็น (สำคัญสุด)
+python3 -c "import torch; print('torch:', torch.__version__); print('cuda available:', torch.cuda.is_available()); print('cuda build:', torch.version.cuda); print('gpu:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'none')"
+
+# 5. เช็ค GPU compute capability (สำคัญสำหรับ sm_xx ของ SageAttention)
+python3 -c "import torch; print(torch.cuda.get_device_capability(0))"
+
+# 6. เช็ค pip / packaging tools
+pip3 --version
+python3 -c "import sys; print(sys.version_info)"
+
+# 7. เช็ค Triton (ถ้าลงแล้ว)
+python3 -c "import triton; print(triton.__version__)"
 ```
