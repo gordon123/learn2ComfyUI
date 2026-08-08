@@ -1,6 +1,8 @@
 รวมดาวโหลดทุกโฒเดล <br>
 https://github.com/wildminder/awesome-minimax-H3 <br>
 
-ตัวเล็กของพี่ Kijai
+ตัวเล็กของพี่ Kijai <br>
 https://huggingface.co/Kijai/MiniMax-H3-experimental/tree/main
 
+Ligh2x turbo lora from Kijao <br>
+https://huggingface.co/Kijai/MiniMax-H3_comfy/tree/main/loras <br>
