@@ -9,6 +9,9 @@ https://huggingface.co/Kijai/MiniMax-H3-experimental/tree/main
 Ligh2x turbo lora from Kijai <br>
 https://huggingface.co/Kijai/MiniMax-H3_comfy/tree/main/loras <br>
 
+ต้องใช้ตัว โลหด turbo lora node  <br>
+https://github.com/Larryvrh/ComfyUI-MiniMax-H3-Turbo <br>
+
 prompt guide  <br>
 https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/ <br>
 
