@@ -90,30 +90,46 @@ deactivate
 ตัวอย่างนี้ install สำหรับ Comfyui runpod official cuda 13 และเลือก การ์ดจอ rtx5090
 จะได้ เวอชั่น ประมาณนี้ ```Python 3.12.3 / Torch 2.10.0+cu130 / CUDA 13.0 / sm_120 (Blackwell)```
 
-คำสั่ง Install Sage attention สำรับ เวอชั่น นี้เท่านั้น !! ```Python 3.12.3 / Torch 2.10.0+cu130 / CUDA 13.0 / sm_120 (Blackwell)```
+คำสั่ง Install Sage attention สำรับ เวอชั่น นี้เท่านั้น !! ```Python 3.12.3 / Torch 2.10.0+cu130 / CUDA 13.0 / sm_120 (Blackwell)``` <br>
+Environment ของเครื่องนี้ (RunPod)<br>
+อย่าง	ค่า<br>
+GPU	RTX 5090, Blackwell, sm_120 (compute cap 12,0)<br>
+CUDA driver	13.0<br>
+Torch	2.10.0+cu130<br>
+Python	3.12.3<br>
+venv จริงที่ ComfyUI ใช้	/workspace/runpod-slim/ComfyUI/.venv-cu128<br>
+
 
 ```
-# 1. activate venv ที่ ComfyUI ใช้จริง (สำคัญ ต้องทำก่อนทุกครั้ง)
+# 1. activate venv ที่ ComfyUI ใช้จริง (เช็คจาก nvidia-smi ว่า process ไหนกิน GPU อยู่ ถ้าไม่แน่ใจ)
 source /workspace/runpod-slim/ComfyUI/.venv-cu128/bin/activate
 
-# 2. เช็คว่า torch เห็น GPU (ควรได้ผลเหมือนที่เช็คไปแล้ว)
-python -c "import torch; print(torch.__version__, torch.cuda.get_device_capability(0))"
-
-# 3. ติดตั้ง build dependencies
+# 2. ติดตั้ง build tool
 pip install ninja packaging wheel
 
-# 4. clone official repo
+# 3. หา path ของ CUDA dev headers ที่ pip ติดตั้งมาคู่กับ torch
+find / -iname "cusparse.h" 2>/dev/null
+# ของเครื่องนี้อยู่ที่: /usr/local/lib/python3.12/dist-packages/nvidia/cu13/include/cusparse.h
+
+# 4. clone source (นอกโฟลเดอร์ ComfyUI ก็ได้ แค่จำ path ไว้)
 cd /workspace
 git clone https://github.com/thu-ml/SageAttention.git
 cd SageAttention
 
-# 5. pin ให้ compile เฉพาะ sm_120 (Blackwell) — ไม่งั้นมันอาจ build หลาย arch แล้วช้ามาก/พลาด kernel
-export TORCH_CUDA_ARCH_LIST="12.0"
+# 5. ตั้ง env vars ให้ครบก่อน build ทุกครั้ง
+export TORCH_CUDA_ARCH_LIST="12.0"                 # pin เฉพาะ sm_120 (Blackwell)
 export EXT_PARALLEL=4
 export NVCC_APPEND_FLAGS="--threads 8"
 export MAX_JOBS=32
+export CPATH=/usr/local/lib/python3.12/dist-packages/nvidia/cu13/include:$CPATH
+export LIBRARY_PATH=/usr/local/lib/python3.12/dist-packages/nvidia/cu13/lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/lib/python3.12/dist-packages/nvidia/cu13/lib:$LD_LIBRARY_PATH
 
-# 6. build + install เข้า venv (ใช้เวลานานหลายนาที)
+# 6. build + install
 python setup.py install
+
+# 7. ทดสอบ — ต้อง cd ออกจากโฟลเดอร์ SageAttention ก่อนเสมอ!
+cd /workspace/runpod-slim/ComfyUI
+python -c "from sageattention import sageattn; print('OK')"
 ```
 
