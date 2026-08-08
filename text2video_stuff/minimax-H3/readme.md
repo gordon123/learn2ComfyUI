@@ -11,3 +11,6 @@ https://huggingface.co/Kijai/MiniMax-H3_comfy/tree/main/loras <br>
 
 prompt guide  <br>
 https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/ <br>
+
+Cutom node นี้ ใช้ง่าย สมชื่อ ดาวโหลด workflow ของเขามาเล่นเลย <br>
+https://github.com/nkxx188/ComfyUI-MiniMaxH3-Easy <br>
