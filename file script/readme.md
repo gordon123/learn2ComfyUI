@@ -1,7 +1,25 @@
 In this folder is my script for Jupyter to setup on [Runpod.io](https://runpod.io?ref=c0v5p0ys)  for comfyUI and here are FLUX collection download link
 
+### Install Sol Attention
+
+เริ่มจาก Activate version environment ก่อนเสมอ Official Runpod Comfyui เก็บไว้ใน
+```
+# 1. ต้อง activate venv ที่ ComfyUI ใช้ก่อน (เหมือนเดิม)
+source /workspace/runpod-slim/ComfyUI/.venv-cu128/bin/activate
+```
+
+```
+# 2. cd เข้า custom_nodes
+cd /workspace/runpod-slim/ComfyUI/custom_nodes
+
+# 3. clone repo
+git clone https://github.com/kijai/ComfyUI-SolAttn_triton.git
+
+# 4. restart ComfyUI
 
 บางครั้ง Runpod เซิพเวอร์ ไม่มี CUDA driver ทดลอง เชคด้วยคำสั่งต่อไปนี้ ก่อนจะ สร้าง VENV
+```
+
 ```
 nvidia-smi
 ```
@@ -53,3 +71,49 @@ python3 -c "import sys; print(sys.version_info)"
 # 7. เช็ค Triton (ถ้าลงแล้ว)
 python3 -c "import triton; print(triton.__version__)"
 ```
+
+## Install sage attention
+
+check version
+```
+# หา venv ที่ ComfyUI ใช้จริง
+find /workspace -maxdepth 4 -iname "*.venv*" -type d
+
+# activate แล้วเช็คใหม่
+source /workspace/runpod-slim/ComfyUI/.venv-cu128/bin/activate
+python -c "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.get_device_capability(0))"
+python --version
+which python
+deactivate
+```
+
+ตัวอย่างนี้ install สำหรับ Comfyui runpod official cuda 13 และเลือก การ์ดจอ rtx5090
+จะได้ เวอชั่น ประมาณนี้ ```Python 3.12.3 / Torch 2.10.0+cu130 / CUDA 13.0 / sm_120 (Blackwell)```
+
+คำสั่ง Install Sage attention สำรับ เวอชั่น นี้เท่านั้น !! ```Python 3.12.3 / Torch 2.10.0+cu130 / CUDA 13.0 / sm_120 (Blackwell)```
+
+```
+# 1. activate venv ที่ ComfyUI ใช้จริง (สำคัญ ต้องทำก่อนทุกครั้ง)
+source /workspace/runpod-slim/ComfyUI/.venv-cu128/bin/activate
+
+# 2. เช็คว่า torch เห็น GPU (ควรได้ผลเหมือนที่เช็คไปแล้ว)
+python -c "import torch; print(torch.__version__, torch.cuda.get_device_capability(0))"
+
+# 3. ติดตั้ง build dependencies
+pip install ninja packaging wheel
+
+# 4. clone official repo
+cd /workspace
+git clone https://github.com/thu-ml/SageAttention.git
+cd SageAttention
+
+# 5. pin ให้ compile เฉพาะ sm_120 (Blackwell) — ไม่งั้นมันอาจ build หลาย arch แล้วช้ามาก/พลาด kernel
+export TORCH_CUDA_ARCH_LIST="12.0"
+export EXT_PARALLEL=4
+export NVCC_APPEND_FLAGS="--threads 8"
+export MAX_JOBS=32
+
+# 6. build + install เข้า venv (ใช้เวลานานหลายนาที)
+python setup.py install
+```
+
