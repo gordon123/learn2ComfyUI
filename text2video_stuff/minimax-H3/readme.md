@@ -6,3 +6,6 @@ https://huggingface.co/Kijai/MiniMax-H3-experimental/tree/main
 
 Ligh2x turbo lora from Kijao <br>
 https://huggingface.co/Kijai/MiniMax-H3_comfy/tree/main/loras <br>
+
+prompt guide  <br>
+https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/ <br>
