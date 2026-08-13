@@ -17,3 +17,6 @@ https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/ <br>
 
 Cutom node นี้ ใช้ง่าย สมชื่อ ดาวโหลด workflow ของเขามาเล่นเลย <br>
 https://github.com/nkxx188/ComfyUI-MiniMaxH3-Easy <br>
+
+CLIP loader Uncensors <br>
+https://huggingface.co/ethanfel/Qwen3-VL-32B-Ultra-Heretic-H3-ComfyUI-INT8-ConvRot
