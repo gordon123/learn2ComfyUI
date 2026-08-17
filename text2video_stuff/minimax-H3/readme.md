@@ -20,3 +20,9 @@ https://github.com/nkxx188/ComfyUI-MiniMaxH3-Easy <br>
 
 CLIP loader Uncensors <br>
 https://huggingface.co/ethanfel/Qwen3-VL-32B-Ultra-Heretic-H3-ComfyUI-INT8-ConvRot
+
+Lora - คุม physic<br>
+https://huggingface.co/Jojocodex/minimax-h3-spatial-physics-lora<br>
+
+2-4x Upscale latent <br>
+https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler <br>
