@@ -58,3 +58,6 @@ https://huggingface.co/ntc-ai/minimax-music3-concept-sliders
 
 Reddit Article Summarizing News<br>
 https://reddit.com/r/comfyui/comments/1vq5d5u/a_quick_minimax_h3_news_roundup_16th_august_2026/
+
+Acc alibaba 8 step <br>
+https://huggingface.co/alibaba-pai/MiniMax-H3-Acc-LoRAs
