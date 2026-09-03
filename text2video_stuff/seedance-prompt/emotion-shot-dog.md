@@ -1,4 +1,4 @@
-Prompt :
+Prompt : https://x.com/AIwithkhan/status/2095351192054595892
 
 ```
 Multi-shot sequence with hard cuts between shots. Keep the same characters and visual style throughout. No music or score — only natural diegetic sound.
