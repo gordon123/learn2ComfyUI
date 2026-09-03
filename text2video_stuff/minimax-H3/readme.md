@@ -21,7 +21,7 @@ https://github.com/nkxx188/ComfyUI-MiniMaxH3-Easy <br>
 CLIP loader Uncensors <br>
 https://huggingface.co/ethanfel/Qwen3-VL-32B-Ultra-Heretic-H3-ComfyUI-INT8-ConvRot
 
-============ L O R A ================<br>
+## ============ L O R A ================<br>
 Lora Action fighting <br>
 https://huggingface.co/Jojocodex/minimax-h3-wushu-action-lora <br>
 
@@ -61,3 +61,14 @@ https://reddit.com/r/comfyui/comments/1vq5d5u/a_quick_minimax_h3_news_roundup_16
 
 Acc alibaba 8 step <br>
 https://huggingface.co/alibaba-pai/MiniMax-H3-Acc-LoRAs
+
+MiniMax-H3-Facial-Realism-CloseUp <br>
+https://huggingface.co/prithivMLmods/MiniMax-H3-Facial-Realism-CloseUp
+
+human lora  <br>
+https://huggingface.co/vpakarinen/better-human-motion-h3-lora
+
+## ============ Custom node ===========
+
+
+https://github.com/lihaoyun6/ComfyUI-H3VAE_TRT
