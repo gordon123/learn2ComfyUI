@@ -1,3 +1,6 @@
+### Tutorials
+https://app.notion.com/p/MiniMax-H3-The-Next-Gen-Open-Weight-Multimodal-Generation-Model-5cdd99c3d331822397f18130e7b480a8
+
 ดาวโหลดไฟล์ minimax-h3-prompt-writing.skill สำหรับ claude skill
 
 รวมดาวโหลดทุกโฒเดล <br>
