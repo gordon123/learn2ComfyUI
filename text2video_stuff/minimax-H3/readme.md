@@ -71,7 +71,14 @@ https://huggingface.co/prithivMLmods/MiniMax-H3-Facial-Realism-CloseUp
 human lora  <br>
 https://huggingface.co/vpakarinen/better-human-motion-h3-lora
 
+
 ## ============ Custom node ===========
 
-
 https://github.com/lihaoyun6/ComfyUI-H3VAE_TRT
+
+
+## ========== workflow
+Face refine workflow <br>
+https://huggingface.co/javawock7618/comfy-MiniMax-H3-workflows
+
+
