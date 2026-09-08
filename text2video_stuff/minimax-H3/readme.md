@@ -1,4 +1,11 @@
-### Tutorials
+## =====# Tutorials ========
+
+Custom node H3 studio Tut <br>
+https://www.youtube.com/watch?v=aEUM6sihSdI
+
+Director studio - stand alone opensource app LLM agent + H3 <br>
+https://www.youtube.com/watch?v=YX90I23Ys1Y
+
 https://app.notion.com/p/MiniMax-H3-The-Next-Gen-Open-Weight-Multimodal-Generation-Model-5cdd99c3d331822397f18130e7b480a8
 
 ดาวโหลดไฟล์ minimax-h3-prompt-writing.skill สำหรับ claude skill
@@ -72,12 +79,12 @@ human lora  <br>
 https://huggingface.co/vpakarinen/better-human-motion-h3-lora
 
 
-## ============ Custom node ===========
+## ========== Custom node ===========
 
 https://github.com/lihaoyun6/ComfyUI-H3VAE_TRT
 
 
-## ========== workflow
+## ========== workflow ===========
 Face refine workflow <br>
 https://huggingface.co/javawock7618/comfy-MiniMax-H3-workflows
 
