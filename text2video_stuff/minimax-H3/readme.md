@@ -88,4 +88,8 @@ https://github.com/lihaoyun6/ComfyUI-H3VAE_TRT
 Face refine workflow <br>
 https://huggingface.co/javawock7618/comfy-MiniMax-H3-workflows
 
+## =========== ลิ้ง อื่นๆ 
 
+https://github.com/jtydhr88/screenwriting-skills
+
+https://vvsvs.pro/cinematique
