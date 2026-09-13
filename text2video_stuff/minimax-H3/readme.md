@@ -1,4 +1,6 @@
 ## =====# Tutorials ========
+all workflow <br>
+https://huggingface.co/datasets/stablediffusiontutorials/Minimax-H3/tree/main
 
 Custom node H3 studio Tut <br>
 https://www.youtube.com/watch?v=aEUM6sihSdI
