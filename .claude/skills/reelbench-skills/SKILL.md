@@ -1,6 +1,6 @@
 ---
 name: reelbench-skills
-description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief, a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), and a camera-emotion read (precise angle, movement quality, lens/DOF — not vague labels like "side-angle"), asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with the rhythm map and camera-emotion pairing as explicit per-shot instructions, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus rhythm-fidelity and camera-emotion-fidelity checks) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
+description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief, a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), and a camera-emotion read (precise angle, movement quality, lens/DOF — not vague labels like "side-angle"); for action/fight/destruction scenes specifically, also applies pacing-irregularity and cumulative-environmental-damage-continuity craft rules, asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with the rhythm map and camera-emotion pairing as explicit per-shot instructions, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus rhythm-fidelity and camera-emotion-fidelity checks) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
 ---
 
 # reelbench-skills
@@ -58,6 +58,11 @@ just "handheld" or "static"), and the lens/DOF read if inferable. Flag explicitl
 the camera language doesn't match the apparent emotional content of the shot — that
 mismatch is itself a finding.
 
+If the footage is an action, fight, or destruction sequence, also read it against
+`references/action-sequence-craft.md`: note whether shot durations vary deliberately
+(no two consecutive shots the same length) and, for any recurring location across
+shots, whether damage to it is accumulating and persisting rather than resetting.
+
 Present the brief, the rhythm map, and the camera-emotion read to the user before
 moving on — they're what the downstream skill's prompts get checked against in
 Phase 3.
@@ -95,6 +100,13 @@ single-shot downstream skill, pass the one overall tag and its matching camera-e
 instruction. Do not silently pick a skill the user didn't ask for if their ask already
 names one — routing only resolves ambiguity.
 
+For an action/fight/destruction scene, also apply `references/action-sequence-craft.md`
+before handing off: state an explicit, deliberately uneven duration for each shot in
+the sequence (never default every shot to the same length), and — for any location
+that recurs across shots — state the damage-persistence chain explicitly (what broke,
+that it stays broken, how the debris continues to settle) rather than leaving it to be
+assumed.
+
 ### Phase 3 — QA the output
 
 Once the downstream skill produces a shotlist or prompt set, walk it against the 15
@@ -117,6 +129,13 @@ the reference's movement type but lands the wrong angle (profile instead of
 three-quarter, eye-level instead of a power-beat's low angle) is a real, distinct
 finding — name the emotion the shot needed, the camera language that would have
 carried it, and what the generation produced instead.
+
+For an action/fight/destruction sequence, also check the two `action-sequence-craft.md`
+principles: did shot duration actually vary (or did the output land on a metronome of
+equal-length shots), and — for any location reused across shots — did environmental
+damage persist and scale up, or did it visibly reset between shots? These are the two
+failure modes this project has actually run into that the 15 gates don't otherwise
+catch.
 
 ### Phase 4 — Before/after comparison report (once a generated clip exists)
 
@@ -159,3 +178,6 @@ record, not a highlight reel.
   identity reference, a style swap), re-carry every unrelated environmental detail
   from the original brief explicitly — don't let it silently drop just because the
   edit's focus was elsewhere.
+- In an action/destruction sequence, never let every shot default to the same
+  duration, and never let a broken location silently repair itself between shots —
+  state both the pacing variance and the damage-persistence chain explicitly.
