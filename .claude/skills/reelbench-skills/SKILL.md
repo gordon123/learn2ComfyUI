@@ -1,6 +1,6 @@
 ---
 name: reelbench-skills
-description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief, asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill, then reviews that skill's output against a 15-point cinematic quality-gate checklist before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
+description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief plus a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with that rhythm map as an explicit per-shot instruction, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus a rhythm-fidelity check) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
 ---
 
 # reelbench-skills
@@ -38,9 +38,18 @@ Run shot-level analysis on the reference footage with ffprobe/ffmpeg (see
 duration, shot size (wide/medium/close/etc.), camera movement, cut type, and dominant
 color/lighting. Aggregate into a **Continuity & Style Brief**: average shot length,
 shot-size distribution, camera-movement vocabulary actually used, pacing rhythm (are
-cuts accelerating/decelerating), and color/lighting throughline. Present this brief to
-the user before moving on — it's the thing the downstream skill's prompts get checked
-against in Phase 3.
+cuts accelerating/decelerating), and color/lighting throughline.
+
+Then, for a multi-shot clip, assign each detected shot one **narrative-rhythm tag**
+(hook/setup/escalation/beat/pivot/payoff/breath/closure) with a one-sentence reason —
+see `references/narrative-rhythm.md` for the full tag definitions and how to apply
+them. This is a separate layer from the Continuity & Style Brief: that brief describes
+how a shot looks, the rhythm map describes what job it does in the sequence. For a
+single continuous take, give the whole shot one overall tag instead of forcing
+per-shot boundaries onto footage that has none.
+
+Present both the brief and the rhythm map to the user before moving on — they're what
+the downstream skill's prompts get checked against in Phase 3.
 
 If no footage is supplied, skip straight to Phase 2 using the user's stated genre/tone
 as the style brief instead of measured data — say explicitly that the brief is
@@ -63,9 +72,13 @@ duration instead of forcing it into the reference's runtime.
 
 Then match the task to the right skill using `references/routing-matrix.md`. Tell the
 user which skill you're handing off to and why, then invoke it (via Skill tool)
-carrying the Continuity & Style Brief and the confirmed duration as context for it to
-write against. Do not silently pick a skill the user didn't ask for if their ask
-already names one — routing only resolves ambiguity.
+carrying the Continuity & Style Brief, the confirmed duration, and the rhythm map as
+context for it to write against. For a multi-shot downstream skill, pass the rhythm
+map as an explicit per-shot instruction (see `references/narrative-rhythm.md`'s
+"Using it in Phase 2" section) — not just a style note, but which shot should function
+as the hook, which as the payoff, and so on. For a single-shot downstream skill, pass
+the one overall tag the shot needs to hit. Do not silently pick a skill the user didn't
+ask for if their ask already names one — routing only resolves ambiguity.
 
 ### Phase 3 — QA the output
 
@@ -75,6 +88,12 @@ fail give a concrete rewritten line the user can hand back to the same skill for
 targeted fix — never patch the other skill's output yourself. Flag gates you could not
 check (e.g. no reference footage was given, so color-continuity has nothing to compare
 against) as "not applicable" rather than guessing.
+
+If a rhythm map was handed off in Phase 2, also check it landed: did the shot tagged
+as the beat actually read as a held pause, does the payoff shot deliver more than the
+escalation before it, are six consecutive shots doing the same narrative job (the flat-
+rhythm failure mode)? Report this alongside the 15 gates, not folded silently into one
+of them — it's a real but separate check.
 
 ### Phase 4 — Before/after comparison report (once a generated clip exists)
 
@@ -101,3 +120,5 @@ report is a QA record, not a highlight reel.
 - In a comparison report, never grade fidelity against a vaguer brief than what the
   prompt actually said — a "partial" or "diverged" verdict must trace to a specific
   line in the prompt, not a general vibe.
+- Never force per-shot rhythm tags onto a single continuous take that has no shot
+  boundaries — give it one overall tag instead of inventing cuts that don't exist.
