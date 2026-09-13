@@ -38,7 +38,12 @@ Run shot-level analysis on the reference footage with ffprobe/ffmpeg (see
 duration, shot size (wide/medium/close/etc.), camera movement, cut type, and dominant
 color/lighting. Aggregate into a **Continuity & Style Brief**: average shot length,
 shot-size distribution, camera-movement vocabulary actually used, pacing rhythm (are
-cuts accelerating/decelerating), and color/lighting throughline.
+cuts accelerating/decelerating), and color/lighting throughline. When this is going
+into a report, give every shot a structured field table per
+`references/footage-analysis-guide.md` §6 (code-measured fields kept separate from
+interpreted ones, every category label backed by stated evidence, frame pairs pulled at
+15%/85% into each shot) rather than a caption paragraph — this applies even to a single
+continuous take, which still gets one full row.
 
 Then, for a multi-shot clip, assign each detected shot one **narrative-rhythm tag**
 (hook/setup/escalation/beat/pivot/payoff/breath/closure) with a one-sentence reason —
