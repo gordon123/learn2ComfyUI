@@ -152,6 +152,17 @@ aspect ratio, a vague angle label, or an environmental detail dropped when the p
 was revised for something else) that plausibly caused one — this report is a QA
 record, not a highlight reel.
 
+This same artifact-first default applies even without a separate reference clip —
+when the user hands over just the generated clip and the prompt that produced it and
+asks to "analyze" or "วิเคราะห์" it, build the same kind of clickable HTML report
+(playable clip, per-frame scene-change chart, a shot-by-shot table with thumbnails and
+a pass/warn/fail verdict per shot, a summary stats table) rather than a chat-only text
+answer. A plain conversational answer is fine only when the user explicitly signals
+they want a quick verbal read (e.g. "บอกสั้น ๆ", "เล่าคร่าว ๆ พอ") — otherwise "analyze
+this clip" defaults to the report artifact, matching what a "拉片" shot-breakdown tool
+produces, since that's the format this project has settled on for anything the user
+will want to reread, click through, or come back to.
+
 ## Boundaries
 
 - Never edit files belonging to another skill.
@@ -181,3 +192,6 @@ record, not a highlight reel.
 - In an action/destruction sequence, never let every shot default to the same
   duration, and never let a broken location silently repair itself between shots —
   state both the pacing variance and the damage-persistence chain explicitly.
+- Default a generated-clip analysis request to the clickable HTML report format (per
+  Phase 4), not a chat-only text answer — a user re-asking for "the report" after
+  getting a text answer is this rule being missed, not a new request.
