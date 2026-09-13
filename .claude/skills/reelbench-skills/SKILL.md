@@ -1,6 +1,6 @@
 ---
 name: reelbench-skills
-description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief, a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), and a camera-emotion read (precise angle, movement quality, lens/DOF — not vague labels like "side-angle"); for action/fight/destruction scenes specifically, also applies pacing-irregularity and cumulative-environmental-damage-continuity craft rules, asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with the rhythm map and camera-emotion pairing as explicit per-shot instructions, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus rhythm-fidelity and camera-emotion-fidelity checks) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
+description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief, a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), a camera-emotion read (precise angle, movement quality, lens/DOF — not vague labels like "side-angle"), and a micro-expression-physics pass for any emotionally-loaded or evasive beat (physical, asymmetric reflex chains instead of mood labels or bare prohibitions — the fix for a beat that keeps rendering as a static held pose no matter how many negative constraints it gets); for action/fight/destruction scenes specifically, also applies pacing-irregularity and cumulative-environmental-damage-continuity craft rules, asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with the rhythm map and camera-emotion pairing as explicit per-shot instructions, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus rhythm-fidelity and camera-emotion-fidelity checks) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
 ---
 
 # reelbench-skills
@@ -38,7 +38,12 @@ Run shot-level analysis on the reference footage with ffprobe/ffmpeg (see
 duration, shot size (wide/medium/close/etc.), camera movement, cut type, and dominant
 color/lighting. Aggregate into a **Continuity & Style Brief**: average shot length,
 shot-size distribution, camera-movement vocabulary actually used, pacing rhythm (are
-cuts accelerating/decelerating), and color/lighting throughline.
+cuts accelerating/decelerating), and color/lighting throughline. When this is going
+into a report, give every shot a structured field table per
+`references/footage-analysis-guide.md` §6 (code-measured fields kept separate from
+interpreted ones, every category label backed by stated evidence, frame pairs pulled at
+15%/85% into each shot) rather than a caption paragraph — this applies even to a single
+continuous take, which still gets one full row.
 
 Then, for a multi-shot clip, assign each detected shot one **narrative-rhythm tag**
 (hook/setup/escalation/beat/pivot/payoff/breath/closure) with a one-sentence reason —
@@ -62,6 +67,12 @@ If the footage is an action, fight, or destruction sequence, also read it agains
 `references/action-sequence-craft.md`: note whether shot durations vary deliberately
 (no two consecutive shots the same length) and, for any recurring location across
 shots, whether damage to it is accumulating and persisting rather than resetting.
+
+If any shot carries an emotionally-loaded or evasive beat (concealment, a fast
+reaction, a secret action), also read it against
+`references/micro-expression-physics.md`: describe what's observed as a physical
+reflex chain (trigger → involuntary reflex → secondary reaction → visible action), not
+a mood label — this is what the brief needs to be specific enough to write from later.
 
 Present the brief, the rhythm map, and the camera-emotion read to the user before
 moving on — they're what the downstream skill's prompts get checked against in
@@ -107,6 +118,15 @@ that recurs across shots — state the damage-persistence chain explicitly (what
 that it stays broken, how the debris continues to settle) rather than leaving it to be
 assumed.
 
+For any shot carrying an emotionally-loaded or evasive beat, apply
+`references/micro-expression-physics.md` before handing off — especially for a beat
+that has already failed the same way in a prior generation. State, in the shot text
+itself: the external trigger, the asymmetric physical reflex chain (§2–3 of that file),
+and the specific point the eyes/attention are actually fixed on. Do not rely on a
+negative constraint alone ("no held eye contact," "no posing") to fix a beat like
+this — a prohibition with nothing positive to replace it just sends the model back to
+its default pose; the physical chain is what actually changes the output.
+
 ### Phase 3 — QA the output
 
 Once the downstream skill produces a shotlist or prompt set, walk it against the 15
@@ -130,6 +150,15 @@ three-quarter, eye-level instead of a power-beat's low angle) is a real, distinc
 finding — name the emotion the shot needed, the camera language that would have
 carried it, and what the generation produced instead.
 
+For any emotionally-loaded or evasive beat, also check it against
+`references/micro-expression-physics.md` §7: did the generation actually read as fast/
+incidental/concealed, or did it revert to a static, symmetrical, face-to-face pose? If
+it's a repeat failure on a beat that only ever got a mood label or a negative
+constraint (never a physical reflex chain), report that plainly as the root cause —
+this is a real, distinct finding from the 15 gates, rhythm-fidelity, and camera-emotion
+checks, and it is the single most common way this project has seen a beat fail
+across multiple regenerations.
+
 For an action/fight/destruction sequence, also check the two `action-sequence-craft.md`
 principles: did shot duration actually vary (or did the output land on a metronome of
 equal-length shots), and — for any location reused across shots — did environmental
@@ -151,6 +180,17 @@ including any gap in the prompt itself (like an unstated duration, an unspecifie
 aspect ratio, a vague angle label, or an environmental detail dropped when the prompt
 was revised for something else) that plausibly caused one — this report is a QA
 record, not a highlight reel.
+
+This same artifact-first default applies even without a separate reference clip —
+when the user hands over just the generated clip and the prompt that produced it and
+asks to "analyze" or "วิเคราะห์" it, build the same kind of clickable HTML report
+(playable clip, per-frame scene-change chart, a shot-by-shot table with thumbnails and
+a pass/warn/fail verdict per shot, a summary stats table) rather than a chat-only text
+answer. A plain conversational answer is fine only when the user explicitly signals
+they want a quick verbal read (e.g. "บอกสั้น ๆ", "เล่าคร่าว ๆ พอ") — otherwise "analyze
+this clip" defaults to the report artifact, matching what a "拉片" shot-breakdown tool
+produces, since that's the format this project has settled on for anything the user
+will want to reread, click through, or come back to.
 
 ## Boundaries
 
@@ -181,3 +221,10 @@ record, not a highlight reel.
 - In an action/destruction sequence, never let every shot default to the same
   duration, and never let a broken location silently repair itself between shots —
   state both the pacing variance and the damage-persistence chain explicitly.
+- Default a generated-clip analysis request to the clickable HTML report format (per
+  Phase 4), not a chat-only text answer — a user re-asking for "the report" after
+  getting a text answer is this rule being missed, not a new request.
+- Never try to fix a repeat-failing emotional or evasive beat with another negative
+  constraint alone — a beat that has already failed the same way once needs a physical
+  reflex chain from `references/micro-expression-physics.md`, not a longer list of
+  prohibitions layered onto the same unspecific positive description.

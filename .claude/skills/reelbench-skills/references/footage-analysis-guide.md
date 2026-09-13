@@ -57,3 +57,54 @@ Combine 2–4 into a short brief:
 
 Keep this brief factual and short — it's meant to be handed to another skill as
 grounding context, not read as a film-school essay.
+
+## 6. Per-shot data table (for a report, one row per shot)
+
+When the analysis is going into an HTML report (per SKILL.md's artifact-first default),
+give every shot — including a single continuous take, as one row — a structured field
+table rather than a caption paragraph, adapted from the field conventions this project
+found in a public shot-breakdown tool (`video-shots`). Split fields into what's
+code-measured versus what's an interpreted judgment call, and never blur the two:
+
+**Code-measured fields** (from ffprobe/ffmpeg directly, no interpretation):
+- `shot id` — sequential, `S01`, `S02`, ...
+- `start` / `end` / `seconds` — from the scene-cut boundary list (§1), two decimals
+- `motion` — the median of the per-frame `lavfi.scene_score` values *within* that shot's
+  own frame range (not the cut-detection score at its boundary) — this is a real motion-
+  intensity number, distinct from the cut score, and worth reporting even for a shot
+  with zero internal cuts, since it separates "static" from "handheld-but-uncut"
+
+**Interpreted fields** (a judgment call — state the evidence, don't just assert):
+- `size` — shot scale (extreme close-up → extreme wide), from the sampled frame
+- `category` — what kind of shot this is (dialogue / reaction / insert / establishing /
+  atmosphere-mood / empty-frame, etc.) — **always name the evidence**: a "dialogue"
+  category needs audible lines, a "text card" category needs visible on-screen text: an
+  unsupported category label is a guess, not a finding
+- `camera` — movement type in plain terms (fixed / pan / dolly-push / dolly-pull / track
+  / handheld-follow / float-drift) — cross-reference `camera-emotion.md` for the
+  emotional read, this field is just the mechanical description
+- `frame` — one concrete visual description of the shot (framing, subject, background,
+  light) — a real description, not a placeholder ("a shot of a person" fails this)
+
+**Content fields**:
+- `subjects` — who's in frame (name if known/established, otherwise a plain description)
+- `on-screen text` — exact text if any (distinguish a diegetic sign/graphic from a
+  non-diegetic watermark or stock-preview artifact)
+- `audio` — what's audible, or state plainly that audio wasn't evaluated in this pass
+
+**Metadata fields**:
+- `rhythm` / `rhythm note` — the tag from `narrative-rhythm.md` plus a one-line reason
+  (a bare tag with no reason is the same failure mode as an unsupported category)
+- `note` — anything else worth flagging (e.g. zero cuts detected, a possible false-
+  positive cut, a shot whose category was hard to call)
+
+**Frame pair convention**: for each shot's thumbnails, pull two frames — one at 15%
+into the shot's duration, one at 85% — labeled `S01a.jpg` / `S01b.jpg` and so on, rather
+than an arbitrary start/mid pair. This captures the shot's actual visual arc (its early
+framing vs. where it settles) more reliably than a first-frame/midpoint pair, especially
+for a shot with camera movement across its own duration.
+
+This table format applies whether the clip has one shot or fifty — a single continuous
+take still gets one full row (with `motion` as the median across the whole take, and
+`note` stating plainly that zero cuts were detected) rather than being described in
+prose alone.
