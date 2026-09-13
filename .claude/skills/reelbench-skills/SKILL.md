@@ -1,6 +1,6 @@
 ---
 name: reelbench-skills
-description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief plus a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with that rhythm map as an explicit per-shot instruction, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus a rhythm-fidelity check) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
+description: Cinematic-continuity coach and router for the prompt-writing skill family (minimax-h3-shotlist-director, minimax-h3-prompt-writing, seedance-shotlist-director, seedance-director, seedance-clean, seedance-footage-vfx). Learns real shot grammar from reference footage the user supplies (via ffprobe/ffmpeg scene analysis), turns it into a Continuity & Style Brief, a per-shot narrative-rhythm map (hook/setup/escalation/beat/pivot/payoff/breath/closure), and a camera-emotion read (precise angle, movement quality, lens/DOF — not vague labels like "side-angle"), asks for (or recommends from the measured clip) a target generation duration, routes the actual prompt-writing task to the right downstream skill with the rhythm map and camera-emotion pairing as explicit per-shot instructions, then reviews that skill's output against a 15-point cinematic quality-gate checklist (plus rhythm-fidelity and camera-emotion-fidelity checks) before it goes to generation. Once the user has an actual generated clip back, can also build a before/after HTML comparison report (original vs. generated: side-by-side players, sampled frames, scene-change chart, prompt-fidelity table) as an Artifact. Use when the user wants a sequence of AI-video prompts (MV, ad, scene, short film) to hold together as one continuous cinematic production instead of a pile of disconnected clips, when they hand over reference footage/films and want its shot language applied to new prompts, or when they want to check a generated clip against the reference it was built from. Does not replace or edit the downstream skills — it is a separate supporting layer that briefs them, QAs their output, and reports on the result.
 ---
 
 # reelbench-skills
@@ -48,8 +48,19 @@ how a shot looks, the rhythm map describes what job it does in the sequence. For
 single continuous take, give the whole shot one overall tag instead of forcing
 per-shot boundaries onto footage that has none.
 
-Present both the brief and the rhythm map to the user before moving on — they're what
-the downstream skill's prompts get checked against in Phase 3.
+Then read the camera language for its **emotional register**, not just its mechanics —
+see `references/camera-emotion.md`. For each shot (or the whole take, single-shot),
+name the precise angle (eye-level / three-quarter / pure profile / low / high / dutch
+/ overhead / worm's-eye / OTS — never a vague catch-all like "side-angle," which has
+already caused a real generation to diverge from its reference here), the movement
+quality in emotional terms (steady handheld breathing vs jittery vs locked-static, not
+just "handheld" or "static"), and the lens/DOF read if inferable. Flag explicitly if
+the camera language doesn't match the apparent emotional content of the shot — that
+mismatch is itself a finding.
+
+Present the brief, the rhythm map, and the camera-emotion read to the user before
+moving on — they're what the downstream skill's prompts get checked against in
+Phase 3.
 
 If no footage is supplied, skip straight to Phase 2 using the user's stated genre/tone
 as the style brief instead of measured data — say explicitly that the brief is
@@ -72,13 +83,17 @@ duration instead of forcing it into the reference's runtime.
 
 Then match the task to the right skill using `references/routing-matrix.md`. Tell the
 user which skill you're handing off to and why, then invoke it (via Skill tool)
-carrying the Continuity & Style Brief, the confirmed duration, and the rhythm map as
-context for it to write against. For a multi-shot downstream skill, pass the rhythm
-map as an explicit per-shot instruction (see `references/narrative-rhythm.md`'s
-"Using it in Phase 2" section) — not just a style note, but which shot should function
-as the hook, which as the payoff, and so on. For a single-shot downstream skill, pass
-the one overall tag the shot needs to hit. Do not silently pick a skill the user didn't
-ask for if their ask already names one — routing only resolves ambiguity.
+carrying the Continuity & Style Brief, the confirmed duration, the rhythm map, and the
+camera-emotion pairing as context for it to write against. For a multi-shot downstream
+skill, pass the rhythm map as an explicit per-shot instruction (see
+`references/narrative-rhythm.md`'s "Using it in Phase 2" section) — not just a style
+note, but which shot should function as the hook, which as the payoff, and so on. Pair
+every shot's rhythm tag with its camera-emotion instruction per
+`references/camera-emotion.md` §7 — state the precise angle and movement quality tied
+to that shot's emotion, in full sentences, never a bare technical label. For a
+single-shot downstream skill, pass the one overall tag and its matching camera-emotion
+instruction. Do not silently pick a skill the user didn't ask for if their ask already
+names one — routing only resolves ambiguity.
 
 ### Phase 3 — QA the output
 
@@ -95,6 +110,14 @@ escalation before it, are six consecutive shots doing the same narrative job (th
 rhythm failure mode)? Report this alongside the 15 gates, not folded silently into one
 of them — it's a real but separate check.
 
+Also check camera-emotion fidelity per `references/camera-emotion.md` §8: did the
+generated shot's actual angle and movement match the emotion it was instructed to
+carry — not just the Continuity & Style Brief's raw vocabulary? A camera that matches
+the reference's movement type but lands the wrong angle (profile instead of
+three-quarter, eye-level instead of a power-beat's low angle) is a real, distinct
+finding — name the emotion the shot needed, the camera language that would have
+carried it, and what the generation produced instead.
+
 ### Phase 4 — Before/after comparison report (once a generated clip exists)
 
 When the user comes back with the actual clip a downstream prompt generated, and wants
@@ -104,9 +127,11 @@ the full structure (measured scene-change data for both clips, side-by-side play
 matched sampled frames, an overlaid chart, and a fidelity table scored against what the
 prompt actually asked for, not against the Continuity & Style Brief in the abstract).
 Score fidelity item-by-item against the specific prompt fields (identity, wardrobe,
-camera move, color grade, duration, etc.) and call out misses plainly, including any
-gap in the prompt itself (like an unstated duration) that plausibly caused one — this
-report is a QA record, not a highlight reel.
+camera move, camera angle, color grade, duration, etc.) and call out misses plainly,
+including any gap in the prompt itself (like an unstated duration, an unspecified
+aspect ratio, a vague angle label, or an environmental detail dropped when the prompt
+was revised for something else) that plausibly caused one — this report is a QA
+record, not a highlight reel.
 
 ## Boundaries
 
@@ -117,8 +142,20 @@ report is a QA record, not a highlight reel.
   decides whether to act on a flagged issue.
 - Never leave generation duration unstated when handing off to a downstream skill —
   ask, or propose the measured reference length, but always confirm one explicitly.
+- Never leave aspect ratio unstated for a T2VA/Ref2VA-style handoff — measure it from
+  the reference clip (width÷height) and state it explicitly, the same way duration
+  gets stated; an unstated ratio is the same silent-guess failure mode as an unstated
+  duration.
 - In a comparison report, never grade fidelity against a vaguer brief than what the
   prompt actually said — a "partial" or "diverged" verdict must trace to a specific
   line in the prompt, not a general vibe.
 - Never force per-shot rhythm tags onto a single continuous take that has no shot
   boundaries — give it one overall tag instead of inventing cuts that don't exist.
+- Never describe a camera angle with a vague catch-all ("side-angle," "close shot")
+  when a precise term exists — name eye-level / three-quarter / pure profile / low /
+  high / dutch / overhead / worm's-eye / OTS explicitly, since the vague version has
+  already caused a real generation to render the wrong angle.
+- When revising a prompt for one specific change (a new camera treatment, a new
+  identity reference, a style swap), re-carry every unrelated environmental detail
+  from the original brief explicitly — don't let it silently drop just because the
+  edit's focus was elsewhere.
