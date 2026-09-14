@@ -100,7 +100,33 @@ duration instead of forcing it into the reference's runtime.
 Then match the task to the right skill using `references/routing-matrix.md`. Tell the
 user which skill you're handing off to and why, then invoke it (via Skill tool)
 carrying the Continuity & Style Brief, the confirmed duration, the rhythm map, and the
-camera-emotion pairing as context for it to write against. For a multi-shot downstream
+camera-emotion pairing as context for it to write against.
+
+**Before writing a single line of the actual MiniMax H3 or Seedance prompt — including a
+revision of an existing one — always invoke and read the matching downstream skill's own
+reference files first, never write from memory of a previous prompt's shape.** A real
+prompt in this project was written entirely from memory of an earlier generation's
+format and got three things wrong that only surfaced on a direct check: a made-up
+`aspect_ratio:`/`duration:` field that doesn't exist in H3's actual six-section schema
+(both are generation-time settings picked in the UI/API, not prompt text), the wrong
+section name (`integrated_multimodal_description` instead of `detailed_description` for
+Ref2VA), and spoken dialogue written as plain quoted text instead of H3's actual
+`<d>[Language] ...</d>` syntax with a stable `(S1)`/`(S2)` speaker ID. None of these are
+guessable from a prior prompt's surface pattern — they only came from actually reading
+`minimax-h3-prompt-writing`'s `references/base-en.md`/`ref-en.md` (or the matching
+`seedance-*` skill's own reference material). Treat this as non-negotiable: invoke the
+downstream skill (or open its reference file directly) before every prompt-writing or
+prompt-revision pass, not just the first time in a session.
+
+Also check, before handing off, whether any other loaded cinema/video-craft Claude skill
+bears on this specific brief beyond the one named in the routing table — a scene with
+sung/spoken lyrics may need `mv-storytelling-framework`'s brief-first reasoning even if
+the user didn't ask for it by name, an ad-shaped brief benefits from `ad-clip-director`'s
+hook/caption/SFX craft, a full-script job may call for `screenwriter` or
+`storyboard-board` first. Read the actual skill, not just its one-line description in
+the skill list — the craft rules that matter live in the file, not the summary.
+
+For a multi-shot downstream
 skill, pass the rhythm map as an explicit per-shot instruction (see
 `references/narrative-rhythm.md`'s "Using it in Phase 2" section) — not just a style
 note, but which shot should function as the hook, which as the payoff, and so on. Pair
@@ -228,3 +254,12 @@ will want to reread, click through, or come back to.
   constraint alone — a beat that has already failed the same way once needs a physical
   reflex chain from `references/micro-expression-physics.md`, not a longer list of
   prohibitions layered onto the same unspecific positive description.
+- Never write or revise a MiniMax H3 or Seedance prompt from memory of a previous
+  prompt's format — always invoke and read the matching downstream skill's own
+  reference files first (`minimax-h3-prompt-writing`'s `base-en.md`/`ref-en.md`, or the
+  relevant `seedance-*` skill's reference material), and check whether any other loaded
+  cinema-craft skill applies to this specific brief. A prompt written from memory in
+  this project invented a non-existent `aspect_ratio:`/`duration:` field, used the wrong
+  section name for Ref2VA, and wrote dialogue as plain quotes instead of H3's actual
+  `<d>[Language] ...</d>` + speaker-ID syntax — none of that was catchable without
+  actually reading the reference file.
