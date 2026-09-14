@@ -23,9 +23,18 @@ just "fix this."
 9. **Location/set continuity** — does the described environment stay coherent shot to
    shot (time of day, weather, set dressing) unless a transition is intentional?
 10. **Transition logic** — is the cut/transition type (hard cut, match cut, dissolve)
-    stated and does it make sense for what's being cut together?
+    stated and does it make sense for what's being cut together? For a stated hard cut,
+    does the prompt also pair it with a drastic frame-size/camera-position contrast
+    against the shot before it (`camera-emotion.md` §9) — the word "HARD CUT" alone has
+    rendered as a blended continuous take in this project's own history and is a FAIL on
+    its own, not just a style nitpick.
 11. **Coverage completeness** — does the sequence include the shots needed to cut the
-    scene together (establishing, coverage, insert/cutaway) rather than gaps?
+    scene together (establishing, coverage, insert/cutaway) rather than gaps? For any
+    insert or composition-critical cutaway, does the prompt state an exclusive framing
+    constraint (what must NOT be visible, concretely — a body part, a prop, the
+    background) rather than only a positive description — a scripted insert has failed
+    to render at all in this project's history when only given the latter
+    (`camera-emotion.md` §10).
 12. **Aspect ratio / format consistency** — is the aspect ratio and resolution setting
     consistent across the whole shotlist for the same deliverable?
 13. **Genre/tone consistency** — does word choice and camera language stay in the
