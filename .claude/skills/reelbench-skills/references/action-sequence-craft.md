@@ -5,11 +5,14 @@ choreographed and weightless. Three already live elsewhere in this stack —
 `camera-emotion.md` covers angle-to-emotion and position-to-emotion (principle 2),
 and `minimax-h3-prompt-writing`'s own "Physical realism" and "Sound must follow its
 cause" sections cover momentum/weight (principle 3) and impact-synced audio
-(principle 5). This file covers the two that weren't written down anywhere yet:
+(principle 5). §1–§2 below cover the two that weren't written down anywhere else:
 **deliberate pacing irregularity** and **cumulative, irreversible environmental
 damage across a multi-shot sequence** — both surfaced from a real prompt reviewed in
 this project that got the second one right by instinct while nothing in the guides
-actually told anyone to do it.
+actually told anyone to do it. §3–§4 are two further, distinct findings from later in
+this project's history — a sequence-level content-drift failure mode, and a confirmed
+platform-level duration pattern — that aren't part of the original five but belong in
+the same pre-handoff/QA checklist.
 
 ## 1. Pacing irregularity is itself a technique, not an accident
 
@@ -61,7 +64,53 @@ for every subsequent shot, the same way a character's face has to stay the same 
   debris vanishing instead of settling — this belongs in the same negative-constraints
   note `minimax-h3-prompt-writing` already recommends for scenes with real drift risk.
 
-## 3. Full checklist for an action/destruction sequence
+## 3. Cumulative shot-content drift in a long multi-beat sequence
+
+A distinct failure mode from principle 1 (metronome pacing) and from the hard-cut/
+frame-contrast lesson in `camera-emotion.md` §9: even when every individual cut is
+well-specified (real frame-size contrast, a clean isolated scene-change spike measured
+in QA), a long sequence of many fast beats back to back can still drift — each shot's
+*content* lands later than its scripted window, and the delay compounds shot over shot
+rather than resetting. A real 11-shot sequence in this project showed clean, isolated
+cuts on a scene-change scan (the editing mechanics were fine) while the actual actions
+(a vault, an insert, a reflex-and-line beat, a slap) ran increasingly behind their own
+timestamps, to the point that a shove written for one shot never clearly appeared at
+all and a fall meant for an earlier shot surfaced two shot-windows late.
+
+- Treat this as a real, distinct finding in Phase 3 QA — separate from cut-mechanics
+  fidelity — whenever several consecutive shots each land later than scripted rather
+  than each miss being independent: name it as cumulative drift, not N unrelated misses.
+- When a span of the sequence is doing a lot in a few fast shots (e.g. four sub-1.5s
+  cuts back to back covering a prop lift, a realization, a line of dialogue, and a
+  strike), consider that the actual risk factor — not any single shot's instructions.
+  Shortening that span's shot count, or giving it slightly more total time, is worth
+  trying before rewriting individual shots that were already well-specified.
+- A beat that has already proven itself rendering cleanly elsewhere in the same
+  sequence (per this project's history: an exclusive-framing insert, a ground-level
+  impact) is a safer template to reuse for a new beat than inventing new camera
+  treatment for it — e.g. swapping a mis-rendering two-handed shove for a kick that
+  reuses the stomp's already-proven ground-level/low-angle language.
+
+## 4. The +1.5s duration overrun is a confirmed platform pattern, not a hypothesis
+
+Three separate generations in this project, with three different prompt texts, each
+scripted its shots to sum to exactly 15.0s and each came back at exactly 16.5s — the
+same +1.5s overrun, landing in the same place (the final shot running long past its
+own content) every time. This is no longer worth treating as a one-off or blaming on
+the specific prompt's math.
+
+- If a hard duration ceiling actually matters for the target platform or edit, script
+  the shot list to leave that margin — e.g. write to ~13.5s of real content rather than
+  15.0s, when the pipeline in use has shown this pattern.
+- Otherwise, tell the user up front that this generation pipeline has a known ~1.5s
+  overrun pattern (most likely a duration setting in the user's own generation
+  workflow, not the prompt) before they spend another pass chasing it as a prompt
+  defect.
+- Keep watching for a fourth data point before treating the exact "+1.5s, in the final
+  shot" shape as universal — but stop re-deriving it as a fresh hypothesis each time;
+  cite this section instead.
+
+## 5. Full checklist for an action/destruction sequence
 
 Before handing an action-scene prompt to a downstream skill, or QA-ing one that came
 back, check all five:

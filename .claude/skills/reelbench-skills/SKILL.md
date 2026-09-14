@@ -89,7 +89,12 @@ downstream skill's format either requires a stated duration (MiniMax H3: 4-15 wh
 seconds) or defaults to one if you don't give it one (Seedance: defaults to 10s, hard
 cap 15s), so an unstated duration isn't a neutral omission — it's a silent guess that can come
 back wrong (a real generation once came back at 18.6s, past H3's own 15s cap, from a
-prompt that never named a duration). Ask the user what duration they want; if a reference clip
+prompt that never named a duration). Separately, if a hard duration ceiling actually
+matters, budget for the confirmed **+1.5s overrun pattern** in
+`references/action-sequence-craft.md` §4 (three generations in this project, three
+different prompts, each scripted to exactly 15.0s, each came back at exactly
+16.5s) — script to ~13.5s of real content instead of 15.0s when the cap is load-bearing,
+rather than treating each new overrun as a fresh surprise. Ask the user what duration they want; if a reference clip
 was analyzed in Phase 1, offer its own measured length as the starting suggestion
 (rounded to a valid value for the target platform — nearest whole second for H3,
 clamped to 4-15s for either), since matching the reference's own pacing is usually the
@@ -191,6 +196,16 @@ equal-length shots), and — for any location reused across shots — did enviro
 damage persist and scale up, or did it visibly reset between shots? These are the two
 failure modes this project has actually run into that the 15 gates don't otherwise
 catch.
+
+For any long, multi-beat sequence, also check `references/action-sequence-craft.md`
+§3: did several consecutive shots' actual content each land later than its own
+scripted window, with the delay compounding rather than resetting shot to shot — even
+if the cuts themselves (per the scene-change data) landed cleanly? Report this as its
+own distinct finding (cumulative drift), not as N unrelated per-shot misses. And
+before reporting a line delivered to camera instead of to another character as a
+generation miss, check the shot text itself against `references/camera-emotion.md`
+§12 first — if the prompt literally said "toward camera," that's a one-line prompt fix,
+not a generation failure.
 
 ### Phase 4 — Before/after comparison report (once a generated clip exists)
 
