@@ -73,7 +73,10 @@ back, check all five:
    than holding one angle throughout?
 3. **Physical weight**: does every strike show a visible physical consequence (stagger,
    recoil, momentum carried through), per `minimax-h3-prompt-writing`'s physical
-   realism section?
+   realism section? Is any two-character contact (shove, grab, mutual block) written as
+   staggered/asymmetric rather than a simultaneous, mirrored, bilateral motion — a
+   symmetrical two-handed shove has produced a visible anatomy-rendering glitch in this
+   project's own history (`micro-expression-physics.md` §2a)?
 4. **Environmental damage continuity**: does damage accumulate and persist across every
    shot that reuses the same location, scaling up with the sequence's escalation,
    with persistence stated explicitly rather than assumed?

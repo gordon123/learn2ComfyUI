@@ -162,7 +162,56 @@ real finding, distinct from the 15 continuity gates and the rhythm-fidelity chec
 report it as its own line: what emotion the shot needed, what camera language actually
 carries that emotion, and what the generation produced instead.
 
-## 9. Forbidden by default
+## 9. Hard cuts need frame-size/position contrast — the word "HARD CUT" alone is not enough
+
+A real test in this project's own history scripted three separate hard-cut beats
+(a glancing contact, an insert on a handkerchief lift, a break-apart) using the literal
+label "HARD CUT" between each — and all three rendered as one blended 3.9s continuous
+take instead, with no cut at all detectable in a frame-by-frame scene-change scan. The
+label describes an editing *intent*, not a rendering *constraint*, and the model has no
+reason to actually change anything about the shot unless the prompt forces a concrete
+visual discontinuity.
+
+The fix that worked on the next attempt: state an explicit, drastic contrast in frame
+size and camera position between the two shots on either side of the cut — never two
+adjacent shots at a similar framing scale. "CUT to a drastically tighter, lower framing"
+or "HARD CUT to an extreme insert — no faces in frame at all, filled edge-to-edge by
+hand and fabric" gives the model something concrete to jump to; "HARD CUT" by itself
+does not.
+
+- Every cut in a multi-shot sequence should pair with a stated frame-size and/or
+  camera-position swing relative to the shot immediately before it (wide → extreme
+  insert, low ground-level → extreme close-up, three-quarter → dead-side-profile).
+- Never let two consecutive shots sit at the same point on the shot-size ladder
+  (§3) or the same angle (§2) — if they would, that's the actual cause of a scripted
+  cut rendering as a continuous take, not a labeling problem.
+- This applies on top of, not instead of, whatever rhythm-tag/emotion pairing the shot
+  already carries per §7 — state both the emotional camera language and the frame-size
+  contrast for every cut.
+
+## 10. Exclusive framing forces a composition change; behavioral prohibitions don't
+
+A related failure from the same project: a scripted insert shot ("close-up on his face
+after being stomped") never appeared at all across a generation — the camera stayed on
+his feet/legs from the previous shot straight through where the insert should have cut
+in. The fix that worked was not a stronger version of "close-up on his face" — it was a
+**literal, exclusive framing constraint**: "the frame is filled edge-to-edge by his face
+alone — no helmet brim, no shoulder armor, no background, nothing else visible at any
+edge of the frame... this shot must not show his feet, his boots, or the ground at any
+point." Naming what must be *absent*, as concretely as what must be present, is what
+actually forces the composition to change; a bare positive instruction ("close-up on
+his face") leaves the model free to keep drifting on the prior shot's framing.
+
+- For any insert, extreme close-up, or composition-critical cut, state the exclusion
+  explicitly and concretely — name the specific things that must not be visible (a body
+  part, a prop, the background), not just what should be.
+- This is the same underlying lesson as `micro-expression-physics.md` §4's rule that a
+  negative constraint alone ("no eye contact") doesn't fix a behavior — but here it
+  applies to framing/composition rather than a character's physical reflex, and the fix
+  is the mirror image: an *exclusive* positive constraint (only X is visible) rather
+  than a purely behavioral prohibition.
+
+## 11. Forbidden by default
 
 - Never substitute `zoom` for physical camera movement (dolly, track, crane, push-in,
   pull-out) — zoom and a physical move read completely differently and are not

@@ -36,6 +36,29 @@ smile." This is a large part of why a "held pose" failure mode happens at all: p
 bilateral symmetry and simultaneous motion reads as staged/AI, and naming the
 asymmetry directly is what breaks that read.
 
+### 2a. Symmetrical two-character motion is also an anatomy-glitch risk, not just a "staged" tell
+
+The natural-asymmetry rule above was written for a single character's own face/body.
+The same rule matters even more when **two characters move against each other at
+once** — a generated clip in this project's own history that scripted a two-handed,
+simultaneous, mirrored shove (both palms driving into the chest at the same moment)
+produced a visible anatomy-rendering glitch (a distorted chest) exactly at the point of
+symmetrical contact. A one-sided, staggered push in a later revision (one hand leads,
+the other arm stays low gathering fabric out of the way, the recipient staggers
+off-balance to one side rather than straight back) did not reproduce the glitch.
+
+- Treat any scripted two-character contact (a shove, a grab, a mutual block) as
+  requiring the same asymmetry discipline as a single character's reflex chain: one
+  side leads, the timing is staggered, the resulting motion is uneven — never a
+  perfectly mirrored, simultaneous, bilateral motion between two bodies.
+- State this as a positive instruction ("her right hand only, her left arm stays low
+  gathering her skirt") rather than a bare prohibition ("no symmetrical shove") — per
+  §4 below, a negative constraint alone doesn't reliably prevent the model from
+  defaulting back to the symmetrical version.
+- This is a correctness/physical-realism finding as much as an emotional one — report
+  a symmetrical multi-character contact beat in QA (Phase 3) even when the beat itself
+  isn't emotionally loaded, since it's also a known anatomy-rendering risk.
+
 ## 3. Sequence the reflex as a chain, not a static descriptor
 
 An emotional or evasive beat is a chain of tiny physical events in a fixed order, not
