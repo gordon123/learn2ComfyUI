@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Market Chase v10 QA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --panel: #ffffff;
+    --ink: #1b1a17;
+    --muted: #6b6457;
+    --line: #ddd8cc;
+    --accent: #b5472b;
+    --accent-soft: #f1e2da;
+    --good: #2f7a4f;
+    --good-soft: #e3f0e6;
+    --warn: #a3711b;
+    --warn-soft: #f7ead2;
+    --bad: #b5472b;
+    --bad-soft: #fbe4dc;
+    --chip: #ece7db;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #171613;
+      --panel: #201f1b;
+      --ink: #f1ede3;
+      --muted: #a49b89;
+      --line: #383530;
+      --accent: #e0784f;
+      --accent-soft: #33241b;
+      --good: #5cbf85;
+      --good-soft: #1c2e21;
+      --warn: #e0ac4f;
+      --warn-soft: #332a15;
+      --bad: #e0784f;
+      --bad-soft: #332019;
+      --chip: #2a2822;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171613; --panel: #201f1b; --ink: #f1ede3; --muted: #a49b89; --line: #383530;
+    --accent: #e0784f; --accent-soft: #33241b; --good: #5cbf85; --good-soft: #1c2e21;
+    --warn: #e0ac4f; --warn-soft: #332a15; --bad: #e0784f; --bad-soft: #332019; --chip: #2a2822;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", "Noto Sans Thai", sans-serif;
+    padding-inline: 18px; padding-block: 22px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+  h1, h2, h3 { font-family: "Fraunces", "Noto Sans Thai", serif; text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  .hero {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .hero .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; }
+  .hero h1 { font-size: 30px; font-weight: 600; }
+  .hero p { margin: 0; color: var(--muted); font-size: 14px; max-width: 68ch; line-height: 1.6; }
+  .hero-stats { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
+  .hstat { display: flex; flex-direction: column; gap: 2px; }
+  .hstat .n { font-size: 22px; font-weight: 600; font-family: "Fraunces", serif; }
+  .hstat .l { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+  .verdict-banner {
+    display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 10px;
+    background: var(--good-soft); border: 1px solid var(--good);
+  }
+  .verdict-banner .mark { font-size: 22px; line-height: 1; color: var(--good); }
+  .verdict-banner p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ink); }
+  .verdict-banner strong { color: var(--good); }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+  .panel h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .panel .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 14px; }
+
+  video { width: 100%; border-radius: 10px; display: block; background: #000; }
+
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .chart-grid { grid-template-columns: 1fr; } }
+  svg text { font-family: "IBM Plex Mono", monospace; fill: var(--muted); }
+  .axislabel { font-size: 10px; }
+
+  .shotlist { display: flex; flex-direction: column; gap: 10px; }
+  .shot-row {
+    display: grid; grid-template-columns: 110px 1fr; gap: 14px;
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+  }
+  .shot-row img { width: 110px; height: 100%; object-fit: cover; display: block; }
+  .shot-body { padding: 12px 14px 12px 0; display: flex; flex-direction: column; gap: 6px; }
+  .shot-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .shot-head .num { font-family: "Fraunces", serif; font-weight: 600; font-size: 15px; }
+  .shot-head .timing { font-size: 11.5px; color: var(--muted); }
+  .badge {
+    font-size: 10.5px; font-weight: 600; padding: 2px 9px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .badge.pass { background: var(--good-soft); color: var(--good); }
+  .badge.warn { background: var(--warn-soft); color: var(--warn); }
+  .badge.exact { background: var(--good-soft); color: var(--good); }
+  .shot-desc { font-size: 13px; line-height: 1.55; color: var(--ink); }
+  .shot-desc .lbl { color: var(--muted); }
+
+  .finding-grid { display: flex; flex-direction: column; gap: 14px; }
+  .finding {
+    border-radius: 10px; padding: 14px 16px; border: 1px solid var(--line);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .finding.good { background: var(--good-soft); border-color: var(--good); }
+  .finding.warn { background: var(--warn-soft); border-color: var(--warn); }
+  .finding .icon { font-size: 17px; line-height: 1.4; }
+  .finding .body h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .finding .body p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--ink); }
+  .finding.good .body h3 { color: var(--good); }
+  .finding.warn .body h3 { color: var(--warn); }
+
+  table.datatable { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.datatable th, table.datatable td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+  table.datatable th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: .04em; }
+  .drift-pos { color: var(--warn); font-weight: 600; }
+  .drift-zero { color: var(--good); font-weight: 600; }
+
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { background: var(--chip); border-radius: 20px; padding: 4px 12px; font-size: 11.5px; color: var(--muted); }
+
+  .footnote { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Reelbench QA · MiniMax H3 Ref2VA · Market Chase</div>
+    <h1>v10 — โครงสร้างถูก ลำดับถูก แต่ยังมี drift สะสม</h1>
+    <p>วิเคราะห์คลิป v10 (9 shot, 13.667s จริง จาก script 12.1s) เทียบกับ prompt ที่แก้ 3 syntax bug + ตัด shot กระโดดข้ามแผงผลไม้ออก นี่คือครั้งแรกในโปรเจกต์นี้ที่ไม่พบการสลับลำดับ shot หรือ causal-order inversion เลยตลอดทั้งคลิป</p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="n tnum">9 / 9</span><span class="l">Shot ตรงลำดับ</span></div>
+      <div class="hstat"><span class="n tnum">0</span><span class="l">Order inversion</span></div>
+      <div class="hstat"><span class="n tnum">13.667s</span><span class="l">Duration จริง</span></div>
+      <div class="hstat"><span class="n tnum">+1.57s</span><span class="l">Overrun จาก script</span></div>
+    </div>
+  </div>
+
+  <div class="verdict-banner">
+    <span class="mark">✓</span>
+    <p><strong>3 syntax fix + ตัด vault shot ได้ผลจริง.</strong> การหยิบผ้าเช็ดหน้า (Shot 3) เรนเดอร์ตรงเวลาเป๊ะที่ 3.3s และทุก shot ที่เหลือเรียงลำดับถูกทั้งหมด — ไม่มีเหตุการณ์ไหนเรนเดอร์มาก่อนเหตุของมันอีกแล้ว ปัญหาที่เหลือคือ <strong>cumulative drift</strong> (ของเดิมที่เคยบันทึกไว้ใน action-sequence-craft.md §3) และ <strong>held-pose ใหม่ 1 จุด</strong> ที่ Shot 2</p>
+  </div>
+
+  <div class="panel">
+    <h2>คลิปที่วิเคราะห์</h2>
+    <div class="sub">MiniMax_H3_00001_vmmvl_1789447361.mp4 · 1216×672 · 24fps · 13.667s</div>
+    <img src="thumbs/s1.jpg" alt="v10 clip — first frame" style="width:100%;border-radius:10px;display:block;">
+    <div class="footnote" style="margin-top:8px;">
+      ตัวอย่างนี้เก็บไว้เป็น static reference — ไม่ได้ฝังไฟล์วิดีโอต้นฉบับไว้ในรีโป (ไฟล์ขนาด ~6MB)
+      ดูคลิปจริงและรายงานแบบอินเทอร์แอกทีฟฉบับเต็มได้ที่
+      <a href="https://claude.ai/artifact/En38s85jpPpcqj3dvgrmBy">claude.ai/artifact/En38s85jpPpcqj3dvgrmBy</a>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="panel">
+      <h2>Scene-change score</h2>
+      <div class="sub">จุด cut จริง (จาก ffmpeg scene-detect) เทียบกับ timestamp ที่ script กำหนด</div>
+      <svg viewBox="0 0 560 220" width="100%" height="auto">
+        <line x1="40" y1="180" x2="540" y2="180" stroke="var(--line)" stroke-width="1"/>
+        <line x1="40" y1="20" x2="40" y2="180" stroke="var(--line)" stroke-width="1"/>
+        <!-- scripted shot boundaries (dashed) -->
+        <g stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity="0.55">
+          <line x1="40" y1="20" x2="40" y2="180"/>
+          <line x1="136.9" y1="20" x2="136.9" y2="180"/>
+          <line x1="159.6" y1="20" x2="159.6" y2="180"/>
+          <line x1="277.1" y1="20" x2="277.1" y2="180"/>
+          <line x1="313.7" y1="20" x2="313.7" y2="180"/>
+          <line x1="359.1" y1="20" x2="359.1" y2="180"/>
+          <line x1="422.2" y1="20" x2="422.2" y2="180"/>
+          <line x1="467.7" y1="20" x2="467.7" y2="180"/>
+          <line x1="504.3" y1="20" x2="504.3" y2="180"/>
+        </g>
+        <!-- detected scene-change spikes -->
+        <g fill="var(--accent)">
+          <rect x="122" y="120" width="4" height="60"/>
+          <rect x="126" y="90" width="4" height="90"/>
+          <rect x="132" y="60" width="4" height="120"/>
+          <rect x="137" y="40" width="4" height="140"/>
+          <rect x="159" y="35" width="4" height="145"/>
+          <rect x="181" y="70" width="4" height="110"/>
+          <rect x="299" y="45" width="4" height="135"/>
+          <rect x="307" y="70" width="4" height="110"/>
+          <rect x="310" y="80" width="4" height="100"/>
+          <rect x="359" y="50" width="4" height="130"/>
+          <rect x="399" y="55" width="4" height="125"/>
+          <rect x="452" y="60" width="4" height="120"/>
+          <rect x="504" y="65" width="4" height="115"/>
+        </g>
+        <text x="40" y="198" class="axislabel" text-anchor="middle">0.0s</text>
+        <text x="290" y="198" class="axislabel" text-anchor="middle">6.8s</text>
+        <text x="540" y="198" class="axislabel" text-anchor="middle">13.7s</text>
+        <text x="15" y="24" class="axislabel">high</text>
+        <text x="15" y="180" class="axislabel">low</text>
+      </svg>
+      <div class="footnote">เส้นประ = เวลาที่ script กำหนดให้แต่ละ shot เริ่ม · แท่งสี = จุดที่ ffmpeg วัดว่ามีการเปลี่ยนภาพจริง</div>
+    </div>
+
+    <div class="panel">
+      <h2>Audio RMS envelope</h2>
+      <div class="sub">ระดับเสียงดัง/เบา (proxy สำหรับจังหวะ ไม่ใช่การถอดบทพูด — ไม่มี ASR ใน environment นี้)</div>
+      <svg viewBox="0 0 560 220" width="100%" height="auto">
+        <line x1="40" y1="180" x2="540" y2="180" stroke="var(--line)" stroke-width="1"/>
+        <line x1="40" y1="20" x2="40" y2="180" stroke="var(--line)" stroke-width="1"/>
+        <polyline fill="none" stroke="var(--accent)" stroke-width="1.6"
+          points="40,178 44,140 48,138 55,90 62,82 70,120 78,130 90,100 105,70 120,60 137,50 150,110 165,150 180,60 200,100 220,140 240,150 260,145 280,150 300,80 315,100 330,140 350,60 370,90 390,150 410,140 430,90 445,60 460,130 475,100 490,140 504,60 520,120 535,150"/>
+        <text x="40" y="198" class="axislabel" text-anchor="middle">0.0s</text>
+        <text x="290" y="198" class="axislabel" text-anchor="middle">6.8s</text>
+        <text x="540" y="198" class="axislabel" text-anchor="middle">13.7s</text>
+        <text x="15" y="24" class="axislabel">loud</text>
+        <text x="15" y="180" class="axislabel">quiet</text>
+      </svg>
+      <div class="footnote">พีคที่ ~120-137 (หยุดนะ!/lift), ~300-330 (สแลป), ~430-460 (โอ้ย!/kick) สอดคล้องกับจุดที่คาดว่าจะมีเสียงดัง</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Shot-by-shot</h2>
+    <div class="sub">9 shot ตาม v10 script — คอลัมน์ timing เทียบเวลาที่ scripted vs. เวลาที่เห็นจริงในคลิป</div>
+    <div class="shotlist">
+
+      <div class="shot-row">
+        <img src="thumbs/s1.jpg" alt="Shot 1">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 1</span>
+            <span class="timing tnum">scripted 0.00–2.10s · เห็นจริง ~0.0–2.2s</span>
+            <span class="badge exact">ตรงเวลา</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">wide chase, "หยุด!"</span> — ไล่วิ่งกว้างตามสคริปต์ ทั้งสองคนหอบเหนื่อยชัดเจน ตรงตามที่เขียนไว้ทุกจุด</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s2.jpg" alt="Shot 2">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 2</span>
+            <span class="timing tnum">scripted 2.10–3.30s · เห็นจริง ~2.2–3.3s</span>
+            <span class="badge warn">Held pose</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">reach + block</span> — เวลาตรง แต่ <strong>ท่าไม่ตรง</strong>: script สั่ง "spins low, knocks his hand aside with a sharp forearm block" (chain: reach → eyes narrow → spin → block) แต่คลิปเรนเดอร์เป็นแค่เขาจับแขนเธอค้างไว้ ทั้งคู่ยืนหันหน้าเข้าหากันแบบนิ่ง — ไม่มี spin ไม่มี block เกิดขึ้นจริง</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s3.jpg" alt="Shot 3">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 3</span>
+            <span class="timing tnum">scripted 3.30–3.90s · เห็นจริง 3.3s ตรงเป๊ะ</span>
+            <span class="badge exact">ตรงเวลา 100%</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">secret lift (cause)</span> — macro insert มือ+สไบ ตรงตาม framing ที่ script สั่งทุกจุด และเรนเดอร์ที่วินาที 3.3 ตรงเป๊ะกับที่ scripted — จุดที่เคยพังใน v9 (สลับลำดับกับ vault) ตอนนี้แก้แล้วจริง</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s4.jpg" alt="Shot 4">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 4</span>
+            <span class="timing tnum">scripted 3.90–6.30s · เห็นจริง ~3.9–7.2s (สแลปที่ 6.7s)</span>
+            <span class="badge pass">ผ่าน</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">reaction, line & slap (effect)</span> — cause (Shot 3) เกิดก่อน effect นี้จริง ไม่สลับลำดับ. หันหน้าไปทาง Subject 1 ไม่ใช่กล้อง ✓, กล้อง widen เป็น two-shot ตอนสแลปลง ✓, มือเดียวฟาด ไม่ใช่สองมือ ✓ สแลปเลยกรอบเวลาไปราว 0.9s (ยังไม่ถือว่าผิดปกติ)</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s5.jpg" alt="Shot 5">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 5</span>
+            <span class="timing tnum">scripted 6.30–6.90s · เห็นจริง ~8.1–8.6s</span>
+            <span class="badge warn">Drift +1.8s</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">foot stomp</span> — เนื้อหาถูกทุกจุด (ground-level, ไม่เห็นหน้า, เท้าเหยียบ) แต่มาช้ากว่าที่ script กำหนดเกือบ 2 วินาที — จุดเริ่มของ cumulative drift ในคลิปนี้</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s6.jpg" alt="Shot 6">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 6</span>
+            <span class="timing tnum">scripted 6.90–8.10s · เห็นจริง ~9.0–9.6s</span>
+            <span class="badge warn">Drift +2.1s</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">face-shock "โอ้ย!"</span> — extreme close-up หน้าเขาเท่านั้นตามสั่ง, ตาเบิกโพลง ปากอ้าแบบเจ็บจริง ๆ — เนื้อหาถูก ลำดับถูก มาแค่ช้ากว่ากำหนด</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s7.jpg" alt="Shot 7">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 7</span>
+            <span class="timing tnum">scripted 8.10–9.60s · เห็นจริง ~9.6–11.6s</span>
+            <span class="badge warn">Drift +2.0–3.5s</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">kick</span> — เป็นการเตะจริง ๆ (ไม่ใช่ shove), ขาเดียว, แขนกางเพื่อรักษาบาลานซ์ตามสั่ง ✓ — drift ขยายกว้างขึ้นตรงนี้ แต่เนื้อหายังถูกลำดับ</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s8.jpg" alt="Shot 8">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 8</span>
+            <span class="timing tnum">scripted 9.60–10.80s · เห็นจริง ~12.0–12.5s</span>
+            <span class="badge warn">Drift +2.4s</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">the fall</span> — ล้มลงกลางผลไม้/เศษหม้อที่กระจายอยู่ ✓, เธอเดินหนีก่อนเขาล้มถึงพื้นสนิท สีหน้ายังโกรธไม่ใช่ชนะ ✓</div>
+        </div>
+      </div>
+
+      <div class="shot-row">
+        <img src="thumbs/s9.jpg" alt="Shot 9">
+        <div class="shot-body">
+          <div class="shot-head">
+            <span class="num">Shot 9</span>
+            <span class="timing tnum">scripted 10.80–12.10s · เห็นจริง ~12.5–13.667s (จบคลิป)</span>
+            <span class="badge warn">Drift +1.7s</span>
+          </div>
+          <div class="shot-desc"><span class="lbl">escape</span> — widest shot, เธอวิ่งหายเข้าฝูงชนไม่หันหลัง เขานอนกลางผลไม้ ผ้าเช็ดหน้ายังอยู่ในสไบเขา (ไม่ถูกเปิดเผย) ✓</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>สรุปประเด็น</h2>
+    <div class="finding-grid">
+
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>ไม่มี causal-order inversion หรือ shot-swap เลยทั้งคลิป — ครั้งแรกในโปรเจกต์นี้</h3>
+          <p>v6–v9 ทุกรุ่นมีปัญหา cause/effect หรือลำดับ shot สลับกันอย่างน้อย 1 จุด v10 คือรุ่นแรกที่ทั้ง 9 shot เรียงตรงลำดับสคริปต์ 100% — ยืนยันว่าการแก้ 3 syntax bug (ย้าย negative constraints เข้า detailed_description, แก้ retention_analysis เป็น comma-list, ย้าย style sentence มาก่อน [Shot 1]) และการตัด shot กระโดดข้ามแผงผลไม้ออก ได้ผลจริง ไม่ใช่แค่ทฤษฎี</p>
+        </div>
+      </div>
+
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>การหยิบผ้าเช็ดหน้า (Shot 3) เรนเดอร์ตรงเวลาเป๊ะที่ 3.3 วินาที</h3>
+          <p>เป็นจุดที่แม่นยำที่สุดในคลิปทั้งหมด — ทั้ง timing และ framing (macro insert, มือ+สไบเต็มเฟรม, ไม่เห็นหน้า) ตรงตาม script ทุกตัวอักษร</p>
+        </div>
+      </div>
+
+      <div class="finding warn">
+        <span class="icon">⚠</span>
+        <div class="body">
+          <h3>Shot 2 กลับมาเป็น held-pose failure — คนละจุดกับที่เคยบันทึกไว้</h3>
+          <p><code>micro-expression-physics.md</code> §4 เคยบันทึกปัญหานี้ไว้เฉพาะจุดหยิบผ้าเช็ดหน้า (แก้ไปแล้วตั้งแต่ v7) แต่รอบนี้ปัญหาเดียวกันย้ายไปโผล่ที่ Shot 2 แทน (reach+block) — script เขียน chain ไว้ครบ (reach → eyes narrow → spin low → forearm block) แต่เรนเดอร์ออกมาเป็นแค่ยืนจับแขนกันนิ่ง ๆ ไม่มี spin ไม่มี block เกิดขึ้นจริง ต้องพิจารณาว่านี่คือ pattern ที่กว้างกว่าที่คิด — ไม่ใช่ "beat นี้เคยพัง" แต่คือ "reflex chain แบบนี้มีโอกาสพังได้ทุก beat ที่มันปรากฏ" แม้จะเคยแก้ตัวอื่นไปแล้ว</p>
+        </div>
+      </div>
+
+      <div class="finding warn">
+        <span class="icon">⚠</span>
+        <div class="body">
+          <h3>Cumulative drift ยังอยู่ — เริ่มจาก Shot 5 (stomp) แล้วขยายขึ้นเรื่อย ๆ</h3>
+          <p>Drift ไล่จาก +1.8s (stomp) → +2.1s (โอ้ย) → +2.0-3.5s (kick) → +2.4s (fall) → +1.7s (escape ก่อนคลิปจบ) — เข้าเกณฑ์ที่ <code>action-sequence-craft.md</code> §3 บันทึกไว้แล้ว (เนื้อหาช้ากว่ากำหนดแบบสะสม แต่ไม่สลับลำดับ) ไม่ใช่ finding ใหม่ แต่ยังไม่ถูกแก้</p>
+        </div>
+      </div>
+
+      <div class="finding warn">
+        <span class="icon">⚠</span>
+        <div class="body">
+          <h3>Duration จริง 13.667s — ค่าที่ 3 ที่ต่างกันในทุกครั้งที่ใช้ setting "15s"</h3>
+          <p>v4-v7 = 16.5s, v9 = 14.375s, v10 = 13.667s — สามค่านี้ไม่มีความสัมพันธ์ที่ทำนายได้เลยจากจำนวน shot หรือความยาว script ยืนยันสิ่งที่บันทึกไปแล้วใน §4 ว่า duration setting "15s" ไม่ได้ผลิตค่าคงที่ ห้ามออกแบบ pacing โดยยึดค่าใดค่าหนึ่งเป็นสมมติฐาน</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Drift table (สรุปตัวเลข)</h2>
+    <div class="sub">เวลาที่ scripted vs. เวลาที่สังเกตจริง ต่อ shot</div>
+    <div style="overflow-x:auto;">
+    <table class="datatable">
+      <tr><th>Shot</th><th>Beat</th><th>Scripted start</th><th>Observed start</th><th>Drift</th></tr>
+      <tr><td class="mono tnum">1</td><td>wide chase</td><td class="mono tnum">0.00s</td><td class="mono tnum">0.00s</td><td class="drift-zero">±0.0s</td></tr>
+      <tr><td class="mono tnum">2</td><td>reach + block</td><td class="mono tnum">2.10s</td><td class="mono tnum">~2.2s</td><td class="drift-zero">+0.1s</td></tr>
+      <tr><td class="mono tnum">3</td><td>secret lift</td><td class="mono tnum">3.30s</td><td class="mono tnum">3.30s</td><td class="drift-zero">±0.0s</td></tr>
+      <tr><td class="mono tnum">4</td><td>reaction/line/slap</td><td class="mono tnum">3.90s</td><td class="mono tnum">~3.9s (slap ~6.7s)</td><td class="drift-zero">+0.0–0.9s</td></tr>
+      <tr><td class="mono tnum">5</td><td>foot stomp</td><td class="mono tnum">6.30s</td><td class="mono tnum">~8.1s</td><td class="drift-pos">+1.8s</td></tr>
+      <tr><td class="mono tnum">6</td><td>face-shock "โอ้ย!"</td><td class="mono tnum">6.90s</td><td class="mono tnum">~9.0s</td><td class="drift-pos">+2.1s</td></tr>
+      <tr><td class="mono tnum">7</td><td>kick</td><td class="mono tnum">8.10s</td><td class="mono tnum">~9.6–11.6s</td><td class="drift-pos">+1.5–3.5s</td></tr>
+      <tr><td class="mono tnum">8</td><td>the fall</td><td class="mono tnum">9.60s</td><td class="mono tnum">~12.0s</td><td class="drift-pos">+2.4s</td></tr>
+      <tr><td class="mono tnum">9</td><td>escape</td><td class="mono tnum">10.80s</td><td class="mono tnum">~12.5s</td><td class="drift-pos">+1.7s</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>ข้อเสนอสำหรับ v11</h2>
+    <div class="chips">
+      <span class="chip">เขียน Shot 2 ใหม่ด้วย reflex-chain แบบเดียวกับที่แก้จุดหยิบผ้าเช็ดหน้าสำเร็จ (trigger → involuntary reflex → secondary reaction → visible action) แทนคำสั่งรวบ "spins low... blocks"</span>
+      <span class="chip">พิจารณาลด/ปรับ pacing ของ Shot 5 เป็นต้นไป เพื่อลด cumulative drift — อาจให้ Shot 4 สั้นลงเล็กน้อยเพื่อดึงจังหวะ Shot 5-9 กลับมาใกล้ scripted time</span>
+      <span class="chip">ไม่ต้องแก้เรื่อง duration setting อีก — ยอมรับว่าค่า output ไม่แน่นอน ออกแบบ pacing โดยไม่ยึดตัวเลขเป้าเดียว</span>
+    </div>
+  </div>
+
+  <div class="footnote">
+    รายงานนี้สร้างจาก ffprobe/ffmpeg scene-detect + astats RMS envelope + การอ่านเฟรมด้วยตาจริงที่ timestamp ที่กำหนดไว้ล่วงหน้า ไม่มีการถอดเสียงพูด (ไม่มี ASR ใน environment นี้) — บทพูดที่อ้างอิงมาจาก script เท่านั้น ไม่ได้ยืนยันจากเสียงจริงในคลิป
+  </div>
+
+</div>
+</body>
+</html>

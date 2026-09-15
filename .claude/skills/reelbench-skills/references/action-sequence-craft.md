@@ -9,10 +9,11 @@ cause" sections cover momentum/weight (principle 3) and impact-synced audio
 **deliberate pacing irregularity** and **cumulative, irreversible environmental
 damage across a multi-shot sequence** — both surfaced from a real prompt reviewed in
 this project that got the second one right by instinct while nothing in the guides
-actually told anyone to do it. §3–§5 are three further, distinct findings from later
-in this project's history — a sequence-level content-drift failure mode, a confirmed
-platform-level duration pattern, and a cause/effect ordering failure — that aren't
-part of the original five but belong in the same pre-handoff/QA checklist.
+actually told anyone to do it. §3–§6 are four further, distinct findings from later
+in this project's history — a sequence-level content-drift failure mode, a duration
+pattern that turned out not to be as fixed as first thought, a cause/effect ordering
+failure, and a combat-context bleed into non-causal shot order — that aren't part of
+the original five but belong in the same pre-handoff/QA checklist.
 
 ## 1. Pacing irregularity is itself a technique, not an accident
 
@@ -91,29 +92,29 @@ all and a fall meant for an earlier shot surfaced two shot-windows late.
   treatment for it — e.g. swapping a mis-rendering two-handed shove for a kick that
   reuses the stomp's already-proven ground-level/low-angle language.
 
-## 4. This pipeline outputs a fixed ~16.5s regardless of scripted length — it's not a proportional overrun
+## 4. This pipeline's output length is not a reliable fixed value — don't assume ~16.5s
 
-Four separate generations in this project, with four different prompt texts, came
-back at exactly 16.5s every time — including one scripted to only 13.5s of content
-(not the 15.0s the other three used). That rules out "the model adds ~1.5s to
-whatever you script" — the actual pattern is closer to "this pipeline's 15s duration
-setting reliably produces a ~16.5s file no matter how much or little content the
-shot list describes." Shortening the script doesn't shorten the output; it just
-gives the model more unscripted time to fill, which in the one case tested filled
-with more content reordering rather than a clean early stop.
+Four separate generations in this project (three scripted to 15.0s, one to 13.5s) all
+came back at exactly 16.5s, which briefly looked like a fixed-output pattern at the
+"15s" duration setting. A fifth generation (v9, also at the "15s" setting) broke that:
+it came back at 14.375s instead. So the actual, now-corrected finding is narrower than
+first stated: **this pipeline's output length does not track the scripted shot-list
+length in any simple proportional way, but it is also not a single fixed constant** —
+treat any specific number (16.5s, 14.375s, or otherwise) as one observed data point,
+never as a rule to design shot pacing around.
 
-- Don't script shorter expecting a shorter file. If a hard duration ceiling matters,
-  the fix is a different duration *setting* (if the platform/workflow exposes one),
-  not a shorter shot list at the same setting.
-- Design the shot count and pacing around the fixed ~16.5s total this pipeline
-  actually produces at its "15s" setting, the same way you'd design around any other
-  fixed platform constraint.
-- Tell the user this is a platform/workflow behavior (most likely a duration setting
-  in their own generation workflow, e.g. a ComfyUI node) before they spend another
-  pass chasing it as a prompt defect.
-- Keep watching for a fifth data point, and for what happens at other duration
-  *settings* (10s, 12s) if the user ever tries one — but stop re-deriving this as a
-  fresh hypothesis each time; cite this section instead.
+- Don't script shorter expecting a shorter file — that specific mechanism (the model
+  filling unscripted time) isn't confirmed either; there simply isn't a reliable
+  enough relationship yet to script against.
+- Don't state a specific output length to the user as expected/reliable — say
+  instead that actual output length has varied across generations at the same
+  duration setting, and the scripted shot-list total is a design target, not a
+  guarantee.
+- Keep logging the actual output length of every generation at every duration
+  setting tried (a real per-generation table beats a re-derived guess) — there may
+  yet be a pattern, but five data points across two duration settings haven't
+  revealed one, so don't present the next single data point as confirmation of
+  anything.
 
 ## 5. Causal order can invert across a hard cut — a cause can render after its effect
 
@@ -139,7 +140,50 @@ and line *before* the lift was shown at all, not merely later than scripted.
   just whether both beats eventually appear somewhere in the clip — "both beats are
   present" and "they're present in the right order" are different checks.
 
-## 6. Full checklist for an action/destruction sequence
+## 6. Combat-context bleed: a non-combat beat inside a fight sequence keeps reading as combat, and can swap order with its neighbor
+
+Distinct from causal-order inversion (§5, which is specifically about a stated
+cause/effect pair). This is about two *unrelated*, non-causal adjacent shots — no
+"this triggers that" relationship between them — that still swapped their rendered
+order, and about one of those shots getting its *content* reinterpreted along the
+way. A real generation in this project scripted a "vault cleanly over a market
+stall" shot immediately before a "secretly lift a handkerchief" shot with no causal
+link between them. Across five separate generations of the same beat: the vault
+never once rendered as a clean athletic leap — it consistently rendered as a
+spin-kick directed at the stall, reading as an attack rather than an escape move —
+and in the clip actually reviewed, the vault shot's content rendered *after* the
+lift shot's content, reversed from the script, even though nothing in either shot
+causally depended on the other.
+
+The likely mechanism: the vault instruction was ambiguous enough (a bare "vaults
+over it" with no explicit non-contact statement) that, surrounded by a sequence
+whose other beats are all genuinely combat (a slap, a stomp, a kick), the model
+resolved the ambiguity toward the sequence's dominant register rather than the
+literal instruction. This is a real, repeatable bias worth naming on its own,
+separate from both drift (§3) and causal inversion (§5):
+
+- **A beat that keeps failing the same way across three or more regenerations,
+  where each attempt only added more wording to the same instruction, is a signal to
+  cut the beat rather than keep re-wording it.** Five failed attempts at "make the
+  vault read as non-combat" is not a wording problem being slowly solved — it's a
+  wording problem that wording alone hasn't solved, and won't. Removing the beat and
+  redistributing anything load-bearing it carried (here: environmental debris for a
+  later shot to land in) into an existing shot as an incidental detail is the more
+  reliable fix once a beat has failed repeatedly, per the same logic §5 already
+  applies to cause/effect pairs that keep inverting.
+- Any non-combat physical action written into a sequence that is otherwise
+  fight-heavy needs an explicit, positive non-contact statement, not just a neutral
+  verb: "vaults over it" is ambiguous when surrounded by strikes; "vaults over it,
+  making no contact with the stall, its goods, or its vendor at any point — this is
+  a leap past an obstacle, not an action directed at it" gives the model something
+  concrete to resolve the ambiguity toward instead of defaulting to the sequence's
+  dominant register.
+- In Phase 3 QA, when two adjacent shots have no causal relationship to each other,
+  still check their actual on-screen order against the script — order-swapping isn't
+  limited to cause/effect pairs; anything can drift or swap if one of the two shots
+  gives the model an easy, ambiguous alternative reading.
+
+## 7. Full checklist for an action/destruction sequence
 
 Before handing an action-scene prompt to a downstream skill, or QA-ing one that came
 back, check all five:

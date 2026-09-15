@@ -265,6 +265,9 @@ will want to reread, click through, or come back to.
 
 ## Boundaries
 
+- Whenever `README.md` changes (a new reference file, a new example, a workflow
+  change), update `README-th.md` in the same change — the two are kept in sync,
+  never left for a later pass.
 - Never edit files belonging to another skill.
 - Never fabricate footage-analysis numbers — if ffprobe/ffmpeg isn't available or the
   file can't be read, say so and fall back to the inferred-brief path.
