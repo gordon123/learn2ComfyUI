@@ -89,7 +89,13 @@ downstream skill's format either requires a stated duration (MiniMax H3: 4-15 wh
 seconds) or defaults to one if you don't give it one (Seedance: defaults to 10s, hard
 cap 15s), so an unstated duration isn't a neutral omission — it's a silent guess that can come
 back wrong (a real generation once came back at 18.6s, past H3's own 15s cap, from a
-prompt that never named a duration). Ask the user what duration they want; if a reference clip
+prompt that never named a duration). Separately, this project's own pipeline has shown
+a **confirmed fixed-output pattern** — see `references/action-sequence-craft.md` §4:
+four generations, four different prompts (three scripted to 15.0s, one to 13.5s), all
+four came back at exactly 16.5s. Don't script shorter expecting a shorter file — that
+doesn't work here — design shot count/pacing around the ~16.5s this pipeline actually
+produces at its current duration setting, and say so to the user rather than treating
+each new mismatch as a fresh surprise. Ask the user what duration they want; if a reference clip
 was analyzed in Phase 1, offer its own measured length as the starting suggestion
 (rounded to a valid value for the target platform — nearest whole second for H3,
 clamped to 4-15s for either), since matching the reference's own pacing is usually the
@@ -117,6 +123,15 @@ guessable from a prior prompt's surface pattern — they only came from actually
 `seedance-*` skill's own reference material). Treat this as non-negotiable: invoke the
 downstream skill (or open its reference file directly) before every prompt-writing or
 prompt-revision pass, not just the first time in a session.
+
+Before writing any Ref2VA prompt specifically, also check the draft against
+`references/h3-official-spec-corrections.md` — verified directly against MiniMax's own
+official spec, it catches three structural-syntax bugs that shipped undetected through
+v5–v8: (1) "Negative constraints" is not a real seventh field — it must be folded into
+the end of `detailed_description` itself; (2) `retention_analysis` shot references are a
+comma-separated list (`[Shot 1], [Shot 2], [Shot 3]`), never a dash-range; (3) Ref2VA's
+1–2 sentence global style opening goes *before* the `[Shot 1]` tag, not merged inside it
+(that fusion is the T2VA convention, not Ref2VA's).
 
 Also check, before handing off, whether any other loaded cinema/video-craft Claude skill
 bears on this specific brief beyond the one named in the routing table — a scene with
@@ -155,12 +170,25 @@ its default pose; the physical chain is what actually changes the output.
 
 ### Phase 3 — QA the output
 
-Once the downstream skill produces a shotlist or prompt set, walk it against the 15
-gates in `references/quality-gates.md`. Report gate-by-gate pass/fail, and for every
-fail give a concrete rewritten line the user can hand back to the same skill for a
-targeted fix — never patch the other skill's output yourself. Flag gates you could not
-check (e.g. no reference footage was given, so color-continuity has nothing to compare
-against) as "not applicable" rather than guessing.
+Once the downstream skill produces a shotlist or prompt set, **first run
+`scripts/validate_shotlist.py`** (see `references/shot-manifest-convention.md`) against
+it — pacing duplicates, total duration vs. the platform's accepted range, dialogue-vs-
+shot-duration fit, language purity, max-subjects-in-frame, and (with a beats manifest)
+beat coverage are all exact computations, not judgment calls, so check them by running
+the script rather than reading for them. Fix everything it flags first.
+
+Then check for the three structural-syntax bugs in
+`references/h3-official-spec-corrections.md` (a standalone `Negative constraints:`
+field, a dash-range in `retention_analysis`, a style sentence fused into `[Shot 1]`) —
+treat any of these as a fail at the same severity as a field-name or dialogue-tag error,
+not a style nitpick.
+
+Then walk the remaining 15 qualitative gates in `references/quality-gates.md`. Report
+gate-by-gate pass/fail, and for every fail give a concrete rewritten line the user can
+hand back to the same skill for a targeted fix — never patch the other skill's output
+yourself. Flag gates you could not check (e.g. no reference footage was given, so
+color-continuity has nothing to compare against) as "not applicable" rather than
+guessing.
 
 If a rhythm map was handed off in Phase 2, also check it landed: did the shot tagged
 as the beat actually read as a held pause, does the payoff shot deliver more than the
@@ -191,6 +219,23 @@ equal-length shots), and — for any location reused across shots — did enviro
 damage persist and scale up, or did it visibly reset between shots? These are the two
 failure modes this project has actually run into that the 15 gates don't otherwise
 catch.
+
+For any long, multi-beat sequence, also check `references/action-sequence-craft.md`
+§3: did several consecutive shots' actual content each land later than its own
+scripted window, with the delay compounding rather than resetting shot to shot — even
+if the cuts themselves (per the scene-change data) landed cleanly? Report this as its
+own distinct finding (cumulative drift), not as N unrelated per-shot misses.
+
+For any pair of shots where one is a stated cause for the next shot's effect (a
+trigger touch before a reaction, an impact before a flinch), also check
+`references/action-sequence-craft.md` §5: did the effect actually render *after* the
+cause on screen, not just "both eventually appear somewhere"? A cause rendering after
+its own effect is a distinct failure from drift and worth its own line in the report.
+
+And before reporting a line delivered to camera instead of to another character as a
+generation miss, check the shot text itself against `references/camera-emotion.md`
+§12 first — if the prompt literally said "toward camera," that's a one-line prompt fix,
+not a generation failure.
 
 ### Phase 4 — Before/after comparison report (once a generated clip exists)
 

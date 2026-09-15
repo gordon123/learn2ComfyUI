@@ -211,7 +211,32 @@ his face") leaves the model free to keep drifting on the prior shot's framing.
   is the mirror image: an *exclusive* positive constraint (only X is visible) rather
   than a purely behavioral prohibition.
 
-## 11. Forbidden by default
+## 12. Eyeline lock for dialogue directed at another character
+
+A line of dialogue written to be delivered *at* another character can still render as
+delivered to camera instead — not because the model ignored the instruction, but
+because the instruction itself said so. A real prompt in this project wrote a
+reveal-and-confront beat as "she rounds fully toward camera now... and spits [the
+line]" — intending a dramatic turn, but literally telling the model to face the lens.
+The generation followed that instruction exactly: she turned to camera, not to the
+other character. This was a prompt-authoring bug, not a generation miss, and it's
+worth naming as its own check because "toward camera" is an easy phrase to reach for
+when writing a dramatic turn without meaning it literally.
+
+- When a character turns to confront, address, or deliver a line at another character,
+  name the target explicitly as that character (by subject label or description), not
+  "toward camera" or "toward the viewer" — state the eyeline as locked on the other
+  character's face specifically.
+- Reserve actual direct-to-lens delivery (per §2's table) for a scene that genuinely
+  wants that confrontational/subjective-address read — a monologue, a POV device, a
+  character breaking the fourth wall — and say so only when that's the intent.
+- When QA-ing a generation that shows a line delivered to camera instead of to another
+  character, check the prompt text itself first per this section before treating it as
+  a generation failure — if the shot literally said "toward camera," the model did
+  exactly what was asked and the fix is a one-line prompt edit, not a rewrite of the
+  whole beat.
+
+## 13. Forbidden by default
 
 - Never substitute `zoom` for physical camera movement (dolly, track, crane, push-in,
   pull-out) — zoom and a physical move read completely differently and are not
