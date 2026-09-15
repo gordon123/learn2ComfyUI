@@ -9,10 +9,10 @@ cause" sections cover momentum/weight (principle 3) and impact-synced audio
 **deliberate pacing irregularity** and **cumulative, irreversible environmental
 damage across a multi-shot sequence** — both surfaced from a real prompt reviewed in
 this project that got the second one right by instinct while nothing in the guides
-actually told anyone to do it. §3–§4 are two further, distinct findings from later in
-this project's history — a sequence-level content-drift failure mode, and a confirmed
-platform-level duration pattern — that aren't part of the original five but belong in
-the same pre-handoff/QA checklist.
+actually told anyone to do it. §3–§5 are three further, distinct findings from later
+in this project's history — a sequence-level content-drift failure mode, a confirmed
+platform-level duration pattern, and a cause/effect ordering failure — that aren't
+part of the original five but belong in the same pre-handoff/QA checklist.
 
 ## 1. Pacing irregularity is itself a technique, not an accident
 
@@ -91,26 +91,55 @@ all and a fall meant for an earlier shot surfaced two shot-windows late.
   treatment for it — e.g. swapping a mis-rendering two-handed shove for a kick that
   reuses the stomp's already-proven ground-level/low-angle language.
 
-## 4. The +1.5s duration overrun is a confirmed platform pattern, not a hypothesis
+## 4. This pipeline outputs a fixed ~16.5s regardless of scripted length — it's not a proportional overrun
 
-Three separate generations in this project, with three different prompt texts, each
-scripted its shots to sum to exactly 15.0s and each came back at exactly 16.5s — the
-same +1.5s overrun, landing in the same place (the final shot running long past its
-own content) every time. This is no longer worth treating as a one-off or blaming on
-the specific prompt's math.
+Four separate generations in this project, with four different prompt texts, came
+back at exactly 16.5s every time — including one scripted to only 13.5s of content
+(not the 15.0s the other three used). That rules out "the model adds ~1.5s to
+whatever you script" — the actual pattern is closer to "this pipeline's 15s duration
+setting reliably produces a ~16.5s file no matter how much or little content the
+shot list describes." Shortening the script doesn't shorten the output; it just
+gives the model more unscripted time to fill, which in the one case tested filled
+with more content reordering rather than a clean early stop.
 
-- If a hard duration ceiling actually matters for the target platform or edit, script
-  the shot list to leave that margin — e.g. write to ~13.5s of real content rather than
-  15.0s, when the pipeline in use has shown this pattern.
-- Otherwise, tell the user up front that this generation pipeline has a known ~1.5s
-  overrun pattern (most likely a duration setting in the user's own generation
-  workflow, not the prompt) before they spend another pass chasing it as a prompt
-  defect.
-- Keep watching for a fourth data point before treating the exact "+1.5s, in the final
-  shot" shape as universal — but stop re-deriving it as a fresh hypothesis each time;
-  cite this section instead.
+- Don't script shorter expecting a shorter file. If a hard duration ceiling matters,
+  the fix is a different duration *setting* (if the platform/workflow exposes one),
+  not a shorter shot list at the same setting.
+- Design the shot count and pacing around the fixed ~16.5s total this pipeline
+  actually produces at its "15s" setting, the same way you'd design around any other
+  fixed platform constraint.
+- Tell the user this is a platform/workflow behavior (most likely a duration setting
+  in their own generation workflow, e.g. a ComfyUI node) before they spend another
+  pass chasing it as a prompt defect.
+- Keep watching for a fifth data point, and for what happens at other duration
+  *settings* (10s, 12s) if the user ever tries one — but stop re-deriving this as a
+  fresh hypothesis each time; cite this section instead.
 
-## 5. Full checklist for an action/destruction sequence
+## 5. Causal order can invert across a hard cut — a cause can render after its effect
+
+A distinct failure from cumulative drift (§3): drift is content landing *late*, still
+in the right order. This is content landing in the *wrong order* — an effect shot
+rendering before the cause shot that's supposed to trigger it, even though the script
+states them in the correct sequence. A real generation in this project scripted a
+covert prop-lift shot (the cause) immediately followed by the target character's
+shocked reaction and an angry line (the effect) — and the clip played the reaction
+and line *before* the lift was shown at all, not merely later than scripted.
+
+- This is worth its own explicit negative constraint whenever a shot is a stated
+  cause for the very next shot's effect (a trigger touch before a reaction, an impact
+  before a flinch, a reveal before a response): name which shot is the cause and
+  which is the effect, and state directly that the effect must never render before,
+  without, or independently of the cause having already happened.
+- Merging the cause and effect into one continuous shot (no internal cut) removes the
+  boundary where the inversion happened in the first place — if a trigger-and-reaction
+  pair keeps failing this way across regenerations, prefer combining them into a
+  single shot with camera movement carrying the transition, over continuing to split
+  them across a hard cut and re-asserting the order with more constraint text.
+- In Phase 3 QA, check a cause/effect pair's actual on-screen order explicitly, not
+  just whether both beats eventually appear somewhere in the clip — "both beats are
+  present" and "they're present in the right order" are different checks.
+
+## 6. Full checklist for an action/destruction sequence
 
 Before handing an action-scene prompt to a downstream skill, or QA-ing one that came
 back, check all five:

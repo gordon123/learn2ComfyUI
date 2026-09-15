@@ -66,6 +66,19 @@ def warn(msg):
     print(f"WARN  {msg}")
 
 
+BODY_START_RE = re.compile(r"(?:subject_definitions:|SCENE CONTEXT\b)")
+
+
+def strip_header_notes(text):
+    """Drop any free-text header (a title, changelog notes, generation-setting
+    reminders) above the actual submitted prompt body. Those notes are for the
+    prompt author, not the generator, and commonly quote a dialogue line or
+    other non-English text in passing — that must not trip language-purity.
+    """
+    m = BODY_START_RE.search(text)
+    return text[m.start():] if m else text
+
+
 DESCRIPTION_FIELD_RE = re.compile(
     r"(?:detailed_description|integrated_multimodal_description):(.*?)"
     r"(?:\n\s*(?:Negative constraints|overall_soundscape|non_diegetic_music)\s*:|\Z)",
@@ -268,7 +281,7 @@ def main():
     check_pacing_no_consecutive_equal(shots)
     check_total_duration(shots, stated_duration, args.platform)
     check_dialogue_fits_shot(shots)
-    check_language_purity(text, args.platform)
+    check_language_purity(strip_header_notes(text), args.platform)
     check_max_subjects_in_frame(shots)
     check_beat_coverage(shots, args.beats)
 
