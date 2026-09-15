@@ -33,9 +33,12 @@ go straight to the relevant downstream skill.
 2. **Route** — settle duration and aspect ratio explicitly, then hand off to the
    right downstream skill (`references/routing-matrix.md`) carrying the brief, the
    rhythm map, and the camera-emotion pairing as concrete per-shot instructions.
-3. **QA** — walk the downstream skill's output against 15 quality gates
-   (`references/quality-gates.md`), plus rhythm-fidelity, camera-emotion-fidelity,
-   and (for action scenes) pacing/damage checks.
+3. **QA** — first run `scripts/validate_shotlist.py` for the 6 deterministic gates
+   (pacing duplicates, total duration vs. platform, dialogue-vs-shot-duration fit,
+   language purity, max-subjects-in-frame, beat coverage — see
+   `references/shot-manifest-convention.md`), then walk the remaining 15 qualitative
+   gates (`references/quality-gates.md`), plus rhythm-fidelity, camera-emotion-
+   fidelity, and (for action scenes) pacing/damage checks.
 4. **Report** — once a real generated clip exists, build a before/after (or
    single-clip) HTML report as an Artifact: playable clip(s), a per-frame
    scene-change chart, a shot-by-shot table, and a prompt-fidelity verdict.
@@ -52,6 +55,11 @@ go straight to the relevant downstream skill.
 | `action-sequence-craft.md` | Pacing-irregularity and cumulative-environmental-damage-continuity rules specific to fight/destruction scenes |
 | `micro-expression-physics.md` | Describing an emotional or evasive beat as a physical, asymmetric reflex chain instead of a mood label or a bare negative constraint — the fix for a beat that keeps rendering as a static held pose |
 | `comparison-report-guide.md` | Full structure for the before/after or single-clip HTML report (player, scene-change chart, shot table, fidelity verdicts) |
+| `shot-manifest-convention.md` | The `SCRIPTED_DURATION:` marker and beats-manifest conventions the deterministic validator needs, and what each of its 6 gates checks and why |
+
+`scripts/validate_shotlist.py` is the deterministic validator itself — run it
+directly (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`)
+before the qualitative gate walk.
 
 ## Credits
 
@@ -62,3 +70,12 @@ fields kept separate from interpreted ones, evidence-required category labels, t
 documented in [eternityspring/reelbench-skills](https://github.com/eternityspring/reelbench-skills)
 (specifically its `skills/video-shots` tool) — credit to that project for the
 original methodology this reference builds on.
+
+The 6 deterministic gates in `shot-manifest-convention.md` and
+`scripts/validate_shotlist.py` (pacing duplicates, total-duration-vs-platform,
+dialogue-fits-shot, language purity, max-subjects-in-frame, and the "cuts claim
+beats" convention for beat coverage) are adapted from the code-enforced validation
+gates in [eternityspring/shuohao-skills](https://github.com/eternityspring/shuohao-skills)
+(specifically `novel-storyboard`'s 17-gate `validate` command) — generalized here
+from that project's structured `storyboard.json` to the freeform MiniMax H3 /
+Seedance prose prompts this project's downstream skills actually write.

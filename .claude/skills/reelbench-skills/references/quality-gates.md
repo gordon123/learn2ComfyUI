@@ -1,8 +1,16 @@
-# 15 Cinematic Continuity Gates
+# 15 Cinematic Continuity Gates + 6 Deterministic Gates
 
-Run every downstream prompt set (from `minimax-h3-*` or `seedance-*`) through all 15.
-Mark each: PASS / FAIL / N/A (with why). A FAIL needs a concrete rewritten line, not
-just "fix this."
+Run every downstream prompt set (from `minimax-h3-*` or `seedance-*`) through all 15
+below by reading and judging. Mark each: PASS / FAIL / N/A (with why). A FAIL needs
+a concrete rewritten line, not just "fix this."
+
+**Before the qualitative walk, run the 6 deterministic gates in
+`references/shot-manifest-convention.md` via `scripts/validate_shotlist.py`** —
+pacing-duplicate, total-duration-vs-platform, dialogue-fits-shot, language purity,
+max-subjects-in-frame, and beat coverage. These are exact computations (adapted from
+`shuohao-skills`' code-enforced novel-storyboard gates), not judgment calls, so a
+script catches them faster and more reliably than reading the prompt ever will. The
+15 below are what still genuinely needs a human/LLM judgment call.
 
 1. **Shot-length consistency** — does each shot's stated/implied duration match the
    pacing rhythm from the Continuity & Style Brief (or the user's stated tempo)?
@@ -45,3 +53,20 @@ just "fix this."
     expects (e.g. MiniMax H3's integrated_multimodal_description / overall_soundscape /
     non_diegetic_music, or Seedance's required prompt structure) — a missing field is a
     FAIL even if the prose reads fine.
+
+## 16–21. Deterministic gates (run the script, don't eyeball these)
+
+See `references/shot-manifest-convention.md` for the full explanation and the
+`SCRIPTED_DURATION:`/beats-manifest conventions each one needs.
+
+16. **Pacing duplicate** — no two consecutive shots share a duration.
+17. **Total duration vs. platform** — timestamps sum to a value inside the target
+    platform's accepted range.
+18. **Dialogue fits its shot** — each spoken line's approximate needed duration
+    (chars ÷ an approximate per-language rate) stays inside its own shot's duration.
+19. **Language purity** — H3: no non-Latin text outside `<d>...</d>`. Seedance: no
+    non-Latin text anywhere (Seedance prompts are English-only).
+20. **Max subjects in frame** — no shot references more than 3 distinct `<Subject N>`
+    labels without an explicit staging note.
+21. **Beat coverage** — every beat in the optional beats manifest is claimed by
+    exactly one shot (requires `--beats`; skipped with a WARN otherwise).

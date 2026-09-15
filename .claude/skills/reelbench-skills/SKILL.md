@@ -160,12 +160,19 @@ its default pose; the physical chain is what actually changes the output.
 
 ### Phase 3 — QA the output
 
-Once the downstream skill produces a shotlist or prompt set, walk it against the 15
-gates in `references/quality-gates.md`. Report gate-by-gate pass/fail, and for every
-fail give a concrete rewritten line the user can hand back to the same skill for a
-targeted fix — never patch the other skill's output yourself. Flag gates you could not
-check (e.g. no reference footage was given, so color-continuity has nothing to compare
-against) as "not applicable" rather than guessing.
+Once the downstream skill produces a shotlist or prompt set, **first run
+`scripts/validate_shotlist.py`** (see `references/shot-manifest-convention.md`) against
+it — pacing duplicates, total duration vs. the platform's accepted range, dialogue-vs-
+shot-duration fit, language purity, max-subjects-in-frame, and (with a beats manifest)
+beat coverage are all exact computations, not judgment calls, so check them by running
+the script rather than reading for them. Fix everything it flags first.
+
+Then walk the remaining 15 qualitative gates in `references/quality-gates.md`. Report
+gate-by-gate pass/fail, and for every fail give a concrete rewritten line the user can
+hand back to the same skill for a targeted fix — never patch the other skill's output
+yourself. Flag gates you could not check (e.g. no reference footage was given, so
+color-continuity has nothing to compare against) as "not applicable" rather than
+guessing.
 
 If a rhythm map was handed off in Phase 2, also check it landed: did the shot tagged
 as the beat actually read as a held pause, does the payoff shot deliver more than the
