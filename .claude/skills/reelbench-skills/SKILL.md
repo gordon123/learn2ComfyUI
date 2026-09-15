@@ -124,6 +124,15 @@ guessable from a prior prompt's surface pattern — they only came from actually
 downstream skill (or open its reference file directly) before every prompt-writing or
 prompt-revision pass, not just the first time in a session.
 
+Before writing any Ref2VA prompt specifically, also check the draft against
+`references/h3-official-spec-corrections.md` — verified directly against MiniMax's own
+official spec, it catches three structural-syntax bugs that shipped undetected through
+v5–v8: (1) "Negative constraints" is not a real seventh field — it must be folded into
+the end of `detailed_description` itself; (2) `retention_analysis` shot references are a
+comma-separated list (`[Shot 1], [Shot 2], [Shot 3]`), never a dash-range; (3) Ref2VA's
+1–2 sentence global style opening goes *before* the `[Shot 1]` tag, not merged inside it
+(that fusion is the T2VA convention, not Ref2VA's).
+
 Also check, before handing off, whether any other loaded cinema/video-craft Claude skill
 bears on this specific brief beyond the one named in the routing table — a scene with
 sung/spoken lyrics may need `mv-storytelling-framework`'s brief-first reasoning even if
@@ -167,6 +176,12 @@ it — pacing duplicates, total duration vs. the platform's accepted range, dial
 shot-duration fit, language purity, max-subjects-in-frame, and (with a beats manifest)
 beat coverage are all exact computations, not judgment calls, so check them by running
 the script rather than reading for them. Fix everything it flags first.
+
+Then check for the three structural-syntax bugs in
+`references/h3-official-spec-corrections.md` (a standalone `Negative constraints:`
+field, a dash-range in `retention_analysis`, a style sentence fused into `[Shot 1]`) —
+treat any of these as a fail at the same severity as a field-name or dialogue-tag error,
+not a style nitpick.
 
 Then walk the remaining 15 qualitative gates in `references/quality-gates.md`. Report
 gate-by-gate pass/fail, and for every fail give a concrete rewritten line the user can
