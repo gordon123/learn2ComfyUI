@@ -58,6 +58,7 @@ go straight to the relevant downstream skill.
 | `micro-expression-physics.md` | Describing an emotional or evasive beat as a physical, asymmetric reflex chain instead of a mood label or a bare negative constraint — the fix for a beat that keeps rendering as a static held pose |
 | `comparison-report-guide.md` | Full structure for the before/after or single-clip HTML report (player, scene-change chart, shot table, fidelity verdicts) |
 | `shot-manifest-convention.md` | The `SCRIPTED_DURATION:` marker and beats-manifest conventions the deterministic validator needs, and what each of its 6 gates checks and why |
+| `h3-official-spec-corrections.md` | Three structural-syntax bugs confirmed directly against MiniMax H3's own official spec — no separate "Negative constraints" field, `retention_analysis` as a comma-list not a dash-range, Ref2VA's global style sentence before `[Shot 1]` |
 
 `scripts/validate_shotlist.py` is the deterministic validator itself — run it
 directly (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`)
