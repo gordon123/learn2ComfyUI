@@ -1,5 +1,7 @@
 # reelbench-skills
 
+*[ภาษาไทย](README-th.md)*
+
 A cinematic-continuity coach and router for this project's AI-video prompt-writing
 skills. It doesn't write MiniMax H3 or Seedance prompts itself — it briefs those
 skills with real shot grammar learned from reference footage, then QAs their output
@@ -60,6 +62,17 @@ go straight to the relevant downstream skill.
 `scripts/validate_shotlist.py` is the deterministic validator itself — run it
 directly (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`)
 before the qualitative gate walk.
+
+## Examples
+
+`examples/` keeps real prompt/report pairs from actual generations, kept as
+reference snapshots rather than documentation to follow blindly — see
+`examples/README.md` for what's there and why.
+
+## Maintenance note
+
+This file and `README-th.md` are kept in sync — any update to one gets carried
+into the other in the same change, not left to catch up later.
 
 ## Credits
 
