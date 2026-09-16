@@ -29,3 +29,17 @@ example's syntax is still correct.
   visible creature body, zero hard cuts across the entire clip. Static version — the full
   interactive report with the playable clip is linked inside it.
 - `thumbs/` — sample frames used by `report.html`.
+
+## bangkok-soi-walk
+
+- `part1-prompt.md`, `part2-prompt.md` — the 2×15s MiniMax H3 Ref2VA prompts for a nostalgic
+  camcorder-style selfie-vlog walk through a Bangkok soi, adapted from a Korean-neighborhood
+  reference prompt.
+- `report.html` — frame-by-frame QA of the actual generations: Part 1 held its selfie framing and
+  beats cleanly; Part 2's final beat (turn around, walk backward, camera stays on her own face)
+  rendered instead as a fast, unscripted reframe to a third-person shot. See
+  `references/action-beat-defaults.md` for the full three-finding writeup (the reframe, a
+  style-label mandate with zero visible effect, and a "bicycle" that rendered as a moped) this
+  example is drawn from. Static version — the full interactive report with both playable clips
+  and the scene-change chart is linked inside it.
+- `thumbs/` — sample frames used by `report.html`.
