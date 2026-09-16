@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bangkok Soi Walk Part 2 v2 QA (static snapshot)</title>
+<style>
+body{font:15px/1.6 -apple-system,Helvetica,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#241d16;background:#faf6ef;}
+h1{font-size:24px;}
+img{max-width:100%;border-radius:8px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+a.live{display:inline-block;margin:16px 0;padding:8px 14px;background:#c8562f;color:#fff;border-radius:8px;text-decoration:none;}
+code{background:#efe6d3;padding:1px 5px;border-radius:4px;}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0;}
+th,td{border-bottom:1px solid #e2d9c4;padding:6px 8px;text-align:left;vertical-align:top;}
+.pass{color:#2f6d4f;font-weight:700;}
+.partial{color:#9a6b12;font-weight:700;}
+</style>
+</head>
+<body>
+<h1>Bangkok Soi Walk — Part 2 v2 QA snapshot</h1>
+<p>Regeneration after applying the three <code>action-beat-defaults.md</code> fixes to
+<code>part2-prompt-v2.md</code>. Static snapshot (no embedded video — clips aren't stored
+in-repo). The full interactive report (playable clip, scene-change chart) is published live:</p>
+<a class="live" href="https://claude.ai/artifact/Lym75mxiK4VwW9BEneGe5x">Open the full interactive report →</a>
+
+<h2>Sample frames</h2>
+<div class="grid">
+  <div><img src="thumbs/p2v2_09_8.jpg"><div>00:09.8 — turn beat starts, selfie framing unchanged</div></div>
+  <div><img src="thumbs/p2v2_11.jpg"><div>00:11.0 — goodbye wave, camera still in her own hand</div></div>
+  <div><img src="thumbs/p2v2_bicycle.jpg"><div>00:02.2 — pedal bicycle passing, no engine/helmet</div></div>
+</div>
+
+<h2>Fix verification</h2>
+<table>
+<tr><th>Fix</th><th>Result</th><th>Verdict</th></tr>
+<tr><td>#1 shot-type lock restated at the backward-walk beat</td>
+<td>Selfie framing holds continuously from 00:09.8 to the clip's end (15.08s). Peak scene-change
+score in that window is 0.061, in line with the clip's other ordinary motion peaks — not the
+divergence event v1 produced (0.113, the clip's own high point).</td>
+<td class="pass">CONFIRMED</td></tr>
+<tr><td>#2 camcorder texture cues restated at multiple beats</td>
+<td>Overexposure bloom visible under the tree (~9.3s) and motion blur visible on the passing
+bicycle (~2.2s). Soft focus-pull and lens flare are not clearly distinguishable in sampled
+frames; overall image still reads closer to clean modern photorealism than genuine camcorder
+grain.</td>
+<td class="partial">PARTIAL</td></tr>
+<tr><td>#3 "pedal bicycle, no engine, no helmet"</td>
+<td>Both the passing rider (~2.2s) and the parked bike (~3.5s) are genuine pedal bicycles —
+visible spoked wheels, no engine housing, no helmet.</td>
+<td class="pass">CONFIRMED</td></tr>
+</table>
+
+<h2>Other findings</h2>
+<ul>
+<li>Delivered 16:9 (1376×768) instead of the scripted 9:16 — a generation-time setting, not a
+prompt issue; the same gap seen on Part 1/2 v1.</li>
+<li>Duration landed at 15.08s against a 15s script, not the ~16.5s fixed-output pattern noted
+in <code>action-sequence-craft.md</code> §4 for earlier generations on this pipeline.</li>
+</ul>
+
+<p>See <code>references/action-beat-defaults.md</code> for the full before/after analysis and
+<code>part2-prompt-v2.md</code> for the corrected prompt.</p>
+</body>
+</html>

@@ -36,6 +36,14 @@ camera remains in her raised hand at arm's length, pointed back at her own face,
 established at the start of this shot — no third-person, wide, or over-the-shoulder framing may
 appear at any point in this shot."
 
+**Confirmed fixed** — regenerated with the fix applied (`examples/bangkok-soi-walk/part2-prompt-v2.md`,
+QA report `examples/bangkok-soi-walk/report-v2.html`): the selfie framing held continuously
+from the 00:09.8 turn beat through the clip's end at 15.08s, with no reframe. The peak
+scene-change score inside that beat window dropped from 0.113 (v1's own clip-wide high point) to
+0.061 — in line with the clip's other ordinary motion peaks rather than standing out as a
+divergence event. The two-part positive-plus-negation sentence, restated at the beat itself, is
+what did it — this is now a validated fix, not just a hypothesis.
+
 ## 2. A single style-label sentence does not override the model's default clean-photorealistic rendering
 
 The prompt opened `detailed_description` with one style sentence: "nostalgic early-2000s personal-
@@ -57,6 +65,16 @@ the opening style sentence — e.g., naming a specific highlight that blooms/ove
 specific beat, or a specific instant of motion blur tied to a specific fast movement, rather than
 trusting one adjective-laden opening sentence to hold for the whole shot.
 
+**Partially confirmed** — regenerated with two concrete texture instances restated mid-shot
+(`part2-prompt-v2.md`): the two instances that were tied to a specific beat and a specific object
+both rendered — a visible overexposure bloom on skin/hair under the tree, and visible motion blur
+on the passing bicycle's wheel/handlebar. The two cues that were only restated as a general
+sentence at the top (soft focus-pull, lens flare) still did not clearly appear, and the clip's
+overall image quality still reads closer to clean modern photorealism than genuine camcorder
+grain. Refined takeaway: it's not restating the *style sentence* that works, it's tying each
+individual texture cue to a specific beat/object the same way the shot-type fix in finding #1
+does — a cue with nothing concrete to attach to still won't hold.
+
 ## 3. A generic vehicle/object noun can render as a visually adjacent substitute
 
 The prompt asked for "a bicycle rider passes close behind her." What passed behind her was a
@@ -73,6 +91,14 @@ action beat is not automatically a strong enough constraint on its own.
 what it explicitly lacks the same way identity/wardrobe fields already do — "a pedal bicycle,
 no engine, no helmet on the rider" rather than "a bicycle" alone — especially for objects that
 share a category with a common substitute (bicycle/moped/scooter, umbrella/parasol, van/truck).
+
+**Confirmed fixed** — regenerated with "a pedal bicycle (no engine, no helmet on the rider)" in
+place of "a bicycle" (`part2-prompt-v2.md`): both the passing rider (~00:02.2) and the parked
+bike (~00:03.5) rendered as genuine pedal bicycles — visible spoked wheels, no engine housing, no
+helmet on either. A parked scooter/moped is still visible as an incidental background prop at the
+very opening (~00:00.5), unrelated to the scripted beat — worth its own "no other motorized
+two-wheelers in shot" constraint if a fully bicycle-only alley matters for a future pass, but it
+doesn't count against this fix.
 
 ## Using this in Phase 2 / Phase 3
 
