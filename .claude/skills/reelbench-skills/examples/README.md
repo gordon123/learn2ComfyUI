@@ -18,3 +18,14 @@ example's syntax is still correct.
   version (no embedded video, ~6MB clip not stored in-repo) — the full interactive
   report with the playable clip is linked inside it.
 - `thumbs/` — one frame per shot, used by `report.html`.
+
+## v3-corgi-pov-insect
+
+- `prompt.md` — the winning H3 Ref2VA prompt after two failed generations from the same
+  path-annotated reference photo (a camera-path diagram drawn directly on a sleeping woman and her
+  pet). See `references/path-annotated-reference-images.md` for the full three-generation arc and
+  the confirmed fix this prompt applies.
+- `report.html` — frame-by-frame QA of the actual v3 generation: zero path-line leakage, zero
+  visible creature body, zero hard cuts across the entire clip. Static version — the full
+  interactive report with the playable clip is linked inside it.
+- `thumbs/` — sample frames used by `report.html`.
