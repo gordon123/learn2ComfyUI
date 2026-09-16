@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bangkok Soi Walk QA (static snapshot)</title>
+<style>
+body{font:15px/1.6 -apple-system,Helvetica,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#241d16;background:#faf6ef;}
+h1{font-size:24px;}
+img{max-width:100%;border-radius:8px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+a.live{display:inline-block;margin:16px 0;padding:8px 14px;background:#c8562f;color:#fff;border-radius:8px;text-decoration:none;}
+code{background:#efe6d3;padding:1px 5px;border-radius:4px;}
+</style>
+</head>
+<body>
+<h1>Bangkok Soi Walk — QA snapshot</h1>
+<p>Static snapshot (no embedded video — clips aren't stored in-repo). The full interactive report
+with both playable clips and the scene-change chart is published live:</p>
+<a class="live" href="https://claude.ai/artifact/XJYXRoY3jKkqpud5dqz2fw">Open the full interactive report →</a>
+
+<h2>Sample frames</h2>
+<div class="grid">
+  <div><img src="thumbs/p1_00.jpg"><div>Part 1, 0.0s — selfie framing held</div></div>
+  <div><img src="thumbs/p2_11a.jpg"><div>Part 2, 11.5s — still selfie framing</div></div>
+  <div><img src="thumbs/p2_13.jpg"><div>Part 2, 13.0s — reframed to third-person mid-shot</div></div>
+</div>
+
+<h2>Headline finding</h2>
+<p>Part 2's final beat ("turn around, walk backward, keep the camera on your own face") rendered
+as a generic third-person farewell shot instead — a fast reframe (~0.25-0.3s) that registered as
+the single highest ffprobe scene-change score across both clips, despite falling under a
+conventional hard-cut threshold. See <code>references/action-beat-defaults.md</code> for the full
+analysis, root cause, and fix, and <code>part1-prompt.md</code> / <code>part2-prompt.md</code> for
+the prompts that produced these clips.</p>
+</body>
+</html>

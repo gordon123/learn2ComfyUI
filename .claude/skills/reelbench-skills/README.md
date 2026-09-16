@@ -60,6 +60,7 @@ go straight to the relevant downstream skill.
 | `shot-manifest-convention.md` | The `SCRIPTED_DURATION:` marker and beats-manifest conventions the deterministic validator needs, and what each of its 6 gates checks and why |
 | `h3-official-spec-corrections.md` | Three structural-syntax bugs confirmed directly against MiniMax H3's own official spec — no separate "Negative constraints" field, `retention_analysis` as a comma-list not a dash-range, Ref2VA's global style sentence before `[Shot 1]` |
 | `path-annotated-reference-images.md` | The confirmed fix (after three generations) for a reference photo with a camera-path/arrow/waypoint diagram drawn on the subject — never name the diagram in `subject_definitions`/`retention_analysis` at all, and give a bodiless POV its own separate "no creature body visible" constraint |
+| `action-beat-defaults.md` | Three related failures from one generation: a late "turn around, keep the camera on your own face" beat rendered as a generic third-person shot instead, a style-label mandate ("nostalgic camcorder look") had zero visible effect across the clip, and "a bicycle" rendered as a helmeted moped — all from a beat naming an action without locking down the shot type, texture, or object identity it depended on |
 
 `scripts/validate_shotlist.py` is the deterministic validator itself — run it
 directly (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`)

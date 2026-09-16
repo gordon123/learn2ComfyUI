@@ -131,6 +131,14 @@ three full generations in this project to find a fix that actually holds (never 
 POV (insect-POV, drone-POV) needs its own separate "no creature body ever visible" constraint,
 distinct from the anti-annotation one.
 
+Before writing any multi-beat prompt where a beat's own action has an obvious competing
+default (walking away/backward, a vehicle passing, a specific visual-texture mandate stated
+only once), read `references/action-beat-defaults.md` first — a late "turn around, keep the
+camera on your own face" beat rendered as a generic third-person farewell shot instead, a
+"nostalgic camcorder aesthetic" opening sentence had zero visible effect across a full 15s clip,
+and "a bicycle" rendered as a helmeted moped rider — all three from beats that named an action or
+label without also locking down the shot type, texture, or object identity it depended on.
+
 Before writing any Ref2VA prompt specifically, also check the draft against
 `references/h3-official-spec-corrections.md` — verified directly against MiniMax's own
 official spec, it catches three structural-syntax bugs that shipped undetected through
@@ -189,6 +197,16 @@ Then check for the three structural-syntax bugs in
 field, a dash-range in `retention_analysis`, a style sentence fused into `[Shot 1]`) —
 treat any of these as a fail at the same severity as a field-name or dialogue-tag error,
 not a style nitpick.
+
+Then, for any beat whose action has an obvious competing default (a direction reversal,
+a vehicle or object passing, a style/texture mandate stated only once), check it against
+`references/action-beat-defaults.md`. Sample frames densely (every 0.2-0.3s) around any
+beat that reverses motion or ends the shot — a fast reframe here can register a low
+ffprobe scene-score relative to a conventional hard-cut threshold while still being a
+real, visible divergence from a continuous-shot instruction; compare the peak scene-score
+against the rest of the clip rather than a fixed threshold alone. Report a style-label
+mandate that produced no visible effect across the clip as its own distinct finding, not
+folded into a generic "style seems off" note.
 
 Then walk the remaining 15 qualitative gates in `references/quality-gates.md`. Report
 gate-by-gate pass/fail, and for every fail give a concrete rewritten line the user can
