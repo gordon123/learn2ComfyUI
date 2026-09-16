@@ -42,4 +42,10 @@ example's syntax is still correct.
   style-label mandate with zero visible effect, and a "bicycle" that rendered as a moped) this
   example is drawn from. Static version — the full interactive report with both playable clips
   and the scene-change chart is linked inside it.
-- `thumbs/` — sample frames used by `report.html`.
+- `part2-prompt-v2.md` — Part 2 regenerated with all three `action-beat-defaults.md` fixes
+  applied.
+- `report-v2.html` — QA of that regeneration: the backward-walk reframe and the bicycle/moped
+  substitution are both confirmed fixed; the camcorder-texture fix is confirmed only partially
+  (the two cues tied to a specific beat/object rendered, the two stated only as a general style
+  sentence still didn't). Static version — the full interactive report is linked inside it.
+- `thumbs/` — sample frames used by `report.html` and `report-v2.html`.
