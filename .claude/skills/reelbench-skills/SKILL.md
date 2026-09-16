@@ -124,6 +124,13 @@ guessable from a prior prompt's surface pattern — they only came from actually
 downstream skill (or open its reference file directly) before every prompt-writing or
 prompt-revision pass, not just the first time in a session.
 
+Before writing any Ref2VA prompt from a reference image that has a path, arrow, waypoint, or any
+other drawn overlay on it, read `references/path-annotated-reference-images.md` first — it took
+three full generations in this project to find a fix that actually holds (never name the diagram in
+`subject_definitions`/`retention_analysis` at all, not even to disclaim it), and a bodiless/implied
+POV (insect-POV, drone-POV) needs its own separate "no creature body ever visible" constraint,
+distinct from the anti-annotation one.
+
 Before writing any Ref2VA prompt specifically, also check the draft against
 `references/h3-official-spec-corrections.md` — verified directly against MiniMax's own
 official spec, it catches three structural-syntax bugs that shipped undetected through

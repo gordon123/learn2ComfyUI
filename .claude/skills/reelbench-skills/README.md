@@ -59,6 +59,7 @@ go straight to the relevant downstream skill.
 | `comparison-report-guide.md` | Full structure for the before/after or single-clip HTML report (player, scene-change chart, shot table, fidelity verdicts) |
 | `shot-manifest-convention.md` | The `SCRIPTED_DURATION:` marker and beats-manifest conventions the deterministic validator needs, and what each of its 6 gates checks and why |
 | `h3-official-spec-corrections.md` | Three structural-syntax bugs confirmed directly against MiniMax H3's own official spec — no separate "Negative constraints" field, `retention_analysis` as a comma-list not a dash-range, Ref2VA's global style sentence before `[Shot 1]` |
+| `path-annotated-reference-images.md` | The confirmed fix (after three generations) for a reference photo with a camera-path/arrow/waypoint diagram drawn on the subject — never name the diagram in `subject_definitions`/`retention_analysis` at all, and give a bodiless POV its own separate "no creature body visible" constraint |
 
 `scripts/validate_shotlist.py` is the deterministic validator itself — run it
 directly (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`)

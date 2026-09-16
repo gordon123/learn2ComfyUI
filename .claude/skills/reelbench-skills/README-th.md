@@ -57,6 +57,7 @@
 | `comparison-report-guide.md` | โครงสร้างเต็มของ before/after หรือ single-clip HTML report (player, กราฟ scene-change, ตาราง shot, คำตัดสิน fidelity) |
 | `shot-manifest-convention.md` | ข้อตกลง `SCRIPTED_DURATION:` และ beats-manifest ที่ validator แบบ deterministic ต้องใช้ พร้อมคำอธิบายว่าทำไม gate ทั้ง 6 ตัวเช็คอะไรและทำไม |
 | `h3-official-spec-corrections.md` | บั๊ก syntax เชิงโครงสร้าง 3 อย่างที่ยืนยันแล้วตรงกับ official spec ของ MiniMax H3 เอง — ไม่มี field "Negative constraints" แยก, `retention_analysis` ต้องเป็น comma-list ไม่ใช่ dash-range, ประโยค style ของ Ref2VA ต้องอยู่ก่อน `[Shot 1]` |
+| `path-annotated-reference-images.md` | วิธีแก้ที่ยืนยันแล้ว (หลังจากลอง 3 รอบ) สำหรับภาพอ้างอิงที่มีเส้น path/ลูกศร/waypoint วาดทับตัวแบบอยู่ — ห้ามเอ่ยถึงเส้นนั้นใน `subject_definitions`/`retention_analysis` เลยแม้แต่คำเดียว และต้องเขียนคำห้าม "ห้ามเห็นตัวสิ่งมีชีวิตที่เป็น POV" แยกจากคำห้ามเรื่องเส้น |
 
 `scripts/validate_shotlist.py` คือตัว validator แบบ deterministic เอง — รันตรง ๆ
 (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`) ก่อนไล่

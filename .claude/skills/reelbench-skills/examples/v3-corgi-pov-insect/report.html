@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Insect POV v3 QA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f2f5f0; --panel: #ffffff; --ink: #1a1f18; --muted: #626e5c; --line: #d9e0d3;
+    --accent: #2f7a4f; --accent-soft: #e3f0e6;
+    --good: #2f7a4f; --good-soft: #e3f0e6;
+    --warn: #a3711b; --warn-soft: #f7ead2;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131612; --panel: #1b1f19; --ink: #ecf1e9; --muted: #a3af9a; --line: #333c2e;
+      --accent: #5cbf85; --accent-soft: #1c2e21; --good: #5cbf85; --good-soft: #1c2e21;
+      --warn: #e0ac4f; --warn-soft: #332a15;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131612; --panel: #1b1f19; --ink: #ecf1e9; --muted: #a3af9a; --line: #333c2e;
+    --accent: #5cbf85; --accent-soft: #1c2e21; --good: #5cbf85; --good-soft: #1c2e21;
+    --warn: #e0ac4f; --warn-soft: #332a15;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans","Noto Sans Thai",sans-serif; padding-inline: 18px; padding-block: 22px; }
+  .wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+  h1, h2 { font-family: "Fraunces","Noto Sans Thai",serif; text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+  .tnum { font-variant-numeric: tabular-nums; }
+  .hero { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; display: flex; flex-direction: column; gap: 10px; }
+  .hero .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; }
+  .hero h1 { font-size: 27px; font-weight: 600; }
+  .hero p { margin: 0; color: var(--muted); font-size: 14px; max-width: 70ch; line-height: 1.6; }
+  .hero-stats { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
+  .hstat { display: flex; flex-direction: column; gap: 2px; }
+  .hstat .n { font-size: 22px; font-weight: 600; font-family: "Fraunces", serif; }
+  .hstat .l { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .banner { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 10px; background: var(--good-soft); border: 1px solid var(--good); }
+  .banner .mark { font-size: 22px; line-height: 1; color: var(--good); }
+  .banner p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--ink); }
+  .banner strong { color: var(--good); }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+  .panel h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .panel .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 14px; }
+  video { width: 100%; max-width: 360px; border-radius: 10px; display: block; background: #000; margin: 0 auto; }
+  .grid-img { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 10px; }
+  .grid-img img { width: 100%; border-radius: 8px; display: block; border: 1px solid var(--line); }
+  .grid-img figcaption { font-size: 10.5px; color: var(--muted); margin-top: 4px; text-align: center; }
+  .grid-img figure { margin: 0; }
+  @media (max-width: 700px) { .grid-img { grid-template-columns: repeat(2,1fr); } }
+  .timeline { display: flex; height: 34px; border-radius: 6px; overflow: hidden; margin: 8px 0; border: 1px solid var(--line); }
+  .tl-seg { display: flex; align-items: center; justify-content: center; font-size: 10.5px; color: #fff; font-weight: 600; }
+  .tl-clean { background: var(--good); }
+  .finding-grid { display: flex; flex-direction: column; gap: 14px; }
+  .finding { border-radius: 10px; padding: 14px 16px; border: 1px solid var(--line); display: flex; gap: 12px; align-items: flex-start; }
+  .finding.good { background: var(--good-soft); border-color: var(--good); }
+  .finding.warn { background: var(--warn-soft); border-color: var(--warn); }
+  .finding .icon { font-size: 17px; line-height: 1.4; }
+  .finding .body h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .finding .body p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--ink); }
+  .finding.good .body h3 { color: var(--good); }
+  .finding.warn .body h3 { color: var(--warn); }
+  table.datatable { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.datatable th, table.datatable td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.datatable th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: .04em; }
+  .footnote { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">H3 Ref2VA QA · v3 (Corgi) · 15s script</div>
+    <h1>v3 ผ่านครบทุกจุด — ไม่มีเส้น path, ไม่มีตัวแมลง, ไม่มี hard cut</h1>
+    <p>วิเคราะห์คลิป v3 (15.083s) เวอร์ชันกอดหมาคอร์กิ้ ตรวจสอบทุก 0.5 วินาทีตลอดทั้งคลิป (30 เฟรม) — ไม่พบเส้น/จุด/label หลุดแม้แต่เฟรมเดียว และไม่พบตัวแมลงปรากฏเลย ต่างจาก v1 (หลุด &gt;50% ของคลิป) และ v2 (หลุดบางส่วน + มีตัวแมลงจริงโผล่มา) อย่างชัดเจน</p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="n tnum">0 / 30</span><span class="l">เฟรมที่มีเส้น path หลุด</span></div>
+      <div class="hstat"><span class="n tnum">0 / 30</span><span class="l">เฟรมที่มีตัวแมลง</span></div>
+      <div class="hstat"><span class="n tnum">0</span><span class="l">Hard cut ที่ตรวจพบ</span></div>
+      <div class="hstat"><span class="n tnum">15.083s</span><span class="l">Duration จริง (script 15s)</span></div>
+    </div>
+  </div>
+
+  <div class="banner">
+    <span class="mark">✓</span>
+    <p><strong>การเปลี่ยนโครงสร้าง prompt ได้ผล 100%</strong> — การเอาคำว่า "path diagram" ออกจาก <code>subject_definitions</code>/<code>retention_analysis</code> ทั้งหมด (ไม่บอกโมเดลเลยว่า &lt;Picture 1&gt; มีอะไรวาดทับอยู่) และการตัดคำว่า "insect" ที่เป็นคำนามออก แก้ปัญหาทั้งสองเรื่องที่พังมา 2 รอบก่อนหน้าได้เด็ดขาด ยืนยันว่า root-cause hypothesis ที่ตั้งไว้ถูกทาง</p>
+  </div>
+
+  <div class="panel">
+    <h2>คลิปที่วิเคราะห์</h2>
+    <div class="sub">MMH3_00003_p87-audio_ufofp_1789584526.mp4 · 768×1376 (vertical) · 24fps · 15.083s</div>
+    <img src="thumbs/s1_foot.jpg" alt="v3 clip — first frame" style="width:100%;max-width:360px;border-radius:10px;display:block;margin:0 auto;">
+    <div class="footnote" style="margin-top:8px;text-align:center;">
+      ตัวอย่างนี้เก็บไว้เป็น static reference — ไม่ได้ฝังไฟล์วิดีโอต้นฉบับไว้ในรีโป
+      ดูคลิปจริงและรายงานแบบอินเทอร์แอกทีฟฉบับเต็มได้ที่
+      <a href="https://claude.ai/artifact/NxaWxw1A23W5QF2MdiTf5r">claude.ai/artifact/NxaWxw1A23W5QF2MdiTf5r</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>ภาพตัวอย่างตลอดคลิป — สะอาดทุกจุด</h2>
+    <div class="grid-img">
+      <figure><img src="thumbs/s1_foot.jpg" alt="0s foot"><figcaption>0.0s — เท้า: สะอาด ไม่มีเส้น</figcaption></figure>
+      <figure><img src="thumbs/s2_dog.jpg" alt="dog emphasis"><figcaption>~5s — จุดเน้นหน้าหมา: สะอาด ไม่มีตัวแมลง</figcaption></figure>
+      <figure><img src="thumbs/s3_transit.jpg" alt="chest transit"><figcaption>~8s — ผ่านหน้าอก: สะอาด ไม่ sexualized</figcaption></figure>
+      <figure><img src="thumbs/s4_face.jpg" alt="final hold"><figcaption>15s — ช็อตปิดท้าย: สะอาด นิ่งสงบ</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Timeline</h2>
+    <div class="timeline">
+      <div class="tl-seg tl-clean" style="width:100%">0.0 – 15.083s: สะอาดตลอดทั้งคลิป (ตรวจทุก 0.5s)</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>ตรวจตาม negative constraint ที่ prompt ตั้งไว้</h2>
+    <div class="finding-grid">
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>ไม่มีเส้น/จุด/ตัวเลข/ลูกศรหลุดเข้ามาในเฟรมเลย ตลอด 15 วินาที</h3>
+          <p>ตรวจทุก 0.5s (30 จุด) — ไม่เจอเลยแม้แต่ครั้งเดียว ตรงข้ามกับ v1 (หลุด ~55% ของ runtime) และ v2 (หลุดเล็กลงแต่ยังมีอยู่ ~65% ของ runtime)</p>
+        </div>
+      </div>
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>ไม่มีตัวแมลง/สัตว์เล็กปรากฏให้เห็นเลย</h3>
+          <p>v2 มีตัวแมลงจริงโผล่ที่เท้าตอน 0.5s — v3 ไม่มีเลยตลอดทั้งคลิป ยืนยันว่าการตัดคำว่า "insect" ออกจากคำอธิบายกล้อง (เหลือแค่บรรยายคุณสมบัติการเคลื่อนไหว) แก้ปัญหานี้ได้จริง</p>
+        </div>
+      </div>
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>Continuous take จริง ไม่มี hard cut เลย — ยืนยันด้วย scene-change detection</h3>
+          <p>ffmpeg scene-detect ไม่พบจุดตัดแม้แต่จุดเดียวตลอด 15 วินาที ตรงตามที่สั่ง "one continuous, unbroken take"</p>
+        </div>
+      </div>
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>Pacing ถูกทาง — เร็วตอน transit, ช้าตอน emphasis, นิ่งตอนจบ</h3>
+          <p>สังเกตจาก motion blur ที่เฟรมช่วง transit (0-3s) เทียบกับความชัด/นิ่งที่เฟรมช่วง emphasis (หน้าหมา ~4.5-7s, หน้าเธอ ~11-13s) และ still hold ที่เฟรมสุดท้าย ตรงตามสคริปต์ทุกจุด</p>
+        </div>
+      </div>
+      <div class="finding good">
+        <span class="icon">✓</span>
+        <div class="body">
+          <h3>Chest/hip transit ไม่ sexualized — ผ่านเร็ว ไม่ค้าง ตามที่สั่ง</h3>
+          <p>จุดผ่านหน้าอก (~7-8s) เป็น transit สั้น ๆ ไม่ค้างเป็นจุดเน้น ตรงตาม negative constraint</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>จุดที่ยังเป็นข้อมูลสังเกต ไม่ใช่ปัญหา</h2>
+    <div class="finding-grid">
+      <div class="finding warn">
+        <span class="icon">⚠</span>
+        <div class="body">
+          <h3>Duration 15.083s ตรงกับ v2 เป๊ะ — อาจเป็นแค่ความบังเอิญของ 9:16 + 15s setting</h3>
+          <p>ทั้ง v2 และ v3 ใช้ aspect_ratio 9:16 กับ duration 15s แล้วได้ 15.083s เท่ากันทั้งคู่ — เป็นข้อมูลที่ 2 ของค่านี้ที่ setting เดียวกัน ยังไม่พอจะสรุปว่าเป็น pattern คงที่ (ตามที่บันทึกไว้แล้วใน action-sequence-craft.md §4 ว่าห้ามยึดค่าใดค่าหนึ่งเป็นกฎ) แต่ก็เป็นข้อมูลที่ควรเก็บไว้เทียบกับ generation ถัดไป</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>สรุปเทียบ 3 เวอร์ชัน</h2>
+    <div style="overflow-x:auto;">
+    <table class="datatable">
+      <tr><th>เวอร์ชัน</th><th>เส้น path หลุด</th><th>ตัวแมลงปรากฏ</th><th>Hard cut</th><th>Duration จริง</th></tr>
+      <tr><td class="mono">v1</td><td>&gt;50% ของ runtime</td><td>ไม่มี (ยังไม่เจอ)</td><td>ไม่มี</td><td class="mono tnum">10.125s (script 8s)</td></tr>
+      <tr><td class="mono">v2</td><td>~65% ของ runtime (เล็กลง)</td><td><strong>มี</strong> ที่ 0.5s</td><td>ไม่มี</td><td class="mono tnum">15.083s (script 15s)</td></tr>
+      <tr><td class="mono">v3</td><td><strong>0%</strong></td><td><strong>0%</strong></td><td>ไม่มี</td><td class="mono tnum">15.083s (script 15s)</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="footnote">
+    รายงานนี้สร้างจากการอ่านเฟรมด้วยตาจริงทุก 0.5s ตลอดทั้งคลิป (30/30 เฟรม) ยืนยันด้วย ffmpeg scene-change detection สำหรับการเช็ค hard cut ไม่มีการถอดเสียง/ASR
+  </div>
+
+</div>
+</body>
+</html>
