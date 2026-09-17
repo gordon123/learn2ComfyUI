@@ -148,6 +148,16 @@ comma-separated list (`[Shot 1], [Shot 2], [Shot 3]`), never a dash-range; (3) R
 1–2 sentence global style opening goes *before* the `[Shot 1]` tag, not merged inside it
 (that fusion is the T2VA convention, not Ref2VA's).
 
+Before writing any multi-pose fashion/editorial sequence (a fashion film, a lookbook, a
+turntable-style multi-pose shoot with no combat and often no causal chain between beats), read
+`references/multi-pose-fashion-sequence.md` first — a portrait/hold beat with no stated duration
+ceiling ran long enough in this project to delete an entire later pose rather than merely delay
+it, an attribute genuinely absent from the reference image (footwear on a floor-length gown) got
+invented differently in three separate shots, and a prose-only "seamless transition" between two
+separately-generated clips produced a real visual echo on one boundary but not the other —
+confirming that true cross-generation continuity needs an actual last-frame `<Picture N>` anchor,
+not a written description of the previous clip's ending.
+
 Also check, before handing off, whether any other loaded cinema/video-craft Claude skill
 bears on this specific brief beyond the one named in the routing table — a scene with
 sung/spoken lyrics may need `mv-storytelling-framework`'s brief-first reasoning even if
@@ -207,6 +217,16 @@ real, visible divergence from a continuous-shot instruction; compare the peak sc
 against the rest of the clip rather than a fixed threshold alone. Report a style-label
 mandate that produced no visible effect across the clip as its own distinct finding, not
 folded into a generic "style seems off" note.
+
+For a multi-pose fashion/editorial sequence specifically, also check
+`references/multi-pose-fashion-sequence.md`: when a scene-change score near a scripted cut
+reads near zero, don't assume it's the prompt's own intended continuous move — check the
+actual frame content at and after that timestamp, since a pose that overran its hold and
+deleted a later pose produces the identical near-zero score. Check every subject attribute
+absent from the reference image (footwear, jewelry beyond what's visible) for a consistent
+invented answer across shots, not a different guess each time. And never report a
+cross-generation "seamless transition" as achieved on prose alone — verify whether the next
+clip's opening frame actually echoes the previous clip's ending, or merely started fresh.
 
 Then walk the remaining 15 qualitative gates in `references/quality-gates.md`. Report
 gate-by-gate pass/fail, and for every fail give a concrete rewritten line the user can

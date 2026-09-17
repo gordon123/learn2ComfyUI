@@ -49,3 +49,22 @@ example's syntax is still correct.
   (the two cues tied to a specific beat/object rendered, the two stated only as a general style
   sentence still didn't). Static version — the full interactive report is linked inside it.
 - `thumbs/` — sample frames used by `report.html` and `report-v2.html`.
+
+## royal-fashion-film
+
+- `part1-prompt.md` through `part4-prompt.md` — a 4×15s (60s total) MiniMax H3 Ref2VA sequence
+  adapted from two separate Seedance 2.5 fashion-film prompts (10 poses each), split into 5
+  poses per part per this project's cumulative-drift findings. Part 1-2 are a reflective-studio
+  segment; Part 3-4 continue the same character into a palace segment. Each prompt file's own
+  "QA findings" section documents what that specific clip's generation actually did.
+- `report.html` — QA across all four clips: Part 1 and Part 2 are mostly strong with a couple of
+  minor drifts (a shortened dress plus invented footwear in Part 1, a minor wardrobe/timing drift
+  and an under-delivered final pull-out in Part 2); Part 3 is the headline failure — one pose
+  (a seated marble-staircase reveal) is compressed out of the clip entirely after an earlier pose
+  overran its own scripted window; Part 4 is the strongest part, landing every pose on schedule
+  with the film's real payoff shot. See `references/multi-pose-fashion-sequence.md` for the full
+  three-finding writeup (the cumulative pose-deletion drift, an undefined reference attribute
+  invented three different ways, and a prose-only cross-generation "seamless transition" that
+  worked on one boundary and not the other). Static version — the full interactive report with
+  all four playable clips and the combined 60-second scene-change chart is linked inside it.
+- `thumbs/` — sample frames used by `report.html`.

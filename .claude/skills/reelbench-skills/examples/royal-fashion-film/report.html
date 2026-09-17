@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Royal Fashion Film QA (static snapshot)</title>
+<style>
+body{font:15px/1.6 -apple-system,Helvetica,Arial,sans-serif;max-width:820px;margin:40px auto;padding:0 16px;color:#241d16;background:#faf6ef;}
+h1{font-size:24px;}
+h2{font-size:17px;margin-top:28px;}
+img{max-width:100%;border-radius:8px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+a.live{display:inline-block;margin:16px 0;padding:8px 14px;background:#5c6b3f;color:#fff;border-radius:8px;text-decoration:none;}
+code{background:#efe6d3;padding:1px 5px;border-radius:4px;}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0;}
+th,td{border-bottom:1px solid #e2d9c4;padding:6px 8px;text-align:left;vertical-align:top;}
+.fail{color:#a4392b;font-weight:700;}
+.warn{color:#9a6b12;font-weight:700;}
+.pass{color:#2f6d4f;font-weight:700;}
+</style>
+</head>
+<body>
+<h1>Royal Fashion Film — 4-Part QA snapshot</h1>
+<p>A studio-to-palace luxury fashion film adapted from two Seedance 2.5 prompts into four
+MiniMax H3 Ref2VA prompts (5 poses each, 15s per part, 60s total). Static snapshot (no embedded
+video — clips aren't stored in-repo). The full interactive report with all four playable clips
+and the 60-second combined scene-change chart is published live:</p>
+<a class="live" href="https://claude.ai/artifact/EcuVjS1XL4PYC51g725Jjj">Open the full interactive report →</a>
+
+<h2>Sample frames</h2>
+<div class="grid">
+  <div><img src="thumbs/p1_entrance.jpg"><div>Part 1, 0.3s — Commanding Entrance</div></div>
+  <div><img src="thumbs/p1_dress_drift.jpg"><div>Part 1, 5.8s — dress shortens, heels invented</div></div>
+  <div><img src="thumbs/p1_wind_pose.jpg"><div>Part 1, 11.8s — Wind Pose, identity recovered</div></div>
+  <div><img src="thumbs/p3_column_reveal.jpg"><div>Part 3, 4.5s — Column Reveal, strongest shot</div></div>
+  <div><img src="thumbs/p3_drift_still_profile.jpg"><div>Part 3, 9.0s — still holding Pose 3 well past its window</div></div>
+  <div><img src="thumbs/p3_marble_turn_compressed.jpg"><div>Part 3, 14.8s — Pose 5 finally lands, compressed to ~1s</div></div>
+  <div><img src="thumbs/p2_final_underdeliver.jpg"><div>Part 2, 12.0s — pull-out stalls at medium shot</div></div>
+  <div><img src="thumbs/p4_final_reveal.jpg"><div>Part 4, 14.8s — the true payoff, delivered in full</div></div>
+</div>
+
+<h2>Headline finding</h2>
+<p>Part 3's Pose 3 (a golden-window profile portrait) held roughly 4-5 seconds past its own
+scripted end, and the cost came out of Pose 4 (a seated marble-staircase pose) entirely — it
+never appears in the clip — with Pose 5 surviving only as a ~1-second compressed fragment at the
+very end. Confirmed by near-zero scene-change scores (0.02, 0.01) at both of Pose 4/5's scripted
+cut points, against 0.4+ at every other cut in the same clip. See
+<code>references/multi-pose-fashion-sequence.md</code> for the full three-finding writeup (this
+cumulative-drift case, an undefined-footwear attribute invented three different ways across the
+film, and a prose-only cross-generation "seamless transition" that worked on one boundary and not
+the other) and <code>part1-4-prompt.md</code> for the prompts that produced these clips.</p>
+
+<h2>Verdict summary</h2>
+<table>
+<tr><th>Part</th><th>Result</th></tr>
+<tr><td>Part 1 (Studio, poses 1-5)</td><td><span class="warn">MOSTLY STRONG</span> — one real identity drift (Pose 3: dress shortens, footwear invented)</td></tr>
+<tr><td>Part 2 (Studio, poses 6-10)</td><td><span class="warn">MOSTLY STRONG</span> — minor wardrobe/timing drift, final payoff under-delivers its own scripted scale</td></tr>
+<tr><td>Part 3 (Palace, poses 1-5)</td><td><span class="fail">DRIFT CASE</span> — one full pose compressed out of the clip entirely</td></tr>
+<tr><td>Part 4 (Palace, poses 6-10)</td><td><span class="pass">STRONG</span> — every pose landed on schedule, strongest payoff of the film</td></tr>
+</table>
+</body>
+</html>
