@@ -34,12 +34,17 @@ go straight to the relevant downstream skill.
    scenes — a pacing/damage-continuity read.
 2. **Route** — settle duration and aspect ratio explicitly, then hand off to the
    right downstream skill (`references/routing-matrix.md`) carrying the brief, the
-   rhythm map, and the camera-emotion pairing as concrete per-shot instructions.
-3. **QA** — first run `scripts/validate_shotlist.py` for the 6 deterministic gates
-   (pacing duplicates, total duration vs. platform, dialogue-vs-shot-duration fit,
-   language purity, max-subjects-in-frame, beat coverage — see
-   `references/shot-manifest-convention.md`), then walk the remaining 15 qualitative
-   gates (`references/quality-gates.md`), plus rhythm-fidelity, camera-emotion-
+   rhythm map, and the camera-emotion pairing as concrete per-shot instructions. Before
+   presenting the draft to the user — every time, not just on request — run
+   `scripts/validate_shotlist.py` for the 6 deterministic gates (pacing duplicates,
+   total duration vs. platform, dialogue-vs-shot-duration fit, language purity,
+   max-subjects-in-frame, beat coverage — see `references/shot-manifest-convention.md`)
+   and fix anything it flags. This is a pre-send gate, not post-generation QA — a real
+   prompt in this project carried two structural bugs (a shot-duration tie, a dialogue
+   line scripted too long) across six full revision rounds before the script actually
+   ran.
+3. **QA** — once a generated clip exists, walk the 15 qualitative gates
+   (`references/quality-gates.md`), plus rhythm-fidelity, camera-emotion-
    fidelity, and (for action scenes) pacing/damage checks.
 4. **Report** — once a real generated clip exists, build a before/after (or
    single-clip) HTML report as an Artifact: playable clip(s), a per-frame

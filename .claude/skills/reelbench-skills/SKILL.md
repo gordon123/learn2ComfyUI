@@ -200,6 +200,18 @@ negative constraint alone ("no held eye contact," "no posing") to fix a beat lik
 this — a prohibition with nothing positive to replace it just sends the model back to
 its default pose; the physical chain is what actually changes the output.
 
+**Before presenting any freshly-written or freshly-revised H3/Seedance prompt to the
+user — every single time, not just when asked to self-check — run
+`scripts/validate_shotlist.py` against it and fix anything it flags before sending.**
+This is not optional post-generation QA; it runs pre-send, on the draft itself. A real
+prompt in this project carried two structural bugs across six full revision rounds
+(Part 1 v1 through v6) — two consecutive shots sharing an identical duration, and a
+Thai dialogue line scripted longer than the shot meant to hold it — both invisible on
+a read-through and both caught instantly the one time the validator actually ran. Six
+rounds of user-reported generation failures happened while this went unrun; running it
+by eye instead of by script is the exact failure mode `shot-manifest-convention.md`
+exists to prevent.
+
 ### Phase 3 — QA the output
 
 Once the downstream skill produces a shotlist or prompt set, **first run
@@ -317,6 +329,12 @@ will want to reread, click through, or come back to.
 
 ## Boundaries
 
+- Never present a drafted or revised H3/Seedance prompt to the user without first
+  running `scripts/validate_shotlist.py` against it — this includes a quick one-line
+  edit to an already-sent prompt, not just a full rewrite. A prompt not run through it
+  carried two structural bugs across six full revision rounds before anyone thought to
+  run the script; "it read fine" is not a substitute for the exact computation the
+  script does.
 - Whenever `README.md` changes (a new reference file, a new example, a workflow
   change), update `README-th.md` in the same change — the two are kept in sync,
   never left for a later pass.

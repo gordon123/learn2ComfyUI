@@ -32,11 +32,15 @@
    การอ่าน pacing/damage-continuity
 2. **Route (จัดเส้นทาง)** — กำหนด duration และ aspect ratio ให้ชัดเจนก่อนเสมอ แล้วส่งต่อ
    ไปยัง skill ปลายทางที่ถูกต้อง (`references/routing-matrix.md`) พร้อม brief, rhythm
-   map และ camera-emotion pairing เป็นคำสั่งรูปธรรมต่อ shot
-3. **QA** — รัน `scripts/validate_shotlist.py` ก่อนเสมอ สำหรับ 6 deterministic gate
-   (duration ซ้ำติดกัน, duration รวมเทียบกับ platform, บทพูดพอดีกับความยาว shot,
-   ความบริสุทธิ์ของภาษา, จำนวนตัวละครสูงสุดในเฟรม, beat coverage — ดู
-   `references/shot-manifest-convention.md`) แล้วค่อยไล่ 15 qualitative gate ที่เหลือ
+   map และ camera-emotion pairing เป็นคำสั่งรูปธรรมต่อ shot ก่อนส่ง draft ให้ user —
+   ทุกครั้ง ไม่ใช่แค่ตอนถูกขอ — ต้องรัน `scripts/validate_shotlist.py` สำหรับ 6
+   deterministic gate (duration ซ้ำติดกัน, duration รวมเทียบกับ platform, บทพูดพอดีกับ
+   ความยาว shot, ความบริสุทธิ์ของภาษา, จำนวนตัวละครสูงสุดในเฟรม, beat coverage — ดู
+   `references/shot-manifest-convention.md`) แล้วแก้ทุกจุดที่มันเจอ — นี่คือ gate
+   ก่อนส่ง ไม่ใช่ QA หลัง generate — prompt จริงในโปรเจคนี้มีบั๊กเชิงโครงสร้าง 2 จุด
+   (duration ของ shot ชนกัน, บทพูดยาวเกิน shot) ค้างอยู่ตลอด 6 รอบการแก้ไข ก่อนจะมี
+   ใครรัน script จริงๆ
+3. **QA** — พอมีคลิปที่ generate จริงแล้ว ไล่ 15 qualitative gate ที่เหลือ
    (`references/quality-gates.md`) บวก rhythm-fidelity, camera-emotion-fidelity และ
    (สำหรับซีนแอ็กชัน) การเช็ค pacing/damage
 4. **Report (รายงาน)** — พอมีคลิปที่ generate จริงแล้ว ให้สร้าง before/after (หรือ
