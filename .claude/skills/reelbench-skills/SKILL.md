@@ -158,6 +158,13 @@ separately-generated clips produced a real visual echo on one boundary but not t
 confirming that true cross-generation continuity needs an actual last-frame `<Picture N>` anchor,
 not a written description of the previous clip's ending.
 
+Before writing any character-intro/reveal sequence (body-detail fragments building to a single
+face reveal, or a character's first full appearance mid-scene earning its own small climax),
+read `references/character-reveal-montage.md` first — the withheld-face open-loop structure,
+the "one continuous motion sliced by body region" technique that prevents body-state resets
+across cuts, and the match-cut/locked-camera rhythm discipline all come from there, not from
+this project's own combat-pacing rules.
+
 Also check, before handing off, whether any other loaded cinema/video-craft Claude skill
 bears on this specific brief beyond the one named in the routing table — a scene with
 sung/spoken lyrics may need `mv-storytelling-framework`'s brief-first reasoning even if
