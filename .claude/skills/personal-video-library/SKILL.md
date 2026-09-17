@@ -32,6 +32,15 @@ brief. This skill exists to make creativity a structural step, not a hope.
 
 ## Workflow
 
+### 0. Settle the story first, if there's story/character stakes
+
+Before touching camera technique or the library, check whether the request has narrative
+stakes — a character doing something, a hook, an arc, an ending — rather than being a pure
+technique/style task. If so, hand off to `story-wizard` first (or confirm its Story Brief has
+already been produced this conversation) and carry the resulting brief (action/presentation/
+story_arc/hook/ending) into every step below. Skip this only for a request with no
+story/character content at all (a locked-off product shot, a pure technique demo).
+
 ### 1. Check the library first
 
 Read `video-library/INDEX.md`. If anything already there is relevant to the current
@@ -63,8 +72,9 @@ because the analysis in step 2 was thorough:
    prompt.
 4. Route the actual prompt-writing to the correct downstream skill (via
    `reelbench-skills`' routing matrix, or directly if it's a single one-off prompt)
-   carrying both the measured brief AND the chosen additions as explicit per-shot
-   instructions — a technique picked in step 3 that never makes it into the actual
+   carrying the measured brief, the chosen additions, AND the Story Brief from step 0
+   (if one was produced) as explicit per-shot instructions — a technique picked in
+   step 3 or a story beat settled in step 0 that never makes it into the actual
    prompt text didn't happen.
 
 ### 4. Log the entry back to the library
@@ -79,6 +89,9 @@ part, not necessarily the binary.
 
 ## Boundaries
 
+- Never write the Story Brief yourself in step 0 instead of running `story-wizard`'s Socratic
+  elicitation — deciding action/hook/ending by guessing is the exact failure that skill exists
+  to prevent.
 - Never present a technique pulled from `melies-cinematic-library` as if it were
   observed in the reference clip — keep "techniques observed" (from the clip) and
   "reuse ideas" (added on top) visibly separate, both in the library entry and when

@@ -40,10 +40,15 @@ or technique writeup, follow this same pattern rather than a flat file dump.
 - **`melies-cinematic-library`** — a local mirror of 424 named cinematic techniques (camera
   angles, movement, lighting, color, effects, etc.) with ready-to-adapt prompt fragments. Use to
   name a specific technique instead of a vague adjective when writing any video/image prompt.
-- **`personal-video-library`** — coordinates the above two: when the user hands over a reference
-  clip and wants a prompt built from it, this skill forces `reelbench-skills`' footage analysis
-  plus 2-3 deliberately *added* techniques from `melies-cinematic-library` (never a literal copy
-  of the reference), then logs the result into `video-library/`.
+- **`personal-video-library`** — coordinates the other three: when the user hands over a
+  reference clip and wants a prompt built from it, this skill runs `story-wizard` first (if
+  there's story stakes), forces `reelbench-skills`' footage analysis plus 2-3 deliberately
+  *added* techniques from `melies-cinematic-library` (never a literal copy of the reference),
+  then logs the result into `video-library/`.
+- **`story-wizard`** — Phase-0 story reasoning layer, upstream of all three above: reads what a
+  reference clip actually shows, then asks the user directly what the character should do, how
+  it's presented, the story arc, the hook, and the ending, before any technical footage analysis
+  or prompt writing starts.
 
 Read the actual `SKILL.md` files before writing or revising an AI video/image generation prompt
 in this repo — the craft rules (H3/Seedance field syntax, duration handling, continuity rules)
