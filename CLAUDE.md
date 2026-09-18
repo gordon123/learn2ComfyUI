@@ -49,6 +49,12 @@ or technique writeup, follow this same pattern rather than a flat file dump.
   reference clip actually shows, then asks the user directly what the character should do, how
   it's presented, the story arc, the hook, and the ending, before any technical footage analysis
   or prompt writing starts.
+- **`thai-songwriter-assistant`** — human-in-the-loop Thai lyric writer (แต่งเพลงไทย): works
+  section-by-section (one guiding question at a time), covers Song Form, สัมผัส (rhyme), วรรค
+  pacing, and Thai tone-vs-melody matching, then outputs a Suno-AI-ready lyric with meta tags.
+  See `.claude/skills/thai-songwriter-assistant/SKILL.md` and its `references/` (songwriting
+  craft, prosody-and-tone, melody-matching, suno-prompting, learned-additions). Pairs with
+  `text2audio_stuff/music-style-library/readme.md` for genre keywords when picking a Suno style.
 
 Read the actual `SKILL.md` files before writing or revising an AI video/image generation prompt
 in this repo — the craft rules (H3/Seedance field syntax, duration handling, continuity rules)
