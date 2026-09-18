@@ -8,6 +8,9 @@ project's own past prompts).
 
 This folder answers a different question than either of those: **"what have I
 personally collected that's worth remembering the next time I write a prompt?"**
+`.claude/skills/reelbench-skills/examples` answers the neighboring question — "what
+actually happened the last time I generated from a finished prompt?" — so check there
+too when looking for past prompt/report pairs rather than raw reference clips.
 
 ## Why this exists
 

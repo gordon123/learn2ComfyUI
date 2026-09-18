@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Yasha vs Kurenai Duel QA (static snapshot)</title>
+<style>
+body{font:15px/1.6 -apple-system,Helvetica,Arial,sans-serif;max-width:820px;margin:40px auto;padding:0 16px;color:#efe7f5;background:#17121c;}
+h1{font-size:24px;color:#f3e9ff;}
+h2{font-size:17px;margin-top:28px;color:#e6d5ff;}
+img{max-width:100%;border-radius:8px;margin:8px 0;}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+a.live{display:inline-block;margin:8px 8px 8px 0;padding:8px 14px;background:#6b3fa0;color:#fff;border-radius:8px;text-decoration:none;}
+code{background:#2a2233;padding:1px 5px;border-radius:4px;color:#e6d5ff;}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0;}
+th,td{border-bottom:1px solid #3a2e47;padding:6px 8px;text-align:left;vertical-align:top;}
+.fail{color:#e0685c;font-weight:700;}
+.warn{color:#e0b955;font-weight:700;}
+.pass{color:#7cc99a;font-weight:700;}
+.note{font-size:13px;color:#b8a6cc;font-style:italic;}
+</style>
+</head>
+<body>
+<h1>Yasha vs Kurenai Duel — 4-Part QA snapshot</h1>
+<p>A 4-part MiniMax H3 Ref2VA original story: Yasha (winged demon-horned girl, violet-white
+magic) vs Kurenai (fox-masked girl, red spectral-fox aura) — first clash, climax duel, and a
+title/credits outro. Built and QA'd using this repo's own skills (<code>reelbench-skills</code>,
+<code>story-wizard</code>, <code>melies-cinematic-library</code>). Static snapshot (no embedded
+video — clips aren't stored in-repo). The final accepted prompt for each part is in
+<code>part1-prompt.md</code> through <code>part4-prompt.md</code>; the full interactive reports
+with playable clips and scene-change charts are published live:</p>
+<a class="live" href="https://claude.ai/artifact/Ps8xi36xX71afet4mU1uW1">Part 2 v1 report →</a>
+<a class="live" href="https://claude.ai/artifact/DWBqUgopYAUKGQdiDmwtBJ">Part 2 v2 report →</a>
+<a class="live" href="https://claude.ai/artifact/HWtp8jgpgEeTYWcvaud6B4">Part 2 v3 report (final) →</a>
+<a class="live" href="https://claude.ai/artifact/WVy8e8nMBcHfhGvwwZvQjR">Part 3 v1 report →</a>
+<a class="live" href="https://claude.ai/artifact/AVJYTbEGbjtJZqpsrS7Mhw">Part 3 v2 report →</a>
+<a class="live" href="https://claude.ai/artifact/9Su2m8xqa8CzCkuEPvMCWC">Part 3 v3 + Part 4 v2 report (final) →</a>
+
+<h2>Sample frames</h2>
+<p class="note">Part 1 thumbnails below are illustrative frames from an earlier v3 generation
+round of the prompt, not a frame-by-frame verified analysis of the final accepted v6 prompt —
+Part 1 predates this session's frame-analysis workflow, so no dense QA pass exists for it here.</p>
+<div class="grid">
+  <div><img src="thumbs/part1_a.jpg"><div>Part 1 (v3 round) — establishing beat</div></div>
+  <div><img src="thumbs/part1_b.jpg"><div>Part 1 (v3 round) — mid-sequence</div></div>
+  <div><img src="thumbs/part1_c.jpg"><div>Part 1 (v3 round) — closing beat</div></div>
+  <div><img src="thumbs/part2_a.jpg"><div>Part 2 v3 — Shot 1 opening</div></div>
+  <div><img src="thumbs/part2_b.jpg"><div>Part 2 v3 — clash, low canted push</div></div>
+  <div><img src="thumbs/part2_c.jpg"><div>Part 2 v3 — clash, dust catching Light Flash</div></div>
+  <div><img src="thumbs/part3_a.jpg"><div>Part 3 v3 — Shot 8, standoff end (crack-widening fix)</div></div>
+  <div><img src="thumbs/part3_b.jpg"><div>Part 3 v3 — Shot 9, overload flash</div></div>
+  <div><img src="thumbs/part3_c.jpg"><div>Part 3 v3 — Shot 11, aftermath close (eye-contact fix)</div></div>
+  <div><img src="thumbs/part4_a.jpg"><div>Part 4 v2 — Yasha power-reveal portrait</div></div>
+  <div><img src="thumbs/part4_b.jpg"><div>Part 4 v2 — Kurenai power-reveal portrait</div></div>
+  <div><img src="thumbs/part4_c.jpg"><div>Part 4 v2 — finale collage</div></div>
+</div>
+
+<h2>Headline findings</h2>
+<p><strong>Part 2's clash shot</strong> needed two rewrites: v1 rendered empty (Kurenai never
+entered the shot), v2 rendered as a static, weightless hand-clasp with no consequence. v3 fixed
+this by adding a low/canted camera push, a freeze-frame + Light Flash combo, dust particles
+catching the glow, and courtyard bounce light — techniques documented in the new
+<code>references/combat-environment-reactivity.md</code> reference, sourced from
+<code>melies-cinematic-library</code>.</p>
+<p><strong>Part 3's climax</strong> needed a full rewrite from v1 (flat, no camera variety, no
+named techniques) to v2 (11 shots, dutch-angle whip-pans, worm's-eye power-ups, named ultimate
+techniques). v2 then showed two near-frozen shots (Shot 8 standoff, Shot 11 aftermath) with eyes
+reading toward the camera instead of each other — root-caused to "held/locked/sustained" language
+being read literally as static by the model. v3 fixed both by describing continuous incremental
+motion (trembling, crack-widening, camera creeping) and adding explicit "never look toward the
+lens, eyes locked on each other" language at both the global and per-shot level — verified via
+dense frame sampling with the new <code>scripts/timeline_view.py</code> tool.</p>
+<p><strong>Part 4's outro</strong> corrected placeholder character/channel names (v1's "YOUKO" /
+"PRODUCTION BY IIMATE2485" → v2's "KURENAI" / "PRODUCTION BY IIMATE24") and added confident
+power-display pose language for both characters per the user's explicit request.</p>
+
+<h2>Verdict summary</h2>
+<table>
+<tr><th>Part</th><th>Result</th></tr>
+<tr><td>Part 1 (establishing, v6 final)</td><td><span class="note">not re-analyzed this session</span> — thumbnails shown are from an earlier v3 round only</td></tr>
+<tr><td>Part 2 (first clash, v3 final)</td><td><span class="warn">PASS (not perfect)</span> — accepted by user with known minor warns (smiling during combat, early frame exit)</td></tr>
+<tr><td>Part 3 (climax duel, v3 final)</td><td><span class="pass">PASS</span> — frozen-shot and eye-contact issues resolved; one new warn (Light Flash timing drifted ~1.9s early)</td></tr>
+<tr><td>Part 4 (title/credits outro, v2 final)</td><td><span class="pass">PASS</span> — names corrected, power-display poses added, accepted by user</td></tr>
+</table>
+</body>
+</html>
