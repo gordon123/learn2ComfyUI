@@ -30,8 +30,12 @@
    (`references/footage-analysis-guide.md`) แล้วแปลงเป็น Continuity & Style Brief,
    narrative-rhythm map, camera-emotion read และ — สำหรับซีนแอ็กชัน/ต่อสู้ —
    การอ่าน pacing/damage-continuity
-2. **Route (จัดเส้นทาง)** — กำหนด duration และ aspect ratio ให้ชัดเจนก่อนเสมอ แล้วส่งต่อ
-   ไปยัง skill ปลายทางที่ถูกต้อง (`references/routing-matrix.md`) พร้อม brief, rhythm
+2. **Route (จัดเส้นทาง)** — กำหนด duration และ aspect ratio ให้ชัดเจนก่อนเสมอ จากนั้น
+   นับจำนวน shot จาก story beat จริงของฉาก (ห้ามยึดตาราง duration→shot-count ทั่วไปของ
+   skill ปลายทางเป็นจุดตั้งต้น — prompt จริงในโปรเจคนี้ใช้ 5 กับ 6 shot กับสองฉากที่
+   โครงสร้างต่างกันชัดเจน แต่ตัวเลขทั้งคู่ดันอยู่ในช่วง "~15s → 5-6 shots" ของ
+   `minimax-h3-prompt-writing` พอดี ซึ่งเป็นสัญญาณว่ายึดตารางแทนที่จะนับจาก beat จริง)
+   แล้วส่งต่อไปยัง skill ปลายทางที่ถูกต้อง (`references/routing-matrix.md`) พร้อม brief, rhythm
    map และ camera-emotion pairing เป็นคำสั่งรูปธรรมต่อ shot ก่อนส่ง draft ให้ user —
    ทุกครั้ง ไม่ใช่แค่ตอนถูกขอ — ต้องรัน `scripts/validate_shotlist.py` สำหรับ 6
    deterministic gate (duration ซ้ำติดกัน, duration รวมเทียบกับ platform, บทพูดพอดีกับ
