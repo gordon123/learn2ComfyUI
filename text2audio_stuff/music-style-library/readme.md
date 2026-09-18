@@ -4,6 +4,10 @@
 `text2audio_stuff/comfyui_ACEstep.json` หรือ Suno) — แต่ละแนวมี keyword และคำอธิบายสั้นๆ
 ให้หยิบไปแปะ/ผสมกันตอนตั้งพรอมต์ได้ทันที เหมือนที่ `melies-cinematic-library` ทำไว้ให้ฝั่งวิดีโอ
 
+ใช้คู่กับ skill [`thai-songwriter-assistant`](../../.claude/skills/thai-songwriter-assistant/SKILL.md)
+ได้เลย — ตอนเลือกแนวเพลง/style tag สำหรับ Suno ให้มาหยิบ keyword จากตารางด้านล่างนี้ไปใส่ตาม
+รูปแบบใน `references/suno-prompting.md` ของ skill นั้น
+
 สรุปจากคลิป **"ดนตรี 50 แนวที่ Producer ควรเรียนรู้"** โดยช่อง VERY CAT SOUND
 ([ดูคลิปต้นทางบน YouTube](https://www.youtube.com/watch?v=ynvYwoguRis)) แบ่งเป็น 5 ยุคหลัก
 บวกแนวโบนัสที่เจอบ่อยในงานจริง
