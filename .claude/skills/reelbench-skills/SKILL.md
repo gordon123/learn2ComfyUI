@@ -212,6 +212,16 @@ that recurs across shots — state the damage-persistence chain explicitly (what
 that it stays broken, how the debris continues to settle) rather than leaving it to be
 assumed.
 
+For any shot with a real VFX/impact/explosion source bright or forceful enough to
+plausibly affect its surroundings, also apply `references/combat-environment-reactivity.md`
+before handing off — name the real lighting/atmosphere technique the effect should trigger
+(the glow as motivated/practical light on nearby skin and stone, smoke as the volumetric
+medium its light shafts travel through, debris as discrete particles rather than a generic
+cloud, a Light Flash at a single peak-impact instant) rather than leaving the effect to sit
+flat on top of the environment. Distinct from `action-sequence-craft.md` §2 (whether damage
+persists) and from `minimax-h3-prompt-writing`'s VFX section (a single effect's own internal
+structure) — this covers how the effect and the environment light each other in the moment.
+
 For any shot carrying an emotionally-loaded or evasive beat, apply
 `references/micro-expression-physics.md` before handing off — especially for a beat
 that has already failed the same way in a prior generation. State, in the shot text
