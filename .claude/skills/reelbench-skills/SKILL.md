@@ -165,6 +165,13 @@ the "one continuous motion sliced by body region" technique that prevents body-s
 across cuts, and the match-cut/locked-camera rhythm discipline all come from there, not from
 this project's own combat-pacing rules.
 
+Before writing any rapid multi-look/multi-world sequence (a transformation MV, a "same
+character, new world every beat" showcase, anything where outfit + location + composition all
+change together on nearly every cut), read `references/rapid-transformation-intro.md` first —
+the simultaneous-triple-change discipline, the never-repeat-typography-style rule, and the
+finale-collage callback technique come from there, distinct from the single-location pose
+sequence `multi-pose-fashion-sequence.md` covers.
+
 Also check, before handing off, whether any other loaded cinema/video-craft Claude skill
 bears on this specific brief beyond the one named in the routing table — a scene with
 sung/spoken lyrics may need `mv-storytelling-framework`'s brief-first reasoning even if
