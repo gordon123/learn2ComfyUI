@@ -55,7 +55,7 @@
 
 | ไฟล์ | ใช้ทำอะไร |
 |---|---|
-| `footage-analysis-guide.md` | คำสั่ง ffprobe/ffmpeg จริงสำหรับตรวจจับขอบเขต shot, สถิติต่อ shot, การสุ่มเฟรม และรูปแบบตารางข้อมูลต่อ shot ที่ใช้ในรายงาน |
+| `footage-analysis-guide.md` | คำสั่ง ffprobe/ffmpeg จริงสำหรับตรวจจับขอบเขต shot, สถิติต่อ shot, การสุ่มเฟรม, รูปแบบตารางข้อมูลต่อ shot ที่ใช้ในรายงาน, และภาพรวม filmstrip+waveform (`scripts/timeline_view.py`) ไว้ดูด้วยตาว่าเสียงกับภาพไปด้วยกันจริงไหมในช่วงเวลาหนึ่งๆ |
 | `quality-gates.md` | checklist continuity 15 ข้อที่ผลลัพธ์จาก skill ปลายทางต้องผ่าน |
 | `routing-matrix.md` | skill ปลายทางไหน (กลุ่ม MiniMax H3 หรือกลุ่ม Seedance) เหมาะกับงานแบบไหน |
 | `narrative-rhythm.md` | ระบบแท็ก 8 ตัว (hook/setup/escalation/beat/pivot/payoff/breath/closure) สำหรับหน้าที่ของแต่ละ shot ใน sequence |
@@ -74,7 +74,9 @@
 
 `scripts/validate_shotlist.py` คือตัว validator แบบ deterministic เอง — รันตรง ๆ
 (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`) ก่อนไล่
-qualitative gate เสมอ
+qualitative gate เสมอ `scripts/timeline_view.py` สร้างภาพ filmstrip+waveform ตามที่
+อธิบายไว้ใน `footage-analysis-guide.md` §7 — รันตรง ๆ
+(`python3 scripts/timeline_view.py INPUT.mp4 --start S --end E --out timeline.png`)
 
 ## ตัวอย่าง (Examples)
 
@@ -104,3 +106,11 @@ claim beats" สำหรับ beat coverage) ดัดแปลงมาจา
 (โดยเฉพาะคำสั่ง `validate` แบบ 17-gate ของ `novel-storyboard`) — สรุปทั่วไปจาก
 `storyboard.json` แบบมีโครงสร้างของโปรเจกต์นั้น มาเป็น prompt แบบ prose อิสระของ MiniMax
 H3 / Seedance ที่ skill ปลายทางของโปรเจกต์นี้เขียนจริง
+
+รูปแบบ filmstrip+waveform composite ใน `footage-analysis-guide.md` §7 และ
+`scripts/timeline_view.py` (เฟรมกับ waveform ribbon อยู่บนแกนเวลาเดียวกัน พร้อม label
+คำพูดจาก transcript แบบ optional) ดัดแปลงมาจากเครื่องมือ `timeline_view` ใน
+[browser-use/video-use](https://github.com/browser-use/video-use) — เขียนใหม่โดยใช้
+filter `showwavespic` ของ ffmpeg เองแทน numpy/librosa ของโปรเจกต์นั้น เพื่อให้ dependency
+เหลือแค่ ffmpeg+Pillow และตัด logic เรื่อง silence-gap/retake-comparison ออก (ของเดิม
+ออกแบบมาสำหรับตัดต่อฟุตเทจดิบ ไม่ใช่วิเคราะห์คลิปที่ generate มา)

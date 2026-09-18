@@ -108,3 +108,35 @@ This table format applies whether the clip has one shot or fifty — a single co
 take still gets one full row (with `motion` as the median across the whole take, and
 `note` stating plainly that zero cuts were detected) rather than being described in
 prose alone.
+
+## 7. Filmstrip + waveform composite (single-glance timeline view)
+
+For a time range worth looking at closely — the peak of an action beat, a suspicious
+cut, a stretch you're about to describe in a report — a single composite image reads
+faster than a separate frame grid and a separate audio chart side by side: N evenly-
+spaced frames laid out as a horizontal filmstrip, a waveform ribbon directly beneath it,
+and a time ruler along the bottom, all aligned to the same time axis so a visual event
+and its matching sound line up by eye.
+
+```bash
+python3 scripts/timeline_view.py INPUT.mp4 --start 8 --end 13 --n-frames 12 --out timeline.png
+```
+
+Needs only `ffmpeg` (the waveform comes from its own `showwavespic` filter — no numpy
+or librosa) and Pillow (`pip install Pillow`) for the compositing. Reach for this over a
+separate frame-grid-plus-chart pair specifically when you need to eyeball whether a
+sound event and a visual event actually land together — the two are drawn on the same
+horizontal scale, so a mismatch (a flash with no waveform spike under it, a spike with
+nothing happening on screen) is immediately visible rather than something you have to
+cross-reference between two images.
+
+If a transcript is available (word/phrase-level timestamps — from `--transcript`, a
+JSON list of `{"start", "end", "text"}` objects, the shape most ASR tools including
+Gemini's transcription output produce or can be mapped to), pass it to tick red word
+labels above the waveform at their actual timestamps — useful for lining up dialogue
+against the cut list on a reference clip that has spoken lines. This is optional; the
+filmstrip and waveform render fine without it.
+
+Prefer the existing scene-score chart (§1, via `lavfi.scene_score`) when the goal is
+precise numeric cut-boundary detection across a whole clip — this composite is for
+targeted, human-readable inspection of a specific range, not for measuring anything.

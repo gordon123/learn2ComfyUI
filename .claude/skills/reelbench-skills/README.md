@@ -59,7 +59,7 @@ go straight to the relevant downstream skill.
 
 | File | What it's for |
 |---|---|
-| `footage-analysis-guide.md` | The actual ffprobe/ffmpeg commands for shot-boundary detection, per-shot stats, frame sampling, and the structured per-shot data-table format used in reports |
+| `footage-analysis-guide.md` | The actual ffprobe/ffmpeg commands for shot-boundary detection, per-shot stats, frame sampling, the structured per-shot data-table format used in reports, and a filmstrip+waveform composite view (`scripts/timeline_view.py`) for eyeballing whether sound and motion actually land together in a specific range |
 | `quality-gates.md` | The 15-point continuity checklist a downstream skill's output gets walked against |
 | `routing-matrix.md` | Which downstream skill (MiniMax H3 family vs. Seedance family) fits which task |
 | `narrative-rhythm.md` | The 8-tag rhythm system (hook/setup/escalation/beat/pivot/payoff/breath/closure) for what job each shot does in a sequence |
@@ -78,7 +78,9 @@ go straight to the relevant downstream skill.
 
 `scripts/validate_shotlist.py` is the deterministic validator itself — run it
 directly (`python3 scripts/validate_shotlist.py --platform h3|seedance PROMPT.md`)
-before the qualitative gate walk.
+before the qualitative gate walk. `scripts/timeline_view.py` builds the filmstrip+
+waveform composite described in `footage-analysis-guide.md` §7 — run it directly
+(`python3 scripts/timeline_view.py INPUT.mp4 --start S --end E --out timeline.png`).
 
 ## Examples
 
@@ -109,3 +111,12 @@ gates in [eternityspring/shuohao-skills](https://github.com/eternityspring/shuoh
 (specifically `novel-storyboard`'s 17-gate `validate` command) — generalized here
 from that project's structured `storyboard.json` to the freeform MiniMax H3 /
 Seedance prose prompts this project's downstream skills actually write.
+
+The filmstrip+waveform composite pattern in `footage-analysis-guide.md` §7 and
+`scripts/timeline_view.py` (frames and a waveform ribbon on one aligned time axis,
+optional word labels ticked from a transcript) is adapted from the `timeline_view`
+tool in [browser-use/video-use](https://github.com/browser-use/video-use) —
+reimplemented here with ffmpeg's own `showwavespic` filter in place of that
+project's numpy/librosa envelope, to keep the dependency footprint to
+ffmpeg+Pillow, and stripped of its silence-gap/retake-comparison logic (built for
+cutting raw takes, not analyzing generated clips).
