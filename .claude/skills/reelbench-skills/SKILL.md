@@ -103,6 +103,20 @@ safest default when the user hasn't said otherwise. If the user's scene needs
 noticeably more beats than the reference had shots for, say so and suggest a longer
 duration instead of forcing it into the reference's runtime.
 
+**Derive shot count from the actual story beats reviewed in Phase 1 (or from the brief, if
+no footage was supplied), never from a downstream skill's generic duration→shot-count guide
+table.** A real prompt in this project used 5 shots for a solo fall/impact/power-up sequence
+and 6 shots for a two-subject body-reveal-into-exchange sequence — two structurally different
+beat counts — yet both numbers landed inside `minimax-h3-prompt-writing`'s own "~15s → 5-6
+shots" default pacing guide, which is a strong sign the shot count was anchored to that table
+rather than actually counted up from the beats each scene needed. Before finalizing shot count,
+list the distinct beats the scene actually requires (one beat = one thing that has to be shown,
+not one shot for its own sake) and let that list's length set the shot count; only after that
+use the downstream skill's table as a sanity check (is this number wildly outside what the
+platform/duration can hold), never as the starting point. A scene with fewer real beats than
+the table's default should ship with fewer shots, and one with more should ask for more runtime
+rather than compressing beats into a single overloaded shot.
+
 Then match the task to the right skill using `references/routing-matrix.md`. Tell the
 user which skill you're handing off to and why, then invoke it (via Skill tool)
 carrying the Continuity & Style Brief, the confirmed duration, the rhythm map, and the

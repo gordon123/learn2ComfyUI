@@ -32,10 +32,15 @@ go straight to the relevant downstream skill.
    (`references/footage-analysis-guide.md`) and turn it into a Continuity & Style
    Brief, a narrative-rhythm map, a camera-emotion read, and — for action/fight
    scenes — a pacing/damage-continuity read.
-2. **Route** — settle duration and aspect ratio explicitly, then hand off to the
-   right downstream skill (`references/routing-matrix.md`) carrying the brief, the
-   rhythm map, and the camera-emotion pairing as concrete per-shot instructions. Before
-   presenting the draft to the user — every time, not just on request — run
+2. **Route** — settle duration and aspect ratio explicitly, then derive shot count from
+   the actual story beats (never from a downstream skill's generic duration→shot-count
+   guide table — a real prompt in this project landed on 5 and 6 shots for two
+   structurally different scenes, both suspiciously inside `minimax-h3-prompt-writing`'s
+   own "~15s → 5-6 shots" default, a sign the count was anchored to the table instead of
+   counted up from the beats each scene actually needed), then hand off to the right
+   downstream skill (`references/routing-matrix.md`) carrying the brief, the rhythm map,
+   and the camera-emotion pairing as concrete per-shot instructions. Before presenting
+   the draft to the user — every time, not just on request — run
    `scripts/validate_shotlist.py` for the 6 deterministic gates (pacing duplicates,
    total duration vs. platform, dialogue-vs-shot-duration fit, language purity,
    max-subjects-in-frame, beat coverage — see `references/shot-manifest-convention.md`)
