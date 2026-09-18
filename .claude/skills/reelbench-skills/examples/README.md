@@ -68,3 +68,24 @@ example's syntax is still correct.
   worked on one boundary and not the other). Static version — the full interactive report with
   all four playable clips and the combined 60-second scene-change chart is linked inside it.
 - `thumbs/` — sample frames used by `report.html`.
+
+## yasha-kurenai-duel
+
+- `part1-prompt.md` through `part4-prompt.md` — a 4-part original-story MiniMax H3 Ref2VA
+  sequence (Yasha, a winged demon-horned girl with violet-white magic, vs Kurenai, a fox-masked
+  girl with a red spectral-fox aura): an establishing beat, a first clash, an 11-shot climax duel,
+  and a title/credits outro. Each file is the final accepted version after iterative rejection and
+  rewrite rounds — see each part's own findings below for what earlier versions got wrong.
+- `report.html` — QA summary across all four parts: Part 2's clash needed two rewrites to fix an
+  empty shot (v1) and a static, consequence-free hand-clasp (v2), fixed in v3 with the new
+  `references/combat-environment-reactivity.md` techniques (low/canted push, Light Flash, dust
+  catching the glow, bounce light). Part 3's climax needed a full rewrite (v1→v2) for cinematic
+  intensity, then a targeted fix (v2→v3) for two shots that rendered as near-frozen with eyes
+  reading toward the camera instead of each other — root-caused to "held/locked/sustained"
+  language being read literally as static, fixed by describing continuous incremental motion and
+  explicit eye-contact instructions, verified with the new `scripts/timeline_view.py` tool. Part 4
+  corrected placeholder names and added power-display pose language. Part 1's thumbnails are
+  captioned as illustrative frames from an earlier generation round rather than a verified final
+  pass, since no dense frame analysis was run against it in this project. Static version — the
+  full interactive reports (one per accepted revision) are linked inside it.
+- `thumbs/` — sample frames used by `report.html`.
