@@ -95,3 +95,9 @@ https://huggingface.co/javawock7618/comfy-MiniMax-H3-workflows
 https://github.com/jtydhr88/screenwriting-skills
 
 https://vvsvs.pro/cinematique
+
+## ======= NSFW
+
+https://huggingface.co/linjian257/qwen3vl_32b_minimax_h3_int8_convrot_uncensored-by-linjian257
+
+https://huggingface.co/SexGod1979/AfterMidnight-MiniMax-H3-NSFW
